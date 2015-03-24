@@ -3,7 +3,7 @@ minetest.clear_registered_biomes()
 minetest.clear_registered_decorations()
 --minetest.clear_registered_ores()
 
--- Biomes (for 0.4.11 dev with new changes from Paramat)
+-- Biomes (for 0.4.12 with new changes from Paramat)
 if ethereal.bamboo == 1 then
 minetest.register_biome({
 	name			= "bamboo",
@@ -12,7 +12,6 @@ minetest.register_biome({
 	y_min			= 1,						y_max				= 71,
 	heat_point		= 45.0,						humidity_point		= 75.0,
 })
-print ("Ethereal Bamboo Enabled")
 end
 
 if ethereal.mesa == 1 then
@@ -23,7 +22,6 @@ minetest.register_biome({
 	y_min     = 2,							y_max     = 71,
 	heat_point     = 25.0,						humidity_point = 28.0,
 })
-print ("Ethereal Mesa Enabled")
 end
 
 if ethereal.alpine == 1 then
@@ -34,7 +32,6 @@ minetest.register_biome({
 	y_min     = 40,						y_max     = 90,
 	heat_point     = 10.0,						humidity_point = 40.0,
 })
-print ("Ethereal Alpine Enabled")
 end
 
 if ethereal.healing == 1 then
@@ -45,7 +42,6 @@ minetest.register_biome({
 	y_min     = 75,						y_max     = 140,
 	heat_point     = 10.0,						humidity_point = 40.0,
 })
-print ("Ethereal Healing Enabled")
 end
 
 if ethereal.snowy == 1 then
@@ -56,7 +52,6 @@ minetest.register_biome({
 	y_min     = 5,							y_max     = 40,
 	heat_point     = 10.0,						humidity_point = 40.0,
 })
-print ("Ethereal Snowy Enabled")
 end
 
 if ethereal.frost == 1 then
@@ -67,7 +62,6 @@ minetest.register_biome({
 	y_min     = 1,							y_max     = 71,
 	heat_point     = 10.0,						humidity_point = 40.0,
 })
-print ("Ethereal Frost Enabled")
 end
 
 if ethereal.grassy == 1 then
@@ -78,7 +72,6 @@ minetest.register_biome({
 	y_min     = 1,							y_max     = 91,
 	heat_point     = 13.0,						humidity_point = 40.0,
 })
-print ("Ethereal Grassy Enabled")
 end
 
 if ethereal.caves == 1 then
@@ -89,7 +82,6 @@ minetest.register_biome({
 	y_min     = 4,							y_max     = 41,
 	heat_point     = 15.0,						humidity_point = 25.0,
 })
-print ("Ethereal Caves Enabled")
 end
 
 if ethereal.grayness == 1 then
@@ -100,7 +92,6 @@ minetest.register_biome({
 	y_min     = 1,							y_max     = 41,
 	heat_point     = 15.0,						humidity_point = 30.0,
 })
-print ("Ethereal Grayness Enabled")
 end
 
 if ethereal.grassytwo == 1 then
@@ -111,7 +102,6 @@ minetest.register_biome({
 	y_min     = 1,							y_max     = 91,
 	heat_point     = 15.0,						humidity_point = 40.0,
 })
-print ("Ethereal GrassyTwo Enabled")
 end
 
 if ethereal.prairie == 1 then
@@ -122,7 +112,6 @@ minetest.register_biome({
 	y_min     = 3,							y_max     = 26,
 	heat_point     = 20.0,						humidity_point = 40.0,
 })
-print ("Ethereal Prairie Enabled")
 end
 
 if ethereal.jumble == 1 then
@@ -133,7 +122,6 @@ minetest.register_biome({
 	y_min     = 1,							y_max     = 71,
 	heat_point     = 25.0,						humidity_point = 50.0,
 })
-print ("Ethereal Jumble Enabled")
 end
 
 if ethereal.junglee == 1 then
@@ -144,7 +132,6 @@ minetest.register_biome({
 	y_min     = 1,							y_max     = 71,
 	heat_point     = 30.0,						humidity_point = 60.0,
 })
-print ("Ethereal Junglee Enabled")
 end
 
 if ethereal.desert ==1 then
@@ -155,7 +142,6 @@ minetest.register_biome({
 	y_min     = 3,							y_max     = 23,
 	heat_point     = 35.0,						humidity_point = 20.0,
 })
-print ("Ethereal Desert Enabled")
 end
 
 if ethereal.grove == 1 then
@@ -166,7 +152,6 @@ minetest.register_biome({
 	y_min     = 3,							y_max     = 23,
 	heat_point     = 40.0,						humidity_point = 60.0,
 })
-print ("Ethereal Grove Enabled")
 end
 
 if ethereal.mushroom == 1 then
@@ -177,7 +162,6 @@ minetest.register_biome({
 	y_min     = 1,							y_max     = 50,
 	heat_point     = 45.0,						humidity_point = 65.0,
 })
-print ("Ethereal Mushroom Enabled")
 end
 
 if ethereal.desertstone == 1 then
@@ -188,7 +172,6 @@ minetest.register_biome({
 	y_min     = 3,							y_max     = 23,
 	heat_point     = 50.0,						humidity_point = 20.0,
 })
-print ("Ethereal DesertStone Enabled")
 end
 
 if ethereal.quicksand == 1 then
@@ -199,7 +182,6 @@ minetest.register_biome({
 	y_min		= 1,						y_max = 1,
 	heat_point		= 50,						humidity_point = 38,
 })
-print ("Ethereal Quicksand Enabled")
 end
 
 if ethereal.lake == 1 then
@@ -211,7 +193,6 @@ minetest.register_biome({
 	y_min		= -31000,					y_max = 3,
 	heat_point		= 50,						humidity_point = 40,
 })
-print ("Ethereal Lake Enabled")
 end
 
 if ethereal.plains == 1 then
@@ -222,7 +203,6 @@ minetest.register_biome({
 	y_min     = 3,							y_max     = 61,
 	heat_point     = 55.0,						humidity_point = 25.0,
 })
-print ("Ethereal Plains Enabled")
 end
 
 if ethereal.fiery == 1 then
@@ -233,7 +213,6 @@ minetest.register_biome({
 	y_min     = 5,							y_max     = 65,
 	heat_point     = 80.0,						humidity_point = 10.0,
 })
-print ("Ethereal Fiery Enabled")
 end
 
 if ethereal.sandclay == 1 then
@@ -244,7 +223,6 @@ minetest.register_biome({
 	y_min     = 1,							y_max     = 11,
 	heat_point     = 65.0,						humidity_point = 2.0,
 })
-print ("Ethereal SandClay Enabled")
 end
 
 -- Schematics Decoration
@@ -573,8 +551,7 @@ minetest.register_decoration({							-- Papyrus
 
 -- Palm Tree on Sand next to Water
 minetest.register_on_generated(function(minp, maxp, seed)
-	--if maxp.y >= 2 and minp.y <= 0 then -- orig
-	if maxp.y > 1 and minp.y < 1 then -- new
+	if maxp.y > 1 and minp.y < 1 then
 		local perlin1 = minetest.get_perlin(354, 3, 0.7, 100)
 		-- Assume X and Z lengths are equal
 		local divlen = 8
@@ -585,7 +562,7 @@ minetest.register_on_generated(function(minp, maxp, seed)
 			local z0 = minp.z + math.floor((divz+0)*divlen)
 			local x1 = minp.x + math.floor((divx+1)*divlen)
 			local z1 = minp.z + math.floor((divz+1)*divlen)
-			-- Find random positions for palm based on this random
+			-- Find random positions for palm tree
 			local pr = PseudoRandom(seed+1)
 				local x = pr:next(x0, x1)
 				local z = pr:next(z0, z1)
@@ -599,7 +576,9 @@ minetest.register_on_generated(function(minp, maxp, seed)
 end)
 
 -- Farming Redo Plants
-if minetest.get_modpath("farming") and farming.mod == "redo" then
+if farming.mod and farming.mod == "redo" then
+
+print ("[MOD] Ethereal - Detected and using Farming Redo mod")
 
 minetest.register_decoration({						-- Potato
 	deco_type = "simple",

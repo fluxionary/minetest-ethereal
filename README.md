@@ -9,6 +9,7 @@ Changelog:
 Added Staff of Light (thanks Xanthin), crafted from illumishrooms and can turn stone into glostone and back again
 Changed how Crystal Spikes reproduce
 Crystal Ingots now require 2x mese crystal and 2x crystal spikes to craft
+Removed obsidian brick & stairs now they are in default game, also removed pine wood stairs for same reason
 
 
 1.14

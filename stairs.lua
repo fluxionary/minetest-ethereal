@@ -80,13 +80,6 @@ stairs.register_stair_and_slab("willow_wood", "ethereal:willow_wood",
 	"Willow Wood Slab",
 	default.node_sound_wood_defaults())
 
-stairs.register_stair_and_slab("pine_wood", "default:pinewood",
-	{choppy=2,oddly_breakable_by_hand=1,flammable=3, not_in_craft_guide=1},
-	{"default_pinewood.png"},
-	"Pine Wood Stair",
-	"Pine Wood Slab",
-	default.node_sound_wood_defaults())
-
 stairs.register_stair_and_slab("redwood_wood", "ethereal:redwood_wood",
 	{choppy=2,oddly_breakable_by_hand=1,flammable=3, not_in_craft_guide=1},
 	{"redwood_wood.png"},
@@ -100,10 +93,3 @@ stairs.register_stair_and_slab("acacia_wood", "ethereal:acacia_wood",
 	"Acacia Wood Stair",
 	"Acacia Wood Slab",
 	default.node_sound_wood_defaults())
-
-stairs.register_stair_and_slab("obsidian_brick", "ethereal:obsidian_brick",
-	{cracky=1,level=3, not_in_craft_guide=1},
-	{"obsidian_brick.png"},
-	"Obsidian Brick Stair",
-	"Obsidian Brick Slab",
-	default.node_sound_stone_defaults())
