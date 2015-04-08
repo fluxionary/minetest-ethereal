@@ -334,7 +334,7 @@ minetest.register_decoration({							-- Apple Tree
 	place_on = "ethereal:green_dirt",
 	sidelen = 80, -- was 16
 	fill_ratio = 0.030,
-	biomes = {"grassy, jumble"},
+	biomes = {"grassy", "jumble"},
 	schematic = path.."tree.mts",
 	flags = "place_center_x, place_center_z",
 })
