@@ -2,7 +2,7 @@
 ethereal.register_sapling = function( sapling_node_name, sapling_descr, sapling_texture )
 
 	-- if the sapling does not exist yet, create a node for it
-	if( not( minetest.registered_nodes[ sapling_node_name ] )) then
+	if not minetest.registered_nodes[sapling_node_name] then
 		minetest.register_node( sapling_node_name, {
 			description = sapling_descr,
 			drawtype = "plantlike",
@@ -43,7 +43,7 @@ ethereal.place_tree = function (pos, ofx, ofz, schem)
 	minetest.set_node(pos, {name="air"})
 	pos.x = pos.x - ofx
 	pos.z = pos.z - ofz
-	minetest.place_schematic(pos, minetest.get_modpath("ethereal").."/schematics/"..schem..".mts", "0", {}, false );
+	minetest.place_schematic(pos, minetest.get_modpath("ethereal").."/schematics/"..schem..".mts", "0", {}, false )
 end
 
 -- Grow saplings
@@ -53,7 +53,7 @@ minetest.register_abm({
 	chance = 25,
 	action = function(pos, node)
 
-		local under =  minetest.get_node({x=pos.x, y=pos.y-1, z=pos.z}).name;
+		local under =  minetest.get_node({x=pos.x, y=pos.y-1, z=pos.z}).name
 
 		-- Check if Sapling is growing on correct substrate
 		if (node.name == "ethereal:yellow_tree_sapling" and under == "default:dirt_with_snow") then
@@ -84,8 +84,6 @@ minetest.register_abm({
 			ethereal.place_tree(pos, 1, 1, "orangetree")
 		elseif (node.name == "ethereal:acacia_sapling" and under == "default:desert_sand") then
 			ethereal.place_tree(pos, 5, 5, "acaciatree")
-
 		end
-
 	end,
 })

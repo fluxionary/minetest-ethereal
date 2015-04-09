@@ -21,7 +21,7 @@ minetest.register_node("ethereal:acacia_leaves", {
 	drop = {
 		max_items = 1,
 		items = {
-			{	items = {"ethereal:acacia_sapling"}, rarity = 50},
+			{	items = {"ethereal:acacia_sapling"}, rarity = 20},
 			{	items = {"ethereal:acacia_leaves"}}
 		}
 	},
