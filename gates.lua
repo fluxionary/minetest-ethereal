@@ -21,10 +21,10 @@ function gate_rightclick(pos, node)
 	local open = data[2]
 	
 	if open == "open" then
-		minetest.sound_play("door_close", {pos=pos, gain = 0.3, max_hear_distance = 10})
+		minetest.sound_play("doors_door_close", {pos=pos, gain = 0.3, max_hear_distance = 10})
 		minetest.set_node(pos, {name=gate.."closed", param2=node.param2})
 	else
-		minetest.sound_play("door_open", {pos=pos, gain = 0.3, max_hear_distance = 10})
+		minetest.sound_play("doors_door_open", {pos=pos, gain = 0.3, max_hear_distance = 10})
 		minetest.set_node(pos, {name=gate.."open", param2=node.param2})
 	end
 end
