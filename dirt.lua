@@ -1,7 +1,7 @@
--- Override default Dirt (to stop caves cutting away dirt)
+-- override default dirt (to stop caves cutting away dirt)
 minetest.override_item("default:dirt", {is_ground_content = false})
 
--- Green Dirt
+-- green dirt
 minetest.register_node("ethereal:green_dirt", {
 	description = "Green Dirt",
 	tiles = {"default_grass.png", "default_dirt.png", "default_dirt.png^default_grass_side.png"},
@@ -11,7 +11,7 @@ minetest.register_node("ethereal:green_dirt", {
 	sounds = default.node_sound_dirt_defaults()
 })
 
--- Dry Dirt
+-- dry dirt
 minetest.register_node("ethereal:dry_dirt", {
 	description = "Dried Dirt",
 	tiles = {"ethereal_dry_dirt.png"},
@@ -55,49 +55,50 @@ minetest.register_alias("ethereal:fiery_dirt_top", "ethereal:fiery_dirt")
 minetest.register_alias("ethereal:gray_dirt_top", "ethereal:gray_dirt")
 minetest.register_alias("ethereal:green_dirt_top", "ethereal:green_dirt")
 
--- Check surrounding grass and change dirt to Same colour (by Sokomine)
+-- check surrounding grass and change dirt to same colour (by Sokomine)
 minetest.register_abm({
 	nodenames = {"default:dirt_with_grass"},
 	interval = 5,
-	chance = 5,
+	chance = 2,
 	action = function(pos, node)
 		local count_grasses = {}
 		local curr_max  = 0
-		local curr_type = "ethereal:green_dirt_top"; -- Fallback Colour
-		local positions = minetest.find_nodes_in_area( {x=(pos.x-2), y=(pos.y-2), z=(pos.z-2)},
-							       {x=(pos.x+2), y=(pos.y+2), z=(pos.z+2)},
-								"group:ethereal_grass" )
+		local curr_type = "ethereal:green_dirt_top" -- fallback Colour
+		local positions = minetest.find_nodes_in_area(
+			{x=(pos.x-2), y=(pos.y-2), z=(pos.z-2)},
+			{x=(pos.x+2), y=(pos.y+2), z=(pos.z+2)},
+			"group:ethereal_grass")
+		-- count new grass nodes
 		for _,p in ipairs(positions) do
-			-- count the new grass node
-			local n = minetest.get_node( p )
-			if( n and n.name ) then
-				if( not( count_grasses[ n.name ] )) then
-					count_grasses[ n.name ] = 1
+			local n = minetest.get_node(p)
+			if n and n.name then
+				if not count_grasses[n.name] then
+					count_grasses[n.name] = 1
 				else
-					count_grasses[ n.name ] = count_grasses[ n.name ] + 1
+					count_grasses[n.name] = count_grasses[n.name] + 1
 				end
-				-- we found a grass type of which there"s more than the current max
-				if( count_grasses[ n.name ] > curr_max ) then
-					curr_max  = count_grasses[ n.name ]
+				-- we found a grass type with more than current max
+				if count_grasses[n.name] > curr_max then
+					curr_max = count_grasses[n.name]
 					curr_type = n.name
 				end
 			end
 		end
-		minetest.set_node(pos, {name = curr_type })
+		minetest.set_node(pos, {name = curr_type})
         end
 })
 
--- If Grass devoid of light, change to Dirt
+-- if grass devoid of light, change to dirt
 minetest.register_abm({
 	nodenames = {"group:ethereal_grass"},
-	interval = 5,
+	interval = 2,
 	chance = 20,
 	action = function(pos, node)
 		local name = minetest.get_node({x=pos.x, y=pos.y+1, z=pos.z}).name
 		local nodedef = minetest.registered_nodes[name]
 		if name ~= "ignore" and nodedef
-				and not ((nodedef.sunlight_propagates or nodedef.paramtype == "light")
-				and nodedef.liquidtype == "none") then
+		and not ((nodedef.sunlight_propagates or nodedef.paramtype == "light")
+		and nodedef.liquidtype == "none") then
 			minetest.set_node(pos, {name = "default:dirt"})
 		end
 	end

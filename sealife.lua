@@ -120,7 +120,7 @@ minetest.register_ore({
 	height_min     = -100,
 })
 
--- Randomly generate Coral or Seaweed and have Seaweed grow up to 10 high
+-- randomly generate coral or seaweed and have seaweed grow up to 10 high
 minetest.register_abm({
 	nodenames = {"ethereal:sandy"},
 	neighbors = {"group:water"},
@@ -130,31 +130,25 @@ minetest.register_abm({
 	action = function(pos, node)
 
 		local sel = math.random(1,5)
-		if sel == 1 or minetest.get_node(pos).name == "ethereal:seaweed" then
-
+		if sel == 1 or node.name == "ethereal:seaweed" then
 			local height = 0
 
-			while minetest.get_node(pos).name == "ethereal:seaweed"
-			or minetest.get_node(pos).name == "ethereal:sandy"
+			while (minetest.get_node(pos).name == "ethereal:seaweed"
+			or minetest.get_node(pos).name == "ethereal:sandy")
 			and height < 14 do
 				height = height + 1
 				pos.y = pos.y + 1
 			end
 
-			if height < 14 and pos.y < 0 then
-				if minetest.get_node(pos).name == "default:water_source" then
-					minetest.set_node(pos, {name="ethereal:seaweed"})
---					print ("GOING UP")
-				end
+			if height < 14 and pos.y < 0
+			and minetest.get_node(pos).name == "default:water_source" then
+				minetest.set_node(pos, {name="ethereal:seaweed"})
 			end
 
 		else
-
 			pos.y = pos.y + 1
-
 			if minetest.get_node(pos).name == "default:water_source" then
 				minetest.set_node(pos, {name="ethereal:coral"..sel})
---				print ("CORAL ", sel)
 			end
 
 		end

@@ -4,7 +4,6 @@
 --= Desert Biome
 
 -- Cactus
-
 minetest.register_decoration({
 	deco_type = "simple",
 	place_on = {"default:desert_sand", "default:sandstone"},
@@ -15,7 +14,6 @@ minetest.register_decoration({
 })
 
 -- Desert Plants
-
 minetest.register_decoration({
 	deco_type = "simple",
 	place_on = {"default:desert_sand", "default:sandstone", "default:sand"},
@@ -28,7 +26,6 @@ minetest.register_decoration({
 --=  Prairie Biome
 
 -- Grass
-
 minetest.register_decoration({
 	deco_type = "simple",
 	place_on = {"ethereal:prairie_dirt", "ethereal:green_dirt"},
@@ -39,7 +36,6 @@ minetest.register_decoration({
 })
 
 -- Flowers
-
 minetest.register_decoration({
 	deco_type = "simple",
 	place_on = {"ethereal:prairie_grass", "ethereal:green_dirt", "ethereal:grove_dirt", "ethereal:bamboo_dirt"},
@@ -58,8 +54,7 @@ minetest.register_decoration({
 	decoration = {"bakedclay:flower_delphinium", "bakedclay:flower_celosia", "bakedclay:flower_daisy", "bakedclay:flower_bluerose"},
 })
 
---= Shrubs
-
+-- Shrubs
 minetest.register_decoration({
 	deco_type = "simple",
 	place_on = {"ethereal:prairie_grass", "ethereal:green_dirt", "ethereal:grove_dirt", "ethereal:jungle_grass", "ethereal:gray_dirt"},

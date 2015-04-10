@@ -49,8 +49,8 @@ end
 -- Grow saplings
 minetest.register_abm({
 	nodenames = {"group:ethereal_sapling"},
-	interval = 20,
-	chance = 25,
+	interval = 10,
+	chance = 50,
 	action = function(pos, node)
 
 		local under =  minetest.get_node({x=pos.x, y=pos.y-1, z=pos.z}).name

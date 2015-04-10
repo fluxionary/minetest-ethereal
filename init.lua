@@ -1,6 +1,6 @@
 --[[
 
-	Minetest Ethereal Mod 1.15 (9th April 2015)
+	Minetest Ethereal Mod 1.15 (10th April 2015)
 
 	Created by ChinChow
 
@@ -35,6 +35,7 @@ ethereal.lake 			= 1 -- Small sandy lake areas with gravel below, also used for 
 ethereal.plains 		= 1 -- Dry dirt with scorched trees
 ethereal.fiery 			= 1 -- Red grass with lava craters
 ethereal.sandclay		= 1 -- Sand areas with clay underneath
+ethereal.icewater		= 1 -- Ice surrounding cold coastal areas
 
 dofile(minetest.get_modpath("ethereal").."/plantlife.lua")
 dofile(minetest.get_modpath("ethereal").."/mushroom.lua")
