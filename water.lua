@@ -102,7 +102,7 @@ minetest.register_abm({
 	chance = 1,
 	action = function(pos, node)
 		local num = #minetest.find_nodes_in_area({x=pos.x-1, y=pos.y, z=pos.z}, {x=pos.x+1, y=pos.y, z=pos.z}, {"group:water"})
-		num = num + #minetest.find_nodes_in_area({x=pos.x, y=pos.y, z=pos.z-1}, {x=pos.x, y=pos.y, z=pos.z-1}, {"group:water"})
+		num = num + #minetest.find_nodes_in_area({x=pos.x, y=pos.y, z=pos.z-1}, {x=pos.x, y=pos.y, z=pos.z+1}, {"group:water"})
 		num = num + #minetest.find_nodes_in_area({x=pos.x, y=pos.y+1, z=pos.z}, {x=pos.x, y=pos.y+1, z=pos.z}, {"group:water"})
 		if num > 0 then
 			minetest.set_node(pos, {name="default:water_flowing"})
