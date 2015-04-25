@@ -2,6 +2,11 @@
 minetest.clear_registered_biomes()
 minetest.clear_registered_decorations()
 
+-- tree schematics
+dofile(minetest.get_modpath("ethereal").."/schematics/apple_tree.lua")
+dofile(minetest.get_modpath("ethereal").."/schematics/orange_tree.lua")
+dofile(minetest.get_modpath("ethereal").."/schematics/banana_tree.lua")
+
 -- Biomes (for 0.4.12 with new changes from Paramat)
 if ethereal.icewater == 1 then
 minetest.register_biome({
@@ -351,7 +356,7 @@ minetest.register_decoration({
 	sidelen = 80,
 	fill_ratio = 0.015,
 	biomes = {"grove"},
-	schematic = path.."bananatree.mts",
+	schematic = ethereal.bananatree,
 	flags = "place_center_x, place_center_z",
 })
 
@@ -451,7 +456,7 @@ minetest.register_decoration({
 	sidelen = 80,
 	fill_ratio = 0.03,
 	biomes = {"grassy", "jumble"},
-	schematic = path.."tree.mts",
+	schematic = ethereal.appletree,
 	flags = "place_center_x, place_center_z",
 })
 
@@ -461,7 +466,7 @@ minetest.register_decoration({
 	sidelen = 80,
 	fill_ratio = 0.005,
 	biomes = {"grassytwo"},
-	schematic = path.."tree.mts",
+	schematic = ethereal.appletree,
 	flags = "place_center_x, place_center_z",
 })
 
@@ -472,7 +477,7 @@ minetest.register_decoration({
 	sidelen = 80,
 	fill_ratio = 0.005,
 	biomes = {"prairie"},
-	schematic = path.."orangetree.mts",
+	schematic = ethereal.orangetree,
 	flags = "place_center_x, place_center_z",
 })
 

@@ -1,6 +1,6 @@
 --[[
 
-	Minetest Ethereal Mod 1.15 (10th April 2015)
+	Minetest Ethereal Mod 1.16 (25th April 2015)
 
 	Created by ChinChow
 
@@ -55,7 +55,6 @@ dofile(minetest.get_modpath("ethereal").."/sealife.lua")
 dofile(minetest.get_modpath("ethereal").."/fences.lua")
 dofile(minetest.get_modpath("ethereal").."/gates.lua")
 dofile(minetest.get_modpath("ethereal").."/stairs.lua")
---dofile(minetest.get_modpath("ethereal").."/mapgen_v7s.lua") -- 0.4.11 and below
 dofile(minetest.get_modpath("ethereal").."/mapgen_v7n.lua") -- 0.4.12 and above
 
 -- Xanadu server Only

@@ -37,13 +37,25 @@ ethereal.register_sapling( "ethereal:redwood_sapling", "Redwood Sapling", "redwo
 ethereal.register_sapling( "ethereal:orange_tree_sapling", "Orange Tree Sapling", "orange_tree_sapling.png" )
 ethereal.register_sapling( "ethereal:acacia_sapling", "Acacia Sapling", "moretrees_acacia_sapling.png" )
 
-
+-- current routine
 ethereal.place_tree = function (pos, ofx, ofz, schem)
 	-- Remove Sapling and Place Tree Schematic
 	minetest.set_node(pos, {name="air"})
 	pos.x = pos.x - ofx
 	pos.z = pos.z - ofz
 	minetest.place_schematic(pos, minetest.get_modpath("ethereal").."/schematics/"..schem..".mts", "0", {}, false )
+end
+
+-- new routine
+ethereal.add_tree = function (pos, ofx, ofz, schem)
+	-- check for schematic
+	if not schem then
+		print ("Schematic not found")
+		return
+	end
+	-- remove sapling and place schematic
+	minetest.set_node(pos, {name="air"})
+	minetest.place_schematic({x=pos.x - ofx, y=pos.y, z=pos.z - ofz}, schem, "random", {}, false)
 end
 
 -- Grow saplings
@@ -59,7 +71,7 @@ minetest.register_abm({
 		if (node.name == "ethereal:yellow_tree_sapling" and under == "default:dirt_with_snow") then
 			ethereal.place_tree(pos, 4, 4, "yellowtree")
 		elseif (node.name == "ethereal:tree_sapling" and under == "ethereal:green_dirt") then
-			ethereal.place_tree(pos, 2, 2, "tree")
+			ethereal.add_tree(pos, 1, 1, ethereal.appletree)
 		elseif (node.name == "ethereal:jungle_tree_sapling" and under == "ethereal:jungle_dirt") then
 			ethereal.place_tree(pos, 6, 6, "jungletree")
 		elseif (node.name == "ethereal:pine_tree_sapling" and under == "ethereal:cold_dirt") then
@@ -67,7 +79,7 @@ minetest.register_abm({
 		elseif (node.name == "ethereal:big_tree_sapling" and under == "ethereal:green_dirt") then
 			ethereal.place_tree(pos, 4, 4, "bigtree")
 		elseif (node.name == "ethereal:banana_tree_sapling" and under == "ethereal:grove_dirt") then
-			ethereal.place_tree(pos, 3, 3, "bananatree")
+			ethereal.add_tree(pos, 3, 3, ethereal.bananatree)
 		elseif (node.name == "ethereal:frost_tree_sapling" and under == "ethereal:crystal_dirt") then
 			ethereal.place_tree(pos, 4, 4, "frosttrees")
 		elseif (node.name == "ethereal:gray_tree_sapling" and under == "ethereal:gray_dirt") then
@@ -81,7 +93,7 @@ minetest.register_abm({
 		elseif (node.name == "ethereal:redwood_sapling" and under == "bakedclay:red") then
 			ethereal.place_tree(pos, 9, 9, "redwood")
 		elseif (node.name == "ethereal:orange_tree_sapling" and under == "ethereal:prairie_dirt") then
-			ethereal.place_tree(pos, 1, 1, "orangetree")
+			ethereal.add_tree(pos, 1, 1, ethereal.orangetree)
 		elseif (node.name == "ethereal:acacia_sapling" and under == "default:desert_sand") then
 			ethereal.place_tree(pos, 5, 5, "acaciatree")
 		end
