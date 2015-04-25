@@ -26,6 +26,7 @@ minetest.register_node("ethereal:acacia_leaves", {
 		}
 	},
 	sounds = default.node_sound_leaves_defaults(),
+	after_place_node = default.after_place_leaves,
 })
 
 -- Willow Twig
@@ -47,6 +48,7 @@ minetest.register_node("ethereal:willow_twig", {
 		}
 	},
 	sounds = default.node_sound_leaves_defaults(),
+	after_place_node = default.after_place_leaves,
 })
 
 -- Redwood leaves
@@ -68,6 +70,7 @@ minetest.register_node("ethereal:redwood_leaves", {
 		}
 	},
 	sounds = default.node_sound_leaves_defaults(),
+	after_place_node = default.after_place_leaves,
 })
 
 -- Default Apple Tree Leaves
@@ -89,6 +92,7 @@ minetest.register_node(":default:leaves", {
 		}
 	},
 	sounds = default.node_sound_leaves_defaults(),
+	after_place_node = default.after_place_leaves,
 })
 
 -- Default Orange Tree Leaves
@@ -110,6 +114,7 @@ minetest.register_node("ethereal:orange_leaves", {
 		}
 	},
 	sounds = default.node_sound_leaves_defaults(),
+	after_place_node = default.after_place_leaves,
 })
 
 -- Default Jungle Tree Leaves
@@ -131,6 +136,7 @@ minetest.register_node(":default:jungleleaves", {
 		}
 	},
 	sounds = default.node_sound_leaves_defaults(),
+	after_place_node = default.after_place_leaves,
 })
 
 -- Default Banana Tree Leaves
@@ -152,6 +158,7 @@ minetest.register_node("ethereal:bananaleaves", {
 		}
 	},
 	sounds = default.node_sound_leaves_defaults(),
+	after_place_node = default.after_place_leaves,
 })
 
 -- Healing Tree Leaves
@@ -175,6 +182,7 @@ minetest.register_node("ethereal:yellowleaves", {
 	-- Leaves are edible, heal half a heart
 	on_use = minetest.item_eat(1),
 	sounds = default.node_sound_leaves_defaults(),
+	after_place_node = default.after_place_leaves,
 	light_source = 9,
 })
 
@@ -197,6 +205,7 @@ minetest.register_node("ethereal:palmleaves", {
 		}
 	},
 	sounds = default.node_sound_leaves_defaults(),
+	after_place_node = default.after_place_leaves,
 })
 
 -- Pine Tree Leaves
@@ -219,6 +228,7 @@ minetest.register_node("ethereal:pineleaves", {
 		}
 	},
 	sounds = default.node_sound_leaves_defaults(),
+	after_place_node = default.after_place_leaves,
 })
 
 -- Frost Tree Leaves
@@ -241,6 +251,7 @@ minetest.register_node("ethereal:frost_leaves", {
 	},
 	light_source = 9,
 	sounds = default.node_sound_leaves_defaults(),
+	after_place_node = default.after_place_leaves,
 })
 
 -- Mushroom Tops

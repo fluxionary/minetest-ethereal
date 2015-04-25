@@ -746,4 +746,13 @@ minetest.register_decoration({
 	num_spawn_by = 1,
 })
 
+-- green beans
+minetest.register_decoration({
+	deco_type = "simple",
+	place_on = {"ethereal:green_dirt"},
+	sidelen = 80,
+	fill_ratio = 0.035,
+	biomes = {"grassytwo"},
+	decoration = "farming:beanbush",
+})
 end
