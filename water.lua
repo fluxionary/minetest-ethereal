@@ -106,7 +106,7 @@ minetest.register_abm({
 		num = num + #minetest.find_nodes_in_area({x=pos.x, y=pos.y+1, z=pos.z}, {x=pos.x, y=pos.y+1, z=pos.z}, {"group:water"})
 		if num > 0 then
 			minetest.set_node(pos, {name="default:water_flowing"})
-			minetest.add_item(pos, {name = "default:torch"})
+			minetest.add_item(pos, {name = node.name})
 		end
 	end,
 })
