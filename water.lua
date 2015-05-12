@@ -44,7 +44,7 @@ minetest.register_abm({
 	interval = 30,
 	chance = 10,
 	action = function(pos, node)
-	        minetest.add_node(pos, {name="default:mossycobble"})
+		minetest.add_node(pos, {name="default:mossycobble"})
 	end
 })
 
@@ -55,9 +55,10 @@ minetest.register_abm({
 	interval = 15,
 	chance = 2,
 	action = function(pos, node)
-		local pos0 = {x=pos.x-1,y=pos.y-1,z=pos.z-1}
-		local pos1 = {x=pos.x+1,y=pos.y+1,z=pos.z+1}
-		local water = minetest.find_nodes_in_area(pos0, pos1, "default:water_source")
+		local water = minetest.find_nodes_in_area(
+			{x=pos.x-1,y=pos.y-1,z=pos.z-1},
+			{x=pos.x+1,y=pos.y+1,z=pos.z+1},
+			"default:water_source")
 		if water then
 			minetest.set_node(water[1], {name="default:ice"})
 		end
