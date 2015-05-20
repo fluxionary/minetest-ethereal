@@ -92,7 +92,7 @@ minetest.register_node("ethereal:glostone", {
 	description = "Glo Stone",
 	tiles = {"glostone.png"},
 	groups = {cracky=3},
-	light_source = LIGHT_MAX - 1,
+	light_source = default.LIGHT_MAX - 1,
 	drop = "ethereal:glostone",
 	sounds = default.node_sound_stone_defaults(),
 })

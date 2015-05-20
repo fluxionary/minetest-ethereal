@@ -147,6 +147,15 @@ minetest.register_node("ethereal:scorched_tree", {		-- Scorched Trunk
 	paramtype2 = "facedir",
 })
 
+minetest.register_craft({
+	output = "ethereal:scorched_tree 8",
+	recipe = {
+		{"group:tree", "group:tree", "group:tree"},
+		{"group:tree", "default:torch", "group:tree"},
+		{"group:tree", "group:tree", "group:tree"},
+	}
+})
+
 minetest.register_node("ethereal:mushroom_trunk", {		-- Mushroom Trunk
 	description = "Mushroom",
 	tiles = {"mushroom_trunk_top.png", "mushroom_trunk_top.png", "mushroom_trunk.png"},

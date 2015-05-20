@@ -241,7 +241,7 @@ minetest.register_node("ethereal:frost_leaves", {
 	paramtype = "light",
 	walkable = false,
 	waving = 1,
-	groups = {snappy=3, leafdecay=3, puts_out_fire=1},
+	groups = {snappy=3, leafdecay=3, leaves=1, puts_out_fire=1},
 	drop = {
 		max_items = 1,
 		items = {

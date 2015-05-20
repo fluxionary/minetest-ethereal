@@ -6,7 +6,7 @@ minetest.register_node("ethereal:crystal_spike", {
 	inventory_image = "crystal_spike.png",
 	wield_image = "crystal_spike.png",
 	paramtype = "light",
-	light_source = LIGHT_MAX - 7,
+	light_source = default.LIGHT_MAX - 7,
 	walkable = false,
 	damage_per_second = 1,
 	groups = {cracky=1,falling_node=1,puts_out_fire=1},
@@ -36,7 +36,7 @@ minetest.register_craft({
 minetest.register_node("ethereal:crystal_block", {
 	description = "Crystal Block",
 	tiles = {"crystal_block.png"},
-	light_source = LIGHT_MAX - 5,
+	light_source = default.LIGHT_MAX - 5,
 	groups = {cracky=1,level=2,puts_out_fire=1},
 	sounds = default.node_sound_glass_defaults(),
 })

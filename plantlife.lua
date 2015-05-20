@@ -485,7 +485,7 @@ minetest.register_node("ethereal:candle", {
 		{name="candle.png", animation={type="vertical_frames", aspect_w=32, aspect_h=32, length=1.0}},
 	},	
 	paramtype = "light",
-	light_source = LIGHT_MAX-3,
+	light_source = default.LIGHT_MAX-3,
 	sunlight_propagates = true,
 	walkable = false,
 	groups = {dig_immediate=3, attached_node=1},
