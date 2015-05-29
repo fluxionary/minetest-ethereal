@@ -138,7 +138,7 @@ minetest.register_node("ethereal:banana", {
 	groups = {fleshy=3,dig_immediate=3,flammable=2,leafdecay=1,leafdecay_drop=1},
 	on_use = minetest.item_eat(2),
 	sounds = default.node_sound_leaves_defaults(),
-	after_place_node = function(pos, placer, itemstack)
+	after_place_node = function(pos, placer)
 		if placer:is_player() then
 			minetest.set_node(pos, {name="ethereal:banana", param2=1})
 		end
@@ -181,7 +181,7 @@ minetest.register_node("ethereal:orange", {
 	groups = {fleshy=3,dig_immediate=3,flammable=2,leafdecay=3,leafdecay_drop=1},
 	on_use = minetest.item_eat(4),
 	sounds = default.node_sound_leaves_defaults(),
-	after_place_node = function(pos, placer, itemstack)
+	after_place_node = function(pos, placer)
 		if placer:is_player() then
 			minetest.set_node(pos, {name="ethereal:orange", param2=1})
 		end
@@ -398,45 +398,24 @@ minetest.register_craft({
 	}
 })
 
--- Gravel (5x cobble in X pattern gives 5 gravel)
-minetest.register_craft({
-	output = "default:gravel 5",
-	recipe = {
-		{"default:cobble", "", "default:cobble"},
-		{"", "default:cobble", ""},
-		{"default:cobble", "", "default:cobble"},
-	}
-})
-
--- Dirt (5x gravel in X pattern gives 5 dirt)
-minetest.register_craft({
-	output = "default:dirt 5",
-	recipe = {
-		{"default:gravel", "", "default:gravel"},
-		{"", "default:gravel", ""},
-		{"default:gravel", "", "default:gravel"},
-	}
-})
-
--- Sand (5x dirt in X pattern gives 5 sand)
-minetest.register_craft({
-	output = "default:sand 5",
-	recipe = {
-		{"default:dirt", "", "default:dirt"},
-		{"", "default:dirt", ""},
-		{"default:dirt", "", "default:dirt"},
-	}
-})
-
--- Snow (5x ice in X pattern gives 5 snow)
-minetest.register_craft({
-	output = "default:snow 5",
-	recipe = {
-		{"default:ice", "", "default:ice"},
-		{"", "default:ice", ""},
-		{"default:ice", "", "default:ice"},
-	}
-})
+-- X pattern craft recipes (5x a in X pattern gives 5 b)
+for _,items in pairs({
+	{"cobble", "gravel"},
+	{"gravel", "dirt"},
+	{"dirt", "sand"},
+	{"ice", "snow"},
+}) do
+	local a,b = unpack(items)
+	a = "default:"..a
+	minetest.register_craft({
+		output = "default:"..b.." 5",
+		recipe = {
+			{a, "", a},
+			{"", a, ""},
+			{a, "", a},
+		}
+	})
+end
 
 -- Paper (2x3 string = 4 paper)
 minetest.register_craft({

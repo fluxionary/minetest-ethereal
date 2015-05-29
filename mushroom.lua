@@ -56,7 +56,7 @@ minetest.register_craft({
 })
 
 -- Define Mushroom growth stages
-minetest.register_node("ethereal:mushroom_1", {
+local ndef = {
 	drawtype = "plantlike",
 	tiles = {"ethereal_mushroom_garden_1.png"},
 	paramtype = "light",
@@ -65,73 +65,32 @@ minetest.register_node("ethereal:mushroom_1", {
 	buildable_to = true,
 	drop = {
 		items = {
-			{items = {"ethereal:mushroom_craftingitem 1"},rarity=1},
-			{items = {"ethereal:mushroom_plant 1"},rarity=14},
+			{items = {"ethereal:mushroom_craftingitem"},rarity=1},
+			{items = {"ethereal:mushroom_plant"},rarity=14},
 			}
 	},
 	selection_box = {type = "fixed",fixed = {-0.5, -0.5, -0.5, 0.5, -5/16, 0.5},},
 	groups = {snappy=3,flammable=2,plant=1,mushroom=1,attached_node=1,growing=1,not_in_creative_inventory=1},
 	sounds = default.node_sound_leaves_defaults(),
-})
-minetest.register_alias("ethereal:mushroom_garden_1", "ethereal:mushroom_1")
+}
+minetest.register_node("ethereal:mushroom_1", table.copy(ndef))
 
-minetest.register_node("ethereal:mushroom_2", {
-	drawtype = "plantlike",
-	tiles = {"ethereal_mushroom_garden_2.png"},
-	paramtype = "light",
-	sunlight_propagates = true,
-	walkable = false,
-	drop = {
-		items = {
-			{items = {"ethereal:mushroom_craftingitem 1"},rarity=1},
-			{items = {"ethereal:mushroom_plant 1"},rarity=7},
-			}
-	},
-	buildable_to = true,
-	selection_box = {type = "fixed",fixed = {-0.5, -0.5, -0.5, 0.5, -5/16, 0.5},},
-	groups = {snappy=3,flammable=2,plant=1,mushroom=2,attached_node=1,growing=1,not_in_creative_inventory=1},
-	sounds = default.node_sound_leaves_defaults(),
-})
-minetest.register_alias("ethereal:mushroom_garden_2", "ethereal:mushroom_2")
+ndef.tiles[1] = "ethereal_mushroom_garden_2.png"
+ndef.drop.items[2].rarity = 7
+ndef.groups.mushroom = 2
+minetest.register_node("ethereal:mushroom_2", table.copy(ndef))
 
-minetest.register_node("ethereal:mushroom_3", {
-	drawtype = "plantlike",
-	tiles = {"ethereal_mushroom_garden_3.png"},
-	paramtype = "light",
-	sunlight_propagates = true,
-	walkable = false,
-	drop = {
-		items = {
-			{items = {"ethereal:mushroom_craftingitem 1"},rarity=1},
-			{items = {"ethereal:mushroom_plant 3"},rarity=3},
-			}
-	},
-	buildable_to = true,
-	selection_box = {type = "fixed",fixed = {-0.5, -0.5, -0.5, 0.5, -5/16, 0.5},},
-	groups = {snappy=3,flammable=2,plant=1,mushroom=3,attached_node=1,growing=1,not_in_creative_inventory=1},
-	sounds = default.node_sound_leaves_defaults(),
-})
-minetest.register_alias("ethereal:mushroom_garden_3", "ethereal:mushroom_3")
+ndef.tiles[1] = "ethereal_mushroom_garden_3.png"
+ndef.drop.items[2] = {items = {"ethereal:mushroom_plant 3"},rarity=3}
+ndef.groups.mushroom = 3
+minetest.register_node("ethereal:mushroom_3", table.copy(ndef))
 
-minetest.register_node("ethereal:mushroom_4", {
-	drawtype = "plantlike",
-	tiles = {"ethereal_mushroom_garden_4.png"},
-	paramtype = "light",
-	sunlight_propagates = true,
-	walkable = false,
-	buildable_to = true,
-	drop = {
-		items = {
-			{items = {"ethereal:mushroom_craftingitem 1"},rarity=1},
-			{items = {"ethereal:mushroom_plant 3"},rarity=1},
-			{items = {"ethereal:mushroom_plant 3"},rarity=7},
-			}
-	},
-	selection_box = {type = "fixed",fixed = {-0.5, -0.5, -0.5, 0.5, -5/16, 0.5},},
-	groups = {snappy=3,flammable=2,plant=1,mushroom=4,attached_node=1,not_in_creative_inventory=1},
-	sounds = default.node_sound_leaves_defaults(),
-})
-minetest.register_alias("ethereal:mushroom_garden_4", "ethereal:mushroom_4")
+ndef.tiles[1] = "ethereal_mushroom_garden_4.png"
+ndef.drop.items[2].rarity = 1
+ndef.drop.items[3] = {items = {"ethereal:mushroom_plant 3"},rarity=7}
+ndef.groups.mushroom = 4
+ndef.groups.growing = nil
+minetest.register_node("ethereal:mushroom_4", table.copy(ndef))
 
 -- Abm for growing Mushroom
 if farming.mod ~= "redo" then
@@ -143,32 +102,37 @@ minetest.register_abm({
 	chance = 2,
 	action = function(pos, node)
 		-- return if already full grown
-		if minetest.get_item_group(node.name, "mushroom") == 4 then
+		if minetest.get_item_group(node.name, "growing") < 1 then
 			return
 		end
 		
 		-- check if on wet soil
 		pos.y = pos.y-1
-		local n = minetest.get_node(pos)
-		if minetest.get_item_group(n.name, "soil") < 3 then
+		if minetest.get_item_group(minetest.get_node(pos).name, "soil") < 3 then
 			return
 		end
 		pos.y = pos.y+1
 		
 		-- check light
-		if not minetest.get_node_light(pos) then
-			return
-		end
-		if minetest.get_node_light(pos) < 5 then
+		local light = minetest.get_node_light(pos)
+		if not light
+		or light < 5 then
 			return
 		end
 		
 		-- grow
-		local height = minetest.get_item_group(node.name, "mushroom") + 1
-		minetest.set_node(pos, {name="ethereal:mushroom_garden_"..height})
+		node.name = "ethereal:mushroom_garden_" .. minetest.get_item_group(node.name, "mushroom") + 1
+		minetest.set_node(pos, node)
 	end
 })
 
+end
+
+
+-- legacy
+
+for i = 1,4 do
+	minetest.register_alias("ethereal:mushroom_garden_"..i, "ethereal:mushroom_"..i)
 end
 
 -- Temporary compatibility lines for Xanadu server

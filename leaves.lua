@@ -74,16 +74,11 @@ minetest.register_node("ethereal:redwood_leaves", {
 })
 
 -- Default Apple Tree Leaves
-minetest.register_node(":default:leaves", {
-	description = "Leaves",
+minetest.override_item("default:leaves", {
 	drawtype = leaftype,
 	visual_scale = 1.2,
-	tiles = {"default_leaves.png"},
 	inventory_image = "default_leaves.png",
-	paramtype = "light",
 	walkable = false,
-	waving = 1,
-	groups = {snappy=3, leafdecay=3, leaves=1, flammable=2},
 	drop = {
 		max_items = 1,
 		items = {
@@ -91,8 +86,6 @@ minetest.register_node(":default:leaves", {
 			{	items = {"default:leaves"}}
 		}
 	},
-	sounds = default.node_sound_leaves_defaults(),
-	after_place_node = default.after_place_leaves,
 })
 
 -- Default Orange Tree Leaves
@@ -118,16 +111,11 @@ minetest.register_node("ethereal:orange_leaves", {
 })
 
 -- Default Jungle Tree Leaves
-minetest.register_node(":default:jungleleaves", {
-	description = "Jungle Leaves",
+minetest.override_item("default:jungleleaves", {
 	drawtype = leaftype,
 	visual_scale = 1.2,
-	tiles = {"default_jungleleaves.png"},
 	inventory_image = "default_jungleleaves.png",
-	paramtype = "light",
 	walkable = false,
-	waving = 1,
-	groups = {snappy=3, leafdecay=3, leaves=1, flammable=2},
 	drop = {
 		max_items = 1,
 		items = {
@@ -135,8 +123,6 @@ minetest.register_node(":default:jungleleaves", {
 			{	items = {"default:jungleleaves"}}
 		}
 	},
-	sounds = default.node_sound_leaves_defaults(),
-	after_place_node = default.after_place_leaves,
 })
 
 -- Default Banana Tree Leaves

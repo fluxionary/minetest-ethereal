@@ -13,6 +13,7 @@ Ethereal v7 Mapgen mod for Minetest
 - Changed frost dirt so that it no longer freezes water (saves lag)
 - Torches cannot be placed next to water, otherwise they drop as items
 - Added latest farming redo Bean Bushes to mapgen
+- Code tidy (thanks HybridDog)
 
 ### 1.15
 

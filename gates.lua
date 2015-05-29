@@ -15,18 +15,20 @@ local nb_pil = 	{
 
 -- Open/Close Gates
 function gate_rightclick(pos, node)
-	local data = nil
-	data = string.split(node.name, "_", 2)
-	local gate = data[1].."_"
-	local open = data[2]
-	
+	local gate, open = unpack(string.split(node.name, "_", 2))
+	local gate = gate.."_"
+
+	local sound, name
 	if open == "open" then
-		minetest.sound_play("doors_door_close", {pos=pos, gain = 0.3, max_hear_distance = 10})
-		minetest.set_node(pos, {name=gate.."closed", param2=node.param2})
+		sound = "close"
+		name = "closed"
 	else
-		minetest.sound_play("doors_door_open", {pos=pos, gain = 0.3, max_hear_distance = 10})
-		minetest.set_node(pos, {name=gate.."open", param2=node.param2})
+		sound = "open"
+		name = "open"
 	end
+	node.name = gate..name
+	minetest.set_node(pos, node)
+	minetest.sound_play("doors_door_"..sound, {pos=pos, gain = 0.3, max_hear_distance = 10})
 end
 
 local gate = {}
@@ -46,11 +48,8 @@ gate.type = {
 	{"pine",		"Pine Wood",	"default_pinewood.png",		"default:pinewood"},
 }
 
-for _, row in ipairs(gate.type) do
-	local name = row[1]
-	local desc = row[2]
-	local texture = row[3]
-	local nod = row[4]
+for _, row in pairs(gate.type) do
+	local name, desc, texture, nod = unpack(row)
 	
 minetest.register_node("ethereal:"..name.."gate_open", {
 	tiles = {texture},

@@ -267,12 +267,15 @@ minetest.register_tool("ethereal:light_staff", {
 	stack_max = 1,
 	on_use = function(itemstack, user, pointed_thing)
 
+		if pointed_thing.type ~= "node" then
+			return
+		end
+
 		local pos = pointed_thing.under
+		local pname = user:get_player_name()
 
-		if pointed_thing.type ~= "node" then return end
-
-		if minetest.is_protected(pos, user:get_player_name()) then
-			minetest.record_protection_violation(pos, user:get_player_name())
+		if minetest.is_protected(pos, pname) then
+			minetest.record_protection_violation(pos, pname)
 			return
 		end
 
@@ -286,29 +289,29 @@ minetest.register_tool("ethereal:light_staff", {
 
 		if not minetest.setting_getbool("creative_mode") then
 			itemstack:add_wear(65535 / (USES - 1))
-			end
-			return itemstack
+		end
+		return itemstack
 	end,
 })
 
 minetest.register_craft({
 	output = "ethereal:light_staff",
-		recipe = {
-			{"ethereal:illumishroom", "default:mese_crystal", "ethereal:illumishroom"},
-			{"ethereal:illumishroom2", "default:steel_ingot", "ethereal:illumishroom2"},
-			{"ethereal:illumishroom3", "default:steel_ingot", "ethereal:illumishroom3"}
-		}
+	recipe = {
+		{"ethereal:illumishroom", "default:mese_crystal", "ethereal:illumishroom"},
+		{"ethereal:illumishroom2", "default:steel_ingot", "ethereal:illumishroom2"},
+		{"ethereal:illumishroom3", "default:steel_ingot", "ethereal:illumishroom3"}
+	}
 })
 
 -- Generate Illumishroom in caves next to coal
-minetest.register_on_generated(function(minp, maxp, seed)
-
-	local coal_nodes = minetest.find_nodes_in_area(minp, maxp, "default:stone_with_coal")
+minetest.register_on_generated(function(minp, maxp)
+	if minp.y > -30
+	or maxp.y < -3000 then
+		return
+	end
 	local bpos
-	for key, pos in pairs(coal_nodes) do
-
+	for key, pos in pairs(minetest.find_nodes_in_area(minp, maxp, "default:stone_with_coal")) do
 		bpos = { x=pos.x, y=pos.y + 1, z=pos.z }
-
 		if minetest.get_node(bpos).name == "air" then
 			if bpos.y > -3000 and bpos.y < -2000 then
 				minetest.add_node(bpos, {name = "ethereal:illumishroom3"})
