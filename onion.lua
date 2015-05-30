@@ -21,7 +21,7 @@ local onion_def = {
 	drop = {
 		items = {
 			{items = {"ethereal:wild_onion_plant"},rarity=1},
-			}
+		}
 	},
 	selection_box = {type = "fixed",fixed = {-0.5, -0.5, -0.5, 0.5, -5/16, 0.5},},
 	groups = {snappy=3,flammable=2,plant=1,attached_node=1,onion=1,growing=1,not_in_creative_inventory=1},
@@ -65,6 +65,7 @@ minetest.register_abm({
 	interval = 50,
 	chance = 3,
 	action = function(pos, node)
+
 		-- return if already full grown
 		if minetest.get_item_group(node.name, "growing") < 1 then
 			return

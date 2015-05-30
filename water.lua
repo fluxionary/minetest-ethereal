@@ -50,7 +50,7 @@ minetest.register_abm({
 
 -- If Crystal Spike, Crystal Dirt, Snow near Water, change Water to Ice
 minetest.register_abm({
-	nodenames = {"ethereal:crystal_spike", "ethereal:crystal_dirt", "default:snow", "default:snowblock", "ethereal:snowbrick"},
+	nodenames = {"ethereal:crystal_spike", "default:snow", "default:snowblock", "ethereal:snowbrick"},
 	neighbors = {"default:water_source"},
 	interval = 15,
 	chance = 2,
