@@ -258,8 +258,6 @@ minetest.register_node("ethereal:illumishroom3", {
 	},
 })
 
-local USES = 100
-
 -- Staff of Light (by Xanthin)
 minetest.register_tool("ethereal:light_staff", {
 	description = "Staff of Light",
@@ -283,14 +281,12 @@ minetest.register_tool("ethereal:light_staff", {
 
 		if node == "default:stone" then
 			minetest.add_node(pos, {name="ethereal:glostone"})
-		elseif node == "ethereal:glostone" then
-			minetest.add_node(pos, {name="default:stone"})
+			if not minetest.setting_getbool("creative_mode") then
+				itemstack:add_wear(65535 / 99) -- 100 uses
+			end
+			return itemstack
 		end
 
-		if not minetest.setting_getbool("creative_mode") then
-			itemstack:add_wear(65535 / (USES - 1))
-		end
-		return itemstack
 	end,
 })
 

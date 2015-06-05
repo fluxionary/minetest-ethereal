@@ -7,7 +7,8 @@ dofile(minetest.get_modpath("ethereal").."/schematics/apple_tree.lua")
 dofile(minetest.get_modpath("ethereal").."/schematics/orange_tree.lua")
 dofile(minetest.get_modpath("ethereal").."/schematics/banana_tree.lua")
 
--- Biomes (for 0.4.12 with new changes from Paramat)
+--= Biomes (Minetest 0.4.12 and above)
+
 if ethereal.icewater == 1 then
 minetest.register_biome({
 	name = "icewater",
@@ -692,8 +693,8 @@ minetest.register_on_generated(function(minp, maxp, seed)
 				pr = PseudoRandom(seed+1)
 				x = pr:next(minp.x + math.floor((divx+0)*divlen), minp.x + math.floor((divx+1)*divlen))
 				z = pr:next(minp.z + math.floor((divz+0)*divlen), minp.z + math.floor((divz+1)*divlen))
-				if minetest.get_node({x=x,y=1,z=z}).name == "default:sand" and
-					minetest.find_node_near({x=x,y=1,z=z}, 1, "default:water_source") then
+				if minetest.get_node({x=x,y=1,z=z}).name == "default:sand"
+				and minetest.find_node_near({x=x,y=1,z=z}, 1, "default:water_source") then
 					minetest.place_schematic({x=x-4,y=2,z=z-4}, path.."palmtree.mts", 0, '', 0)
 				end
 			end
