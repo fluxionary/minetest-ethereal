@@ -60,20 +60,6 @@ minetest.register_biome({
 	node_filler = "default:dirt",
 	depth_filler = 2,
 	y_min = 40,
-	y_max = 90,
-	heat_point = 10,
-	humidity_point = 40,
-})
-end
-
-if ethereal.healing == 1 then
-minetest.register_biome({
-	name = "healing",
-	node_top = "default:dirt_with_snow",
-	depth_top = 1,
-	node_filler = "default:dirt",
-	depth_filler = 2,
-	y_min = 75,
 	y_max = 140,
 	heat_point = 10,
 	humidity_point = 40,
@@ -366,7 +352,9 @@ minetest.register_decoration({
 	place_on = "default:dirt_with_snow",
 	sidelen = 80,
 	fill_ratio = 0.04,
-	biomes = {"healing"},
+	biomes = {"alpine"},
+	y_min = 82,
+	y_max = 140,
 	schematic = path.."yellowtree.mts",
 	flags = "place_center_x, place_center_z",
 })
@@ -421,7 +409,7 @@ minetest.register_decoration({
 	deco_type = "schematic",
 	place_on = "ethereal:jungle_dirt",
 	sidelen = 80,
-	fill_ratio = 0.3,
+	fill_ratio = 0.08,
 	biomes = {"junglee"},
 	schematic = path.."jungletree.mts",
 	flags = "place_center_x, place_center_z",
