@@ -37,6 +37,7 @@ minetest.register_node("ethereal:crystal_block", {
 	description = "Crystal Block",
 	tiles = {"crystal_block.png"},
 	light_source = default.LIGHT_MAX - 5,
+	is_ground_content = false,
 	groups = {cracky=1,level=2,puts_out_fire=1},
 	sounds = default.node_sound_glass_defaults(),
 })
@@ -134,7 +135,7 @@ minetest.register_tool("ethereal:shovel_crystal", {
 
 	on_use = function(itemstack, user, pointed_thing)
 
-		if pointed_thing.type == "node" then
+		if pointed_thing.type ~= "node" then return end
 
 		-- Check if node protected
 		if not minetest.is_protected(pointed_thing.under, user:get_player_name()) then
@@ -157,7 +158,6 @@ minetest.register_tool("ethereal:shovel_crystal", {
 				return itemstack
 			end
 
-		end
 		end
 
 	end,

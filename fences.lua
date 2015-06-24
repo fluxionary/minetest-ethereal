@@ -23,6 +23,7 @@ for _, row in ipairs(fence.type) do
 minetest.register_node("ethereal:fence_"..name, {
 	description = desc.." Fence",
 	drawtype = "fencelike",
+	is_ground_content = false,
 	tiles = {texture},
 	inventory_image = "default_fence_overlay.png^"..texture.."^default_fence_overlay.png^[makealpha:255,126,126",
 	wield_image = "default_fence_overlay.png^"..texture.."^default_fence_overlay.png^[makealpha:255,126,126",

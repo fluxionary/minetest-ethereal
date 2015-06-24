@@ -10,7 +10,6 @@ minetest.register_node("ethereal:fern", {
 	sunlight_propagates = true,
 	waving = 1,
 	walkable = false,
-	is_ground_content = true,
 	buildable_to = true,
 	drop = {
 		max_items = 1,
@@ -46,7 +45,6 @@ minetest.register_node("ethereal:dry_shrub", {
 	sunlight_propagates = true,
 	waving = 1,
 	walkable = false,
-	is_ground_content = true,
 	buildable_to = true,
 	groups = {snappy=3,flora=1,attached_node=1},
 	sounds = default.node_sound_leaves_defaults(),
@@ -69,7 +67,6 @@ minetest.register_node("ethereal:snowygrass", {
 	waving = 1,
 	walkable = false,
 	buildable_to = true,
-	is_ground_content = true,
 	groups = {snappy=3,flora=1,attached_node=1},
 	sounds = default.node_sound_leaves_defaults(),
 	selection_box = {
@@ -91,7 +88,6 @@ minetest.register_node("ethereal:crystalgrass", {
 	waving = 1,
 	walkable = false,
 	buildable_to = true,
-	is_ground_content = true,
 	groups = {snappy=3,flora=1,attached_node=1},
 	sounds = default.node_sound_leaves_defaults(),
 	selection_box = {
@@ -259,7 +255,6 @@ minetest.register_node("ethereal:bamboo", {
 	wield_image = "bamboo.png",
 	paramtype = "light",
 	sunlight_propagates = true,
-	is_ground_content = true,
 	walkable = true,
 	selection_box = {
 		type = "fixed",
@@ -282,7 +277,6 @@ minetest.register_node("ethereal:bamboo_sprout", {
 	paramtype = "light",
 	sunlight_propagates = true,
 	walkable = false,
-	is_ground_content = true,
 	buildable_to = true,
 	groups = {snappy=3,flora=1,attached_node=1,flammable=2},
 	sounds = default.node_sound_leaves_defaults(),

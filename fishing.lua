@@ -36,7 +36,7 @@ minetest.register_craftitem("ethereal:worm", {
 minetest.register_craftitem("ethereal:fishing_rod", {
 	description = "Fishing Rod",
 	inventory_image = "fishing_rod.png",
-	stack_max = 1,
+--	stack_max = 1,
 	liquids_pointable = true,
 })
 
@@ -48,20 +48,22 @@ minetest.register_craftitem("ethereal:fishing_rod_baited", {
 	stack_max = 1,
 	liquids_pointable = true,
 	on_use = function (itemstack, user, pointed_thing)
-		if pointed_thing and pointed_thing.under then
-			local node = minetest.get_node(pointed_thing.under)
-			if string.find(node.name, "default:water_source") then
-				if math.random(1, 100) < 5 then
-					local inv = user:get_inventory()
-					if inv:room_for_item("main", {name="ethereal:fish_raw"}) then
-						inv:add_item("main", {name="ethereal:fish_raw"})
-						return {name="ethereal:fishing_rod"}
-					else
-				minetest.chat_send_player(user:get_player_name(), "Your Fish Got Away! Inventory Full")
-					end
-				end
+
+		if pointed_thing.type ~= "node" then return end
+		
+		local node = minetest.get_node(pointed_thing.under)
+		if (node.name == "default:water_source"
+		or node.name == "default:river_water_source")
+		and math.random(1, 100) < 5 then
+			local inv = user:get_inventory()
+			if inv:room_for_item("main", {name="ethereal:fish_raw"}) then
+				inv:add_item("main", {name="ethereal:fish_raw"})
+				return {name="ethereal:fishing_rod"}
+			else
+				minetest.chat_send_player(user:get_player_name(), "Inventory full, your Fish Got Away!")
 			end
 		end
+
 	end,
 })
 

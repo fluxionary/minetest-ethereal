@@ -65,6 +65,7 @@ minetest.register_node("ethereal:paper_wall", {
 	groups = {snappy=3},
 	sounds = default.node_sound_wood_defaults(),
 	walkable = true,
+	is_ground_content = false,
 	paramtype2 = "facedir",
 	selection_box = {
 		type = "fixed",

@@ -107,7 +107,6 @@ minetest.register_node("ethereal:strawberry_7", {
 	waving = 1,
 	walkable = false,
 	buildable_to = true,
-	is_ground_content = true,
 	drop = 	{
 		items = {
 			{items = {"ethereal:strawberry 1"},rarity=1},

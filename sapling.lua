@@ -12,6 +12,7 @@ ethereal.register_sapling = function( sapling_node_name, sapling_descr, sapling_
 			wield_image = sapling_texture,
 			paramtype = "light",
 			sunlight_propagates = true,
+			is_ground_content = false,
 			walkable = false,
 			selection_box = {type = "fixed",fixed = {-0.5, -0.5, -0.5, 0.5, -5/16, 0.5},},
 			groups = {snappy=2,dig_immediate=3,flammable=2,ethereal_sapling=1,attached_node=1},

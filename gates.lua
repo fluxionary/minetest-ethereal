@@ -56,6 +56,7 @@ minetest.register_node("ethereal:"..name.."gate_open", {
 	paramtype = "light",
 	paramtype2 = "facedir",
 	sunlight_propagates = true,
+	is_ground_content = false,
 	walkable = true,
 	groups = {snappy = 1, choppy = 2, oddly_breakable_by_hand = 2, flammable = 2, not_in_inventory = 1},
 	drop = "ethereal:"..name.."gate_closed",
