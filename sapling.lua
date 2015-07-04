@@ -1,6 +1,5 @@
 -- Function to Register Saplings
-ethereal.register_sapling = function( sapling_node_name, sapling_descr, sapling_texture )
-
+ethereal.register_sapling = function(sapling_node_name, sapling_descr, sapling_texture)
 	-- if the sapling does not exist yet, create a node for it
 	if not minetest.registered_nodes[sapling_node_name] then
 		minetest.register_node( sapling_node_name, {
@@ -14,37 +13,46 @@ ethereal.register_sapling = function( sapling_node_name, sapling_descr, sapling_
 			sunlight_propagates = true,
 			is_ground_content = false,
 			walkable = false,
-			selection_box = {type = "fixed",fixed = {-0.5, -0.5, -0.5, 0.5, -5/16, 0.5},},
-			groups = {snappy=2,dig_immediate=3,flammable=2,ethereal_sapling=1,attached_node=1},
+			selection_box = {
+				type = "fixed",
+				fixed = {-0.5, -0.5, -0.5, 0.5, -5/16, 0.5}
+			},
+			groups = {
+				snappy = 2, dig_immediate = 3, flammable = 2,
+				ethereal_sapling = 1, attached_node = 1
+			},
 			sounds = default.node_sound_defaults(),
 		})
 	end
-
 end
 
 -- Register Saplings
-ethereal.register_sapling( "ethereal:willow_sapling", "Willow Sapling", "willow_sapling.png" )
-ethereal.register_sapling( "ethereal:yellow_tree_sapling", "Healing Tree Sapling", "yellow_tree_sapling.png" )
-ethereal.register_sapling( "ethereal:tree_sapling", "Tree Sapling", "ethereal_tree_sapling.png" )
-ethereal.register_sapling( "ethereal:jungle_tree_sapling","Jungletree Sapling", "ethereal_jungle_tree_sapling.png" )
-ethereal.register_sapling( "ethereal:pine_tree_sapling", "Pine Sapling", "ethereal_pine_tree_sapling.png" )
-ethereal.register_sapling( "ethereal:big_tree_sapling", "Big Tree Sapling", "ethereal_big_tree_sapling.png" )
-ethereal.register_sapling( "ethereal:banana_tree_sapling", "Banana Tree Sapling", "banana_tree_sapling.png" )
-ethereal.register_sapling( "ethereal:frost_tree_sapling", "Frost Sapling", "ethereal_frost_tree_sapling.png" )
-ethereal.register_sapling( "ethereal:gray_tree_sapling", "Gray Sapling", "ethereal_gray_tree_sapling.png" )
-ethereal.register_sapling( "ethereal:mushroom_sapling", "Mushroom Sapling", "ethereal_mushroom_sapling.png" )
-ethereal.register_sapling( "ethereal:palm_sapling", "Palm Sapling", "moretrees_palm_sapling.png" )
-ethereal.register_sapling( "ethereal:redwood_sapling", "Redwood Sapling", "redwood_sapling.png" )
-ethereal.register_sapling( "ethereal:orange_tree_sapling", "Orange Tree Sapling", "orange_tree_sapling.png" )
-ethereal.register_sapling( "ethereal:acacia_sapling", "Acacia Sapling", "moretrees_acacia_sapling.png" )
+ethereal.register_sapling("ethereal:willow_sapling", "Willow Sapling", "willow_sapling.png")
+ethereal.register_sapling("ethereal:yellow_tree_sapling", "Healing Tree Sapling", "yellow_tree_sapling.png")
+ethereal.register_sapling("ethereal:tree_sapling", "Tree Sapling", "ethereal_tree_sapling.png")
+ethereal.register_sapling("ethereal:jungle_tree_sapling","Jungletree Sapling", "ethereal_jungle_tree_sapling.png")
+ethereal.register_sapling("ethereal:pine_tree_sapling", "Pine Sapling", "ethereal_pine_tree_sapling.png")
+ethereal.register_sapling("ethereal:big_tree_sapling", "Big Tree Sapling", "ethereal_big_tree_sapling.png")
+ethereal.register_sapling("ethereal:banana_tree_sapling", "Banana Tree Sapling", "banana_tree_sapling.png")
+ethereal.register_sapling("ethereal:frost_tree_sapling", "Frost Sapling", "ethereal_frost_tree_sapling.png")
+ethereal.register_sapling("ethereal:gray_tree_sapling", "Gray Sapling", "ethereal_gray_tree_sapling.png")
+ethereal.register_sapling("ethereal:mushroom_sapling", "Mushroom Sapling", "ethereal_mushroom_sapling.png")
+ethereal.register_sapling("ethereal:palm_sapling", "Palm Sapling", "moretrees_palm_sapling.png")
+ethereal.register_sapling("ethereal:redwood_sapling", "Redwood Sapling", "redwood_sapling.png")
+ethereal.register_sapling("ethereal:orange_tree_sapling", "Orange Tree Sapling", "orange_tree_sapling.png")
+ethereal.register_sapling("ethereal:acacia_sapling", "Acacia Sapling", "moretrees_acacia_sapling.png")
 
 -- current routine
 ethereal.place_tree = function (pos, ofx, ofz, schem)
 	-- Remove Sapling and Place Tree Schematic
-	minetest.set_node(pos, {name="air"})
+	minetest.set_node(pos, {name = "air"})
 	pos.x = pos.x - ofx
 	pos.z = pos.z - ofz
-	minetest.place_schematic(pos, minetest.get_modpath("ethereal").."/schematics/"..schem..".mts", "0", {}, false )
+	minetest.place_schematic(
+		pos,
+		minetest.get_modpath("ethereal").."/schematics/"..schem..".mts",
+		"0", {}, false
+	)
 end
 
 -- new routine
@@ -55,8 +63,11 @@ ethereal.add_tree = function (pos, ofx, ofz, schem)
 		return
 	end
 	-- remove sapling and place schematic
-	minetest.set_node(pos, {name="air"})
-	minetest.place_schematic({x=pos.x - ofx, y=pos.y, z=pos.z - ofz}, schem, "random", {}, false)
+	minetest.set_node(pos, {name = "air"})
+	minetest.place_schematic(
+		{x = pos.x - ofx, y = pos.y, z =pos.z - ofz},
+		schem, "random", {}, false
+	)
 end
 
 -- Grow saplings

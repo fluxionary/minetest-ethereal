@@ -12,8 +12,8 @@ minetest.register_abm({
 			return
 		end
 
-		local pos0 = {x=pos.x-4,y=pos.y-2,z=pos.z-4}
-		local pos1 = {x=pos.x+4,y=pos.y+2,z=pos.z+4}
+		local pos0 = {x = pos.x - 4, y = pos.y - 2, z = pos.z - 4}
+		local pos1 = {x = pos.x + 4, y = pos.y + 2, z = pos.z + 4}
 
 		if #minetest.find_nodes_in_area(pos0, pos1, "group:flora") > 3 then
 
@@ -25,7 +25,7 @@ minetest.register_abm({
 				grass.y = grass.y - 1
 				if minetest.get_node(grass).name == "ethereal:crystal_dirt" then
 					grass.y = grass.y + 1
-					minetest.set_node(grass, {name="ethereal:crystal_spike"})
+					minetest.set_node(grass, {name = "ethereal:crystal_spike"})
 				end
 			end
 
@@ -42,7 +42,7 @@ minetest.register_abm({
 				return
 			end
 			if minetest.get_node(seedling).name == "air" then
-				minetest.set_node(seedling, {name=node.name})
+				minetest.set_node(seedling, {name = node.name})
 			end
 		end
 	end,

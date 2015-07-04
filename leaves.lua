@@ -17,12 +17,12 @@ minetest.register_node("ethereal:acacia_leaves", {
 	walkable = false,
 	visual_scale = 1.2,
 	waving = 1,
-	groups = {snappy=3, leafdecay=3, leaves=1, flammable=2},
+	groups = {snappy = 3, leafdecay = 3, leaves = 1, flammable = 2},
 	drop = {
 		max_items = 1,
 		items = {
-			{	items = {"ethereal:acacia_sapling"}, rarity = 20},
-			{	items = {"ethereal:acacia_leaves"}}
+			{items = {"ethereal:acacia_sapling"}, rarity = 20},
+			{items = {"ethereal:acacia_leaves"}}
 		}
 	},
 	sounds = default.node_sound_leaves_defaults(),
@@ -39,12 +39,12 @@ minetest.register_node("ethereal:willow_twig", {
 	walkable = false,
 	visual_scale = 1.2,
 	waving = 1,
-	groups = {snappy=3, leafdecay=3, leaves=1, flammable=2},
+	groups = {snappy = 3, leafdecay = 3, leaves = 1, flammable = 2},
 	drop = {
 		max_items = 1,
 		items = {
-			{	items = {"ethereal:willow_sapling"}, rarity = 50},
-			{	items = {"ethereal:willow_twig"}}
+			{items = {"ethereal:willow_sapling"}, rarity = 50},
+			{items = {"ethereal:willow_twig"}}
 		}
 	},
 	sounds = default.node_sound_leaves_defaults(),
@@ -61,12 +61,12 @@ minetest.register_node("ethereal:redwood_leaves", {
 	paramtype = "light",
 	walkable = false,
 	waving = 1,
-	groups = {snappy=3, leafdecay=3, leaves=1, flammable=2},
+	groups = {snappy = 3, leafdecay = 3, leaves = 1, flammable = 2},
 	drop = {
 		max_items = 1,
 		items = {
-			{	items = {"ethereal:redwood_sapling"}, rarity = 50},
-			{	items = {"ethereal:redwood_leaves"}}
+			{items = {"ethereal:redwood_sapling"}, rarity = 50},
+			{items = {"ethereal:redwood_leaves"}}
 		}
 	},
 	sounds = default.node_sound_leaves_defaults(),
@@ -82,8 +82,8 @@ minetest.override_item("default:leaves", {
 	drop = {
 		max_items = 1,
 		items = {
-			{	items = {"ethereal:tree_sapling"}, rarity = 20},
-			{	items = {"default:leaves"}}
+			{items = {"ethereal:tree_sapling"}, rarity = 20},
+			{items = {"default:leaves"}}
 		}
 	},
 })
@@ -98,12 +98,12 @@ minetest.register_node("ethereal:orange_leaves", {
 	paramtype = "light",
 	walkable = false,
 	waving = 1,
-	groups = {snappy=3, leafdecay=3, leaves=1, flammable=2},
+	groups = {snappy = 3, leafdecay = 3, leaves = 1, flammable = 2},
 	drop = {
 		max_items = 1,
 		items = {
-			{	items = {"ethereal:orange_tree_sapling"}, rarity = 20},
-			{	items = {"ethereal:orange_leaves"}}
+			{items = {"ethereal:orange_tree_sapling"}, rarity = 20},
+			{items = {"ethereal:orange_leaves"}}
 		}
 	},
 	sounds = default.node_sound_leaves_defaults(),
@@ -119,8 +119,8 @@ minetest.override_item("default:jungleleaves", {
 	drop = {
 		max_items = 1,
 		items = {
-			{	items = {"ethereal:jungle_tree_sapling"}, rarity = 20},
-			{	items = {"default:jungleleaves"}}
+			{items = {"ethereal:jungle_tree_sapling"}, rarity = 20},
+			{items = {"default:jungleleaves"}}
 		}
 	},
 })
@@ -135,12 +135,12 @@ minetest.register_node("ethereal:bananaleaves", {
 	paramtype = "light",
 	walkable = false,
 	waving = 1,
-	groups = {snappy=3, leafdecay=3, leaves=1, flammable=2},
+	groups = {snappy = 3, leafdecay = 3, leaves = 1, flammable = 2},
 	drop = {
 		max_items = 1,
 		items = {
-			{	items = {"ethereal:banana_tree_sapling"}, rarity = 20},
-			{	items = {"ethereal:bananaleaves"}}
+			{items = {"ethereal:banana_tree_sapling"}, rarity = 20},
+			{items = {"ethereal:bananaleaves"}}
 		}
 	},
 	sounds = default.node_sound_leaves_defaults(),
@@ -157,12 +157,12 @@ minetest.register_node("ethereal:yellowleaves", {
 	paramtype = "light",
 	walkable = false,
 	waving = 1,
-	groups = {snappy=3, leafdecay=3, leaves=1},
+	groups = {snappy = 3, leafdecay = 3, leaves = 1},
 	drop = {
 		max_items = 1,
 		items = {
-			{	items = {"ethereal:yellow_tree_sapling"}, rarity = 50},
-			{	items = {"ethereal:yellowleaves"}}
+			{items = {"ethereal:yellow_tree_sapling"}, rarity = 50},
+			{items = {"ethereal:yellowleaves"}}
 		}
 	},
 	-- Leaves are edible, heal half a heart
@@ -182,12 +182,12 @@ minetest.register_node("ethereal:palmleaves", {
 	paramtype = "light",
 	walkable = false,
 	waving = 1,
-	groups = {snappy=3, leafdecay=3, leaves=1, flammable=2},
+	groups = {snappy = 3, leafdecay = 3, leaves = 1, flammable = 2},
 	drop = {
 		max_items = 1,
 		items = {
-			{	items = {"ethereal:palm_sapling"}, rarity = 20},
-			{	items = {"ethereal:palmleaves"}}
+			{items = {"ethereal:palm_sapling"}, rarity = 20},
+			{items = {"ethereal:palmleaves"}}
 		}
 	},
 	sounds = default.node_sound_leaves_defaults(),
@@ -204,13 +204,13 @@ minetest.register_node("ethereal:pineleaves", {
 	paramtype = "light",
 	walkable = false,
 	waving = 1,
-	groups = {snappy=3, leafdecay=3, leaves=1, flammable=2},
+	groups = {snappy = 3, leafdecay = 3, leaves = 1, flammable = 2},
 	drop = {
 		max_items = 1,
 		items = {
-			{	items = {"ethereal:pine_tree_sapling"}, rarity = 20},
-			{	items = {"ethereal:pine_nuts"}, rarity = 5},
-			{	items = {"ethereal:pineleaves"},}
+			{items = {"ethereal:pine_tree_sapling"}, rarity = 20},
+			{items = {"ethereal:pine_nuts"}, rarity = 5},
+			{items = {"ethereal:pineleaves"},}
 		}
 	},
 	sounds = default.node_sound_leaves_defaults(),
@@ -227,12 +227,12 @@ minetest.register_node("ethereal:frost_leaves", {
 	paramtype = "light",
 	walkable = false,
 	waving = 1,
-	groups = {snappy=3, leafdecay=3, leaves=1, puts_out_fire=1},
+	groups = {snappy = 3, leafdecay = 3, leaves = 1, puts_out_fire = 1},
 	drop = {
 		max_items = 1,
 		items = {
-			{	items = {"ethereal:frost_tree_sapling"}, rarity = 20},
-			{	items = {"ethereal:frost_leaves"}}
+			{items = {"ethereal:frost_tree_sapling"}, rarity = 20},
+			{items = {"ethereal:frost_leaves"}}
 		}
 	},
 	light_source = 9,
@@ -244,12 +244,12 @@ minetest.register_node("ethereal:frost_leaves", {
 minetest.register_node("ethereal:mushroom", {
 	description = "Mushroom Cap",
 	tiles = {"mushroom_block.png"},
-	groups = {choppy=2, oddly_breakable_by_hand=1, flammable=2},
+	groups = {choppy = 2, oddly_breakable_by_hand = 1, flammable = 2},
 	drop = {
 		max_items = 1,
 		items = {
-			{	items = {"ethereal:mushroom_sapling"}, rarity = 20},
-			{	items = {"ethereal:mushroom"}}
+			{items = {"ethereal:mushroom_sapling"}, rarity = 20},
+			{items = {"ethereal:mushroom"}}
 		}
 	},
 	sounds = default.node_sound_wood_defaults(),
@@ -265,6 +265,9 @@ minetest.register_craft({
 minetest.register_node("ethereal:mushroom_pore", {
 	description = "Mushroom Pore",
 	tiles = {"mushroom_pore.png"},
-	groups = {snappy=3,cracky=3,choppy=3,oddly_breakable_by_hand=3,disable_jump=1, fall_damage_add_percent=-100},
+	groups = {
+		snappy = 3, cracky = 3, choppy = 3, oddly_breakable_by_hand = 3,
+		disable_jump = 1, fall_damage_add_percent = -100
+	},
 	sounds = default.node_sound_dirt_defaults(),
 })

@@ -14,15 +14,15 @@ minetest.register_node("ethereal:fern", {
 	drop = {
 		max_items = 1,
 		items = {
-			{items = {"ethereal:fern_tubers"},rarity = 6},
-			{items = {"ethereal:fern"}},
+			{items = {"ethereal:fern_tubers"}, rarity = 6},
+			{items = {"ethereal:fern"}}
 		}
 	},
-	groups = {snappy=3,flora=1,attached_node=1,flammable=2},
+	groups = {snappy = 3, flora = 1, attached_node = 1, flammable = 2},
 	sounds = default.node_sound_leaves_defaults(),
 	selection_box = {
 		type = "fixed",
-		fixed = {-0.5, -0.5, -0.5, 0.5, -5/16, 0.5},
+		fixed = {-0.5, -0.5, -0.5, 0.5, -5/16, 0.5}
 	},
 })
 
@@ -46,11 +46,11 @@ minetest.register_node("ethereal:dry_shrub", {
 	waving = 1,
 	walkable = false,
 	buildable_to = true,
-	groups = {snappy=3,flora=1,attached_node=1},
+	groups = {snappy = 3, flora = 1, attached_node = 1},
 	sounds = default.node_sound_leaves_defaults(),
 	selection_box = {
 		type = "fixed",
-		fixed = {-0.5, -0.5, -0.5, 0.5, -5/16, 0.5},
+		fixed = {-0.5, -0.5, -0.5, 0.5, -5/16, 0.5}
 	},
 })
 
@@ -67,11 +67,11 @@ minetest.register_node("ethereal:snowygrass", {
 	waving = 1,
 	walkable = false,
 	buildable_to = true,
-	groups = {snappy=3,flora=1,attached_node=1},
+	groups = {snappy = 3, flora = 1, attached_node = 1},
 	sounds = default.node_sound_leaves_defaults(),
 	selection_box = {
 		type = "fixed",
-		fixed = {-0.5, -0.5, -0.5, 0.5, -5/16, 0.5},
+		fixed = {-0.5, -0.5, -0.5, 0.5, -5/16, 0.5}
 	},
 })
 
@@ -88,11 +88,11 @@ minetest.register_node("ethereal:crystalgrass", {
 	waving = 1,
 	walkable = false,
 	buildable_to = true,
-	groups = {snappy=3,flora=1,attached_node=1},
+	groups = {snappy = 3, flora = 1, attached_node = 1},
 	sounds = default.node_sound_leaves_defaults(),
 	selection_box = {
 		type = "fixed",
-		fixed = {-0.5, -0.5, -0.5, 0.5, -5/16, 0.5},
+		fixed = {-0.5, -0.5, -0.5, 0.5, -5/16, 0.5}
 	},
 })
 
@@ -100,8 +100,8 @@ minetest.register_node("ethereal:crystalgrass", {
 function ethereal.add_moss(typ, descr, texture, receipe_item)
 	minetest.register_node("ethereal:"..typ.."_moss", {
 		description = descr.." Moss",
-		tiles = { texture },
-		groups = {crumbly=3 },
+		tiles = {texture},
+		groups = {crumbly = 3},
 		sounds = default.node_sound_dirt_defaults
 	})
 
@@ -111,11 +111,16 @@ function ethereal.add_moss(typ, descr, texture, receipe_item)
 	})
 end
 
-ethereal.add_moss( "crystal",	"Crystal",	"ethereal_grass_crystal_top.png",	"ethereal:frost_leaves")
-ethereal.add_moss( "mushroom",	"Mushroom",	"ethereal_grass_mushroom_top.png",	"ethereal:mushroom")
-ethereal.add_moss( "fiery",		"Fiery",	"ethereal_grass_fiery_top.png",		"ethereal:dry_shrub")
-ethereal.add_moss( "gray",		"Gray",		"ethereal_grass_gray_top.png",		"ethereal:snowygrass")
-ethereal.add_moss( "green",		"Green",	"default_grass.png",				"default:jungleleaves")
+ethereal.add_moss( "crystal", "Crystal", "ethereal_grass_crystal_top.png", "ethereal:frost_leaves")
+ethereal.add_moss( "mushroom", "Mushroom", "ethereal_grass_mushroom_top.png", "ethereal:mushroom")
+ethereal.add_moss( "fiery", "Fiery", "ethereal_grass_fiery_top.png", "ethereal:dry_shrub")
+ethereal.add_moss( "gray", "Gray", "ethereal_grass_gray_top.png", "ethereal:snowygrass")
+ethereal.add_moss( "green", "Green", "default_grass.png", "default:jungleleaves")
+
+-- apple
+minetest.override_item("default:apple", {
+	drop = "default:apple",
+})
 
 -- Banana (Heals one heart when eaten)
 minetest.register_node("ethereal:banana", {
@@ -131,12 +136,16 @@ minetest.register_node("ethereal:banana", {
 		type = "fixed",
 		fixed = {-0.2, -0.5, -0.2, 0.2, 0.2, 0.2}
 	},
-	groups = {fleshy=3,dig_immediate=3,flammable=2,leafdecay=1,leafdecay_drop=1},
+	groups = {
+		fleshy = 3, dig_immediate = 3, flammable = 2,
+		leafdecay = 1, leafdecay_drop = 1
+	},
+	drop = "ethereal:banana",
 	on_use = minetest.item_eat(2),
 	sounds = default.node_sound_leaves_defaults(),
 	after_place_node = function(pos, placer)
 		if placer:is_player() then
-			minetest.set_node(pos, {name="ethereal:banana", param2=1})
+			minetest.set_node(pos, {name = "ethereal:banana", param2 = 1})
 		end
 	end,
 })
@@ -174,12 +183,16 @@ minetest.register_node("ethereal:orange", {
 		type = "fixed",
 		fixed = {-0.2, -0.3, -0.2, 0.2, 0.2, 0.2}
 	},
-	groups = {fleshy=3,dig_immediate=3,flammable=2,leafdecay=3,leafdecay_drop=1},
+	groups = {
+		fleshy = 3, dig_immediate = 3, flammable = 2,
+		leafdecay = 3, leafdecay_drop = 1
+	},
+	drop = "ethereal:orange",
 	on_use = minetest.item_eat(4),
 	sounds = default.node_sound_leaves_defaults(),
 	after_place_node = function(pos, placer)
 		if placer:is_player() then
-			minetest.set_node(pos, {name="ethereal:orange", param2=1})
+			minetest.set_node(pos, {name = "ethereal:orange", param2 = 1})
 		end
 	end,
 })
@@ -210,7 +223,10 @@ minetest.register_node("ethereal:coconut", {
 		type = "fixed",
 		fixed = {-0.35, -0.35, -0.35, 0.35, 0.35, 0.35}
 	},
-	groups = {snappy=1,oddly_breakable_by_hand=1,cracky=1,choppy=1,flammable=1,leafdecay=3,leafdecay_drop=1},
+	groups = {
+		snappy = 1, oddly_breakable_by_hand = 1, cracky = 1,
+		choppy = 1, flammable = 1, leafdecay = 3, leafdecay_drop = 1
+	},
 	drop = "ethereal:coconut_slice 4",
 	sounds = default.node_sound_wood_defaults(),
 })
@@ -236,12 +252,16 @@ minetest.register_node("ethereal:golden_apple", {
 		type = "fixed",
 		fixed = {-0.2, -0.3, -0.2, 0.2, 0.2, 0.2}
 	},
-	groups = {fleshy=3,dig_immediate=3,leafdecay=3,leafdecay_drop=1},
+	groups = {
+		fleshy = 3, dig_immediate = 3,
+		leafdecay = 3,leafdecay_drop = 1
+	},
+	drop = "ethereal:golden_apple",
 	on_use = minetest.item_eat(20),
 	sounds = default.node_sound_leaves_defaults(),
 	after_place_node = function(pos, placer, itemstack)
 		if placer:is_player() then
-			minetest.set_node(pos, {name="ethereal:golden_apple", param2=1})
+			minetest.set_node(pos, {name = "ethereal:golden_apple", param2 = 1})
 		end
 	end,
 })
@@ -260,7 +280,7 @@ minetest.register_node("ethereal:bamboo", {
 		type = "fixed",
 		fixed = {-0.3, -0.5, -0.3, 0.3, 0.5, 0.3}
 	},
-	groups = {choppy=3, oddly_breakable_by_hand=1, flammable=2},--, attached_node=1},
+	groups = {choppy = 3, oddly_breakable_by_hand = 1, flammable = 2},
 	sounds = default.node_sound_leaves_defaults(),
 	after_dig_node = function(pos, node, metadata, digger)
 		default.dig_up(pos, node, digger)
@@ -278,13 +298,12 @@ minetest.register_node("ethereal:bamboo_sprout", {
 	sunlight_propagates = true,
 	walkable = false,
 	buildable_to = true,
-	groups = {snappy=3,flora=1,attached_node=1,flammable=2},
+	groups = {snappy = 3, flora = 1, attached_node = 1, flammable = 2},
 	sounds = default.node_sound_leaves_defaults(),
 	selection_box = {
 		type = "fixed",
 		fixed = {-0.5, -0.5, -0.5, 0.5, -5/16, 0.5},
 	},
-	-- sprouts are edible if cooked in stew
 })
 
 -- Wooden Bowl (for Mushroom Soup)
@@ -368,7 +387,7 @@ minetest.register_node("ethereal:bamboo_floor", {
 		wall_side   = {-0.5, -0.5, -0.5, -0.4375, 0.5, 0.5},
 	},
 	selection_box = {type = "wallmounted"},
-	groups = { snappy = 3, choppy = 3 , flammable=2},
+	groups = {snappy = 3, choppy = 3 , flammable = 2},
 	sounds = default.node_sound_wood_defaults(),
 })
 
@@ -455,17 +474,25 @@ minetest.register_node("ethereal:candle", {
 	drawtype = "plantlike",
 	inventory_image = "candle_static.png",
 	tiles = {
-		{name="candle.png", animation={type="vertical_frames", aspect_w=32, aspect_h=32, length=1.0}},
+		{
+			name = "candle.png",
+			animation={
+				type="vertical_frames",
+				aspect_w = 32,
+				aspect_h = 32,
+				length = 1.0
+			}
+		},
 	},	
 	paramtype = "light",
-	light_source = default.LIGHT_MAX-3,
+	light_source = default.LIGHT_MAX - 3,
 	sunlight_propagates = true,
 	walkable = false,
-	groups = {dig_immediate=3, attached_node=1},
+	groups = {dig_immediate = 3, attached_node = 1},
 	sounds = default.node_sound_defaults(),
 	selection_box = {
 		type = "fixed",
-		fixed = { -0.15, -0.5, -0.15, 0.15, 0.2, 0.15 },
+		fixed = { -0.15, -0.5, -0.15, 0.15, 0.2, 0.15 }
 	},
 })
 

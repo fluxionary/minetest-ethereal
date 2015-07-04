@@ -17,9 +17,15 @@ minetest.register_node("ethereal:strawberry_1", {
 	waving = 1,
 	walkable = false,
 	buildable_to = true,
-	drop = 	"",
-	selection_box = {type = "fixed",fixed = {-0.5, -0.5, -0.5, 0.5, -5/16, 0.5},},
-	groups = {snappy=3,flammable=2,plant=1,not_in_creative_inventory=1,attached_node=1,strawberry=1,growing=1},
+	drop = "",
+	selection_box = {
+		type = "fixed",
+		fixed = {-0.5, -0.5, -0.5, 0.5, -5/16, 0.5}
+	},
+	groups = {
+		snappy = 3, flammable  =2, plant = 1, attached_node = 1,
+		not_in_creative_inventory = 1, strawberry = 1, growing = 1
+	},
 	sounds = default.node_sound_leaves_defaults(),
 })
 
@@ -31,9 +37,15 @@ minetest.register_node("ethereal:strawberry_2", {
 	waving = 1,
 	walkable = false,
 	buildable_to = true,
-	drop = 	"",
-	selection_box = {type = "fixed",fixed = {-0.5, -0.5, -0.5, 0.5, -5/16, 0.5},},
-	groups = {snappy=3,flammable=2,plant=1,not_in_creative_inventory=1,attached_node=1,strawberry=2,growing=1},
+	drop = "",
+	selection_box = {
+		type = "fixed",
+		fixed = {-0.5, -0.5, -0.5, 0.5, -5/16, 0.5}
+	},
+	groups = {
+		snappy = 3, flammable = 2, plant = 1, attached_node = 1,
+		not_in_creative_inventory = 1, strawberry = 2, growing = 1
+	},
 	sounds = default.node_sound_leaves_defaults(),
 })
 
@@ -45,9 +57,15 @@ minetest.register_node("ethereal:strawberry_3", {
 	waving = 1,
 	walkable = false,
 	buildable_to = true,
-	drop = 	"",
-	selection_box = {type = "fixed",fixed = {-0.5, -0.5, -0.5, 0.5, -5/16, 0.5},},
-	groups = {snappy=3,flammable=2,plant=1,not_in_creative_inventory=1,attached_node=1,strawberry=3,growing=1},
+	drop = "",
+	selection_box = {
+		type = "fixed",
+		fixed = {-0.5, -0.5, -0.5, 0.5, -5/16, 0.5}
+	},
+	groups = {
+		snappy = 3, flammable = 2, plant = 1, attached_node = 1,
+		not_in_creative_inventory = 1, strawberry = 3, growing = 1
+	},
 	sounds = default.node_sound_leaves_defaults(),
 })
 
@@ -59,9 +77,15 @@ minetest.register_node("ethereal:strawberry_4", {
 	waving = 1,
 	walkable = false,
 	buildable_to = true,
-	drop = 	"",
-	selection_box = {type = "fixed",fixed = {-0.5, -0.5, -0.5, 0.5, -5/16, 0.5},},
-	groups = {snappy=3,flammable=2,plant=1,not_in_creative_inventory=1,attached_node=1,strawberry=4,growing=1},
+	drop = "",
+	selection_box = {
+		type = "fixed",
+		fixed = {-0.5, -0.5, -0.5, 0.5, -5/16, 0.5}
+	},
+	groups = {
+		snappy = 3, flammable = 2, plant = 1, attached_node = 1,
+		not_in_creative_inventory = 1, strawberry = 4, growing=1
+	},
 	sounds = default.node_sound_leaves_defaults(),
 })
 
@@ -73,9 +97,15 @@ minetest.register_node("ethereal:strawberry_5", {
 	waving = 1,
 	walkable = false,
 	buildable_to = true,
-	drop = 	"",
-	selection_box = {type = "fixed",fixed = {-0.5, -0.5, -0.5, 0.5, -5/16, 0.5},},
-	groups = {snappy=3,flammable=2,plant=1,not_in_creative_inventory=1,attached_node=1,strawberry=5,growing=1},
+	drop = "",
+	selection_box = {
+		type = "fixed",
+		fixed = {-0.5, -0.5, -0.5, 0.5, -5/16, 0.5}
+	},
+	groups = {
+		snappy = 3, flammable = 2, plant = 1, attached_node = 1,
+		not_in_creative_inventory = 1, strawberry = 5, growing = 1
+	},
 	sounds = default.node_sound_leaves_defaults(),
 })
 
@@ -87,14 +117,20 @@ minetest.register_node("ethereal:strawberry_6", {
 	waving = 1,
 	walkable = false,
 	buildable_to = true,
-	drop = 	{
+	drop = {
 		items = {
-			{items = {"ethereal:strawberry 1"},rarity=2},
-			{items = {"ethereal:strawberry 2"},rarity=3},
+			{items = {"ethereal:strawberry 1"},rarity = 2},
+			{items = {"ethereal:strawberry 2"},rarity = 3},
 		}
 	},
-	selection_box = {type = "fixed",fixed = {-0.5, -0.5, -0.5, 0.5, -5/16, 0.5},},
-	groups = {snappy=3,flammable=2,plant=1,not_in_creative_inventory=1,attached_node=1,strawberry=6,growing=1},
+	selection_box = {
+		type = "fixed",
+		fixed = {-0.5, -0.5, -0.5, 0.5, -5/16, 0.5}
+	},
+	groups = {
+		snappy = 3, flammable = 2, plant = 1, attached_node = 1,
+		not_in_creative_inventory = 1, strawberry = 6, growing = 1
+	},
 	sounds = default.node_sound_leaves_defaults(),
 })
 
@@ -107,14 +143,20 @@ minetest.register_node("ethereal:strawberry_7", {
 	waving = 1,
 	walkable = false,
 	buildable_to = true,
-	drop = 	{
+	drop = {
 		items = {
-			{items = {"ethereal:strawberry 1"},rarity=1},
-			{items = {"ethereal:strawberry 2"},rarity=3},
+			{items = {"ethereal:strawberry 1"},rarity = 1},
+			{items = {"ethereal:strawberry 2"},rarity = 3},
 		}
 	},
-	selection_box = {type = "fixed",fixed = {-0.5, -0.5, -0.5, 0.5, -5/16, 0.5},},
-	groups = {snappy=3,flammable=2,plant=1,not_in_creative_inventory=1,attached_node=1,strawberry=7,growing=1},
+	selection_box = {
+		type = "fixed",
+		fixed = {-0.5, -0.5, -0.5, 0.5, -5/16, 0.5}
+	},
+	groups = {
+		snappy = 3, flammable = 2, plant = 1, attached_node = 1,
+		not_in_creative_inventory = 1, strawberry = 7, growing = 1
+	},
 	sounds = default.node_sound_leaves_defaults(),
 })
 
@@ -126,14 +168,20 @@ minetest.register_node("ethereal:strawberry_8", {
 	waving = 1,
 	walkable = false,
 	buildable_to = true,
-	drop = 	{
+	drop = {
 		items = {
-			{items = {"ethereal:strawberry 2"},rarity=1},
-			{items = {"ethereal:strawberry 3"},rarity=3},
+			{items = {"ethereal:strawberry 2"},rarity = 1},
+			{items = {"ethereal:strawberry 3"},rarity = 3},
 		}
 	},
-	selection_box = {type = "fixed",fixed = {-0.5, -0.5, -0.5, 0.5, -5/16, 0.5},},
-	groups = {snappy=3,flammable=2,plant=1,not_in_creative_inventory=1,attached_node=1,strawberry=8},
+	selection_box = {
+		type = "fixed",
+		fixed = {-0.5, -0.5, -0.5, 0.5, -5/16, 0.5}
+	},
+	groups = {
+		snappy = 3, flammable = 2, plant = 1, attached_node = 1,
+		not_in_creative_inventory = 1, strawberry = 8
+	},
 	sounds = default.node_sound_leaves_defaults(),
 })
 
@@ -156,12 +204,12 @@ minetest.register_abm({
 		end
 		
 		-- check if on wet soil
-		pos.y = pos.y-1
+		pos.y = pos.y - 1
 		local n = minetest.get_node(pos)
 		if minetest.get_item_group(n.name, "soil") < 3 then
 			return
 		end
-		pos.y = pos.y+1
+		pos.y = pos.y + 1
 		
 		-- check light
 		if not minetest.get_node_light(pos) then
@@ -173,7 +221,7 @@ minetest.register_abm({
 		
 		-- grow
 		local height = minetest.get_item_group(node.name, "strawberry") + 1
-		minetest.set_node(pos, {name="ethereal:strawberry_"..height})
+		minetest.set_node(pos, {name = "ethereal:strawberry_"..height})
 	end
 })
 

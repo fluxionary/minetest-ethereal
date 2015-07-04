@@ -7,9 +7,10 @@ minetest.register_node("ethereal:crystal_spike", {
 	wield_image = "crystal_spike.png",
 	paramtype = "light",
 	light_source = default.LIGHT_MAX - 7,
+	sunlight_propagates = true,
 	walkable = false,
 	damage_per_second = 1,
-	groups = {cracky=1,falling_node=1,puts_out_fire=1},
+	groups = {cracky = 1, falling_node = 1, puts_out_fire = 1},
 	sounds = default.node_sound_glass_defaults(),
 	selection_box = {
 		type = "fixed",
@@ -38,7 +39,7 @@ minetest.register_node("ethereal:crystal_block", {
 	tiles = {"crystal_block.png"},
 	light_source = default.LIGHT_MAX - 5,
 	is_ground_content = false,
-	groups = {cracky=1,level=2,puts_out_fire=1},
+	groups = {cracky = 1, level = 2, puts_out_fire = 1},
 	sounds = default.node_sound_glass_defaults(),
 })
 
@@ -64,11 +65,15 @@ minetest.register_tool("ethereal:sword_crystal", {
 	inventory_image = "crystal_sword.png",
 	tool_capabilities = {
 		full_punch_interval = 0.6,
-		max_drop_level=1,
-		groupcaps={
-			snappy={times={[1]=1.70, [2]=0.70, [3]=0.25}, uses=50, maxlevel=3},
+		max_drop_level = 1,
+		groupcaps = {
+			snappy = {
+				times = {[1] = 1.70, [2] = 0.70, [3] = 0.25},
+				uses = 50,
+				maxlevel = 3
+			},
 		},
-		damage_groups = {fleshy=10},
+		damage_groups = {fleshy = 10},
 	}
 })
 
@@ -87,11 +92,15 @@ minetest.register_tool("ethereal:axe_crystal", {
 	inventory_image = "crystal_axe.png",
 	tool_capabilities = {
 		full_punch_interval = 0.8,
-		max_drop_level=1,
-		groupcaps={
-			choppy={times={[1]=2.00, [2]=0.80, [3]=0.40}, uses=30, maxlevel=2},
+		max_drop_level = 1,
+		groupcaps = {
+			choppy = {
+				times = {[1] = 2.00, [2] = 0.80, [3] = 0.40},
+				uses = 30,
+				maxlevel = 2
+			},
 		},
-		damage_groups = {fleshy=7},
+		damage_groups = {fleshy = 7},
 	},
 })
 
@@ -110,11 +119,15 @@ minetest.register_tool("ethereal:pick_crystal", {
 	inventory_image = "crystal_pick.png",
 	tool_capabilities = {
 		full_punch_interval = 0.7,
-		max_drop_level=3,
+		max_drop_level = 3,
 		groupcaps={
-			cracky = {times={[1]=1.8, [2]=0.8, [3]=0.40}, uses=40, maxlevel=3},
+			cracky = {
+				times = {[1] = 1.8, [2] = 0.8, [3] = 0.40},
+				uses = 40,
+				maxlevel = 3
+			},
 		},
-		damage_groups = {fleshy=7},
+		damage_groups = {fleshy = 7},
 	},
 })
 
@@ -141,11 +154,11 @@ minetest.register_tool("ethereal:shovel_crystal", {
 		if not minetest.is_protected(pointed_thing.under, user:get_player_name()) then
 
 			local pos = pointed_thing.under
-			local nn = minetest.get_node(pos).name
-			local is_crumbly = minetest.get_item_group(nn, "crumbly")
+			local nn = minetest.get_node_or_nil(pos)
+			if nn then nn = nn.name else return end
 
 			-- Is node dirt, sand or gravel
-			if is_crumbly == 1 or is_crumbly == 2 or is_crumbly == 3 then
+			if minetest.get_item_group(nn, "crumbly") > 0 then
 
 				local inv = user:get_inventory()
 
@@ -153,13 +166,11 @@ minetest.register_tool("ethereal:shovel_crystal", {
 				nodeupdate(pos)
 				
 				inv:add_item("main", {name = nn})
-				itemstack:add_wear(65535/100) -- 111 uses
+				itemstack:add_wear(65535 / 100) -- 111 uses
 				minetest.sound_play("default_dirt_footstep", {pos = pos, gain = 0.35})
 				return itemstack
 			end
-
 		end
-
 	end,
 })
 
@@ -172,18 +183,16 @@ minetest.register_craft({
 	}
 })
 
--- Crystal Gilly Staff (replenishes air supply when used, great for exploring underwater)
+-- Crystal Gilly Staff (replenishes air supply when used)
 minetest.register_tool("ethereal:crystal_gilly_staff", {
 	description = "Crystal Gilly Staff",
 	inventory_image = "crystal_gilly_staff.png",
 	wield_image = "crystal_gilly_staff.png",
 
 	on_use = function(itemstack, user, pointed_thing)
-
 		if user:get_breath() < 10 then
 			user:set_breath(10)
 		end
-
 	end,
 })
 

@@ -13,7 +13,7 @@ minetest.register_node("ethereal:vine", {
 	selection_box = {
 		type = "wallmounted",
 	},
-	groups = {choppy=3, oddly_breakable_by_hand=1},
+	groups = {choppy = 3, oddly_breakable_by_hand = 1},
 	legacy_wallmounted = true,
 	sounds = default.node_sound_leaves_defaults(),
 })
@@ -35,6 +35,7 @@ minetest.register_node("ethereal:stone_ladder", {
 	inventory_image = "stone_ladder.png",
 	wield_image = "stone_ladder.png",
 	paramtype = "light",
+	sunlight_propagates = true,
 	paramtype2 = "wallmounted",
 	walkable = false,
 	climbable = true,
@@ -42,7 +43,7 @@ minetest.register_node("ethereal:stone_ladder", {
 	selection_box = {
 		type = "wallmounted",
 	},
-	groups = {cracky=3, oddly_breakable_by_hand=1},
+	groups = {cracky = 3, oddly_breakable_by_hand = 1},
 	legacy_wallmounted = true,
 	sounds = default.node_sound_stone_defaults(),
 })
@@ -62,7 +63,7 @@ minetest.register_node("ethereal:paper_wall", {
 	description = ("Paper Wall"),
 	tiles = {"paper_wall.png",},
 	paramtype = "light",
-	groups = {snappy=3},
+	groups = {snappy = 3},
 	sounds = default.node_sound_wood_defaults(),
 	walkable = true,
 	is_ground_content = false,
@@ -92,7 +93,7 @@ minetest.register_craft({
 minetest.register_node("ethereal:glostone", {
 	description = "Glo Stone",
 	tiles = {"glostone.png"},
-	groups = {cracky=3},
+	groups = {cracky = 3},
 	light_source = default.LIGHT_MAX - 1,
 	drop = "ethereal:glostone",
 	sounds = default.node_sound_stone_defaults(),
@@ -180,8 +181,8 @@ minetest.register_node("ethereal:quicksand", {
 	drowning = 1,
 	walkable = false,
 	climbable = false,
-	post_effect_color = { r=230, g=210, b=160, a=245 },
-	groups = {crumbly=3, falling_node=1, sand=1, liquid=3, disable_jump=1},
+	post_effect_color = {r = 230, g = 210, b = 160, a = 245},
+	groups = {crumbly = 3, falling_node = 1, sand = 1, liquid = 3, disable_jump = 1},
 	sounds = default.node_sound_sand_defaults(),
 })
 
@@ -202,8 +203,8 @@ minetest.register_node("ethereal:quicksand2", {
 	drowning = 1,
 	walkable = false,
 	climbable = false,
-	post_effect_color = { r=230, g=210, b=160, a=245 },
-	groups = {crumbly=3, falling_node=1, sand=1, liquid=3, disable_jump=1},
+	post_effect_color = {r = 230, g = 210, b = 160, a = 245},
+	groups = {crumbly = 3, falling_node = 1, sand = 1, liquid = 3, disable_jump = 1},
 	sounds = default.node_sound_sand_defaults(),
 })
 
@@ -217,7 +218,7 @@ minetest.register_node("ethereal:illumishroom", {
 	paramtype = "light",
 	light_source = 5,
 	walkable = false,
-	groups = {dig_immediate=3, attached_node=1,flammable=3},
+	groups = {dig_immediate = 3, attached_node = 1,flammable = 3},
 	sounds = default.node_sound_leaves_defaults(),
 	selection_box = {
 		type = "fixed",
@@ -234,7 +235,7 @@ minetest.register_node("ethereal:illumishroom2", {
 	paramtype = "light",
 	light_source = 5,
 	walkable = false,
-	groups = {dig_immediate=3, attached_node=1,flammable=3},
+	groups = {dig_immediate = 3, attached_node = 1,flammable = 3},
 	sounds = default.node_sound_leaves_defaults(),
 	selection_box = {
 		type = "fixed",
@@ -251,7 +252,7 @@ minetest.register_node("ethereal:illumishroom3", {
 	paramtype = "light",
 	light_source = 5,
 	walkable = false,
-	groups = {dig_immediate=3, attached_node=1,flammable=3},
+	groups = {dig_immediate = 3, attached_node = 1,flammable = 3},
 	sounds = default.node_sound_leaves_defaults(),
 	selection_box = {
 		type = "fixed",
@@ -278,7 +279,8 @@ minetest.register_tool("ethereal:light_staff", {
 			return
 		end
 
-		local node = minetest.get_node(pos).name
+		local node = minetest.get_node_or_nil(pos)
+		if node then node = node.name else return end
 
 		if node == "default:stone" then
 			minetest.add_node(pos, {name="ethereal:glostone"})
@@ -302,13 +304,12 @@ minetest.register_craft({
 
 -- Generate Illumishroom in caves next to coal
 minetest.register_on_generated(function(minp, maxp)
-	if minp.y > -30
-	or maxp.y < -3000 then
+	if minp.y > -30 or maxp.y < -3000 then
 		return
 	end
 	local bpos
 	for key, pos in pairs(minetest.find_nodes_in_area(minp, maxp, "default:stone_with_coal")) do
-		bpos = { x=pos.x, y=pos.y + 1, z=pos.z }
+		bpos = {x = pos.x, y = pos.y + 1, z = pos.z }
 		if minetest.get_node(bpos).name == "air" then
 			if bpos.y > -3000 and bpos.y < -2000 then
 				minetest.add_node(bpos, {name = "ethereal:illumishroom3"})

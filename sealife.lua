@@ -9,9 +9,12 @@ minetest.register_node("ethereal:seaweed", {
 	walkable = false,
 	climbable = true,
 	drowning = 1,
-	selection_box = {type = "fixed", fixed = {-0.3, -0.5, -0.3, 0.3, 0.5, 0.3}},
-	post_effect_color = {a=64, r=100, g=100, b=200},
-	groups = {snappy=3},
+	selection_box = {
+		type = "fixed",
+		fixed = {-0.3, -0.5, -0.3, 0.3, 0.5, 0.3}
+	},
+	post_effect_color = {a = 64, r = 100, g = 100, b = 200},
+	groups = {snappy = 3},
 	on_use = minetest.item_eat(1),
 	sounds = default.node_sound_leaves_defaults(),
 })
@@ -29,9 +32,12 @@ minetest.register_node("ethereal:coral2", {
 	tiles = {"coral2.png"},
 	inventory_image = "coral2.png",
 	paramtype = "light",
-	selection_box = {type = "fixed", fixed = {-0.5, -0.5, -0.5, 0.5, -5/16, 0.5}},
+	selection_box = {
+		type = "fixed",
+		fixed = {-0.5, -0.5, -0.5, 0.5, -5/16, 0.5}
+	},
 	light_source = 3,
-	groups = {snappy=3},
+	groups = {snappy = 3},
 	sounds = default.node_sound_leaves_defaults(),
 })
 
@@ -48,9 +54,12 @@ minetest.register_node("ethereal:coral3", {
 	tiles = {"coral3.png"},
 	inventory_image = "coral3.png",
 	paramtype = "light",
-	selection_box = {type = "fixed", fixed = {-0.5, -0.5, -0.5, 0.5, -5/16, 0.5}},
+	selection_box = {
+		type = "fixed",
+		fixed = {-0.5, -0.5, -0.5, 0.5, -5/16, 0.5}
+	},
 	light_source = 3,
-	groups = {snappy=3},
+	groups = {snappy = 3},
 	sounds = default.node_sound_leaves_defaults(),
 })
 
@@ -67,9 +76,12 @@ minetest.register_node("ethereal:coral4", {
 	tiles = {"coral4.png"},
 	inventory_image = "coral4.png",
 	paramtype = "light",
-	selection_box = {type = "fixed", fixed = {-0.5, -0.5, -0.5, 0.5, -5/16, 0.5}},
+	selection_box = {
+		type = "fixed",
+		fixed = {-0.5, -0.5, -0.5, 0.5, -5/16, 0.5}
+	},
 	light_source = 3,
-	groups = {snappy=3},
+	groups = {snappy = 3},
 	sounds = default.node_sound_leaves_defaults(),
 })
 
@@ -86,9 +98,12 @@ minetest.register_node("ethereal:coral5", {
 	tiles = {"coral5.png"},
 	inventory_image = "coral5.png",
 	paramtype = "light",
-	selection_box = {type = "fixed", fixed = {-0.5, -0.5, -0.5, 0.5, -5/16, 0.5}},
+	selection_box = {
+		type = "fixed",
+		fixed = {-0.5, -0.5, -0.5, 0.5, -5/16, 0.5}
+	},
 	light_source = 3,
-	groups = {snappy=3},
+	groups = {snappy = 3},
 	sounds = default.node_sound_leaves_defaults(),
 })
 
@@ -103,7 +118,10 @@ minetest.register_node("ethereal:sandy", {
 	description = "Sandy",
 	tiles = {"default_sand.png"},
 	is_ground_content = true,
-	groups = {crumbly=3, falling_node=1, sand=1, soil=1, not_in_creative_inventory=1},
+	groups = {
+		crumbly = 3, falling_node = 1, sand = 1, soil = 1,
+		not_in_creative_inventory = 1
+	},
 	drop = "default:sand",
 	sounds = default.node_sound_sand_defaults(),
 })
@@ -142,13 +160,13 @@ minetest.register_abm({
 
 			if height < 14 and pos.y < 0
 			and minetest.get_node(pos).name == "default:water_source" then
-				minetest.set_node(pos, {name="ethereal:seaweed"})
+				minetest.set_node(pos, {name = "ethereal:seaweed"})
 			end
 
 		else
 			pos.y = pos.y + 1
 			if minetest.get_node(pos).name == "default:water_source" then
-				minetest.set_node(pos, {name="ethereal:coral"..sel})
+				minetest.set_node(pos, {name = "ethereal:coral"..sel})
 			end
 
 		end

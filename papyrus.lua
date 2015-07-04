@@ -1,5 +1,5 @@
 -- override default papyrus to make it walkable
-minetest.override_item("default:papyrus", {walkable=true, sunlight_propagates=true})
+minetest.override_item("default:papyrus", {walkable = true, sunlight_propagates = true})
 
 -- have papyrus grow up to 4 high and bamboo grow up to 5 in height (shared abm)
 minetest.register_abm({
@@ -34,7 +34,7 @@ minetest.register_abm({
 
 		nod = minetest.get_node_or_nil(pos)
 		if nod and nod.name == "air" and height < high then
-			minetest.set_node(pos, {name=node.name})
+			minetest.set_node(pos, {name = node.name})
 		end
 
 	end,

@@ -2,10 +2,12 @@
 minetest.clear_registered_biomes()
 minetest.clear_registered_decorations()
 
+local path = minetest.get_modpath("ethereal").."/schematics/"
+
 -- tree schematics
-dofile(minetest.get_modpath("ethereal").."/schematics/apple_tree.lua")
-dofile(minetest.get_modpath("ethereal").."/schematics/orange_tree.lua")
-dofile(minetest.get_modpath("ethereal").."/schematics/banana_tree.lua")
+dofile(path.."apple_tree.lua")
+dofile(path.."orange_tree.lua")
+dofile(path.."banana_tree.lua")
 
 --= Biomes (Minetest 0.4.12 and above)
 
@@ -323,8 +325,6 @@ end
 
 --= schematic decorations
 
-local path = minetest.get_modpath("ethereal").."/schematics/"
-
 -- redwood tree
 minetest.register_decoration({
 	deco_type = "schematic",
@@ -402,7 +402,6 @@ minetest.register_decoration({
 	biomes = {"fiery"},
 	schematic = path.."volcanol.mts",
 	flags = "place_center_x, place_center_z",
---	replacements = {{"default:stone", "default:desert_stone"}},
 })
 
 -- jungle tree
@@ -529,7 +528,10 @@ minetest.register_decoration({
 -- dry shrub
 minetest.register_decoration({
 	deco_type = "simple",
-	place_on = {"ethereal:dry_dirt", "default:sand", "default:desert_sand", "sandstone", "bakedclay:red"},
+	place_on = {
+		"ethereal:dry_dirt", "default:sand", "default:desert_sand",
+		"sandstone", "bakedclay:red"
+	},
 	sidelen = 80,
 	fill_ratio = 0.015,
 	biomes = {"plains", "lake", "desert", "desertstone", "mesa"},
@@ -543,7 +545,11 @@ minetest.register_decoration({
 	sidelen = 80,
 	fill_ratio = 0.03,
 	biomes = {"grassy", "grassy", "grassytwo"},
-	decoration = {"flowers:dandelion_white", "flowers:dandelion_yellow", "flowers:geranium", "flowers:rose", "flowers:tulip", "flowers:viola", "ethereal:strawberry_7"},
+	decoration = {
+		"flowers:dandelion_white", "flowers:dandelion_yellow",
+		"flowers:geranium", "flowers:rose", "flowers:tulip",
+		"flowers:viola", "ethereal:strawberry_7"
+	},
 })
 
 -- prairie flowers & strawberry
@@ -553,7 +559,11 @@ minetest.register_decoration({
 	sidelen = 80,
 	fill_ratio = 0.05,
 	biomes = {"prairie"},
-	decoration = {"flowers:dandelion_white", "flowers:dandelion_yellow", "flowers:geranium", "flowers:rose", "flowers:tulip", "flowers:viola", "ethereal:strawberry_7"},
+	decoration = {
+		"flowers:dandelion_white", "flowers:dandelion_yellow",
+		"flowers:geranium", "flowers:rose", "flowers:tulip",
+		"flowers:viola", "ethereal:strawberry_7"
+	},
 })
 
 -- crystal spike & crystal grass
@@ -630,11 +640,17 @@ minetest.register_decoration({
 -- grass
 minetest.register_decoration({
 	deco_type = "simple",
-	place_on = {"ethereal:green_dirt_top", "ethereal:jungle_dirt", "ethereal:prairie_dirt", "ethereal:grove_dirt"},
+	place_on = {
+		"ethereal:green_dirt_top", "ethereal:jungle_dirt",
+		"ethereal:prairie_dirt", "ethereal:grove_dirt"
+	},
 	sidelen = 80,
 	fill_ratio = 0.4,
 	biomes = {"grassy", "grassytwo", "jumble", "junglee", "prairie", "grove"},
-	decoration = "default:grass_2", "default:grass_3", "default:grass_4", "default:grass_5",
+	decoration = {
+		"default:grass_2", "default:grass_3",
+		"default:grass_4", "default:grass_5"
+	},
 })
 
 -- ferns
@@ -682,22 +698,24 @@ minetest.register_decoration({
 
 -- palm tree on sand next to water
 minetest.register_on_generated(function(minp, maxp, seed)
+	local nn
 	if maxp.y > 1 and minp.y < 1 then
 		local perlin1 = minetest.get_perlin(354, 3, 0.7, 100)
 		local divlen = 8
-		local divs = (maxp.x-minp.x)/divlen+1
+		local divs = (maxp.x - minp.x) / divlen + 1
 		local pr, x, z
 		for divx=0,divs-1 do
-			for divz=0,divs-1 do
-				-- find random positions for palm tree
-				pr = PseudoRandom(seed+1)
-				x = pr:next(minp.x + math.floor((divx+0)*divlen), minp.x + math.floor((divx+1)*divlen))
-				z = pr:next(minp.z + math.floor((divz+0)*divlen), minp.z + math.floor((divz+1)*divlen))
-				if minetest.get_node({x=x,y=1,z=z}).name == "default:sand"
-				and minetest.find_node_near({x=x,y=1,z=z}, 1, "default:water_source") then
-					minetest.place_schematic({x=x-4,y=2,z=z-4}, path.."palmtree.mts", 0, '', 0)
-				end
+		for divz=0,divs-1 do
+			-- find random positions for palm tree
+			pr = PseudoRandom(seed + 1)
+			x = pr:next(minp.x + math.floor((divx + 0) * divlen), minp.x + math.floor((divx + 1) * divlen))
+			z = pr:next(minp.z + math.floor((divz + 0) * divlen), minp.z + math.floor((divz + 1) * divlen))
+			nn = minetest.get_node_or_nil({x = x, y = 1, z = z})
+			if nn and nn.name == "default:sand"
+			and minetest.find_node_near({x = x, y = 1,z = z}, 1, "default:water_source") then
+				minetest.place_schematic({x = x - 4, y = 2, z = z - 4}, path.."palmtree.mts", 0, '', 0)
 			end
+		end
 		end
 	end
 end)
@@ -706,7 +724,7 @@ end)
 
 if farming.mod and farming.mod == "redo" then
 
-print ("[MOD] Ethereal - Detected and using Farming Redo mod")
+print ("[MOD] Ethereal - Farming Redo detected and in use")
 
 -- potato
 minetest.register_decoration({
@@ -725,7 +743,11 @@ minetest.register_decoration({
 	sidelen = 80,
 	fill_ratio = 0.05,
 	biomes = {"grassy", "grassytwo", "prairie", "jumble"},
-	decoration = {"farming:carrot_7", "farming:cucumber_4", "farming:potato_3", "farming:tomato_7", "farming:corn_8", "farming:coffee_5", "farming:raspberry_4", "farming:rhubarb_3", "farming:blueberry_4"},
+	decoration = {
+		"farming:carrot_7", "farming:cucumber_4", "farming:potato_3",
+		"farming:tomato_7", "farming:corn_8", "farming:coffee_5",
+		"farming:raspberry_4", "farming:rhubarb_3", "farming:blueberry_4"
+	},
 })
 
 -- melon and pumpkin
@@ -749,4 +771,5 @@ minetest.register_decoration({
 	biomes = {"grassytwo"},
 	decoration = "farming:beanbush",
 })
+
 end

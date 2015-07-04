@@ -6,7 +6,7 @@ minetest.register_node("ethereal:green_dirt", {
 	description = "Green Dirt",
 	tiles = {"default_grass.png", "default_dirt.png", "default_dirt.png^default_grass_side.png"},
 	is_ground_content = false,
-	groups = {crumbly=3,soil=1,ethereal_grass=1},
+	groups = {crumbly = 3, soil = 1, ethereal_grass = 1},
 	drop = "default:dirt",
 	sounds = default.node_sound_dirt_defaults()
 })
@@ -16,7 +16,7 @@ minetest.register_node("ethereal:dry_dirt", {
 	description = "Dried Dirt",
 	tiles = {"ethereal_dry_dirt.png"},
 	is_ground_content = false,
-	groups = {crumbly=3},
+	groups = {crumbly = 3},
 	sounds = default.node_sound_dirt_defaults()
 })
 
@@ -29,7 +29,8 @@ minetest.register_craft({
 
 local dirt = {}
 dirt.type = {
-	{"Bamboo"}, {"Jungle"}, {"Grove"}, {"Prairie"}, {"Cold"}, {"Crystal"}, {"Mushroom"}, {"Fiery"}, {"Gray"},
+	{"Bamboo"}, {"Jungle"}, {"Grove"}, {"Prairie"}, {"Cold"},
+	{"Crystal"}, {"Mushroom"}, {"Fiery"}, {"Gray"},
 }
 
 for _, row in ipairs(dirt.type) do
@@ -40,9 +41,9 @@ for _, row in ipairs(dirt.type) do
 	minetest.register_node("ethereal:"..name.."_dirt", {
 		description = desc.." Dirt",
 		tiles = {"ethereal_grass_"..name.."_top.png", "default_dirt.png",
-				"default_dirt.png^ethereal_grass_"..name.."_side.png"},
+			"default_dirt.png^ethereal_grass_"..name.."_side.png"},
 		is_ground_content = false,
-		groups = {crumbly=3,soil=1,ethereal_grass=1},
+		groups = {crumbly = 3, soil = 1, ethereal_grass = 1},
 		drop = "default:dirt",
 		sounds = default.node_sound_dirt_defaults()
 	})
@@ -65,8 +66,8 @@ minetest.register_abm({
 		local curr_max  = 0
 		local curr_type = "ethereal:green_dirt" -- fallback
 		local positions = minetest.find_nodes_in_area(
-			{x=(pos.x-2), y=(pos.y-2), z=(pos.z-2)},
-			{x=(pos.x+2), y=(pos.y+2), z=(pos.z+2)},
+			{x = (pos.x - 2), y = (pos.y - 1), z = (pos.z - 2)},
+			{x = (pos.x + 2), y = (pos.y + 1), z = (pos.z + 2)},
 			"group:ethereal_grass")
 		local n
 		-- count new grass nodes
@@ -82,7 +83,7 @@ minetest.register_abm({
 			end
 		end
 		minetest.set_node(pos, {name = curr_type})
-        end
+	end
 })
 
 -- if grass devoid of light, change to dirt
@@ -91,7 +92,7 @@ minetest.register_abm({
 	interval = 2,
 	chance = 20,
 	action = function(pos, node)
-		local name = minetest.get_node({x=pos.x, y=pos.y+1, z=pos.z}).name
+		local name = minetest.get_node({x = pos.x, y  =pos.y + 1, z = pos.z}).name
 		local nodedef = minetest.registered_nodes[name]
 		if name ~= "ignore" and nodedef
 		and not ((nodedef.sunlight_propagates or nodedef.paramtype == "light")
@@ -107,7 +108,7 @@ if not minetest.get_modpath("bakedclay") then
 	minetest.register_node(":bakedclay:red", {
 		description = "Red Baked Clay",
 		tiles = {"baked_clay_red.png"},
-		groups = {cracky=3},
+		groups = {cracky = 3},
 		is_ground_content = false,
 		sounds = default.node_sound_stone_defaults(),
 	})
@@ -122,7 +123,7 @@ if not minetest.get_modpath("bakedclay") then
 	minetest.register_node(":bakedclay:orange", {
 		description = "Orange Baked Clay",
 		tiles = {"baked_clay_orange.png"},
-		groups = {cracky=3},
+		groups = {cracky = 3},
 		is_ground_content = false,
 		sounds = default.node_sound_stone_defaults(),
 	})
