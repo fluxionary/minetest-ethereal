@@ -11,6 +11,7 @@ minetest.register_node("ethereal:acacia_trunk", {
 	groups = {tree = 1, choppy = 2, oddly_breakable_by_hand = 1, flammable = 2},
 	sounds = default.node_sound_wood_defaults(),
 	paramtype2 = "facedir",
+	on_place = minetest.rotate_node,
 })
 
 -- Acacia Wood
@@ -38,6 +39,7 @@ minetest.register_node("ethereal:willow_trunk", {
 	groups = {tree = 1, choppy = 2, oddly_breakable_by_hand = 1, flammable = 2},
 	sounds = default.node_sound_wood_defaults(),
 	paramtype2 = "facedir",
+	on_place = minetest.rotate_node,
 })
 
 -- Willow Wood
@@ -65,6 +67,7 @@ minetest.register_node("ethereal:redwood_trunk", {
 	groups = {tree = 1, choppy = 2, oddly_breakable_by_hand = 1, flammable = 2},
 	sounds = default.node_sound_wood_defaults(),
 	paramtype2 = "facedir",
+	on_place = minetest.rotate_node,
 })
 
 -- Redwood Wood
@@ -92,6 +95,7 @@ minetest.register_node("ethereal:frost_tree", {
 	groups = {tree = 1, choppy = 2, oddly_breakable_by_hand = 1, put_out_fire = 1},
 	sounds = default.node_sound_wood_defaults(),
 	paramtype2 = "facedir",
+	on_place = minetest.rotate_node,
 })
 
 -- Frost Wood
@@ -119,6 +123,7 @@ minetest.register_node("ethereal:yellow_trunk", {
 	groups = {tree = 1, choppy = 2, oddly_breakable_by_hand = 1, put_out_fire = 1},
 	sounds = default.node_sound_wood_defaults(),
 	paramtype2 = "facedir",
+	on_place = minetest.rotate_node,
 })
 
 -- Healing Wood
@@ -146,6 +151,7 @@ minetest.register_node("ethereal:palm_trunk", {
 	groups = {tree = 1, choppy = 2, oddly_breakable_by_hand = 1, flammable = 2},
 	sounds = default.node_sound_wood_defaults(),
 	paramtype2 = "facedir",
+	on_place = minetest.rotate_node,
 })
 
 -- Palm Wood
@@ -173,6 +179,7 @@ minetest.register_node("ethereal:banana_trunk", {
 	groups = {tree = 1, choppy = 2, oddly_breakable_by_hand = 1, flammable = 2},
 	sounds = default.node_sound_wood_defaults(),
 	paramtype2 = "facedir",
+	on_place = minetest.rotate_node,
 })
 
 -- Banana Tree Wood
@@ -200,6 +207,7 @@ minetest.register_node("ethereal:scorched_tree", {
 	groups = {tree = 1, choppy = 2, oddly_breakable_by_hand = 1, flammable = 1},
 	sounds = default.node_sound_wood_defaults(),
 	paramtype2 = "facedir",
+	on_place = minetest.rotate_node,
 })
 
 minetest.register_craft({
@@ -222,4 +230,5 @@ minetest.register_node("ethereal:mushroom_trunk", {
 	groups = {tree = 1, choppy = 2, oddly_breakable_by_hand = 1, flammable = 2},
 	sounds = default.node_sound_wood_defaults(),
 	paramtype2 = "facedir",
+	on_place = minetest.rotate_node,
 })
