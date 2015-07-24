@@ -1,6 +1,12 @@
 --= Define Trunks and Wood
 
 -- Acacia Trunk (thanks to VanessaE for acacia textures)
+if minetest.registered_nodes["default:acacia_tree"] then
+	minetest.register_alias("ethereal:acacia_trunk", "default:acacia_tree")
+	minetest.register_alias("ethereal:acacia_leaves", "default:acacia_leaves")
+	minetest.register_alias("ethereal:acacia_wood", "default:acacia_wood")
+	print ("acacia tree in default game")
+else
 minetest.register_node("ethereal:acacia_trunk", {
 	description = "Acacia Trunk",
 	tiles = {
@@ -27,6 +33,7 @@ minetest.register_craft({
 	output = "ethereal:acacia_wood 4",
 	recipe = {{"ethereal:acacia_trunk"}}
 })
+end
 
 -- Willow Trunk
 minetest.register_node("ethereal:willow_trunk", {

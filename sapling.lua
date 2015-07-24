@@ -70,44 +70,49 @@ ethereal.add_tree = function (pos, ofx, ofz, schem)
 	)
 end
 
+ethereal.grow_sapling = function (pos, node)
+
+	local under =  minetest.get_node_or_nil({x = pos.x, y = pos.y - 1, z = pos.z})
+	if under then under = under.name else return end
+
+	-- Check if Sapling is growing on correct substrate
+	if (node.name == "ethereal:yellow_tree_sapling" and under == "default:dirt_with_snow") then
+		ethereal.place_tree(pos, 4, 4, "yellowtree")
+	elseif (node.name == "ethereal:tree_sapling" and under == "ethereal:green_dirt") then
+		ethereal.add_tree(pos, 1, 1, ethereal.appletree)
+	elseif (node.name == "ethereal:jungle_tree_sapling" and under == "ethereal:jungle_dirt") then
+		ethereal.place_tree(pos, 6, 6, "jungletree")
+	elseif (node.name == "ethereal:pine_tree_sapling" and under == "ethereal:cold_dirt") then
+		ethereal.place_tree(pos, 3, 3, "pinetree")
+	elseif (node.name == "ethereal:big_tree_sapling" and under == "ethereal:green_dirt") then
+		ethereal.place_tree(pos, 4, 4, "bigtree")
+	elseif (node.name == "ethereal:banana_tree_sapling" and under == "ethereal:grove_dirt") then
+		ethereal.add_tree(pos, 3, 3, ethereal.bananatree)
+	elseif (node.name == "ethereal:frost_tree_sapling" and under == "ethereal:crystal_dirt") then
+		ethereal.place_tree(pos, 4, 4, "frosttrees")
+	elseif (node.name == "ethereal:gray_tree_sapling" and under == "ethereal:gray_dirt") then
+		ethereal.place_tree(pos, 2, 2, "graytrees")
+	elseif (node.name == "ethereal:mushroom_sapling" and under == "ethereal:mushroom_dirt") then
+		ethereal.place_tree(pos, 4, 4, "mushroomone")
+	elseif (node.name == "ethereal:palm_sapling" and under == "default:sand") then
+		ethereal.place_tree(pos, 4, 4, "palmtree")
+	elseif (node.name == "ethereal:willow_sapling" and under == "ethereal:gray_dirt") then
+		ethereal.place_tree(pos, 5, 5, "willow")
+	elseif (node.name == "ethereal:redwood_sapling" and under == "bakedclay:red") then
+		ethereal.place_tree(pos, 9, 9, "redwood")
+	elseif (node.name == "ethereal:orange_tree_sapling" and under == "ethereal:prairie_dirt") then
+		ethereal.add_tree(pos, 1, 1, ethereal.orangetree)
+	elseif (node.name == "ethereal:acacia_sapling" and under == "default:desert_sand") then
+		ethereal.place_tree(pos, 5, 5, "acaciatree")
+	end
+end
+
 -- Grow saplings
 minetest.register_abm({
 	nodenames = {"group:ethereal_sapling"},
 	interval = 10,
 	chance = 50,
 	action = function(pos, node)
-
-		local under =  minetest.get_node({x=pos.x, y=pos.y-1, z=pos.z}).name
-
-		-- Check if Sapling is growing on correct substrate
-		if (node.name == "ethereal:yellow_tree_sapling" and under == "default:dirt_with_snow") then
-			ethereal.place_tree(pos, 4, 4, "yellowtree")
-		elseif (node.name == "ethereal:tree_sapling" and under == "ethereal:green_dirt") then
-			ethereal.add_tree(pos, 1, 1, ethereal.appletree)
-		elseif (node.name == "ethereal:jungle_tree_sapling" and under == "ethereal:jungle_dirt") then
-			ethereal.place_tree(pos, 6, 6, "jungletree")
-		elseif (node.name == "ethereal:pine_tree_sapling" and under == "ethereal:cold_dirt") then
-			ethereal.place_tree(pos, 3, 3, "pinetree")
-		elseif (node.name == "ethereal:big_tree_sapling" and under == "ethereal:green_dirt") then
-			ethereal.place_tree(pos, 4, 4, "bigtree")
-		elseif (node.name == "ethereal:banana_tree_sapling" and under == "ethereal:grove_dirt") then
-			ethereal.add_tree(pos, 3, 3, ethereal.bananatree)
-		elseif (node.name == "ethereal:frost_tree_sapling" and under == "ethereal:crystal_dirt") then
-			ethereal.place_tree(pos, 4, 4, "frosttrees")
-		elseif (node.name == "ethereal:gray_tree_sapling" and under == "ethereal:gray_dirt") then
-			ethereal.place_tree(pos, 2, 2, "graytrees")
-		elseif (node.name == "ethereal:mushroom_sapling" and under == "ethereal:mushroom_dirt") then
-			ethereal.place_tree(pos, 4, 4, "mushroomone")
-		elseif (node.name == "ethereal:palm_sapling" and under == "default:sand") then
-			ethereal.place_tree(pos, 4, 4, "palmtree")
-		elseif (node.name == "ethereal:willow_sapling" and under == "ethereal:gray_dirt") then
-			ethereal.place_tree(pos, 5, 5, "willow")
-		elseif (node.name == "ethereal:redwood_sapling" and under == "bakedclay:red") then
-			ethereal.place_tree(pos, 9, 9, "redwood")
-		elseif (node.name == "ethereal:orange_tree_sapling" and under == "ethereal:prairie_dirt") then
-			ethereal.add_tree(pos, 1, 1, ethereal.orangetree)
-		elseif (node.name == "ethereal:acacia_sapling" and under == "default:desert_sand") then
-			ethereal.place_tree(pos, 5, 5, "acaciatree")
-		end
+		ethereal.grow_sapling(pos, node)
 	end,
 })

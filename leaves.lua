@@ -8,6 +8,7 @@ end
 --= Define leaves for ALL trees (and Mushroom Tops)
 
 -- Acacia Leaves
+if not minetest.registered_nodes["default:acacia_leaves"] then
 minetest.register_node("ethereal:acacia_leaves", {
 	description = "Acacia Leaves",
 	drawtype = leaftype,
@@ -28,6 +29,13 @@ minetest.register_node("ethereal:acacia_leaves", {
 	sounds = default.node_sound_leaves_defaults(),
 	after_place_node = default.after_place_leaves,
 })
+else
+minetest.override_item("default:acacia_leaves", {
+	drawtype = leaftype,
+	visual_scale = 1.2,
+})
+print ("dont need ethereal's acacia leaves")
+end
 
 -- Willow Twig
 minetest.register_node("ethereal:willow_twig", {
@@ -195,16 +203,11 @@ minetest.register_node("ethereal:palmleaves", {
 })
 
 -- Pine Tree Leaves
-minetest.register_node("ethereal:pineleaves", {
-	description = "Pine Needles",
+minetest.override_item("default:pine_needles", {
 	drawtype = leaftype,
 	visual_scale = 1.2,
 	tiles = {"pine_leaves.png"},
 	inventory_image = "pine_leaves.png",
-	paramtype = "light",
-	walkable = false,
-	waving = 1,
-	groups = {snappy = 3, leafdecay = 3, leaves = 1, flammable = 2},
 	drop = {
 		max_items = 1,
 		items = {
@@ -213,9 +216,8 @@ minetest.register_node("ethereal:pineleaves", {
 			{items = {"ethereal:pineleaves"},}
 		}
 	},
-	sounds = default.node_sound_leaves_defaults(),
-	after_place_node = default.after_place_leaves,
 })
+minetest.register_alias("ethereal:pineleaves", "default:pine_needles")
 
 -- Frost Tree Leaves
 minetest.register_node("ethereal:frost_leaves", {
