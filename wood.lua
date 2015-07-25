@@ -3,9 +3,8 @@
 -- Acacia Trunk (thanks to VanessaE for acacia textures)
 if minetest.registered_nodes["default:acacia_tree"] then
 	minetest.register_alias("ethereal:acacia_trunk", "default:acacia_tree")
-	minetest.register_alias("ethereal:acacia_leaves", "default:acacia_leaves")
 	minetest.register_alias("ethereal:acacia_wood", "default:acacia_wood")
-	print ("acacia tree in default game")
+	print ("using acacia tree in default game")
 else
 minetest.register_node("ethereal:acacia_trunk", {
 	description = "Acacia Trunk",

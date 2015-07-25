@@ -34,8 +34,20 @@ minetest.register_biome({
 	depth_top = 1,
 	node_filler = "default:dirt",
 	depth_filler = 5,
-	y_min = 1,
+	y_min = 3,
 	y_max = 71,
+	heat_point = 45,
+	humidity_point = 75,
+})
+
+minetest.register_biome({
+	name = "bamboo_ocean",
+	node_top = "default:sand",
+	depth_top = 1,
+	node_filler = "default:sand",
+	depth_filler = 2,
+	y_min = -192,
+	y_max = 2,
 	heat_point = 45,
 	humidity_point = 75,
 })
@@ -50,6 +62,18 @@ minetest.register_biome({
 	depth_filler = 5,
 	y_min = 2,
 	y_max = 71,
+	heat_point = 25,
+	humidity_point = 28,
+})
+
+minetest.register_biome({
+	name = "mesa_ocean",
+	node_top = "default:sand",
+	depth_top = 1,
+	node_filler = "default:sand",
+	depth_filler = 2,
+	y_min = -192,
+	y_max = 1,
 	heat_point = 25,
 	humidity_point = 28,
 })
@@ -132,8 +156,20 @@ minetest.register_biome({
 	depth_top = 1,
 	node_filler = "default:dirt",
 	depth_filler = 5,
-	y_min = 1,
+	y_min = 2,
 	y_max = 41,
+	heat_point = 15,
+	humidity_point = 30,
+})
+
+minetest.register_biome({
+	name = "grayness_ocean",
+	node_top = "default:sand",
+	depth_top = 1,
+	node_filler = "default:sand",
+	depth_filler = 2,
+	y_min = -192,
+	y_max = 1,
 	heat_point = 15,
 	humidity_point = 30,
 })
@@ -207,6 +243,18 @@ minetest.register_biome({
 	heat_point = 35,
 	humidity_point = 20,
 })
+
+minetest.register_biome({
+	name = "desert_ocean",
+	node_top = "default:sand",
+	depth_top = 1,
+	node_filler = "default:sand",
+	depth_filler = 2,
+	y_min = -192,
+	y_max = 2,
+	heat_point = 35,
+	humidity_point = 20,
+})
 end
 
 if ethereal.grove == 1 then
@@ -221,6 +269,18 @@ minetest.register_biome({
 	heat_point = 40,
 	humidity_point = 60,
 })
+
+minetest.register_biome({
+	name = "grove_ocean",
+	node_top = "default:sand",
+	depth_top = 1,
+	node_filler = "default:sand",
+	depth_filler = 2,
+	y_min = -192,
+	y_max = 2,
+	heat_point = 40,
+	humidity_point = 60,
+})
 end
 
 if ethereal.mushroom == 1 then
@@ -230,14 +290,26 @@ minetest.register_biome({
 	depth_top = 1,
 	node_filler = "default:dirt",
 	depth_filler = 5,
-	y_min = 1,
+	y_min = 3,
 	y_max = 50,
+	heat_point = 45,
+	humidity_point = 65,
+})
+
+minetest.register_biome({
+	name = "mushroom_ocean",
+	node_top = "default:sand",
+	depth_top = 1,
+	node_filler = "default:sand",
+	depth_filler = 2,
+	y_min = -192,
+	y_max = 2,
 	heat_point = 45,
 	humidity_point = 65,
 })
 end
 
-if ethereal.desertstone == 1 then
+if ethereal.sandstone == 1 then
 minetest.register_biome({
 	name = "desertstone",
 	node_top = "default:sandstone",
@@ -246,6 +318,18 @@ minetest.register_biome({
 	depth_filler = 70,
 	y_min = 3,
 	y_max = 23,
+	heat_point = 50,
+	humidity_point = 20,
+})
+
+minetest.register_biome({
+	name = "sandstone_ocean",
+	node_top = "default:sand",
+	depth_top = 1,
+	node_filler = "default:sand",
+	depth_filler = 2,
+	y_min = -192,
+	y_max = 2,
 	heat_point = 50,
 	humidity_point = 20,
 })
@@ -293,6 +377,18 @@ minetest.register_biome({
 	heat_point = 55,
 	humidity_point = 25,
 })
+
+minetest.register_biome({
+	name = "plains_ocean",
+	node_top = "default:sand",
+	depth_top = 1,
+	node_filler = "default:sand",
+	depth_filler = 2,
+	y_min = -192,
+	y_max = 2,
+	heat_point = 55,
+	humidity_point = 25,
+})
 end
 
 if ethereal.fiery == 1 then
@@ -304,6 +400,18 @@ minetest.register_biome({
 	depth_filler = 5,
 	y_min = 5,
 	y_max = 65,
+	heat_point = 80,
+	humidity_point = 10,
+})
+
+minetest.register_biome({
+	name = "fiery_ocean",
+	node_top = "default:sand",
+	depth_top = 1,
+	node_filler = "default:sand",
+	depth_filler = 2,
+	y_min = -192,
+	y_max = 4,
 	heat_point = 80,
 	humidity_point = 10,
 })
@@ -704,16 +812,25 @@ minetest.register_on_generated(function(minp, maxp, seed)
 		local divlen = 8
 		local divs = (maxp.x - minp.x) / divlen + 1
 		local pr, x, z
-		for divx=0,divs-1 do
-		for divz=0,divs-1 do
+		for divx = 0, divs - 1 do
+		for divz = 0, divs - 1 do
 			-- find random positions for palm tree
 			pr = PseudoRandom(seed + 1)
-			x = pr:next(minp.x + math.floor((divx + 0) * divlen), minp.x + math.floor((divx + 1) * divlen))
-			z = pr:next(minp.z + math.floor((divz + 0) * divlen), minp.z + math.floor((divz + 1) * divlen))
+			x = pr:next(minp.x + math.floor((divx + 0) * divlen),
+				minp.x + math.floor((divx + 1) * divlen))
+			z = pr:next(minp.z + math.floor((divz + 0) * divlen),
+				minp.z + math.floor((divz + 1) * divlen))
 			nn = minetest.get_node_or_nil({x = x, y = 1, z = z})
+			-- only on sand and beside water
 			if nn and nn.name == "default:sand"
-			and minetest.find_node_near({x = x, y = 1,z = z}, 1, "default:water_source") then
-				minetest.place_schematic({x = x - 4, y = 2, z = z - 4}, path.."palmtree.mts", 0, '', 0)
+			and minetest.find_node_near(
+				{x = x, y = 1, z = z}, 1,
+				"default:water_source") then
+				minetest.place_schematic({
+					x = x - 4,
+					y = 2,
+					z = z - 4
+				}, path .. "palmtree.mts", "random", {}, false)
 			end
 		end
 		end

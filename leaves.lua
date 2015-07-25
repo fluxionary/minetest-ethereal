@@ -32,9 +32,19 @@ minetest.register_node("ethereal:acacia_leaves", {
 else
 minetest.override_item("default:acacia_leaves", {
 	drawtype = leaftype,
+	tiles = {"moretrees_acacia_leaves.png"},
+	inventory_image = "moretrees_acacia_leaves.png",
 	visual_scale = 1.2,
+	walkable = false,
+	drop = {
+		max_items = 1,
+		items = {
+			{items = {"ethereal:acacia_sapling"}, rarity = 20},
+			{items = {"ethereal:acacia_leaves"}}
+		}
+	},
 })
-print ("dont need ethereal's acacia leaves")
+minetest.register_alias("ethereal:acacia_leaves", "default:acacia_leaves")
 end
 
 -- Willow Twig
@@ -208,6 +218,7 @@ minetest.override_item("default:pine_needles", {
 	visual_scale = 1.2,
 	tiles = {"pine_leaves.png"},
 	inventory_image = "pine_leaves.png",
+	walkable = false,
 	drop = {
 		max_items = 1,
 		items = {

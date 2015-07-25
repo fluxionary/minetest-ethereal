@@ -219,6 +219,7 @@ minetest.register_node("ethereal:coconut", {
 	paramtype = "light",
 	sunlight_propagates = true,
 	tiles = {"moretrees_coconut.png"},
+	inventory_image = "moretrees_coconut.png",
 	selection_box = {
 		type = "fixed",
 		fixed = {-0.35, -0.35, -0.35, 0.35, 0.35, 0.35}

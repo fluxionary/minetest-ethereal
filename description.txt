@@ -1,1 +1,1 @@
-This is a mod that causes Minetest to use the Ethereal v7 mapgen.
+Ethereal mod uses the v7 mapgen to add many new biomes to the world.
