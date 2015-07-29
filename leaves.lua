@@ -224,7 +224,7 @@ minetest.override_item("default:pine_needles", {
 		items = {
 			{items = {"ethereal:pine_tree_sapling"}, rarity = 20},
 			{items = {"ethereal:pine_nuts"}, rarity = 5},
-			{items = {"ethereal:pineleaves"},}
+			{items = {"default:pine_needles"}}
 		}
 	},
 })
