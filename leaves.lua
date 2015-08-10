@@ -280,7 +280,7 @@ minetest.register_node("ethereal:mushroom_pore", {
 	tiles = {"mushroom_pore.png"},
 	groups = {
 		snappy = 3, cracky = 3, choppy = 3, oddly_breakable_by_hand = 3,
-		disable_jump = 1, fall_damage_add_percent = -100
+		flammable = 2, disable_jump = 1, fall_damage_add_percent = -100
 	},
 	sounds = default.node_sound_dirt_defaults(),
 })
