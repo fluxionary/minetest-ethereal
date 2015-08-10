@@ -285,7 +285,7 @@ minetest.register_tool("ethereal:light_staff", {
 		if node == "default:stone" then
 			minetest.add_node(pos, {name="ethereal:glostone"})
 			if not minetest.setting_getbool("creative_mode") then
-				itemstack:add_wear(65535 / 99) -- 100 uses
+				itemstack:add_wear(65535 / 149) -- 150 uses
 			end
 			return itemstack
 		end

@@ -40,7 +40,7 @@ minetest.override_item("default:acacia_leaves", {
 		max_items = 1,
 		items = {
 			{items = {"ethereal:acacia_sapling"}, rarity = 20},
-			{items = {"ethereal:acacia_leaves"}}
+			{items = {"default:acacia_leaves"}}
 		}
 	},
 })
