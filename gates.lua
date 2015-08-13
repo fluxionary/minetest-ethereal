@@ -46,7 +46,7 @@ local gates = {
 	{"banana", "Banana Wood", "banana_wood.png", "ethereal:banana_wood"},
 	{"mushroom", "Mushroom", "mushroom_trunk.png", "ethereal:mushroom_trunk"},
 	{"acacia", "Acacia Wood", "moretrees_acacia_wood.png", "ethereal:acacia_wood"},
-	{"pine", "Pine Wood", "default_pinewood.png", "default:pinewood"},
+	{"pine", "Pine Wood", "default_pine_wood.png", "default:pinewood"},
 }
 
 for _, row in pairs(gates) do
