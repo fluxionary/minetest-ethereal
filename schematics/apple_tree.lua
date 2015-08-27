@@ -13,9 +13,9 @@ ethereal.appletree = {
 		{name=i, param1=000}, {name=i, param1=000}, {name=i, param1=000},
 		{name=i, param1=000}, {name=i, param1=000}, {name=i, param1=000},
 		{name=i, param1=000}, {name=i, param1=000}, {name=i, param1=000},
-		{name=l, param1=223}, {name=l, param1=223}, {name=a, param1=020},
+		{name=l, param1=223}, {name=l, param1=223}, {name=a, param1=050},
 		{name=l, param1=255}, {name=l, param1=255}, {name=l, param1=255},
-		{name=l, param1=223}, {name=a, param1=020}, {name=l, param1=223},
+		{name=l, param1=223}, {name=a, param1=050}, {name=l, param1=223},
 
 		{name=i, param1=000}, {name=t, param1=255}, {name=i, param1=000},
 		{name=i, param1=000}, {name=t, param1=255}, {name=i, param1=000},
@@ -27,7 +27,7 @@ ethereal.appletree = {
 		{name=i, param1=000}, {name=i, param1=000}, {name=i, param1=000},
 		{name=i, param1=000}, {name=i, param1=000}, {name=i, param1=000},
 		{name=i, param1=000}, {name=i, param1=000}, {name=i, param1=000},
-		{name=a, param1=020}, {name=l, param1=223}, {name=l, param1=223},
+		{name=a, param1=050}, {name=l, param1=223}, {name=l, param1=223},
 		{name=l, param1=255}, {name=l, param1=255}, {name=l, param1=255},
 		{name=l, param1=223}, {name=l, param1=223}, {name=l, param1=223},
 

@@ -288,6 +288,12 @@ minetest.register_node("ethereal:bamboo", {
 	end,
 })
 
+minetest.register_craft({
+	type = "fuel",
+	recipe = "ethereal:bamboo",
+	burntime = 1,
+})
+
 -- Bamboo Sprout
 minetest.register_node("ethereal:bamboo_sprout", {
 	description = "Bamboo Sprout",
