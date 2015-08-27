@@ -11,20 +11,35 @@ dofile(path.."banana_tree.lua")
 
 --= Biomes (Minetest 0.4.12 and above)
 
-if ethereal.icewater == 1 then
-minetest.register_biome({
-	name = "icewater",
-	node_top = "default:sand",
-	depth_top = 1,
-	node_filler = "default:sand",
-	depth_filler = 1,
-	node_water_top = "default:ice",
-	depth_water_top = 2,
-	y_min = -31000,
-	y_max = 1,
-	heat_point = 0,
-	humidity_point = 0,
-})
+if ethereal.glacier == 1 then
+	minetest.register_biome({
+		name = "glacier",
+		node_dust = "default:snowblock",
+		node_top = "default:snowblock",
+		depth_top = 1,
+		node_filler = "default:snowblock",
+		depth_filler = 3,
+		node_stone = "default:ice",
+		node_water_top = "default:ice",
+		depth_water_top = 10,
+		y_min = -8,
+		y_max = 31000,
+		heat_point = -5,
+		humidity_point = 50,
+	})
+
+	minetest.register_biome({
+		name = "glacier_ocean",
+		node_dust = "default:sand", -- was snowblock
+		node_top = "default:gravel",
+		depth_top = 1,
+		node_filler = "default:gravel",
+		depth_filler = 2,
+		y_min = -112,
+		y_max = -9,
+		heat_point = -5,
+		humidity_point = 50,
+	})
 end
 
 if ethereal.bamboo == 1 then
@@ -56,11 +71,11 @@ end
 if ethereal.mesa == 1 then
 minetest.register_biome({
 	name = "mesa",
-	node_top = "bakedclay:red",
+	node_top = "bakedclay:orange",
 	depth_top = 1,
 	node_filler = "bakedclay:orange",
-	depth_filler = 5,
-	y_min = 2,
+	depth_filler = 15,
+	y_min = 1,
 	y_max = 71,
 	heat_point = 25,
 	humidity_point = 28,
@@ -77,6 +92,45 @@ minetest.register_biome({
 	heat_point = 25,
 	humidity_point = 28,
 })
+
+minetest.register_ore({
+	ore_type         = "blob",
+	ore              = "bakedclay:red",
+	wherein          = {"bakedclay:orange"},
+	clust_scarcity   = 4 * 4 * 4,
+	clust_num_ores = 8,
+	clust_size       = 6,
+	y_min            = -10,
+	y_max            = 71,
+	noise_params     = {
+		offset = 0.35,
+		scale = 0.2,
+		spread = {x = 5, y = 5, z = 5},
+		seed = -316,
+		octaves = 1,
+		persist = 0.5
+	},
+})
+
+minetest.register_ore({
+	ore_type         = "blob",
+	ore              = "bakedclay:grey",
+	wherein          = {"bakedclay:orange"},
+	clust_scarcity   = 4 * 4 * 4,
+	clust_num_ores = 8,
+	clust_size       = 6,
+	y_min            = -10,
+	y_max            = 71,
+	noise_params     = {
+		offset = 0.35,
+		scale = 0.2,
+		spread = {x = 5, y = 5, z = 5},
+		seed = -613,
+		octaves = 1,
+		persist = 0.5
+	},
+})
+
 end
 
 if ethereal.alpine == 1 then
@@ -436,7 +490,7 @@ end
 -- redwood tree
 minetest.register_decoration({
 	deco_type = "schematic",
-	place_on = {"bakedclay:red","bakedclay:orange"},
+	place_on = {"bakedclay:red"}, --"bakedclay:orange"},
 	sidelen = 80,
 	fill_ratio = 0.01,
 	biomes = {"mesa"},
@@ -462,7 +516,7 @@ minetest.register_decoration({
 	sidelen = 80,
 	fill_ratio = 0.04,
 	biomes = {"alpine"},
-	y_min = 82,
+	y_min = 100,
 	y_max = 140,
 	schematic = path.."yellowtree.mts",
 	flags = "place_center_x, place_center_z",

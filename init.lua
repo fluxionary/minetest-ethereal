@@ -1,6 +1,6 @@
 --[[
 
-	Minetest Ethereal Mod 1.16 (25th July 2015)
+	Minetest Ethereal Mod 1.16 (27th July 2015)
 
 	Created by ChinChow
 
@@ -12,7 +12,7 @@ ethereal = {}
 ethereal.leaftype = 0 -- 0 for 2D plantlike, 1 for 3D allfaces
 
 -- Set following to 1 to enable biome or 0 to disable
-
+ethereal.glacier   = 1 -- Huge ice glaciers with snow
 ethereal.bamboo    = 1 -- Bamboo with sprouts
 ethereal.mesa      = 1 -- Mesa red and orange clay with giant redwood
 ethereal.alpine    = 1 -- Snowy grass
@@ -35,7 +35,6 @@ ethereal.lake      = 1 -- Small sandy lake areas with gravel below, also used fo
 ethereal.plains    = 1 -- Dry dirt with scorched trees
 ethereal.fiery     = 1 -- Red grass with lava craters
 ethereal.sandclay  = 1 -- Sand areas with clay underneath
-ethereal.icewater  = 1 -- Ice surrounding cold coastal areas
 
 dofile(minetest.get_modpath("ethereal").."/plantlife.lua")
 dofile(minetest.get_modpath("ethereal").."/mushroom.lua")

@@ -112,7 +112,7 @@ if not minetest.get_modpath("bakedclay") then
 		is_ground_content = false,
 		sounds = default.node_sound_stone_defaults(),
 	})
-	
+
 	stairs.register_stair_and_slab("bakedclay_red", "bakedclay:red",
 		{cracky=3, not_in_craft_guide=1},
 		{"baked_clay_red.png"},
@@ -127,12 +127,27 @@ if not minetest.get_modpath("bakedclay") then
 		is_ground_content = false,
 		sounds = default.node_sound_stone_defaults(),
 	})
-	
+
 	stairs.register_stair_and_slab("bakedclay_orange", "bakedclay:orange",
 		{cracky=3, not_in_craft_guide=1},
 		{"baked_clay_orange.png"},
 		"Baked Clay Orange Stair",
 		"Baked Clay Orange Slab",
+		default.node_sound_stone_defaults())
+
+	minetest.register_node(":bakedclay:grey", {
+		description = "Grey Baked Clay",
+		tiles = {"baked_clay_grey.png"},
+		groups = {cracky = 3},
+		is_ground_content = false,
+		sounds = default.node_sound_stone_defaults(),
+	})
+
+	stairs.register_stair_and_slab("bakedclay_grey", "bakedclay:grey",
+		{cracky=3, not_in_craft_guide=1},
+		{"baked_clay_grey.png"},
+		"Baked Clay Grey Stair",
+		"Baked Clay Grey Slab",
 		default.node_sound_stone_defaults())
 
 end
