@@ -86,10 +86,3 @@ stairs.register_stair_and_slab("redwood_wood", "ethereal:redwood_wood",
 	"Redwood stair",
 	"Redwood Slab",
 	default.node_sound_wood_defaults())
-
-stairs.register_stair_and_slab("acacia_wood", "ethereal:acacia_wood",
-	{choppy = 2, oddly_breakable_by_hand = 1, flammable = 3, not_in_craft_guide = 1},
-	{"moretrees_acacia_wood.png"},
-	"Acacia Wood Stair",
-	"Acacia Wood Slab",
-	default.node_sound_wood_defaults())

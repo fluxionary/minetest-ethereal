@@ -284,3 +284,43 @@ minetest.register_node("ethereal:mushroom_pore", {
 	},
 	sounds = default.node_sound_dirt_defaults(),
 })
+
+-- Hedge Block
+minetest.register_node("ethereal:bush", {
+	description = "Bush",
+	tiles = {"ethereal_bush.png"},
+	walkable = true,
+	groups = {snappy = 3, flammable = 2},
+	sounds = default.node_sound_leaves_defaults(),
+})
+
+minetest.register_craft({
+	output = "ethereal:bush",
+	recipe = {
+		{"group:leaves", "group:leaves", "group:leaves"},
+		{"group:leaves", "group:leaves", "group:leaves"},
+		{"group:leaves", "group:leaves", "group:leaves"},
+	}
+})
+
+-- Bamboo Leaves
+minetest.register_node("ethereal:bamboo_leaves", {
+	description = "Bamboo Leaves",
+	drawtype = leaftype,
+	visual_scale = 1.2,
+	tiles = {"bamboo_leaves.png"},
+	inventory_image = "bamboo_leaves.png",
+	paramtype = "light",
+	walkable = false,
+	waving = 1,
+	groups = {snappy = 3, leafdecay = 3, leaves = 1, flammable = 2},
+	drop = {
+		max_items = 1,
+		items = {
+			{items = {"ethereal:bamboo_sprout"}, rarity = 10},
+			{items = {"ethereal:bamboo_leaves"}}
+		}
+	},
+	sounds = default.node_sound_leaves_defaults(),
+	after_place_node = default.after_place_leaves,
+})

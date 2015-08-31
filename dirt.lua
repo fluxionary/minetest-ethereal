@@ -4,7 +4,11 @@ minetest.override_item("default:dirt", {is_ground_content = false})
 -- green dirt
 minetest.register_node("ethereal:green_dirt", {
 	description = "Green Dirt",
-	tiles = {"default_grass.png", "default_dirt.png", "default_dirt.png^default_grass_side.png"},
+	tiles = {
+		"default_grass.png",
+		"default_dirt.png",
+		"default_dirt.png^default_grass_side.png"
+	},
 	is_ground_content = false,
 	groups = {crumbly = 3, soil = 1, ethereal_grass = 1},
 	drop = "default:dirt",
@@ -40,8 +44,11 @@ for _, row in ipairs(dirt.type) do
 
 	minetest.register_node("ethereal:"..name.."_dirt", {
 		description = desc.." Dirt",
-		tiles = {"ethereal_grass_"..name.."_top.png", "default_dirt.png",
-			"default_dirt.png^ethereal_grass_"..name.."_side.png"},
+		tiles = {
+			"ethereal_grass_"..name.."_top.png",
+			"default_dirt.png",
+			"default_dirt.png^ethereal_grass_"..name.."_side.png"
+		},
 		is_ground_content = false,
 		groups = {crumbly = 3, soil = 1, ethereal_grass = 1},
 		drop = "default:dirt",
@@ -113,13 +120,6 @@ if not minetest.get_modpath("bakedclay") then
 		sounds = default.node_sound_stone_defaults(),
 	})
 
-	stairs.register_stair_and_slab("bakedclay_red", "bakedclay:red",
-		{cracky=3, not_in_craft_guide=1},
-		{"baked_clay_red.png"},
-		"Baked Clay Red Stair",
-		"Baked Clay Red Slab",
-		default.node_sound_stone_defaults())
-
 	minetest.register_node(":bakedclay:orange", {
 		description = "Orange Baked Clay",
 		tiles = {"baked_clay_orange.png"},
@@ -128,13 +128,6 @@ if not minetest.get_modpath("bakedclay") then
 		sounds = default.node_sound_stone_defaults(),
 	})
 
-	stairs.register_stair_and_slab("bakedclay_orange", "bakedclay:orange",
-		{cracky=3, not_in_craft_guide=1},
-		{"baked_clay_orange.png"},
-		"Baked Clay Orange Stair",
-		"Baked Clay Orange Slab",
-		default.node_sound_stone_defaults())
-
 	minetest.register_node(":bakedclay:grey", {
 		description = "Grey Baked Clay",
 		tiles = {"baked_clay_grey.png"},
@@ -142,12 +135,5 @@ if not minetest.get_modpath("bakedclay") then
 		is_ground_content = false,
 		sounds = default.node_sound_stone_defaults(),
 	})
-
-	stairs.register_stair_and_slab("bakedclay_grey", "bakedclay:grey",
-		{cracky=3, not_in_craft_guide=1},
-		{"baked_clay_grey.png"},
-		"Baked Clay Grey Stair",
-		"Baked Clay Grey Slab",
-		default.node_sound_stone_defaults())
 
 end

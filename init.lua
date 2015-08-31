@@ -1,6 +1,6 @@
 --[[
 
-	Minetest Ethereal Mod 1.16 (27th July 2015)
+	Minetest Ethereal Mod 1.16 (31st August 2015)
 
 	Created by ChinChow
 
@@ -12,7 +12,7 @@ ethereal = {}
 ethereal.leaftype = 0 -- 0 for 2D plantlike, 1 for 3D allfaces
 
 -- Set following to 1 to enable biome or 0 to disable
-ethereal.glacier   = 1 -- Huge ice glaciers with snow
+ethereal.glacier   = 1 -- Ice glaciers with snow
 ethereal.bamboo    = 1 -- Bamboo with sprouts
 ethereal.mesa      = 1 -- Mesa red and orange clay with giant redwood
 ethereal.alpine    = 1 -- Snowy grass
@@ -36,27 +36,31 @@ ethereal.plains    = 1 -- Dry dirt with scorched trees
 ethereal.fiery     = 1 -- Red grass with lava craters
 ethereal.sandclay  = 1 -- Sand areas with clay underneath
 
-dofile(minetest.get_modpath("ethereal").."/plantlife.lua")
-dofile(minetest.get_modpath("ethereal").."/mushroom.lua")
-dofile(minetest.get_modpath("ethereal").."/onion.lua")
-dofile(minetest.get_modpath("ethereal").."/crystal.lua")
-dofile(minetest.get_modpath("ethereal").."/papyrus.lua")
-dofile(minetest.get_modpath("ethereal").."/flowers.lua")
-dofile(minetest.get_modpath("ethereal").."/water.lua")
-dofile(minetest.get_modpath("ethereal").."/dirt.lua")
-dofile(minetest.get_modpath("ethereal").."/leaves.lua")
-dofile(minetest.get_modpath("ethereal").."/wood.lua")
-dofile(minetest.get_modpath("ethereal").."/sapling.lua")
-dofile(minetest.get_modpath("ethereal").."/strawberry.lua")
-dofile(minetest.get_modpath("ethereal").."/fishing.lua")
-dofile(minetest.get_modpath("ethereal").."/extra.lua")
-dofile(minetest.get_modpath("ethereal").."/sealife.lua")
-dofile(minetest.get_modpath("ethereal").."/fences.lua")
-dofile(minetest.get_modpath("ethereal").."/gates.lua")
-if stairs and not stairs.mod then
-	dofile(minetest.get_modpath("ethereal").."/stairs.lua")
-end
-dofile(minetest.get_modpath("ethereal").."/mapgen_v7n.lua") -- 0.4.12+
+local path = minetest.get_modpath("ethereal")
 
--- Xanadu server Only
---dofile(minetest.get_modpath("ethereal").."/plantpack.lua")
+dofile(path.."/plantlife.lua")
+dofile(path.."/mushroom.lua")
+dofile(path.."/onion.lua")
+dofile(path.."/crystal.lua")
+dofile(path.."/papyrus.lua")
+dofile(path.."/flowers.lua")
+dofile(path.."/water.lua")
+dofile(path.."/dirt.lua")
+dofile(path.."/leaves.lua")
+dofile(path.."/wood.lua")
+dofile(path.."/sapling.lua")
+dofile(path.."/strawberry.lua")
+dofile(path.."/fishing.lua")
+dofile(path.."/extra.lua")
+dofile(path.."/sealife.lua")
+dofile(path.."/fences.lua")
+dofile(path.."/gates.lua")
+dofile(path.."/mapgen_v7n.lua") -- 0.4.12+
+
+if minetest.get_modpath("xanadu") then
+	dofile(path.."/plantpack.lua")
+else
+	dofile(path.."/stairs.lua")
+end
+
+print ("[MOD] Ethereal mod loaded")

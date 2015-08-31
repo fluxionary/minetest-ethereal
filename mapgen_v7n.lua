@@ -8,6 +8,8 @@ local path = minetest.get_modpath("ethereal").."/schematics/"
 dofile(path.."apple_tree.lua")
 dofile(path.."orange_tree.lua")
 dofile(path.."banana_tree.lua")
+dofile(path.."bamboo_tree.lua")
+dofile(path.."bush.lua")
 
 --= Biomes (Minetest 0.4.12 and above)
 
@@ -514,7 +516,7 @@ minetest.register_decoration({
 	deco_type = "schematic",
 	place_on = "default:dirt_with_snow",
 	sidelen = 80,
-	fill_ratio = 0.04,
+	fill_ratio = 0.015,
 	biomes = {"alpine"},
 	y_min = 100,
 	y_max = 140,
@@ -666,7 +668,7 @@ minetest.register_decoration({
 	height_max = 6,
 })
 
--- bamboo stalks
+--[[ bamboo stalks
 minetest.register_decoration({
 	deco_type = "simple",
 	place_on = "ethereal:bamboo_dirt",
@@ -675,6 +677,28 @@ minetest.register_decoration({
 	biomes = {"bamboo"},
 	decoration = "ethereal:bamboo",
 	height_max = 5,
+})--]]
+
+-- bamboo tree
+minetest.register_decoration({
+	deco_type = "schematic",
+	place_on = "ethereal:bamboo_dirt",
+	sidelen = 80,
+	fill_ratio = 0.03,
+	biomes = {"bamboo"},
+	schematic = ethereal.bambootree,
+	flags = "place_center_x, place_center_z",
+})
+
+-- bush
+minetest.register_decoration({
+	deco_type = "schematic",
+	place_on = "ethereal:bamboo_dirt",
+	sidelen = 80,
+	fill_ratio = 0.08,
+	biomes = {"bamboo"},
+	schematic = ethereal.bush,
+	flags = "place_center_x, place_center_z",
 })
 
 -- bamboo sprouts & grass
@@ -682,9 +706,10 @@ minetest.register_decoration({
 	deco_type = "simple",
 	place_on = "ethereal:bamboo_dirt",
 	sidelen = 80,
-	fill_ratio = 0.25,
+	fill_ratio = 0.35,
 	biomes = {"bamboo"},
-	decoration = {"ethereal:bamboo_sprout", "default:grass_2", "default:grass_3"},
+	--decoration = {"ethereal:bamboo_sprout", "default:grass_2", "default:grass_3"},
+	decoration = {"default:grass_2", "default:grass_3"},
 })
 
 -- dry shrub
@@ -692,7 +717,7 @@ minetest.register_decoration({
 	deco_type = "simple",
 	place_on = {
 		"ethereal:dry_dirt", "default:sand", "default:desert_sand",
-		"sandstone", "bakedclay:red"
+		"sandstone", "bakedclay:red", "bakedclay:orange"
 	},
 	sidelen = 80,
 	fill_ratio = 0.015,

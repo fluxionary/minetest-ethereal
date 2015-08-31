@@ -281,7 +281,7 @@ minetest.register_node("ethereal:bamboo", {
 		type = "fixed",
 		fixed = {-0.3, -0.5, -0.3, 0.3, 0.5, 0.3}
 	},
-	groups = {choppy = 3, oddly_breakable_by_hand = 1, flammable = 2},
+	groups = {choppy = 3, oddly_breakable_by_hand = 1, flammable = 2, tree = 1}, -- added tree
 	sounds = default.node_sound_leaves_defaults(),
 	after_dig_node = function(pos, node, metadata, digger)
 		default.dig_up(pos, node, digger)
@@ -304,9 +304,14 @@ minetest.register_node("ethereal:bamboo_sprout", {
 	paramtype = "light",
 	sunlight_propagates = true,
 	walkable = false,
-	buildable_to = true,
-	groups = {snappy = 3, flora = 1, attached_node = 1, flammable = 2},
-	sounds = default.node_sound_leaves_defaults(),
+	--buildable_to = true,
+	--groups = {snappy = 3, flora = 1, attached_node = 1, flammable = 2},
+	groups = {
+		snappy = 3, attached_node = 1, flammable = 2,
+		dig_immediate = 3, ethereal_sapling = 1
+	},
+	--sounds = default.node_sound_leaves_defaults(),
+	sounds = default.node_sound_defaults(),
 	selection_box = {
 		type = "fixed",
 		fixed = {-0.5, -0.5, -0.5, 0.5, -5/16, 0.5},
