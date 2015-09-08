@@ -102,7 +102,7 @@ function ethereal.add_moss(typ, descr, texture, receipe_item)
 		description = descr.." Moss",
 		tiles = {texture},
 		groups = {crumbly = 3},
-		sounds = default.node_sound_dirt_defaults
+		sounds = default.node_sound_dirt_defaults()
 	})
 
 	minetest.register_craft({
