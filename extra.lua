@@ -283,7 +283,7 @@ minetest.register_tool("ethereal:light_staff", {
 		if node then node = node.name else return end
 
 		if node == "default:stone" then
-			minetest.add_node(pos, {name="ethereal:glostone"})
+			minetest.set_node(pos, {name="ethereal:glostone"})
 			if not minetest.setting_getbool("creative_mode") then
 				itemstack:add_wear(65535 / 149) -- 150 uses
 			end
@@ -312,11 +312,11 @@ minetest.register_on_generated(function(minp, maxp)
 		bpos = {x = pos.x, y = pos.y + 1, z = pos.z }
 		if minetest.get_node(bpos).name == "air" then
 			if bpos.y > -3000 and bpos.y < -2000 then
-				minetest.add_node(bpos, {name = "ethereal:illumishroom3"})
+				minetest.set_node(bpos, {name = "ethereal:illumishroom3"})
 			elseif bpos.y > -2000 and bpos.y < -1000 then
-				minetest.add_node(bpos, {name = "ethereal:illumishroom2"})
+				minetest.set_node(bpos, {name = "ethereal:illumishroom2"})
 			elseif bpos.y > -1000 and bpos.y < -30 then
-				minetest.add_node(bpos, {name = "ethereal:illumishroom"})
+				minetest.set_node(bpos, {name = "ethereal:illumishroom"})
 			end
 		end
 	end

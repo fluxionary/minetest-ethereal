@@ -46,7 +46,7 @@ minetest.register_abm({
 	interval = 30,
 	chance = 10,
 	action = function(pos, node)
-		minetest.add_node(pos, {name = "default:mossycobble"})
+		minetest.set_node(pos, {name = "default:mossycobble"})
 	end
 })
 
@@ -87,11 +87,11 @@ minetest.register_abm({
 		or node.name == "default:snowblock"
 		or node.name == "ethereal:icebrick"
 		or node.name == "ethereal:snowbrick" then
-			minetest.add_node(pos, {name = "default:water_source"})
+			minetest.set_node(pos, {name = "default:water_source"})
 		elseif node.name == "default:snow" then
-			minetest.add_node(pos, {name = "default:water_flowing"})
+			minetest.set_node(pos, {name = "default:water_flowing"})
 		elseif node.name == "default:dirt_with_snow" then
-			minetest.add_node(pos, {name = "default:dirt_with_grass"})
+			minetest.set_node(pos, {name = "default:dirt_with_grass"})
 		end
 		nodeupdate(pos)
 	end,
@@ -104,7 +104,7 @@ minetest.register_abm({
 	interval = 15,
 	chance = 2,
 	action = function(pos, node, active_object_count, active_object_count_wider)
-		minetest.add_node(pos, {name = "default:dirt"})
+		minetest.set_node(pos, {name = "default:dirt"})
 	end,
 })
 
