@@ -17,7 +17,7 @@ ethereal.register_sapling = function(name, desc, texture)
 		},
 		groups = {
 			snappy = 2, dig_immediate = 3, flammable = 2,
-			ethereal_sapling = 1, attached_node = 1
+			ethereal_sapling = 1, sapling = 1, attached_node = 1
 		},
 		sounds = default.node_sound_defaults(),
 	})
