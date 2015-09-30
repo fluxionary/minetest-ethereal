@@ -316,6 +316,7 @@ minetest.register_node("ethereal:bamboo_sprout", {
 		type = "fixed",
 		fixed = {-0.5, -0.5, -0.5, 0.5, -5/16, 0.5},
 	},
+	on_use = minetest.item_eat(-2),
 })
 
 -- Wooden Bowl (for Mushroom Soup)
@@ -333,29 +334,14 @@ minetest.register_craft({
 	}
 })
 
--- Hearty Stew (Heals 4 hearts - thanks to ZonerDarkRevention for his DokuCraft DeviantArt bowl texture)
+-- Hearty Stew (Heals 5 hearts - thanks to ZonerDarkRevention for his DokuCraft DeviantArt bowl texture)
 minetest.register_craftitem("ethereal:hearty_stew", {
 	description = "Hearty Stew",
 	inventory_image = "hearty_stew.png",
-	on_use = minetest.item_eat(8, "ethereal:bowl"),
-})
-
--- Cooked Hearty Stew (Heals 5 hearts)
-minetest.register_craftitem("ethereal:hearty_stew_cooked", {
-	description = "Hearty Stew Cooked",
-	inventory_image = "hearty_stew_cooked.png",
 	on_use = minetest.item_eat(10, "ethereal:bowl"),
 })
 
--- Hearty Stew
-minetest.register_craft({
-	output = "ethereal:hearty_stew",
-	recipe = {
-		{"ethereal:wild_onion_plant","ethereal:mushroom_plant", "ethereal:bamboo_sprout"},
-		{"","ethereal:mushroom_plant", ""},
-		{"","ethereal:bowl", ""},
-	}
-})
+minetest.register_alias("ethereal:hearty_stew_cooked", "ethereal:hearty_stew")
 
 minetest.register_craft({
 	output = "ethereal:hearty_stew",
@@ -363,22 +349,6 @@ minetest.register_craft({
 		{"ethereal:wild_onion_plant","ethereal:mushroom_plant", "ethereal:fern_tubers"},
 		{"","ethereal:mushroom_plant", ""},
 		{"","ethereal:bowl", ""},
-	}
-})
-
--- Cooked Hearty Stew
-minetest.register_craft({
-	type = "cooking",
-	cooktime = 10,
-	output = "ethereal:hearty_stew_cooked",
-	recipe = "ethereal:hearty_stew"
-})
-
--- Mushroom Tops give 4x Mushrooms for Planting
-minetest.register_craft({
-	output = "ethereal:mushroom_craftingitem 4",
-	recipe = {
-		{"ethereal:mushroom"},
 	}
 })
 

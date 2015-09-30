@@ -12,7 +12,8 @@ Ethereal v7 Mapgen mod for Minetest
 - Added new Glacier biome filled with snow and ice
 - Changed Mesa biome to have more coloured clay patterns
 - Changed Bamboo biome to have tall tree-like stalks with leaves that give
-  bamboo sprouts to grow new stalks
+  Bamboo sprouts are now saplings to grow new stalks
+  removed farmed mushrooms and replaced with new default game mushrooms with spores
 
 ### 1.16
 

@@ -429,7 +429,7 @@ minetest.register_biome({
 	node_filler = "default:dirt",
 	depth_filler = 5,
 	y_min = 3,
-	y_max = 61,
+	y_max = 25, -- was 61
 	heat_point = 55,
 	humidity_point = 25,
 })
@@ -668,17 +668,6 @@ minetest.register_decoration({
 	height_max = 6,
 })
 
---[[ bamboo stalks
-minetest.register_decoration({
-	deco_type = "simple",
-	place_on = "ethereal:bamboo_dirt",
-	sidelen = 80,
-	fill_ratio = 0.05,
-	biomes = {"bamboo"},
-	decoration = "ethereal:bamboo",
-	height_max = 5,
-})--]]
-
 -- bamboo tree
 minetest.register_decoration({
 	deco_type = "schematic",
@@ -708,7 +697,6 @@ minetest.register_decoration({
 	sidelen = 80,
 	fill_ratio = 0.35,
 	biomes = {"bamboo"},
-	--decoration = {"ethereal:bamboo_sprout", "default:grass_2", "default:grass_3"},
 	decoration = {"default:grass_2", "default:grass_3"},
 })
 
@@ -804,14 +792,33 @@ minetest.register_decoration({
 	height_max = 4,
 })
 
--- wild mushroom
+-- wild mushrooms
 minetest.register_decoration({
 	deco_type = "simple",
 	place_on = "ethereal:mushroom_dirt",
 	sidelen = 80,
-	fill_ratio = 0.015,
+	fill_ratio = 0.01,
 	biomes = {"mushroom"},
-	decoration = "ethereal:mushroom_plant",
+	decoration = "flowers:mushroom_fertile_red",
+})
+
+minetest.register_decoration({
+	deco_type = "simple",
+	place_on = {"ethereal:green_dirt", "ethereal:jungle_dirt",
+		"ethereal:prairie_dirt", "ethereal:mushroom_dirt"},
+	sidelen = 16,
+	noise_params = {
+		offset = 0,
+		scale = 0.009,
+		spread = {x = 200, y = 200, z = 200},
+		seed = 2,
+		octaves = 3,
+		persist = 0.66
+	},
+	biomes = {"junglee", "grassy", "grassytwo", "prairie", "mushroom"},
+	y_min = 1,
+	y_max = 120,
+	decoration = {"flowers:mushroom_fertile_brown", "flowers:mushroom_fertile_red"},
 })
 
 -- jungle grass
@@ -968,4 +975,26 @@ minetest.register_decoration({
 	decoration = "farming:beanbush",
 })
 
+end
+
+-- is waterlily in game?
+if minetest.registered_nodes["flowers:waterlily"] then
+	minetest.register_decoration({
+		deco_type = "schematic",
+		place_on = {"default:sand", "default:dirt"},
+		sidelen = 16,
+		noise_params = {
+			offset = -0.12,
+			scale = 0.3,
+			spread = {x = 200, y = 200, z = 200},
+			seed = 33,
+			octaves = 3,
+			persist = 0.7
+		},
+		--biomes = {"junglee", "jumble", "grassy"},
+		y_min = 0,
+		y_max = 0,
+		schematic = minetest.get_modpath("flowers").."/schematics/waterlily.mts",
+		rotation = "random",
+	})
 end
