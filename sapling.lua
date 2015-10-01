@@ -31,7 +31,6 @@ ethereal.register_sapling("ethereal:pine_tree", "Pine", "ethereal_pine_tree")
 ethereal.register_sapling("ethereal:big_tree", "Big", "ethereal_big_tree")
 ethereal.register_sapling("ethereal:banana_tree", "Banana", "banana_tree")
 ethereal.register_sapling("ethereal:frost_tree", "Frost", "ethereal_frost_tree")
-ethereal.register_sapling("ethereal:gray_tree", "Gray", "ethereal_gray_tree")
 ethereal.register_sapling("ethereal:mushroom", "Mushroom", "ethereal_mushroom")
 ethereal.register_sapling("ethereal:palm", "Palm", "moretrees_palm")
 ethereal.register_sapling("ethereal:redwood", "Redwood", "redwood")
@@ -88,10 +87,6 @@ ethereal.grow_sapling = function (pos, node)
 	and under == "ethereal:crystal_dirt" then
 		ethereal.add_tree(pos, 4, 4, path .. "frosttrees.mts")
 
-	elseif node.name == "ethereal:gray_tree_sapling"
-	and under == "ethereal:gray_dirt" then
-		ethereal.add_tree(pos, 2, 2, path .. "graytrees.mts")
-
 	elseif node.name == "ethereal:mushroom_sapling"
 	and under == "ethereal:mushroom_dirt" then
 		ethereal.add_tree(pos, 4, 4, path .. "mushroomone.mts")
@@ -129,5 +124,20 @@ minetest.register_abm({
 	chance = 50,
 	action = function(pos, node)
 		ethereal.grow_sapling(pos, node)
+	end,
+})
+
+minetest.register_craftitem("ethereal:tree_tool", {
+	description = "Tree Tool",
+	inventory_image = "default_stick.png",
+	on_use = function(itemstack, user, pointed_thing)
+		if not pointed_thing
+		or pointed_thing.type ~= "node" then
+			return
+		end
+		local pos = pointed_thing.under
+		local nod = minetest.get_node_or_nil(pos)
+		if not nod then return end
+		ethereal.grow_sapling(pos, nod)
 	end,
 })
