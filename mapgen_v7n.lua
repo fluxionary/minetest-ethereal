@@ -758,7 +758,17 @@ minetest.register_decoration({
 	sidelen = 80,
 	fill_ratio = 0.20,
 	biomes = {"fiery"},
-	decoration = "ethereal:dry_shrub",
+	decoration = {"ethereal:dry_shrub"},
+})
+
+-- fire flower
+minetest.register_decoration({
+	deco_type = "simple",
+	place_on = "ethereal:fiery_dirt",
+	sidelen = 80,
+	fill_ratio = 0.02,
+	biomes = {"fiery"},
+	decoration = {"ethereal:fire_flower"},
 })
 
 -- snowy grass

@@ -1,3 +1,31 @@
+-- Fire Flower
+minetest.register_node("ethereal:fire_flower", {
+	description = "Fire Flower",
+	drawtype = "plantlike",
+	tiles = { "ethereal_fire_flower.png" },
+	inventory_image = "ethereal_fire_flower.png",
+	wield_image = "ethereal_fire_flower.png",
+	paramtype = "light",
+	light_source = 5,
+	sunlight_propagates = true,
+	walkable = false,
+	damage_per_second = 2,
+	groups = {snappy = 1, oddly_breakable_by_hand = 3, igniter = 2},
+	sounds = default.node_sound_leaves_defaults(),
+	selection_box = {
+		type = "fixed",
+		fixed = {-0.5, -0.5, -0.5, 0.5, -5/16, 0.5},
+	},
+	on_punch = function(pos, node, puncher)
+		--local item = puncher:get_wielded_item()
+		--local itemname = item:get_name()
+		puncher:punch(puncher, 1.0, {
+			full_punch_interval = 1.0,
+			damage_groups = {fleshy = 2}
+		}, nil)
+	end,
+})
+
 -- Fern (boston)
 minetest.register_node("ethereal:fern", {
 	description = "Fern",
