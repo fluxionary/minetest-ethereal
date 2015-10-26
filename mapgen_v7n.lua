@@ -985,6 +985,16 @@ minetest.register_decoration({
 	decoration = "farming:beanbush",
 })
 
+-- grape bushel
+minetest.register_decoration({
+	deco_type = "simple",
+	place_on = {"ethereal:green_dirt", "ethereal:prairie_dirt"},
+	sidelen = 80,
+	fill_ratio = 0.025,
+	biomes = {"grassytwo", "grassy", "prairie"},
+	decoration = "farming:grapebush",
+})
+
 end
 
 -- is waterlily in game?
