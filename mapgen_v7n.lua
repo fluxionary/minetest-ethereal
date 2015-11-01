@@ -430,6 +430,18 @@ minetest.register_biome({
 	depth_filler = 5,
 	y_min = 3,
 	y_max = 25, -- was 61
+	heat_point = 65,
+	humidity_point = 25,
+})
+
+minetest.register_biome({
+	name = "savannah",
+	node_top = "default:dirt_with_dry_grass",
+	depth_top = 1,
+	node_filler = "default:dirt",
+	depth_filler = 5,
+	y_min = 3,
+	y_max = 50,
 	heat_point = 55,
 	humidity_point = 25,
 })
@@ -636,10 +648,10 @@ minetest.register_decoration({
 -- acacia tree
 minetest.register_decoration({
 	deco_type = "schematic",
-	place_on = {"default:desert_sand"},
+	place_on = {"default:desert_sand", "default:dirt_with_dry_grass"},
 	sidelen = 80,
 	fill_ratio = 0.004,
-	biomes = {"desert"},
+	biomes = {"desert", "savannah"},
 	schematic = path.."acaciatree.mts",
 	flags = "place_center_x, place_center_z",
 })
@@ -711,6 +723,19 @@ minetest.register_decoration({
 	fill_ratio = 0.015,
 	biomes = {"plains", "lake", "desert", "desertstone", "mesa"},
 	decoration = "default:dry_shrub",
+})
+
+-- dry grass
+minetest.register_decoration({
+	deco_type = "simple",
+	place_on = {"default:dirt_with_dry_grass"},
+	sidelen = 80,
+	fill_ratio = 0.25,
+	biomes = {"savannah"},
+	decoration = {
+		"default:dry_grass_1", "default:dry_grass_2", "default:dry_grass_3",
+		"default:dry_grass_4", "default:dry_grass_5"
+	},
 })
 
 -- flowers & strawberry
