@@ -108,7 +108,7 @@ ethereal.grow_sapling = function (pos, node)
 		ethereal.add_tree(pos, 1, 1, ethereal.orangetree)
 
 	elseif node.name == "ethereal:acacia_sapling"
-	and under == "default:desert_sand" then
+	and under == "default:dirt_with_dry_grass" then
 		ethereal.add_tree(pos, 5, 5, path .. "acaciatree.mts")
 
 	elseif node.name == "ethereal:bamboo_sprout"
