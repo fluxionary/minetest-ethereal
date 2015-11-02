@@ -504,7 +504,7 @@ end
 -- redwood tree
 minetest.register_decoration({
 	deco_type = "schematic",
-	place_on = {"bakedclay:red"}, --"bakedclay:orange"},
+	place_on = {"bakedclay:red"},
 	sidelen = 80,
 	fill_ratio = 0.01,
 	biomes = {"mesa"},
@@ -648,11 +648,22 @@ minetest.register_decoration({
 -- acacia tree
 minetest.register_decoration({
 	deco_type = "schematic",
-	place_on = {"default:desert_sand", "default:dirt_with_dry_grass"},
+	place_on = {"default:dirt_with_dry_grass"},
 	sidelen = 80,
 	fill_ratio = 0.004,
-	biomes = {"desert", "savannah"},
+	biomes = {"savannah"},
 	schematic = path.."acaciatree.mts",
+	flags = "place_center_x, place_center_z",
+})
+
+-- big cactus
+minetest.register_decoration({
+	deco_type = "schematic",
+	place_on = {"default:desert_sand"},
+	sidelen = 80,
+	fill_ratio = 0.004,
+	biomes = {"desert"},
+	schematic = path.."large_cactus.mts",
 	flags = "place_center_x, place_center_z",
 })
 
