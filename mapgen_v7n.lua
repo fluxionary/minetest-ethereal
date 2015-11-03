@@ -11,7 +11,7 @@ dofile(path.."banana_tree.lua")
 dofile(path.."bamboo_tree.lua")
 dofile(path.."bush.lua")
 
---= Biomes (Minetest 0.4.12 and above)
+--= Biomes (Minetest 0.4.13 and above)
 
 if ethereal.glacier == 1 then
 	minetest.register_biome({
@@ -656,15 +656,25 @@ minetest.register_decoration({
 	flags = "place_center_x, place_center_z",
 })
 
--- big cactus
+-- large cactus (by Paramat)
 minetest.register_decoration({
 	deco_type = "schematic",
 	place_on = {"default:desert_sand"},
 	sidelen = 80,
-	fill_ratio = 0.004,
+	noise_params = {
+		offset = -0.0005,
+		scale = 0.0015,
+		spread = {x = 200, y = 200, z = 200},
+		seed = 230,
+		octaves = 3,
+		persist = 0.6
+	},
 	biomes = {"desert"},
+	y_min = 5,
+	y_max = 31000,
 	schematic = path.."large_cactus.mts",
-	flags = "place_center_x, place_center_z",
+	flags = "place_center_x", --, place_center_z",
+	rotation = "random",
 })
 
 -- big old tree
@@ -676,6 +686,23 @@ minetest.register_decoration({
 	biomes = {"grassytwo"},
 	schematic = path.."bigtree.mts",
 	flags = "place_center_x, place_center_z",
+})
+
+-- palm tree
+minetest.register_decoration({
+	deco_type = "schematic",
+	place_on = {"default:sand"},
+	sidelen = 80,
+	fill_ratio = 0.003,
+	biomes = {
+		"junglee_ocean", "desert_ocean", "plains_ocean", "sandclay",
+		"sandstone_ocean", "mesa_ocean", "grove_ocean", "lake",
+	},
+	y_min = 1,
+	y_max = 1,
+	schematic = path.."palmtree.mts",
+	flags = "place_center_x, place_center_z",
+	rotation = "random",
 })
 
 --= simple decorations
@@ -744,7 +771,7 @@ minetest.register_decoration({
 	fill_ratio = 0.25,
 	biomes = {"savannah"},
 	decoration = {
-		"default:dry_grass_1", "default:dry_grass_2", "default:dry_grass_3",
+		"default:dry_grass_2", "default:dry_grass_3",
 		"default:dry_grass_4", "default:dry_grass_5"
 	},
 })
@@ -936,39 +963,6 @@ minetest.register_decoration({
 	num_spawn_by = 1,
 })
 
--- palm tree on sand next to water
-minetest.register_on_generated(function(minp, maxp, seed)
-	local nn
-	if maxp.y > 1 and minp.y < 1 then
-		local perlin1 = minetest.get_perlin(354, 3, 0.7, 100)
-		local divlen = 8
-		local divs = (maxp.x - minp.x) / divlen + 1
-		local pr, x, z
-		for divx = 0, divs - 1 do
-		for divz = 0, divs - 1 do
-			-- find random positions for palm tree
-			pr = PseudoRandom(seed + 1)
-			x = pr:next(minp.x + math.floor((divx + 0) * divlen),
-				minp.x + math.floor((divx + 1) * divlen))
-			z = pr:next(minp.z + math.floor((divz + 0) * divlen),
-				minp.z + math.floor((divz + 1) * divlen))
-			nn = minetest.get_node_or_nil({x = x, y = 1, z = z})
-			-- only on sand and beside water
-			if nn and nn.name == "default:sand"
-			and minetest.find_node_near(
-				{x = x, y = 1, z = z}, 1,
-				"default:water_source") then
-				minetest.place_schematic({
-					x = x - 4,
-					y = 2,
-					z = z - 4
-				}, path .. "palmtree.mts", "random", {}, false)
-			end
-		end
-		end
-	end
-end)
-
 --= Farming Redo plants
 
 if farming.mod and farming.mod == "redo" then
@@ -1047,7 +1041,10 @@ if minetest.registered_nodes["flowers:waterlily"] then
 			octaves = 3,
 			persist = 0.7
 		},
-		--biomes = {"junglee", "jumble", "grassy"},
+		biomes = {
+			"junglee_ocean", "desert_ocean", "plains_ocean", "sandclay",
+			"sandstone_ocean", "mesa_ocean", "grove_ocean", "lake",
+		},
 		y_min = 0,
 		y_max = 0,
 		schematic = minetest.get_modpath("flowers").."/schematics/waterlily.mts",
