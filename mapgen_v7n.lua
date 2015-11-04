@@ -695,7 +695,7 @@ minetest.register_decoration({
 	sidelen = 80,
 	fill_ratio = 0.003,
 	biomes = {
-		"junglee_ocean", "desert_ocean", "plains_ocean", "sandclay",
+		"desert_ocean", "plains_ocean", "sandclay",
 		"sandstone_ocean", "mesa_ocean", "grove_ocean", "lake",
 	},
 	y_min = 1,
@@ -1042,7 +1042,7 @@ if minetest.registered_nodes["flowers:waterlily"] then
 			persist = 0.7
 		},
 		biomes = {
-			"junglee_ocean", "desert_ocean", "plains_ocean", "sandclay",
+			"desert_ocean", "plains_ocean", "sandclay",
 			"sandstone_ocean", "mesa_ocean", "grove_ocean", "lake",
 		},
 		y_min = 0,
