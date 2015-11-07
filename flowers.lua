@@ -4,6 +4,7 @@ minetest.register_abm({
 	neighbors = {"group:soil"},
 	interval = 50,
 	chance = 25,
+	catch_up = false,
 	action = function(pos, node)
 
 		local light = minetest.get_node_light(pos)

@@ -122,6 +122,7 @@ minetest.register_abm({
 	nodenames = {"group:ethereal_sapling"},
 	interval = 10,
 	chance = 50,
+	catch_up = false,
 	action = function(pos, node)
 		ethereal.grow_sapling(pos, node)
 	end,

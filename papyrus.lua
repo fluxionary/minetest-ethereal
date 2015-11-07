@@ -7,6 +7,7 @@ minetest.register_abm({
 	neighbors = {"group:soil"},
 	interval = 50,
 	chance = 20,
+	catch_up = false,
 	action = function(pos, node)
 
 		local oripos = pos.y

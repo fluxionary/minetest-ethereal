@@ -68,6 +68,7 @@ minetest.register_abm({
 	nodenames = {"default:dirt_with_grass"},
 	interval = 5,
 	chance = 2,
+	catch_up = false,
 	action = function(pos, node)
 		local count_grasses = {}
 		local curr_max  = 0
@@ -98,6 +99,7 @@ minetest.register_abm({
 	nodenames = {"group:ethereal_grass"},
 	interval = 2,
 	chance = 20,
+	catch_up = false,
 	action = function(pos, node)
 		local name = minetest.get_node({x = pos.x, y  =pos.y + 1, z = pos.z}).name
 		local nodedef = minetest.registered_nodes[name]

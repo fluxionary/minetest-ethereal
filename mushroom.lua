@@ -104,6 +104,7 @@ minetest.register_abm({
 	nodenames = {"flowers:mushroom_spores_brown", "flowers:mushroom_spores_red"},
 	interval = 11,
 	chance = 50,
+	catch_up = false,
 	action = function(pos, node)
 		local node_under = minetest.get_node_or_nil({x = pos.x,
 			y = pos.y - 1, z = pos.z})

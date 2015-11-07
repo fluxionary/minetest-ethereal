@@ -45,6 +45,7 @@ minetest.register_abm({
 	neighbors={"group:water"},
 	interval = 30,
 	chance = 10,
+	catch_up = false,
 	action = function(pos, node)
 		minetest.set_node(pos, {name = "default:mossycobble"})
 	end
@@ -59,6 +60,7 @@ minetest.register_abm({
 	neighbors = {"default:water_source", "default:river_water_source"},
 	interval = 15,
 	chance = 2,
+	catch_up = false,
 	action = function(pos, node)
 		local water = minetest.find_nodes_in_area(
 			{x = pos.x - 1, y = pos.y - 1, z = pos.z - 1},
@@ -82,6 +84,7 @@ minetest.register_abm({
 	},
 	interval = 5,
 	chance = 2,
+	catch_up = false,
 	action = function(pos, node, active_object_count, active_object_count_wider)
 		if node.name == "default:ice"
 		or node.name == "default:snowblock"
@@ -103,6 +106,7 @@ minetest.register_abm({
 	neighbors = {"group:water"},
 	interval = 15,
 	chance = 2,
+	catch_up = false,
 	action = function(pos, node, active_object_count, active_object_count_wider)
 		minetest.set_node(pos, {name = "default:dirt"})
 	end,
@@ -114,6 +118,7 @@ minetest.register_abm({
 	neighbors = {"group:water"},
 	interval = 5,
 	chance = 1,
+	catch_up = false,
 	action = function(pos, node)
 		local num = #minetest.find_nodes_in_area(
 			{x = pos.x - 1, y = pos.y, z = pos.z},

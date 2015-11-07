@@ -197,6 +197,7 @@ minetest.register_abm({
 	neighbors = {"farming:soil_wet"},
 	interval = 50,
 	chance = 3,
+	catch_up = false,
 	action = function(pos, node)
 		-- return if already full grown
 		if minetest.get_item_group(node.name, "strawberry") == 8 then

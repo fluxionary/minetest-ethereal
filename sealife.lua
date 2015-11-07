@@ -144,7 +144,7 @@ minetest.register_abm({
 	neighbors = {"group:water"},
 	interval = 15,
 	chance = 10,
-
+	catch_up = false,
 	action = function(pos, node)
 
 		local sel = math.random(1,5)
