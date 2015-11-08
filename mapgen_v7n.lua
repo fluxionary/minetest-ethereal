@@ -504,7 +504,7 @@ end
 -- redwood tree
 minetest.register_decoration({
 	deco_type = "schematic",
-	place_on = {"bakedclay:red", "bakedclay:orange", "bakedclay:grey"},
+	place_on = {"bakedclay:red", "bakedclay:orange"},
 	sidelen = 80,
 	fill_ratio = 0.01,
 	biomes = {"mesa"},
