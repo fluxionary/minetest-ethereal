@@ -94,6 +94,11 @@ minetest.register_abm({
 	end
 })
 
+-- make dirt with dry grass spreads like ethereal grasses
+minetest.override_item("default:dirt_with_dry_grass", {
+	groups = {crumbly = 3, soil = 1, ethereal_grass = 1},
+})
+
 -- if grass devoid of light, change to dirt
 minetest.register_abm({
 	nodenames = {"group:ethereal_grass"},
@@ -101,11 +106,15 @@ minetest.register_abm({
 	chance = 20,
 	catch_up = false,
 	action = function(pos, node)
-		local name = minetest.get_node({x = pos.x, y  =pos.y + 1, z = pos.z}).name
+		local name = minetest.get_node({
+			x = pos.x,
+			y = pos.y + 1,
+			z = pos.z
+		}).name
 		local nodedef = minetest.registered_nodes[name]
-		if name ~= "ignore" and nodedef
-		and not ((nodedef.sunlight_propagates or nodedef.paramtype == "light")
-		and nodedef.liquidtype == "none") then
+		if name ~= "ignore" and nodedef and not ((nodedef.sunlight_propagates or
+				nodedef.paramtype == "light") and
+				nodedef.liquidtype == "none") then
 			minetest.set_node(pos, {name = "default:dirt"})
 		end
 	end
