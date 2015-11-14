@@ -9,6 +9,7 @@ dofile(path.."apple_tree.lua")
 dofile(path.."orange_tree.lua")
 dofile(path.."banana_tree.lua")
 dofile(path.."bamboo_tree.lua")
+dofile(path.."birch_tree.lua")
 dofile(path.."bush.lua")
 
 --= Biomes (Minetest 0.4.13 and above)
@@ -26,20 +27,20 @@ if ethereal.glacier == 1 then
 		depth_water_top = 10,
 		y_min = -8,
 		y_max = 31000,
-		heat_point = -5,
+		heat_point = 0,
 		humidity_point = 50,
 	})
 
 	minetest.register_biome({
 		name = "glacier_ocean",
-		node_dust = "default:sand", -- was snowblock
-		node_top = "default:gravel",
+		node_dust = "default:snowblock",
+		node_top = "default:sand",
 		depth_top = 1,
-		node_filler = "default:gravel",
-		depth_filler = 2,
+		node_filler = "default:sand",
+		depth_filler = 3,
 		y_min = -112,
 		y_max = -9,
-		heat_point = -5,
+		heat_point = 0,
 		humidity_point = 50,
 	})
 end
@@ -624,13 +625,25 @@ minetest.register_decoration({
 	flags = "place_center_x, place_center_z",
 })
 
+-- big old tree
+minetest.register_decoration({
+	deco_type = "schematic",
+	place_on = "ethereal:green_dirt",
+	sidelen = 80,
+	fill_ratio = 0.005,
+	biomes = {"jumble"},
+	schematic = path.."bigtree.mts",
+	flags = "place_center_x, place_center_z",
+})
+
+-- birch tree (was apple)
 minetest.register_decoration({
 	deco_type = "schematic",
 	place_on = {"ethereal:green_dirt"},
 	sidelen = 80,
-	fill_ratio = 0.005,
+	fill_ratio = 0.03,
 	biomes = {"grassytwo"},
-	schematic = ethereal.appletree,
+	schematic = ethereal.birchtree,
 	flags = "place_center_x, place_center_z",
 })
 
@@ -639,7 +652,7 @@ minetest.register_decoration({
 	deco_type = "schematic",
 	place_on = {"ethereal:prairie_dirt"},
 	sidelen = 80,
-	fill_ratio = 0.005,
+	fill_ratio = 0.01,
 	biomes = {"prairie"},
 	schematic = ethereal.orangetree,
 	flags = "place_center_x, place_center_z",
@@ -675,17 +688,6 @@ minetest.register_decoration({
 	schematic = path.."large_cactus.mts",
 	flags = "place_center_x", --, place_center_z",
 	rotation = "random",
-})
-
--- big old tree
-minetest.register_decoration({
-	deco_type = "schematic",
-	place_on = "ethereal:green_dirt",
-	sidelen = 80,
-	fill_ratio = 0.01,
-	biomes = {"grassytwo"},
-	schematic = path.."bigtree.mts",
-	flags = "place_center_x, place_center_z",
 })
 
 -- palm tree

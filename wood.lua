@@ -238,3 +238,31 @@ minetest.register_node("ethereal:mushroom_trunk", {
 	paramtype2 = "facedir",
 	on_place = minetest.rotate_node,
 })
+
+-- Birch Trunk (thanks to VanessaE for birch textures)
+minetest.register_node("ethereal:birch_trunk", {
+	description = "Birch Trunk",
+	tiles = {
+		"moretrees_birch_trunk_top.png",
+		"moretrees_birch_trunk_top.png",
+		"moretrees_birch_trunk.png"
+	},
+	groups = {tree = 1, choppy = 2, oddly_breakable_by_hand = 1, flammable = 2},
+	sounds = default.node_sound_wood_defaults(),
+	paramtype2 = "facedir",
+	on_place = minetest.rotate_node,
+})
+
+-- Birch Wood
+minetest.register_node("ethereal:birch_wood", {
+	description = "Birch Wood",
+	tiles = {"moretrees_birch_wood.png"},
+	is_ground_content = false,
+	groups = {wood = 1, choppy = 2, oddly_breakable_by_hand = 1, flammable = 3},
+	sounds = default.node_sound_wood_defaults(),
+})
+
+minetest.register_craft({
+	output = "ethereal:birch_wood 4",
+	recipe = {{"ethereal:birch_trunk"}}
+})

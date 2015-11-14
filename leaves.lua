@@ -106,7 +106,7 @@ minetest.override_item("default:leaves", {
 	},
 })
 
--- Default Orange Tree Leaves
+-- Orange Tree Leaves
 minetest.register_node("ethereal:orange_leaves", {
 	description = "Orange Leaves",
 	drawtype = leaftype,
@@ -143,7 +143,7 @@ minetest.override_item("default:jungleleaves", {
 	},
 })
 
--- Default Banana Tree Leaves
+-- Banana Tree Leaves
 minetest.register_node("ethereal:bananaleaves", {
 	description = "Banana Leaves",
 	drawtype = leaftype,
@@ -206,6 +206,28 @@ minetest.register_node("ethereal:palmleaves", {
 		items = {
 			{items = {"ethereal:palm_sapling"}, rarity = 20},
 			{items = {"ethereal:palmleaves"}}
+		}
+	},
+	sounds = default.node_sound_leaves_defaults(),
+	after_place_node = default.after_place_leaves,
+})
+
+-- Birch Tree Leaves
+minetest.register_node("ethereal:birch_leaves", {
+	description = "Birch Leaves",
+	drawtype = leaftype,
+	visual_scale = 1.2,
+	tiles = {"moretrees_birch_leaves.png"},
+	inventory_image = "moretrees_birch_leaves.png",
+	paramtype = "light",
+	walkable = false,
+	waving = 1,
+	groups = {snappy = 3, leafdecay = 3, leaves = 1, flammable = 2},
+	drop = {
+		max_items = 1,
+		items = {
+			{items = {"ethereal:birch_sapling"}, rarity = 20},
+			{items = {"ethereal:birch_leaves"}}
 		}
 	},
 	sounds = default.node_sound_leaves_defaults(),

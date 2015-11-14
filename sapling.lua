@@ -36,6 +36,7 @@ ethereal.register_sapling("ethereal:palm", "Palm", "moretrees_palm")
 ethereal.register_sapling("ethereal:redwood", "Redwood", "redwood")
 ethereal.register_sapling("ethereal:orange_tree", "Orange", "orange_tree")
 ethereal.register_sapling("ethereal:acacia", "Acacia", "moretrees_acacia")
+ethereal.register_sapling("ethereal:birch", "Birch", "moretrees_birch")
 
 ethereal.add_tree = function (pos, ofx, ofz, schem)
 	-- check for schematic
@@ -114,6 +115,11 @@ ethereal.grow_sapling = function (pos, node)
 	elseif node.name == "ethereal:bamboo_sprout"
 	and under == "ethereal:bamboo_dirt" then
 		ethereal.add_tree(pos, 1, 1, ethereal.bambootree)
+
+	elseif node.name == "ethereal:birch_sapling"
+	and under == "ethereal:green_dirt" then
+		ethereal.add_tree(pos, 2, 2, ethereal.birchtree)
+
 	end
 end
 

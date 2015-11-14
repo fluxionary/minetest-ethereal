@@ -66,6 +66,13 @@ stairs.register_stair_and_slab("palm_wood", "ethereal:palm_wood",
 	"Palm Wood Slab",
 	default.node_sound_wood_defaults())
 
+stairs.register_stair_and_slab("birch_wood", "ethereal:birch_wood",
+	{choppy = 2, oddly_breakable_by_hand = 1, flammable = 3, not_in_craft_guide = 1},
+	{"moretrees_birch_wood.png"},
+	"Birch Wood Stair",
+	"Birch Wood Slab",
+	default.node_sound_wood_defaults())
+
 stairs.register_stair_and_slab("banana_wood", "ethereal:banana_wood",
 	{choppy = 2, oddly_breakable_by_hand = 1, flammable = 3, not_in_craft_guide = 1},
 	{"banana_wood.png"},

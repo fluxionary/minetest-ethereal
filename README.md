@@ -7,13 +7,21 @@ Ethereal v7 Mapgen mod for Minetest
 
 ## Changelog
 
+### 1.18
+
+- Added Birch tree, also stairs; fence and gate
+- Added Fire flower to fiery biomes (careful, it hurts)
+- Tweaked biomes and decoration slightly
+- Added tree_tool for admin to quickly grow tree's
+- Cobble to Mossycobble when near water has been toned down a bit
+
 ### 1.17
 
 - Added new Glacier biome filled with snow and ice
 - Changed Mesa biome to have more coloured clay patterns
 - Changed Bamboo biome to have tall tree-like stalks with leaves that give
-  Bamboo sprouts are now saplings to grow new stalks
-  removed farmed mushrooms and replaced with new default game mushrooms with spores
+- Bamboo sprouts are now saplings to grow new stalks
+- Removed farmed mushrooms and replaced with default game mushrooms with spores
 
 ### 1.16
 

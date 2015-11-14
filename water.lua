@@ -42,9 +42,9 @@ minetest.register_craft({
 -- Over time Cobble placed in water changes to Mossy Cobble
 minetest.register_abm({
 	nodenames = {"default:cobble"},
-	neighbors={"group:water"},
-	interval = 30,
-	chance = 10,
+	neighbors = {"group:water"},
+	interval = 17,
+	chance = 100,
 	catch_up = false,
 	action = function(pos, node)
 		minetest.set_node(pos, {name = "default:mossycobble"})
@@ -59,7 +59,7 @@ minetest.register_abm({
 	},
 	neighbors = {"default:water_source", "default:river_water_source"},
 	interval = 15,
-	chance = 2,
+	chance = 4,
 	catch_up = false,
 	action = function(pos, node)
 		local water = minetest.find_nodes_in_area(
@@ -83,7 +83,7 @@ minetest.register_abm({
 		"default:furnace_active", "default:torch"
 	},
 	interval = 5,
-	chance = 2,
+	chance = 4,
 	catch_up = false,
 	action = function(pos, node, active_object_count, active_object_count_wider)
 		if node.name == "default:ice"
