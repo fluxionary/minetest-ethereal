@@ -62,7 +62,7 @@ minetest.register_abm({
 	chance = 4,
 	catch_up = false,
 	action = function(pos, node)
-		local water = minetest.find_nodes_in_area(
+		local water = minetest.find_nodes_in_area_under_air(
 			{x = pos.x - 1, y = pos.y - 1, z = pos.z - 1},
 			{x = pos.x + 1, y = pos.y + 1, z = pos.z + 1},
 			{"default:water_source", "default:river_water_source"})

@@ -16,10 +16,10 @@ minetest.register_abm({
 		local pos0 = {x = pos.x - 4, y = pos.y - 2, z = pos.z - 4}
 		local pos1 = {x = pos.x + 4, y = pos.y + 2, z = pos.z + 4}
 
-		if #minetest.find_nodes_in_area(pos0, pos1, "group:flora") > 3 then
+		if #minetest.find_nodes_in_area_under_air(pos0, pos1, "group:flora") > 3 then
 
-			local grass = minetest.find_nodes_in_area(pos0, pos1, {"ethereal:crystalgrass"})
-			local crystal = minetest.find_nodes_in_area(pos0, pos1, {"ethereal:crystal_spike"})
+			local grass = minetest.find_nodes_in_area_under_air(pos0, pos1, {"ethereal:crystalgrass"})
+			local crystal = minetest.find_nodes_in_area_under_air(pos0, pos1, {"ethereal:crystal_spike"})
 
 			if #grass > 6 and #crystal < 1 then
 				grass = grass[math.random(#grass)]
@@ -33,7 +33,7 @@ minetest.register_abm({
 			return
 		end
 
-		local seedling = minetest.find_nodes_in_area(pos0, pos1, {"group:soil"})
+		local seedling = minetest.find_nodes_in_area_under_air(pos0, pos1, {"group:soil"})
 
 		if #seedling > 0 then
 			seedling = seedling[math.random(#seedling)]

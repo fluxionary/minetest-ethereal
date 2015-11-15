@@ -73,7 +73,7 @@ minetest.register_abm({
 		local count_grasses = {}
 		local curr_max  = 0
 		local curr_type = "ethereal:green_dirt" -- fallback
-		local positions = minetest.find_nodes_in_area(
+		local positions = minetest.find_nodes_in_area_under_air(
 			{x = (pos.x - 2), y = (pos.y - 1), z = (pos.z - 2)},
 			{x = (pos.x + 2), y = (pos.y + 1), z = (pos.z + 2)},
 			"group:ethereal_grass")
