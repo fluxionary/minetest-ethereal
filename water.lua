@@ -66,7 +66,8 @@ minetest.register_abm({
 			{x = pos.x - 1, y = pos.y - 1, z = pos.z - 1},
 			{x = pos.x + 1, y = pos.y + 1, z = pos.z + 1},
 			{"default:water_source", "default:river_water_source"})
-		if water then
+
+		if water and #water > 0 then
 			minetest.set_node(water[1], {name = "default:ice"})
 		end
 	end,
