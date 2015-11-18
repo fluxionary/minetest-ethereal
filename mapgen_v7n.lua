@@ -11,6 +11,7 @@ dofile(path.."banana_tree.lua")
 dofile(path.."bamboo_tree.lua")
 dofile(path.."birch_tree.lua")
 dofile(path.."bush.lua")
+dofile(path.."waterlily.lua")
 
 --= Biomes (Minetest 0.4.13 and above)
 
@@ -1033,7 +1034,7 @@ end
 if minetest.registered_nodes["flowers:waterlily"] then
 	minetest.register_decoration({
 		deco_type = "schematic",
-		place_on = {"default:sand", "default:dirt"},
+		place_on = {"default:sand"},
 		sidelen = 16,
 		noise_params = {
 			offset = -0.12,
@@ -1049,7 +1050,7 @@ if minetest.registered_nodes["flowers:waterlily"] then
 		},
 		y_min = 0,
 		y_max = 0,
-		schematic = minetest.get_modpath("flowers").."/schematics/waterlily.mts",
+		schematic = ethereal.waterlily,
 		rotation = "random",
 	})
 end
