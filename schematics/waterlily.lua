@@ -15,3 +15,7 @@ ethereal.waterlily = {
 
 	},
 }
+
+minetest.override_item("flowers:waterlily", {
+	walkable = true,
+})
