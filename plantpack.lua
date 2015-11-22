@@ -9,7 +9,7 @@ minetest.register_decoration({
 	place_on = {"default:desert_sand", "default:sandstone"},
 	sidelen = 16,
 	fill_ratio = 0.005,
-	biomes = {"desert", "desertstone"},
+	biomes = {"desert", "sandstone"},
 	decoration = {
 		"bakedclay:cactus_echinocereus", "bakedclay:cactus_matucana",
 		"bakedclay:cactus_baseball", "bakedclay:cactus_golden"
@@ -22,7 +22,7 @@ minetest.register_decoration({
 	place_on = {"default:desert_sand", "default:sandstone", "default:sand"},
 	sidelen = 16,
 	fill_ratio = 0.004,
-	biomes = {"desert", "desertstone"},
+	biomes = {"desert", "sandstone"},
 	decoration = {
 		"bakedclay:desert_kangaroo", "bakedclay:desert_brittle",
 		"bakedclay:desert_ocotillo", "bakedclay:desert_whitesage"

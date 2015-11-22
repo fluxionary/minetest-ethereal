@@ -7,6 +7,12 @@ Ethereal v7 Mapgen mod for Minetest
 
 ## Changelog
 
+### 1.19
+
+- Added new biome routine to help restructure biomes
+- Tweaked biome values so that they are more spread out (no more huge bamboo biome)
+- Tweaked biome plant and tree decorations
+
 ### 1.18
 
 - Added Birch tree, also stairs; fence and gate

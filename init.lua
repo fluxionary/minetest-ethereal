@@ -1,6 +1,6 @@
 --[[
 
-	Minetest Ethereal Mod 1.18 (14th November 2015)
+	Minetest Ethereal Mod 1.19 (22th November 2015)
 
 	Created by ChinChow
 
@@ -31,8 +31,8 @@ ethereal.grove     = 1 -- Banana groves and ferns
 ethereal.mushroom  = 1 -- Purple grass with giant mushrooms
 ethereal.sandstone = 1 -- Sandstone with smaller cactus
 ethereal.quicksand = 1 -- Quicksand banks
-ethereal.lake      = 1 -- Small sandy lake areas with gravel below, also used for ocean floor
 ethereal.plains    = 1 -- Dry dirt with scorched trees
+ethereal.savannah  = 1 -- Dry yellow grass with acacia tree's
 ethereal.fiery     = 1 -- Red grass with lava craters
 ethereal.sandclay  = 1 -- Sand areas with clay underneath
 
@@ -55,7 +55,7 @@ dofile(path.."/extra.lua")
 dofile(path.."/sealife.lua")
 dofile(path.."/fences.lua")
 dofile(path.."/gates.lua")
-dofile(path.."/mapgen_v7n.lua") -- 0.4.12+
+dofile(path.."/mapgen_v7n.lua") -- 0.4.13+
 
 if minetest.get_modpath("xanadu") then
 	dofile(path.."/plantpack.lua")

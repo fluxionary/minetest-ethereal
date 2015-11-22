@@ -2,101 +2,7 @@
 minetest.clear_registered_biomes()
 minetest.clear_registered_decorations()
 
-local path = minetest.get_modpath("ethereal").."/schematics/"
-
--- tree schematics
-dofile(path.."apple_tree.lua")
-dofile(path.."orange_tree.lua")
-dofile(path.."banana_tree.lua")
-dofile(path.."bamboo_tree.lua")
-dofile(path.."birch_tree.lua")
-dofile(path.."bush.lua")
-dofile(path.."waterlily.lua")
-
---= Biomes (Minetest 0.4.13 and above)
-
-if ethereal.glacier == 1 then
-	minetest.register_biome({
-		name = "glacier",
-		node_dust = "default:snowblock",
-		node_top = "default:snowblock",
-		depth_top = 1,
-		node_filler = "default:snowblock",
-		depth_filler = 3,
-		node_stone = "default:ice",
-		node_water_top = "default:ice",
-		depth_water_top = 10,
-		y_min = -8,
-		y_max = 31000,
-		heat_point = 0,
-		humidity_point = 50,
-	})
-
-	minetest.register_biome({
-		name = "glacier_ocean",
-		node_dust = "default:snowblock",
-		node_top = "default:sand",
-		depth_top = 1,
-		node_filler = "default:sand",
-		depth_filler = 3,
-		y_min = -112,
-		y_max = -9,
-		heat_point = 0,
-		humidity_point = 50,
-	})
-end
-
-if ethereal.bamboo == 1 then
-minetest.register_biome({
-	name = "bamboo",
-	node_top = "ethereal:bamboo_dirt",
-	depth_top = 1,
-	node_filler = "default:dirt",
-	depth_filler = 5,
-	y_min = 3,
-	y_max = 71,
-	heat_point = 45,
-	humidity_point = 75,
-})
-
-minetest.register_biome({
-	name = "bamboo_ocean",
-	node_top = "default:sand",
-	depth_top = 1,
-	node_filler = "default:sand",
-	depth_filler = 2,
-	y_min = -192,
-	y_max = 2,
-	heat_point = 45,
-	humidity_point = 75,
-})
-end
-
-if ethereal.mesa == 1 then
-minetest.register_biome({
-	name = "mesa",
-	node_top = "bakedclay:orange",
-	depth_top = 1,
-	node_filler = "bakedclay:orange",
-	depth_filler = 15,
-	y_min = 1,
-	y_max = 71,
-	heat_point = 25,
-	humidity_point = 28,
-})
-
-minetest.register_biome({
-	name = "mesa_ocean",
-	node_top = "default:sand",
-	depth_top = 1,
-	node_filler = "default:sand",
-	depth_filler = 2,
-	y_min = -192,
-	y_max = 1,
-	heat_point = 25,
-	humidity_point = 28,
-})
-
+-- register ore's
 minetest.register_ore({
 	ore_type         = "blob",
 	ore              = "bakedclay:red",
@@ -135,378 +41,168 @@ minetest.register_ore({
 	},
 })
 
+local path = minetest.get_modpath("ethereal").."/schematics/"
+
+-- tree schematics
+dofile(path.."apple_tree.lua")
+dofile(path.."orange_tree.lua")
+dofile(path.."banana_tree.lua")
+dofile(path.."bamboo_tree.lua")
+dofile(path.."birch_tree.lua")
+dofile(path.."bush.lua")
+dofile(path.."waterlily.lua")
+
+--= Biomes (Minetest 0.4.13 and above)
+
+local add_biome = function(a, b, c, d, e, f, g, h, i, j, k, l, m, n, o, p)
+
+	if p ~= 1 then return end
+
+	minetest.register_biome({
+		name = a,
+		node_dust = b,
+		node_top = c,
+		depth_top = d,
+		node_filler = e,
+		depth_filler = f,
+		node_stone = g,
+		node_water_top = h,
+		depth_water_top = i,
+		node_water = j,
+		node_river_water = k,
+		y_min = l,
+		y_max = m,
+		heat_point = n,
+		humidity_point = o,
+	})
 end
 
-if ethereal.alpine == 1 then
-minetest.register_biome({
-	name = "alpine",
-	node_top = "default:dirt_with_snow",
-	depth_top = 1,
-	node_filler = "default:dirt",
-	depth_filler = 2,
-	y_min = 40,
-	y_max = 140,
-	heat_point = 10,
-	humidity_point = 40,
-})
-end
+add_biome("underground", nil, nil, nil, nil, nil, nil, nil, nil, nil, nil,
+	-31000, -192, 50, 50, 1)
 
-if ethereal.snowy == 1 then
-minetest.register_biome({
-	name = "snowy",
-	node_top = "ethereal:cold_dirt",
-	depth_top = 1,
-	node_filler = "default:dirt",
-	depth_filler = 2,
-	y_min = 5,
-	y_max = 40,
-	heat_point = 10,
-	humidity_point = 40,
-})
-end
+add_biome("desert", nil, "default:desert_sand", 1, "default:desert_sand", 3,
+	"default:desert_stone", nil, nil, nil, nil, 3, 23, 35, 20, ethereal.desert)
 
-if ethereal.frost == 1 then
-minetest.register_biome({
-	name = "frost",
-	node_top = "ethereal:crystal_dirt",
-	depth_top = 1,
-	node_filler = "default:dirt",
-	depth_filler = 5,
-	y_min = 1,
-	y_max = 71,
-	heat_point = 10,
-	humidity_point = 40,
-})
-end
+add_biome("desert_ocean", nil, "default:sand", 1, "default:sand", 2,
+	"default:desert_stone", nil, nil, nil, nil, -192, 3, 35, 20, ethereal.desert)
 
-if ethereal.grassy == 1 then
-minetest.register_biome({
-	name = "grassy",
-	node_top = "ethereal:green_dirt",
-	depth_top = 1,
-	node_filler = "default:dirt",
-	depth_filler = 5,
-	y_min = 1,
-	y_max = 91,
-	heat_point = 13,
-	humidity_point = 40,
-})
-end
+add_biome("glacier", "default:snowblock", "default:snowblock", 1,
+	"default:snowblock", 3, "default:ice", "default:ice", 10, -8, 31000, 0, 50, ethereal.glacier)
 
-if ethereal.caves == 1 then
-minetest.register_biome({
-	name = "caves",
-	node_top = "default:desert_stone",
-	depth_top = 3,
-	node_filler = "air",
-	depth_filler = 8,
-	y_min = 4,
-	y_max = 41,
-	heat_point = 15,
-	humidity_point = 25,
-})
-end
+add_biome("glacier_ocean", "default:snowblock", "default:sand", 1, "default:sand", 3,
+	nil, nil, nil, nil, nil, -112, -9, 0, 50, ethereal.glacier)
 
-if ethereal.grayness == 1 then
-minetest.register_biome({
-	name = "grayness",
-	node_top = "ethereal:gray_dirt",
-	depth_top = 1,
-	node_filler = "default:dirt",
-	depth_filler = 5,
-	y_min = 2,
-	y_max = 41,
-	heat_point = 15,
-	humidity_point = 30,
-})
+add_biome("bamboo", nil, "ethereal:bamboo_dirt", 1, "default:dirt", 3,
+	nil, nil, nil, nil, nil, 3, 71, 45, 75, ethereal.bamboo)
 
-minetest.register_biome({
-	name = "grayness_ocean",
-	node_top = "default:sand",
-	depth_top = 1,
-	node_filler = "default:sand",
-	depth_filler = 2,
-	y_min = -192,
-	y_max = 1,
-	heat_point = 15,
-	humidity_point = 30,
-})
-end
+add_biome("bamboo_ocean", nil, "default:sand", 1, "default:sand", 2,
+	nil, nil, nil, nil, nil, -192, 2, 45, 75, ethereal.bamboo)
 
-if ethereal.grassytwo == 1 then
-minetest.register_biome({
-	name = "grassytwo",
-	node_top = "ethereal:green_dirt",
-	depth_top = 1,
-	node_filler = "default:dirt",
-	depth_filler = 5,
-	y_min = 1,
-	y_max = 91,
-	heat_point = 15,
-	humidity_point = 40,
-})
-end
+add_biome("mesa", nil, "bakedclay:orange", 1, "bakedclay:orange", 15,
+	nil, nil, nil, nil, nil, 1, 71, 25, 28, ethereal.mesa)
 
-if ethereal.prairie == 1 then
-minetest.register_biome({
-	name = "prairie",
-	node_top = "ethereal:prairie_dirt",
-	depth_top = 1,
-	node_filler = "default:dirt",
-	depth_filler = 5,
-	y_min = 3,
-	y_max = 26,
-	heat_point = 20,
-	humidity_point = 40,
-})
-end
+add_biome("mesa_ocean", nil, "default:sand", 1, "default:sand", 2,
+	nil, nil, nil, nil, nil, -192, 1, 25, 28, ethereal.mesa)
 
-if ethereal.jumble == 1 then
-minetest.register_biome({
-	name = "jumble",
-	node_top = "ethereal:green_dirt",
-	depth_top = 1,
-	node_filler = "default:dirt",
-	depth_filler = 5,
-	y_min = 1,
-	y_max = 71,
-	heat_point = 25,
-	humidity_point = 50,
-})
-end
+add_biome("alpine", nil, "default:dirt_with_snow", 1, "default:dirt", 2,
+	nil, nil, nil, nil, nil, 40, 140, 10, 40, ethereal.alpine)
 
-if ethereal.junglee == 1 then
-minetest.register_biome({
-	name = "junglee",
-	node_top = "ethereal:jungle_dirt",
-	depth_top = 1,
-	node_filler = "default:dirt",
-	depth_filler = 5,
-	y_min = 1,
-	y_max = 71,
-	heat_point = 30,
-	humidity_point = 60,
-})
-end
+add_biome("snowy", nil, "ethereal:cold_dirt", 1, "default:dirt", 2,
+	nil, nil, nil, nil, nil, 4, 40, 10, 40, ethereal.snowy)
 
-if ethereal.desert ==1 then
-minetest.register_biome({
-	name = "desert",
-	node_top = "default:desert_sand",
-	depth_top = 5,
-	node_filler = "default:desert_stone",
-	depth_filler = 70,
-	y_min = 3,
-	y_max = 23,
-	heat_point = 35,
-	humidity_point = 20,
-})
+add_biome("frost", nil, "ethereal:crystal_dirt", 1, "default:dirt", 3,
+	nil, nil, nil, nil, nil, 1, 71, 10, 40, ethereal.frost)
 
-minetest.register_biome({
-	name = "desert_ocean",
-	node_top = "default:sand",
-	depth_top = 1,
-	node_filler = "default:sand",
-	depth_filler = 2,
-	y_min = -192,
-	y_max = 2,
-	heat_point = 35,
-	humidity_point = 20,
-})
-end
+add_biome("frost_ocean", nil, "default:sand", 1, "default:sand", 2,
+	nil, nil, nil, nil, nil, -192, 1, 10, 40, ethereal.frost)
 
-if ethereal.grove == 1 then
-minetest.register_biome({
-	name = "grove",
-	node_top = "ethereal:grove_dirt",
-	depth_top = 1,
-	node_filler = "default:dirt",
-	depth_filler= 5,
-	y_min = 3,
-	y_max = 23,
-	heat_point = 40,
-	humidity_point = 60,
-})
+add_biome("grassy", nil, "ethereal:green_dirt", 1, "default:dirt", 3,
+	nil, nil, nil, nil, nil, 3, 91, 13, 40, ethereal.grassy)
 
-minetest.register_biome({
-	name = "grove_ocean",
-	node_top = "default:sand",
-	depth_top = 1,
-	node_filler = "default:sand",
-	depth_filler = 2,
-	y_min = -192,
-	y_max = 2,
-	heat_point = 40,
-	humidity_point = 60,
-})
-end
+add_biome("grassy_ocean", nil, "defaut:sand", 2, "default:gravel", 1,
+	nil, nil, nil, nil, nil, -31000, 3, 13, 40, ethereal.grassy)
 
-if ethereal.mushroom == 1 then
-minetest.register_biome({
-	name = "mushroom",
-	node_top = "ethereal:mushroom_dirt",
-	depth_top = 1,
-	node_filler = "default:dirt",
-	depth_filler = 5,
-	y_min = 3,
-	y_max = 50,
-	heat_point = 45,
-	humidity_point = 65,
-})
+add_biome("caves", nil, "default:desert_stone", 3, "air", 8,
+	nil, nil, nil, nil, nil, 4, 41, 15, 25, ethereal.caves)
 
-minetest.register_biome({
-	name = "mushroom_ocean",
-	node_top = "default:sand",
-	depth_top = 1,
-	node_filler = "default:sand",
-	depth_filler = 2,
-	y_min = -192,
-	y_max = 2,
-	heat_point = 45,
-	humidity_point = 65,
-})
-end
+add_biome("grayness", nil, "ethereal:gray_dirt", 1, "default:dirt", 3,
+	nil, nil, nil, nil, nil, 2, 41, 15, 30, ethereal.grayness)
 
-if ethereal.sandstone == 1 then
-minetest.register_biome({
-	name = "desertstone",
-	node_top = "default:sandstone",
-	depth_top = 7,
-	node_filler = "default:desert_stone",
-	depth_filler = 70,
-	y_min = 3,
-	y_max = 23,
-	heat_point = 50,
-	humidity_point = 20,
-})
+add_biome("grayness_ocean", nil, "default:sand", 1, "default:sand", 2,
+	nil, nil, nil, nil, nil, -192, 1, 15, 30, ethereal.grayness)
 
-minetest.register_biome({
-	name = "sandstone_ocean",
-	node_top = "default:sand",
-	depth_top = 1,
-	node_filler = "default:sand",
-	depth_filler = 2,
-	y_min = -192,
-	y_max = 2,
-	heat_point = 50,
-	humidity_point = 20,
-})
-end
+add_biome("grassytwo", nil, "ethereal:green_dirt", 1, "default:dirt", 3,
+	nil, nil, nil, nil, nil, 1, 91, 15, 40, ethereal.grassytwo)
 
-if ethereal.quicksand == 1 then
-minetest.register_biome({
-	name = "quicksand",
-	node_top = "ethereal:quicksand2",
-	depth_top = 3,
-	node_filler = "default:gravel",
-	depth_filler = 1,
-	y_min = 1,
-	y_max = 1,
-	heat_point = 50,
-	humidity_point = 38,
-})
-end
+add_biome("grassytwo_ocean", nil, "default:sand", 1, "default:sand", 2,
+	nil, nil, nil, nil, nil, -192, 1, 15, 40, ethereal.grassytwo)
 
-if ethereal.lake == 1 then
-minetest.register_biome({
-	name = "lake",
-	node_top = "default:sand",
-	depth_top = 2,
-	node_filler = "default:gravel",
-	depth_filler = 1,
-	node_water = "default:water_source",
-	node_dust_water = "default:water_source",
-	y_min = -31000,
-	y_max = 3,
-	heat_point = 50,
-	humidity_point = 40,
-})
-end
+add_biome("prairie", nil, "ethereal:prairie_dirt", 1, "default:dirt", 3,
+	nil, nil, nil, nil, nil, 3, 26, 20, 40, ethereal.prairie)
 
-if ethereal.plains == 1 then
-minetest.register_biome({
-	name = "plains",
-	node_top = "ethereal:dry_dirt",
-	depth_top = 1,
-	node_filler = "default:dirt",
-	depth_filler = 5,
-	y_min = 3,
-	y_max = 25, -- was 61
-	heat_point = 65,
-	humidity_point = 25,
-})
+add_biome("prairie_ocean", nil, "default:sand", 1, "default:sand", 2,
+	nil, nil, nil, nil, nil, -192, 1, 20, 40, ethereal.prairie)
 
-minetest.register_biome({
-	name = "savannah",
-	node_top = "default:dirt_with_dry_grass",
-	depth_top = 1,
-	node_filler = "default:dirt",
-	depth_filler = 5,
-	y_min = 3,
-	y_max = 50,
-	heat_point = 55,
-	humidity_point = 25,
-})
+add_biome("jumble", nil, "ethereal:green_dirt", 1, "default:dirt", 3,
+	nil, nil, nil, nil, nil, 1, 71, 25, 50, ethereal.jumble)
 
-minetest.register_biome({
-	name = "plains_ocean",
-	node_top = "default:sand",
-	depth_top = 1,
-	node_filler = "default:sand",
-	depth_filler = 2,
-	y_min = -192,
-	y_max = 2,
-	heat_point = 55,
-	humidity_point = 25,
-})
-end
+add_biome("jumble_ocean", nil, "default:sand", 1, "default:sand", 2,
+	nil, nil, nil, nil, nil, -192, 1, 25, 50, ethereal.jumble)
 
-if ethereal.fiery == 1 then
-minetest.register_biome({
-	name = "fiery",
-	node_top = "ethereal:fiery_dirt",
-	depth_top = 1,
-	node_filler = "default:dirt",
-	depth_filler = 5,
-	y_min = 5,
-	y_max = 20, -- was 65
-	heat_point = 80,
-	humidity_point = 10,
-})
+add_biome("junglee", nil, "ethereal:jungle_dirt", 1, "default:dirt", 3,
+	nil, nil, nil, nil, nil, 1, 71, 30, 60, ethereal.junglee)
 
-minetest.register_biome({
-	name = "fiery_ocean",
-	node_top = "default:sand",
-	depth_top = 1,
-	node_filler = "default:sand",
-	depth_filler = 2,
-	y_min = -192,
-	y_max = 4,
-	heat_point = 80,
-	humidity_point = 10,
-})
-end
+add_biome("junglee_ocean", nil, "default:sand", 1, "default:sand", 2,
+	nil, nil, nil, nil, nil, -192, 1, 30, 60, ethereal.junglee)
 
-if ethereal.sandclay == 1 then
-minetest.register_biome({
-	name = "sandclay",
-	node_top = "default:sand",
-	depth_top = 3,
-	node_filler = "default:clay",
-	depth_filler = 2,
-	y_min = 1,
-	y_max = 11,
-	heat_point = 65,
-	humidity_point = 2,
-})
-end
+add_biome("grove", nil, "ethereal:grove_dirt", 1, "default:dirt", 3,
+	nil, nil, nil, nil, nil, 3, 23, 45, 35, ethereal.grove)
+
+add_biome("grove_ocean", nil, "default:sand", 1, "default:sand", 2,
+	nil, nil, nil, nil, nil, -192, 2, 45, 35, ethereal.grove)
+
+add_biome("mushroom", nil, "ethereal:mushroom_dirt", 1, "default:dirt", 3,
+	nil, nil, nil, nil, nil, 3, 50, 45, 55, ethereal.mushroom)
+
+add_biome("mushroom_ocean", nil, "default:sand", 1, "default:sand", 2,
+	nil, nil, nil, nil, nil, -192, 2, 45, 55, ethereal.mushroom)
+
+add_biome("sandstone", nil, "default:sandstone", 1, "default:sandstone", 1,
+	"default:sandstone", nil, nil, nil, nil, 3, 23, 50, 20, ethereal.sandstone)
+
+add_biome("sandstone_ocean", nil, "default:sand", 1, "default:sand", 2,
+	nil, nil, nil, nil, nil, -192, 2, 50, 20, ethereal.sandstone)
+
+add_biome("quicksand", nil, "ethereal:quicksand2", 3, "default:gravel", 1,
+	nil, nil, nil, nil, nil, 1, 1, 50, 38, ethereal.quicksand)
+
+add_biome("plains", nil, "ethereal:dry_dirt", 1, "default:dirt", 3,
+	nil, nil, nil, nil, nil, 3, 25, 65, 25, ethereal.plains)
+
+add_biome("plains_ocean", nil, "default:sand", 1, "default:sand", 2,
+	nil, nil, nil, nil, nil, -192, 2, 55, 25, ethereal.plains)
+
+add_biome("savannah", nil, "default:dirt_with_dry_grass", 1, "default:dirt", 3,
+	nil, nil, nil, nil, nil, 3, 50, 55, 25, ethereal.savannah)
+
+add_biome("savannah_ocean", nil, "default:sand", 1, "default:sand", 2,
+	nil, nil, nil, nil, nil, -192, 1, 55, 25, ethereal.savannah)
+
+add_biome("fiery", nil, "ethereal:fiery_dirt", 1, "default:dirt", 3,
+	nil, nil, nil, nil, nil, 5, 20, 85, 10, ethereal.fiery)
+
+add_biome("fiery_ocean", nil, "default:sand", 1, "default:sand", 2,
+	nil, nil, nil, nil, nil, -192, 4, 85, 10, ethereal.fiery)
+
+add_biome("sandclay", nil, "default:sand", 3, "default:clay", 2,
+	nil, nil, nil, nil, nil, 1, 11, 65, 2, ethereal.sandclay)
 
 --= schematic decorations
 
 -- redwood tree
 minetest.register_decoration({
 	deco_type = "schematic",
-	place_on = {"bakedclay:red", "bakedclay:orange"},
+	place_on = {"bakedclay:red"},
 	sidelen = 80,
 	fill_ratio = 0.01,
 	biomes = {"mesa"},
@@ -530,9 +226,9 @@ minetest.register_decoration({
 	deco_type = "schematic",
 	place_on = "default:dirt_with_snow",
 	sidelen = 80,
-	fill_ratio = 0.015,
+	fill_ratio = 0.01,
 	biomes = {"alpine"},
-	y_min = 100,
+	y_min = 120,
 	y_max = 140,
 	schematic = path.."yellowtree.mts",
 	flags = "place_center_x, place_center_z",
@@ -554,7 +250,7 @@ minetest.register_decoration({
 	deco_type = "schematic",
 	place_on = "ethereal:mushroom_dirt",
 	sidelen = 80,
-	fill_ratio = 0.03,
+	fill_ratio = 0.02,
 	biomes = {"mushroom"},
 	schematic = path.."mushroomone.mts",
 	flags = "place_center_x, place_center_z",
@@ -565,7 +261,7 @@ minetest.register_decoration({
 	deco_type = "schematic",
 	place_on = "ethereal:fiery_dirt",
 	sidelen = 80,
-	fill_ratio = 0.012,
+	fill_ratio = 0.01,
 	biomes = {"fiery"},
 	schematic = path.."volcanom.mts",
 	flags = "place_center_x, place_center_z",
@@ -598,7 +294,7 @@ minetest.register_decoration({
 	deco_type = "schematic",
 	place_on = "ethereal:gray_dirt",
 	sidelen = 80,
-	fill_ratio = 0.025,
+	fill_ratio = 0.02,
 	biomes = {"grayness"},
 	schematic = path.."willow.mts",
 	flags = "place_center_x, place_center_z",
@@ -631,7 +327,7 @@ minetest.register_decoration({
 	deco_type = "schematic",
 	place_on = "ethereal:green_dirt",
 	sidelen = 80,
-	fill_ratio = 0.005,
+	fill_ratio = 0.0025,
 	biomes = {"jumble"},
 	schematic = path.."bigtree.mts",
 	flags = "place_center_x, place_center_z",
@@ -696,10 +392,10 @@ minetest.register_decoration({
 	deco_type = "schematic",
 	place_on = {"default:sand"},
 	sidelen = 80,
-	fill_ratio = 0.003,
+	fill_ratio = 0.0025,
 	biomes = {
 		"desert_ocean", "plains_ocean", "sandclay",
-		"sandstone_ocean", "mesa_ocean", "grove_ocean", "lake",
+		"sandstone_ocean", "mesa_ocean", "grove_ocean", "grassy_ocean",
 	},
 	y_min = 1,
 	y_max = 1,
@@ -726,7 +422,7 @@ minetest.register_decoration({
 	deco_type = "schematic",
 	place_on = "ethereal:bamboo_dirt",
 	sidelen = 80,
-	fill_ratio = 0.03,
+	fill_ratio = 0.025,
 	biomes = {"bamboo"},
 	schematic = ethereal.bambootree,
 	flags = "place_center_x, place_center_z",
@@ -743,7 +439,7 @@ minetest.register_decoration({
 	flags = "place_center_x, place_center_z",
 })
 
--- bamboo sprouts & grass
+-- grass
 minetest.register_decoration({
 	deco_type = "simple",
 	place_on = "ethereal:bamboo_dirt",
@@ -762,7 +458,7 @@ minetest.register_decoration({
 	},
 	sidelen = 80,
 	fill_ratio = 0.015,
-	biomes = {"plains", "lake", "desert", "desertstone", "mesa"},
+	biomes = {"plains", "grassy_ocean", "desert", "sandstone", "mesa"},
 	decoration = "default:dry_shrub",
 })
 
@@ -784,7 +480,7 @@ minetest.register_decoration({
 	deco_type = "simple",
 	place_on = "ethereal:green_dirt",
 	sidelen = 80,
-	fill_ratio = 0.03,
+	fill_ratio = 0.025,
 	biomes = {"grassy", "grassy", "grassytwo"},
 	decoration = {
 		"flowers:dandelion_white", "flowers:dandelion_yellow",
@@ -798,7 +494,7 @@ minetest.register_decoration({
 	deco_type = "simple",
 	place_on = "ethereal:prairie_dirt",
 	sidelen = 80,
-	fill_ratio = 0.05,
+	fill_ratio = 0.035,
 	biomes = {"prairie"},
 	decoration = {
 		"flowers:dandelion_white", "flowers:dandelion_yellow",
@@ -852,8 +548,8 @@ minetest.register_decoration({
 	deco_type = "simple",
 	place_on = "default:sandstone",
 	sidelen = 80,
-	fill_ratio = 0.01,
-	biomes = {"desertstone"},
+	fill_ratio = 0.0025,
+	biomes = {"sandstone"},
 	decoration = "default:cactus",
 	height_max = 3,
 })
@@ -862,7 +558,7 @@ minetest.register_decoration({
 	deco_type = "simple",
 	place_on = "default:desert_sand",
 	sidelen = 80,
-	fill_ratio = 0.01,
+	fill_ratio = 0.005,
 	biomes = {"desert"},
 	decoration = "default:cactus",
 	height_max = 4,
@@ -902,7 +598,7 @@ minetest.register_decoration({
 	deco_type = "simple",
 	place_on = {"ethereal:jungle_dirt", "ethereal:green_dirt"},
 	sidelen = 80,
-	fill_ratio = 0.18,
+	fill_ratio = 0.15,
 	biomes = {"junglee", "jumble"},
 	decoration = "default:junglegrass",
 })
@@ -915,7 +611,7 @@ minetest.register_decoration({
 		"ethereal:prairie_dirt", "ethereal:grove_dirt"
 	},
 	sidelen = 80,
-	fill_ratio = 0.4,
+	fill_ratio = 0.35,
 	biomes = {"grassy", "grassytwo", "jumble", "junglee", "prairie", "grove"},
 	decoration = {
 		"default:grass_2", "default:grass_3",
@@ -1046,7 +742,7 @@ if minetest.registered_nodes["flowers:waterlily"] then
 		},
 		biomes = {
 			"desert_ocean", "plains_ocean", "sandclay",
-			"sandstone_ocean", "mesa_ocean", "grove_ocean", "lake",
+			"sandstone_ocean", "mesa_ocean", "grove_ocean", "grassy_ocean",
 		},
 		y_min = 0,
 		y_max = 0,
