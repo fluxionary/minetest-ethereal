@@ -11,6 +11,11 @@ minetest.register_node("ethereal:green_dirt", {
 	},
 	is_ground_content = false,
 	groups = {crumbly = 3, soil = 1, ethereal_grass = 1},
+	soil = {
+		base = "ethereal:green_dirt",
+		dry = "farming:soil",
+		wet = "farming:soil_wet"
+	},
 	drop = "default:dirt",
 	sounds = default.node_sound_dirt_defaults()
 })
@@ -51,6 +56,11 @@ for _, row in ipairs(dirt.type) do
 		},
 		is_ground_content = false,
 		groups = {crumbly = 3, soil = 1, ethereal_grass = 1},
+		soil = {
+			base = "ethereal:"..name.."_dirt",
+			dry = "farming:soil",
+			wet = "farming:soil_wet"
+		},
 		drop = "default:dirt",
 		sounds = default.node_sound_dirt_defaults()
 	})

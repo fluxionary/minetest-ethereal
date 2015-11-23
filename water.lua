@@ -103,13 +103,17 @@ minetest.register_abm({
 
 -- If Water Source near Dry Dirt, change to normal Dirt
 minetest.register_abm({
-	nodenames = {"ethereal:dry_dirt"},
+	nodenames = {"ethereal:dry_dirt", "default:dirt_with_dry_grass"},
 	neighbors = {"group:water"},
 	interval = 15,
 	chance = 2,
 	catch_up = false,
 	action = function(pos, node, active_object_count, active_object_count_wider)
-		minetest.set_node(pos, {name = "default:dirt"})
+		if node == "ethereal:dry_dirt" then
+			minetest.set_node(pos, {name = "default:dirt"})
+		else
+			minetest.set_node(pos, {name = "ethereal:green_dirt"})
+		end
 	end,
 })
 
