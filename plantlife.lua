@@ -157,6 +157,7 @@ minetest.register_node("ethereal:banana", {
 	visual_scale = 1.0,
 	tiles = {"banana_single.png"},
 	inventory_image = "banana_single.png",
+	wield_image = "banana_single.png",
 	paramtype = "light",
 	sunlight_propagates = true,
 	walkable = false,
@@ -204,6 +205,7 @@ minetest.register_node("ethereal:orange", {
 	visual_scale = 1.0,
 	tiles = {"farming_orange.png"},
 	inventory_image = "farming_orange.png",
+	wield_image = "farming_orange.png",
 	paramtype = "light",
 	sunlight_propagates = true,
 	walkable = false,
@@ -229,6 +231,7 @@ minetest.register_node("ethereal:orange", {
 minetest.register_craftitem("ethereal:pine_nuts", {
 	description = "Pine Nuts",
 	inventory_image = "pine_nuts.png",
+	wield_image = "pine_nuts.png",
 	on_use = minetest.item_eat(1),
 })
 
@@ -236,6 +239,7 @@ minetest.register_craftitem("ethereal:pine_nuts", {
 minetest.register_craftitem("ethereal:banana_bread", {
 	description = "Banana Loaf",
 	inventory_image = "banana_bread.png",
+	wield_image = "banana_bread.png",
 	on_use = minetest.item_eat(6),
 })
 
@@ -248,6 +252,7 @@ minetest.register_node("ethereal:coconut", {
 	sunlight_propagates = true,
 	tiles = {"moretrees_coconut.png"},
 	inventory_image = "moretrees_coconut.png",
+	wield_image = "moretrees_coconut.png",
 	selection_box = {
 		type = "fixed",
 		fixed = {-0.35, -0.35, -0.35, 0.35, 0.35, 0.35}
@@ -264,6 +269,7 @@ minetest.register_node("ethereal:coconut", {
 minetest.register_craftitem("ethereal:coconut_slice", {
 	description = "Coconut Slice",
 	inventory_image = "moretrees_coconut_slice.png",
+	wield_image = "moretrees_coconut_slice.png",
 	on_use = minetest.item_eat(1),
 })
 
@@ -274,6 +280,7 @@ minetest.register_node("ethereal:golden_apple", {
 	visual_scale = 1.0,
 	tiles = {"default_apple_gold.png"},
 	inventory_image = "default_apple_gold.png",
+	wield_image = "default_apple_gold.png",
 	paramtype = "light",
 	sunlight_propagates = true,
 	walkable = false,
@@ -366,6 +373,7 @@ minetest.register_craft({
 minetest.register_craftitem("ethereal:hearty_stew", {
 	description = "Hearty Stew",
 	inventory_image = "hearty_stew.png",
+	wield_image = "hearty_stew.png",
 	on_use = minetest.item_eat(10, "ethereal:bowl"),
 })
 
@@ -454,6 +462,7 @@ minetest.register_craft({
 minetest.register_craftitem("ethereal:bucket_cactus", {
 	description = "Bucket of Cactus Pulp",
 	inventory_image = "bucket_cactus.png",
+	wield_image = "bucket_cactus.png",
 	stack_max = 1,
 	on_use = minetest.item_eat(2, "bucket:bucket_empty"),
 })
@@ -469,6 +478,7 @@ minetest.register_craft({
 minetest.register_craftitem("ethereal:palm_wax", {
 	description = "Palm Wax",
 	inventory_image = "palm_wax.png",
+	wield_image = "palm_wax.png",
 })
 
 minetest.register_craft({
@@ -483,6 +493,7 @@ minetest.register_node("ethereal:candle", {
 	description = "Candle",
 	drawtype = "plantlike",
 	inventory_image = "candle_static.png",
+	wield_image = "candle_static.png",
 	tiles = {
 		{
 			name = "candle.png",
