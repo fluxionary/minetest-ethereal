@@ -189,10 +189,10 @@ add_biome("savannah_ocean", nil, "default:sand", 1, "default:sand", 2,
 	nil, nil, nil, nil, nil, -192, 1, 55, 25, ethereal.savannah)
 
 add_biome("fiery", nil, "ethereal:fiery_dirt", 1, "default:dirt", 3,
-	nil, nil, nil, nil, nil, 5, 20, 85, 10, ethereal.fiery)
+	nil, nil, nil, nil, nil, 5, 20, 75, 10, ethereal.fiery)
 
 add_biome("fiery_ocean", nil, "default:sand", 1, "default:sand", 2,
-	nil, nil, nil, nil, nil, -192, 4, 85, 10, ethereal.fiery)
+	nil, nil, nil, nil, nil, -192, 4, 75, 10, ethereal.fiery)
 
 add_biome("sandclay", nil, "default:sand", 3, "default:clay", 2,
 	nil, nil, nil, nil, nil, 1, 11, 65, 2, ethereal.sandclay)
