@@ -12,6 +12,8 @@ Ethereal v7 Mapgen mod for Minetest
 - Added new biome routine to help restructure biomes
 - Tweaked biome values so that they are more spread out (no more huge bamboo biome)
 - Tweaked biome plant and tree decorations
+- Fixed farming compatibility when using hoe on ethereal dirt
+- Dirt with dry grass turns into green grass when near water
 
 ### 1.18
 
