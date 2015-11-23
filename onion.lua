@@ -3,6 +3,7 @@ minetest.register_craftitem("ethereal:wild_onion_plant", {
 	description = "Wild Onion",
 	groups = {not_in_creative_inventory=1},
 	inventory_image = "wild_onion.png",
+	wield_image = "wild_onion.png",
 	on_use = minetest.item_eat(2),
 	on_place = function(itemstack, placer, pointed_thing)
 		return farming.place_seed(itemstack, placer, pointed_thing, "ethereal:wild_onion_1")

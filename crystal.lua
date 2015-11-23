@@ -22,6 +22,7 @@ minetest.register_node("ethereal:crystal_spike", {
 minetest.register_craftitem("ethereal:crystal_ingot", {
 	description = "Crystal Ingot",
 	inventory_image = "crystal_ingot.png",
+	wield_image = "crystal_ingot.png",
 })
 
 minetest.register_craft({
@@ -63,6 +64,7 @@ minetest.register_craft({
 minetest.register_tool("ethereal:sword_crystal", {
 	description = "Crystal Sword",
 	inventory_image = "crystal_sword.png",
+	wield_image = "crystal_sword.png",
 	tool_capabilities = {
 		full_punch_interval = 0.6,
 		max_drop_level = 1,
@@ -90,6 +92,7 @@ minetest.register_craft({
 minetest.register_tool("ethereal:axe_crystal", {
 	description = "Crystal Axe",
 	inventory_image = "crystal_axe.png",
+	wield_image = "crystal_axe.png",
 	tool_capabilities = {
 		full_punch_interval = 0.8,
 		max_drop_level = 1,
@@ -117,6 +120,7 @@ minetest.register_craft({
 minetest.register_tool("ethereal:pick_crystal", {
 	description = "Crystal Pickaxe",
 	inventory_image = "crystal_pick.png",
+	wield_image = "crystal_pick.png",
 	tool_capabilities = {
 		full_punch_interval = 0.7,
 		max_drop_level = 3,

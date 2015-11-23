@@ -61,12 +61,15 @@ minetest.register_craft({
 minetest.register_node("ethereal:paper_wall", {
 	drawtype = "nodebox",
 	description = ("Paper Wall"),
-	tiles = {"paper_wall.png",},
+	tiles = {"paper_wall.png"},
+	inventory_image_image = "paper_wall.png",
+	wield_image = "paper_wall.png",
 	paramtype = "light",
 	groups = {snappy = 3},
 	sounds = default.node_sound_wood_defaults(),
 	walkable = true,
 	is_ground_content = false,
+	sunlight_propagates = true,
 	paramtype2 = "facedir",
 	selection_box = {
 		type = "fixed",
@@ -132,6 +135,7 @@ minetest.register_craft({
 minetest.register_craftitem("ethereal:charcoal_lump", {
 	description = "Lump of Charcoal",
 	inventory_image = "charcoal_lump.png",
+	wield_image = "charcoal_lump.png",
 })
 
 minetest.register_craft({
@@ -217,6 +221,7 @@ minetest.register_node("ethereal:illumishroom", {
 	wield_image = "illumishroom.png",
 	paramtype = "light",
 	light_source = 5,
+	sunlight_propagates = true,
 	walkable = false,
 	groups = {dig_immediate = 3, attached_node = 1,flammable = 3},
 	sounds = default.node_sound_leaves_defaults(),
@@ -234,6 +239,7 @@ minetest.register_node("ethereal:illumishroom2", {
 	wield_image = "illumishroom2.png",
 	paramtype = "light",
 	light_source = 5,
+	sunlight_propagates = true,
 	walkable = false,
 	groups = {dig_immediate = 3, attached_node = 1,flammable = 3},
 	sounds = default.node_sound_leaves_defaults(),
@@ -251,6 +257,7 @@ minetest.register_node("ethereal:illumishroom3", {
 	wield_image = "illumishroom3.png",
 	paramtype = "light",
 	light_source = 5,
+	sunlight_propagates = true,
 	walkable = false,
 	groups = {dig_immediate = 3, attached_node = 1,flammable = 3},
 	sounds = default.node_sound_leaves_defaults(),
@@ -264,6 +271,7 @@ minetest.register_node("ethereal:illumishroom3", {
 minetest.register_tool("ethereal:light_staff", {
 	description = "Staff of Light",
 	inventory_image = "light_staff.png",
+	wield_image = "light_staff.png",
 	stack_max = 1,
 	on_use = function(itemstack, user, pointed_thing)
 

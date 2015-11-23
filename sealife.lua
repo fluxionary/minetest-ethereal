@@ -31,6 +31,7 @@ minetest.register_node("ethereal:coral2", {
 	drawtype = "plantlike",
 	tiles = {"coral2.png"},
 	inventory_image = "coral2.png",
+	wield_image = "coral2.png",
 	paramtype = "light",
 	selection_box = {
 		type = "fixed",
@@ -53,6 +54,7 @@ minetest.register_node("ethereal:coral3", {
 	drawtype = "plantlike",
 	tiles = {"coral3.png"},
 	inventory_image = "coral3.png",
+	wield_image = "coral3.png",
 	paramtype = "light",
 	selection_box = {
 		type = "fixed",
@@ -75,6 +77,7 @@ minetest.register_node("ethereal:coral4", {
 	drawtype = "plantlike",
 	tiles = {"coral4.png"},
 	inventory_image = "coral4.png",
+	wield_image = "coral4.png",
 	paramtype = "light",
 	selection_box = {
 		type = "fixed",
@@ -97,6 +100,7 @@ minetest.register_node("ethereal:coral5", {
 	drawtype = "plantlike",
 	tiles = {"coral5.png"},
 	inventory_image = "coral5.png",
+	wield_image = "coral5.png",
 	paramtype = "light",
 	selection_box = {
 		type = "fixed",
@@ -147,8 +151,9 @@ minetest.register_abm({
 	catch_up = false,
 	action = function(pos, node)
 
-		local sel = math.random(1,5)
-		if sel == 1 or node.name == "ethereal:seaweed" then
+		local sel = math.random(1, 5)
+		if sel == 1
+		or node.name == "ethereal:seaweed" then
 			local height = 0
 
 			while (minetest.get_node(pos).name == "ethereal:seaweed"
@@ -158,7 +163,8 @@ minetest.register_abm({
 				pos.y = pos.y + 1
 			end
 
-			if height < 14 and pos.y < 0
+			if height < 14
+			and pos.y < 0
 			and minetest.get_node(pos).name == "default:water_source" then
 				minetest.set_node(pos, {name = "ethereal:seaweed"})
 			end

@@ -7,6 +7,7 @@ ethereal.register_sapling = function(name, desc, texture)
 		visual_scale = 1.0,
 		tiles = {texture .. "_sapling.png"},
 		inventory_image = texture .. "_sapling.png",
+		wield_image = texture .. "_sapling.png",
 		paramtype = "light",
 		sunlight_propagates = true,
 		is_ground_content = false,

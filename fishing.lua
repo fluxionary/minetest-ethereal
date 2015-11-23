@@ -2,6 +2,7 @@
 minetest.register_craftitem("ethereal:fish_raw", {
 	description = "Raw Fish",
 	inventory_image = "fish_raw.png",
+	wield_image = "fish_raw.png",
 	on_use = minetest.item_eat(2),
 })
 
@@ -9,6 +10,7 @@ minetest.register_craftitem("ethereal:fish_raw", {
 minetest.register_craftitem("ethereal:fish_cooked", {
 	description = "Cooked Fish",
 	inventory_image = "fish_cooked.png",
+	wield_image = "fish_cooked.png",
 	on_use = minetest.item_eat(5),
 })
 
@@ -23,6 +25,7 @@ minetest.register_craft({
 minetest.register_craftitem("ethereal:sashimi", {
 	description = "Sashimi",
 	inventory_image = "sashimi.png",
+	wield_image = "sashimi.png",
 	on_use = minetest.item_eat(4),
 })
 
@@ -37,12 +40,14 @@ minetest.register_craft({
 minetest.register_craftitem("ethereal:worm", {
 	description = "Worm",
 	inventory_image = "worm.png",
+	wield_image = "worm.png",
 })
 
 -- Fishing Rod
 minetest.register_craftitem("ethereal:fishing_rod", {
 	description = "Fishing Rod",
 	inventory_image = "fishing_rod.png",
+	wield_image = "fishing_rod.png",
 })
 
 minetest.register_craft({

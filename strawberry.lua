@@ -2,6 +2,7 @@
 minetest.register_craftitem("ethereal:strawberry", {
 	description = "Strawberry",
 	inventory_image = "strawberry.png",
+	wield_image = "strawberry.png",
 	on_use = minetest.item_eat(1),
 	on_place = function(itemstack, placer, pointed_thing)
 		return farming.place_seed(itemstack, placer, pointed_thing, "ethereal:strawberry_1")
