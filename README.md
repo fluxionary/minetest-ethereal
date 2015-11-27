@@ -14,6 +14,7 @@ Ethereal v7 Mapgen mod for Minetest
 - Tweaked biome plant and tree decorations
 - Fixed farming compatibility when using hoe on ethereal dirt
 - Dirt with dry grass turns into green grass when near water
+- Ice or snow above sea level melts into river water
 
 ### 1.18
 

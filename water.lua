@@ -86,17 +86,24 @@ minetest.register_abm({
 	interval = 5,
 	chance = 4,
 	catch_up = false,
-	action = function(pos, node, active_object_count, active_object_count_wider)
+	action = function(pos, node)
+
+		local water_node = "default:water"
+		if pos.y > 2 then
+			water_node = "default:river_water"
+		end
+
 		if node.name == "default:ice"
 		or node.name == "default:snowblock"
 		or node.name == "ethereal:icebrick"
 		or node.name == "ethereal:snowbrick" then
-			minetest.set_node(pos, {name = "default:water_source"})
+			minetest.set_node(pos, {name = water_node.."_source"})
 		elseif node.name == "default:snow" then
-			minetest.set_node(pos, {name = "default:water_flowing"})
+			minetest.set_node(pos, {name = water_node.."_flowing"})
 		elseif node.name == "default:dirt_with_snow" then
 			minetest.set_node(pos, {name = "default:dirt_with_grass"})
 		end
+
 		nodeupdate(pos)
 	end,
 })
@@ -108,7 +115,7 @@ minetest.register_abm({
 	interval = 15,
 	chance = 2,
 	catch_up = false,
-	action = function(pos, node, active_object_count, active_object_count_wider)
+	action = function(pos, node)
 		if node == "ethereal:dry_dirt" then
 			minetest.set_node(pos, {name = "default:dirt"})
 		else
