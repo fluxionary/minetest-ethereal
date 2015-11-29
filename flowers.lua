@@ -2,8 +2,8 @@
 minetest.register_abm({
 	nodenames = {"group:flora"},
 	neighbors = {"group:soil"},
-	interval = 20,
-	chance = 5,
+	interval = 25,
+	chance = 10,
 	catch_up = false,
 	action = function(pos, node)
 
