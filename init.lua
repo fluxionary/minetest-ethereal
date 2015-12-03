@@ -1,6 +1,6 @@
 --[[
 
-	Minetest Ethereal Mod 1.19 (27th November 2015)
+	Minetest Ethereal Mod 1.19 (3rd December 2015)
 
 	Created by ChinChow
 
@@ -38,29 +38,29 @@ ethereal.sandclay  = 1 -- Sand areas with clay underneath
 
 local path = minetest.get_modpath("ethereal")
 
-dofile(path.."/plantlife.lua")
-dofile(path.."/mushroom.lua")
-dofile(path.."/onion.lua")
-dofile(path.."/crystal.lua")
-dofile(path.."/papyrus.lua")
-dofile(path.."/flowers.lua")
-dofile(path.."/water.lua")
-dofile(path.."/dirt.lua")
-dofile(path.."/leaves.lua")
-dofile(path.."/wood.lua")
-dofile(path.."/sapling.lua")
-dofile(path.."/strawberry.lua")
-dofile(path.."/fishing.lua")
-dofile(path.."/extra.lua")
-dofile(path.."/sealife.lua")
-dofile(path.."/fences.lua")
-dofile(path.."/gates.lua")
-dofile(path.."/mapgen_v7n.lua") -- 0.4.13+
+dofile(path .. "/plantlife.lua")
+dofile(path .. "/mushroom.lua")
+dofile(path .. "/onion.lua")
+dofile(path .. "/crystal.lua")
+dofile(path .. "/papyrus.lua")
+dofile(path .. "/flowers.lua")
+dofile(path .. "/water.lua")
+dofile(path .. "/dirt.lua")
+dofile(path .. "/leaves.lua")
+dofile(path .. "/wood.lua")
+dofile(path .. "/sapling.lua")
+dofile(path .. "/strawberry.lua")
+dofile(path .. "/fishing.lua")
+dofile(path .. "/extra.lua")
+dofile(path .. "/sealife.lua")
+dofile(path .. "/fences.lua")
+dofile(path .. "/gates.lua")
+dofile(path .. "/mapgen_v7n.lua") -- 0.4.13+
 
 if minetest.get_modpath("xanadu") then
-	dofile(path.."/plantpack.lua")
+	dofile(path .. "/plantpack.lua")
 else
-	dofile(path.."/stairs.lua")
+	dofile(path .. "/stairs.lua")
 end
 
 print ("[MOD] Ethereal mod loaded")

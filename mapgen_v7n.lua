@@ -41,16 +41,16 @@ minetest.register_ore({
 	},
 })
 
-local path = minetest.get_modpath("ethereal").."/schematics/"
+local path = minetest.get_modpath("ethereal") .. "/schematics/"
 
 -- tree schematics
-dofile(path.."apple_tree.lua")
-dofile(path.."orange_tree.lua")
-dofile(path.."banana_tree.lua")
-dofile(path.."bamboo_tree.lua")
-dofile(path.."birch_tree.lua")
-dofile(path.."bush.lua")
-dofile(path.."waterlily.lua")
+dofile(path .. "apple_tree.lua")
+dofile(path .. "orange_tree.lua")
+dofile(path .. "banana_tree.lua")
+dofile(path .. "bamboo_tree.lua")
+dofile(path .. "birch_tree.lua")
+dofile(path .. "bush.lua")
+dofile(path .. "waterlily.lua")
 
 --= Biomes (Minetest 0.4.13 and above)
 
@@ -79,6 +79,9 @@ end
 
 add_biome("underground", nil, nil, nil, nil, nil, nil, nil, nil, nil, nil,
 	-31000, -192, 50, 50, 1)
+
+add_biome("mountain", nil, "default:snow", 1, "default:snowblock", 2,
+	nil, nil, nil, nil, nil, 140, 31000, 50, 50, 1)
 
 add_biome("desert", nil, "default:desert_sand", 1, "default:desert_sand", 3,
 	"default:desert_stone", nil, nil, nil, nil, 3, 23, 35, 20, ethereal.desert)
@@ -199,174 +202,72 @@ add_biome("sandclay", nil, "default:sand", 3, "default:clay", 2,
 
 --= schematic decorations
 
+local add_schem = function(a, b, c, d, e, f, g)
+
+	if g ~= 1 then return end
+
+	minetest.register_decoration({
+		deco_type = "schematic",
+		place_on = a,
+		sidelen = 80,
+		fill_ratio = b,
+		biomes = c,
+		y_min = d,
+		y_max = e,
+		schematic = f,
+		flags = "place_center_x, place_center_z",
+	})
+end
+
 -- redwood tree
-minetest.register_decoration({
-	deco_type = "schematic",
-	place_on = {"bakedclay:red"},
-	sidelen = 80,
-	fill_ratio = 0.01,
-	biomes = {"mesa"},
-	schematic = path.."redwood.mts",
-	flags = "place_center_x, place_center_z",
-})
+add_schem({"bakedclay:orange"}, 0.0025, {"mesa"}, 1, 100, path .. "redwood.mts", ethereal.mesa)
 
 -- banana tree
-minetest.register_decoration({
-	deco_type = "schematic",
-	place_on = "ethereal:grove_dirt",
-	sidelen = 80,
-	fill_ratio = 0.015,
-	biomes = {"grove"},
-	schematic = ethereal.bananatree,
-	flags = "place_center_x, place_center_z",
-})
+add_schem({"ethereal:grove_dirt"}, 0.015, {"grove"}, 1, 100, ethereal.bananatree, ethereal.grove)
 
 -- healing tree
-minetest.register_decoration({
-	deco_type = "schematic",
-	place_on = "default:dirt_with_snow",
-	sidelen = 80,
-	fill_ratio = 0.01,
-	biomes = {"alpine"},
-	y_min = 120,
-	y_max = 140,
-	schematic = path.."yellowtree.mts",
-	flags = "place_center_x, place_center_z",
-})
+add_schem({"default:dirt_with_snow"}, 0.01, {"alpine"}, 120, 140, path .. "yellowtree.mts", ethereal.alpine)
 
 -- crystal frost tree
-minetest.register_decoration({
-	deco_type = "schematic",
-	place_on = "ethereal:crystal_dirt",
-	sidelen = 80,
-	fill_ratio = 0.01,
-	biomes = {"frost"},
-	schematic = path.."frosttrees.mts",
-	flags = "place_center_x, place_center_z",
-})
+add_schem({"ethereal:crystal_dirt"}, 0.01, {"frost"}, 1, 100, path .. "frosttrees.mts", ethereal.frost)
 
 -- giant mushroom
-minetest.register_decoration({
-	deco_type = "schematic",
-	place_on = "ethereal:mushroom_dirt",
-	sidelen = 80,
-	fill_ratio = 0.02,
-	biomes = {"mushroom"},
-	schematic = path.."mushroomone.mts",
-	flags = "place_center_x, place_center_z",
-})
+add_schem({"ethereal:mushroom_dirt"}, 0.02, {"mushroom"}, 1, 100, path .. "mushroomone.mts", ethereal.mushroom)
 
 -- small lava crater
-minetest.register_decoration({
-	deco_type = "schematic",
-	place_on = "ethereal:fiery_dirt",
-	sidelen = 80,
-	fill_ratio = 0.01,
-	biomes = {"fiery"},
-	schematic = path.."volcanom.mts",
-	flags = "place_center_x, place_center_z",
-})
+add_schem({"ethereal:fiery_dirt"}, 0.01, {"fiery"}, 1, 100, path .. "volcanom.mts", ethereal.fiery)
 
 -- large lava crater
-minetest.register_decoration({
-	deco_type = "schematic",
-	place_on = "ethereal:fiery_dirt",
-	sidelen = 80,
-	fill_ratio = 0.01,
-	biomes = {"fiery"},
-	schematic = path.."volcanol.mts",
-	flags = "place_center_x, place_center_z",
-})
+add_schem({"ethereal:fiery_dirt"}, 0.01, {"fiery"}, 1, 100, path .. "volcanol.mts", ethereal.fiery)
 
 -- jungle tree
-minetest.register_decoration({
-	deco_type = "schematic",
-	place_on = "ethereal:jungle_dirt",
-	sidelen = 80,
-	fill_ratio = 0.08,
-	biomes = {"junglee"},
-	schematic = path.."jungletree.mts",
-	flags = "place_center_x, place_center_z",
-})
+add_schem({"ethereal:jungle_dirt"}, 0.08, {"junglee"}, 1, 100, path .. "jungletree.mts", ethereal.junglee)
 
 -- willow tree
-minetest.register_decoration({
-	deco_type = "schematic",
-	place_on = "ethereal:gray_dirt",
-	sidelen = 80,
-	fill_ratio = 0.02,
-	biomes = {"grayness"},
-	schematic = path.."willow.mts",
-	flags = "place_center_x, place_center_z",
-})
+add_schem({"ethereal:gray_dirt"}, 0.02, {"grayness"}, 1, 100, path .. "willow.mts", ethereal.grayness)
 
 -- pine tree
-minetest.register_decoration({
-	deco_type = "schematic",
-	place_on = {"ethereal:cold_dirt", "default:dirt_with_snow"},
-	sidelen = 80,
-	fill_ratio = 0.025,
-	biomes = {"snowy", "alpine"},
-	schematic = path.."pinetree.mts",
-	flags = "place_center_x, place_center_z",
-})
+add_schem({"ethereal:cold_dirt"}, 0.025, {"snowy"}, 10, 40, path .. "pinetree.mts", ethereal.snowy)
+add_schem({"default:dirt_with_snow"}, 0.025, {"alpine"}, 40, 140, path .. "pinetree.mts", ethereal.alpine)
 
 -- apple tree
-minetest.register_decoration({
-	deco_type = "schematic",
-	place_on = "ethereal:green_dirt",
-	sidelen = 80,
-	fill_ratio = 0.03,
-	biomes = {"grassy", "jumble"},
-	schematic = ethereal.appletree,
-	flags = "place_center_x, place_center_z",
-})
+add_schem({"ethereal:green_dirt"}, 0.03, {"grassy"}, 1, 100, ethereal.appletree, ethereal.grassy)
+add_schem({"ethereal:green_dirt"}, 0.03, {"jumble"}, 1, 100, ethereal.appletree, ethereal.jumble)
 
 -- big old tree
-minetest.register_decoration({
-	deco_type = "schematic",
-	place_on = "ethereal:green_dirt",
-	sidelen = 80,
-	fill_ratio = 0.0025,
-	biomes = {"jumble"},
-	schematic = path.."bigtree.mts",
-	flags = "place_center_x, place_center_z",
-})
+add_schem({"ethereal:green_dirt"}, 0.0025, {"jumble"}, 1, 100, path .. "bigtree.mts", ethereal.jumble)
 
--- birch tree (was apple)
-minetest.register_decoration({
-	deco_type = "schematic",
-	place_on = {"ethereal:green_dirt"},
-	sidelen = 80,
-	fill_ratio = 0.03,
-	biomes = {"grassytwo"},
-	schematic = ethereal.birchtree,
-	flags = "place_center_x, place_center_z",
-})
+-- birch tree
+add_schem({"ethereal:green_dirt"}, 0.03, {"grassytwo"}, 1, 100, ethereal.birchtree, ethereal.grassytwo)
 
 -- orange tree
-minetest.register_decoration({
-	deco_type = "schematic",
-	place_on = {"ethereal:prairie_dirt"},
-	sidelen = 80,
-	fill_ratio = 0.01,
-	biomes = {"prairie"},
-	schematic = ethereal.orangetree,
-	flags = "place_center_x, place_center_z",
-})
+add_schem({"ethereal:prairie_dirt"}, 0.01, {"prairie"}, 1, 100, ethereal.orangetree, ethereal.prairie)
 
 -- acacia tree
-minetest.register_decoration({
-	deco_type = "schematic",
-	place_on = {"default:dirt_with_dry_grass"},
-	sidelen = 80,
-	fill_ratio = 0.004,
-	biomes = {"savannah"},
-	schematic = path.."acaciatree.mts",
-	flags = "place_center_x, place_center_z",
-})
+add_schem({"default:dirt_with_dry_grass"}, 0.004, {"savannah"}, 1, 100, path .. "acaciatree.mts", ethereal.savannah)
 
 -- large cactus (by Paramat)
+if ethereal.desert == 1 then
 minetest.register_decoration({
 	deco_type = "schematic",
 	place_on = {"default:desert_sand"},
@@ -386,198 +287,107 @@ minetest.register_decoration({
 	flags = "place_center_x", --, place_center_z",
 	rotation = "random",
 })
+end
 
 -- palm tree
-minetest.register_decoration({
-	deco_type = "schematic",
-	place_on = {"default:sand"},
-	sidelen = 80,
-	fill_ratio = 0.0025,
-	biomes = {
-		"desert_ocean", "plains_ocean", "sandclay",
-		"sandstone_ocean", "mesa_ocean", "grove_ocean", "grassy_ocean",
-	},
-	y_min = 1,
-	y_max = 1,
-	schematic = path.."palmtree.mts",
-	flags = "place_center_x, place_center_z",
-	rotation = "random",
-})
+add_schem({"default:sand"}, 0.0025, {"desert_ocean"}, 1, 1, path .. "palmtree.mts", ethereal.desert)
+add_schem({"default:sand"}, 0.0025, {"plains_ocean"}, 1, 1, path .. "palmtree.mts", ethereal.plains)
+add_schem({"default:sand"}, 0.0025, {"sandclay"}, 1, 1, path .. "palmtree.mts", ethereal.sandclay)
+add_schem({"default:sand"}, 0.0025, {"sandstone_ocean"}, 1, 1, path .. "palmtree.mts", ethereal.sandstone)
+add_schem({"default:sand"}, 0.0025, {"mesa_ocean"}, 1, 1, path .. "palmtree.mts", ethereal.mesa)
+add_schem({"default:sand"}, 0.0025, {"grove_ocean"}, 1, 1, path .. "palmtree.mts", ethereal.grove)
+add_schem({"default:sand"}, 0.0025, {"grassy_ocean"}, 1, 1, path .. "palmtree.mts", ethereal.grassy)
+
+-- bamboo tree
+add_schem({"ethereal:bamboo_dirt"}, 0.025, {"bamboo"}, 1, 100, ethereal.bambootree, ethereal.bamboo)
+
+-- bush
+add_schem({"ethereal:bamboo_dirt"}, 0.08, {"bamboo"}, 1, 100, ethereal.bush, ethereal.bamboo)
 
 --= simple decorations
 
+local add_node = function(a, b, c, d, e, f, g, h, i, j)
+
+	if j ~= 1 then return end
+
+	minetest.register_decoration({
+		deco_type = "simple",
+		place_on = a,
+		sidelen = 80,
+		fill_ratio = b,
+		biomes = c,
+		y_min = d,
+		y_max = e,
+		decoration = f,
+		height_max = g,
+		spawn_by = h,
+		num_spawn_by = i,
+	})
+end
+
 -- scorched tree
-minetest.register_decoration({
-	deco_type = "simple",
-	place_on = "ethereal:dry_dirt",
-	sidelen = 80,
-	fill_ratio = 0.006,
-	biomes = {"plains"},
-	decoration = "ethereal:scorched_tree",
-	height_max = 6,
-})
-
--- bamboo tree
-minetest.register_decoration({
-	deco_type = "schematic",
-	place_on = "ethereal:bamboo_dirt",
-	sidelen = 80,
-	fill_ratio = 0.025,
-	biomes = {"bamboo"},
-	schematic = ethereal.bambootree,
-	flags = "place_center_x, place_center_z",
-})
-
--- bush
-minetest.register_decoration({
-	deco_type = "schematic",
-	place_on = "ethereal:bamboo_dirt",
-	sidelen = 80,
-	fill_ratio = 0.08,
-	biomes = {"bamboo"},
-	schematic = ethereal.bush,
-	flags = "place_center_x, place_center_z",
-})
-
--- grass
-minetest.register_decoration({
-	deco_type = "simple",
-	place_on = "ethereal:bamboo_dirt",
-	sidelen = 80,
-	fill_ratio = 0.35,
-	biomes = {"bamboo"},
-	decoration = {"default:grass_2", "default:grass_3"},
-})
+add_node({"ethereal:dry_dirt"}, 0.006, {"plains"}, 1, 100, {"ethereal:scorched_tree"}, 6, nil, nil, ethereal.plains)
 
 -- dry shrub
-minetest.register_decoration({
-	deco_type = "simple",
-	place_on = {
-		"ethereal:dry_dirt", "default:sand", "default:desert_sand",
-		"sandstone", "bakedclay:red", "bakedclay:orange"
-	},
-	sidelen = 80,
-	fill_ratio = 0.015,
-	biomes = {"plains", "grassy_ocean", "desert", "sandstone", "mesa"},
-	decoration = "default:dry_shrub",
-})
+add_node({"ethereal:dry_dirt"}, 0.015, {"plains"}, 1, 100, {"default:dry_shrub"}, nil, nil, nil, ethereal.plains)
+add_node({"default:sand"}, 0.015, {"grassy_ocean"}, 1, 100, {"default:dry_shrub"}, nil, nil, nil, ethereal.grassy)
+add_node({"default:desert_sand"}, 0.015, {"desert"}, 1, 100, {"default:dry_shrub"}, nil, nil, nil, ethereal.desert)
+add_node({"default:sandstone"}, 0.015, {"sandstone"}, 1, 100, {"default:dry_shrub"}, nil, nil, nil, ethereal.sandstone)
+add_node({"bakedclay:red", "bakedclay:orange"}, 0.015, {"mesa"}, 1, 100, {"default:dry_shrub"}, nil, nil, nil, ethereal.mesa)
 
 -- dry grass
-minetest.register_decoration({
-	deco_type = "simple",
-	place_on = {"default:dirt_with_dry_grass"},
-	sidelen = 80,
-	fill_ratio = 0.25,
-	biomes = {"savannah"},
-	decoration = {
-		"default:dry_grass_2", "default:dry_grass_3",
-		"default:dry_grass_4", "default:dry_grass_5"
-	},
-})
+add_node({"default:dirt_with_dry_grass"}, 0.25, {"savannah"}, 1, 100, {"default:dry_grass_2",
+	"default:dry_grass_3", "default:dry_grass_4", "default:dry_grass_5"}, nil, nil, nil, ethereal.savannah)
 
 -- flowers & strawberry
-minetest.register_decoration({
-	deco_type = "simple",
-	place_on = "ethereal:green_dirt",
-	sidelen = 80,
-	fill_ratio = 0.025,
-	biomes = {"grassy", "grassy", "grassytwo"},
-	decoration = {
-		"flowers:dandelion_white", "flowers:dandelion_yellow",
-		"flowers:geranium", "flowers:rose", "flowers:tulip",
-		"flowers:viola", "ethereal:strawberry_7"
-	},
-})
+add_node({"ethereal:green_dirt"}, 0.025, {"grassy"}, 1, 100, {"flowers:dandelion_white",
+	"flowers:dandelion_yellow", "flowers:geranium", "flowers:rose", "flowers:tulip",
+	"flowers:viola", "ethereal:strawberry_7"}, nil, nil, nil, ethereal.grassy)
+add_node({"ethereal:green_dirt"}, 0.025, {"grassytwo"}, 1, 100, {"flowers:dandelion_white",
+	"flowers:dandelion_yellow", "flowers:geranium", "flowers:rose", "flowers:tulip",
+	"flowers:viola", "ethereal:strawberry_7"}, nil, nil, nil, ethereal.grassytwo)
 
 -- prairie flowers & strawberry
-minetest.register_decoration({
-	deco_type = "simple",
-	place_on = "ethereal:prairie_dirt",
-	sidelen = 80,
-	fill_ratio = 0.035,
-	biomes = {"prairie"},
-	decoration = {
-		"flowers:dandelion_white", "flowers:dandelion_yellow",
-		"flowers:geranium", "flowers:rose", "flowers:tulip",
-		"flowers:viola", "ethereal:strawberry_7"
-	},
-})
+add_node({"ethereal:prairie_dirt"}, 0.035, {"prairie"}, 1, 100, {"flowers:dandelion_white",
+	"flowers:dandelion_yellow", "flowers:geranium", "flowers:rose", "flowers:tulip",
+	"flowers:viola", "ethereal:strawberry_7"}, nil, nil, nil, ethereal.prairie)
 
 -- crystal spike & crystal grass
-minetest.register_decoration({
-	deco_type = "simple",
-	place_on = "ethereal:crystal_dirt",
-	sidelen = 80,
-	fill_ratio = 0.02,
-	biomes = {"frost"},
-	decoration = {"ethereal:crystal_spike", "ethereal:crystalgrass"},
-})
+add_node({"ethereal:crystal_dirt"}, 0.02, {"frost"}, 1, 100, {"ethereal:crystal_spike",
+	"ethereal:crystalgrass"}, nil, nil, nil, ethereal.frost)
 
 -- red shrub
-minetest.register_decoration({
-	deco_type = "simple",
-	place_on = "ethereal:fiery_dirt", 
-	sidelen = 80,
-	fill_ratio = 0.20,
-	biomes = {"fiery"},
-	decoration = {"ethereal:dry_shrub"},
-})
+add_node({"ethereal:fiery_dirt"}, 0.20, {"fiery"}, 1, 100, {"ethereal:dry_shrub"}, nil, nil, nil, ethereal.fiery)
 
 -- fire flower
-minetest.register_decoration({
-	deco_type = "simple",
-	place_on = "ethereal:fiery_dirt",
-	sidelen = 80,
-	fill_ratio = 0.02,
-	biomes = {"fiery"},
-	decoration = {"ethereal:fire_flower"},
-})
+add_node({"ethereal:fiery_dirt"}, 0.02, {"fiery"}, 1, 100, {"ethereal:fire_flower"}, nil, nil, nil, ethereal.fiery)
 
 -- snowy grass
-minetest.register_decoration({
-	deco_type = "simple",
-	place_on = {"ethereal:gray_dirt", "ethereal:cold_dirt"},
-	sidelen = 80,
-	fill_ratio = 0.05,
-	biomes = {"grayness", "snowy"},
-	decoration = "ethereal:snowygrass",
-})
+add_node({"ethereal:gray_dirt"}, 0.05, {"grayness"}, 1, 100, {"ethereal:snowygrass"}, nil, nil, nil, ethereal.grayness)
+add_node({"ethereal:cold_dirt"}, 0.05, {"snowy"}, 1, 100, {"ethereal:snowygrass"}, nil, nil, nil, ethereal.snowy)
 
 -- cactus
-minetest.register_decoration({
-	deco_type = "simple",
-	place_on = "default:sandstone",
-	sidelen = 80,
-	fill_ratio = 0.0025,
-	biomes = {"sandstone"},
-	decoration = "default:cactus",
-	height_max = 3,
-})
+add_node({"default:sandstone"}, 0.0025, {"sandstone"}, 1, 100, {"default:cactus"}, 3, nil, nil, ethereal.sandstone)
+add_node({"default:desert_sand"}, 0.005, {"desert"}, 1, 100, {"default:cactus"}, 4, nil, nil, ethereal.desert)
 
-minetest.register_decoration({
-	deco_type = "simple",
-	place_on = "default:desert_sand",
-	sidelen = 80,
-	fill_ratio = 0.005,
-	biomes = {"desert"},
-	decoration = "default:cactus",
-	height_max = 4,
-})
+-- wild red mushroom
+add_node({"ethereal:mushroom_dirt"}, 0.01, {"mushroom"}, 1, 100, {"flowers:mushroom_fertile_red"}, nil, nil, nil, ethereal.mushroom)
 
--- wild mushrooms
-minetest.register_decoration({
-	deco_type = "simple",
-	place_on = "ethereal:mushroom_dirt",
-	sidelen = 80,
-	fill_ratio = 0.01,
-	biomes = {"mushroom"},
-	decoration = "flowers:mushroom_fertile_red",
-})
+local list = {
+	{"junglee", "ethereal:jungle_dirt", ethereal.junglee},
+	{"grassy", "ethereal:green_dirt", ethereal.grassy},
+	{"grassytwo", "ethereal:green_dirt", ethereal.grassytwo},
+	{"prairie", "ethereal:prairie_dirt", ethereal.prairie},
+	{"mushroom", "ethereal:mushroom_dirt", ethereal.mushroom}
+}
 
+-- wild red and brown mushrooms
+for _, row in ipairs(list) do
+
+if row[3] == 1 then
 minetest.register_decoration({
 	deco_type = "simple",
-	place_on = {"ethereal:green_dirt", "ethereal:jungle_dirt",
-		"ethereal:prairie_dirt", "ethereal:mushroom_dirt"},
+	place_on = {row[2]},
 	sidelen = 16,
 	noise_params = {
 		offset = 0,
@@ -587,147 +397,113 @@ minetest.register_decoration({
 		octaves = 3,
 		persist = 0.66
 	},
-	biomes = {"junglee", "grassy", "grassytwo", "prairie", "mushroom"},
+	biomes = {row[1]},
 	y_min = 1,
 	y_max = 120,
 	decoration = {"flowers:mushroom_fertile_brown", "flowers:mushroom_fertile_red"},
 })
+end
+
+end
 
 -- jungle grass
-minetest.register_decoration({
-	deco_type = "simple",
-	place_on = {"ethereal:jungle_dirt", "ethereal:green_dirt"},
-	sidelen = 80,
-	fill_ratio = 0.15,
-	biomes = {"junglee", "jumble"},
-	decoration = "default:junglegrass",
-})
+add_node({"ethereal:jungle_dirt"}, 0.15, {"junglee"}, 1, 100, {"default:junglegrass"}, nil, nil, nil, ethereal.junglee)
+add_node({"ethereal:green_dirt"}, 0.15, {"jumble"}, 1, 100, {"default:junglegrass"}, nil, nil, nil, ethereal.jumble)
 
 -- grass
-minetest.register_decoration({
-	deco_type = "simple",
-	place_on = {
-		"ethereal:green_dirt_top", "ethereal:jungle_dirt",
-		"ethereal:prairie_dirt", "ethereal:grove_dirt"
-	},
-	sidelen = 80,
-	fill_ratio = 0.35,
-	biomes = {"grassy", "grassytwo", "jumble", "junglee", "prairie", "grove"},
-	decoration = {
-		"default:grass_2", "default:grass_3",
-		"default:grass_4", "default:grass_5"
-	},
-})
+add_node({"ethereal:green_dirt"}, 0.35, {"grassy"}, 1, 100, {"default:grass_2", "default:grass_3",
+	"default:grass_4", "default:grass_5"}, nil, nil, nil, ethereal.grassy)
+add_node({"ethereal:green_dirt"}, 0.35, {"grassytwo"}, 1, 100, {"default:grass_2", "default:grass_3",
+	"default:grass_4", "default:grass_5"}, nil, nil, nil, ethereal.grassytwo)
+add_node({"ethereal:green_dirt"}, 0.35, {"jumble"}, 1, 100, {"default:grass_2", "default:grass_3",
+	"default:grass_4", "default:grass_5"}, nil, nil, nil, ethereal.jumble)
+add_node({"ethereal:jungle_dirt"}, 0.35, {"junglee"}, 1, 100, {"default:grass_2", "default:grass_3",
+	"default:grass_4", "default:grass_5"}, nil, nil, nil, ethereal.junglee)
+add_node({"ethereal:prairie_dirt"}, 0.35, {"prairie"}, 1, 100, {"default:grass_2", "default:grass_3",
+	"default:grass_4", "default:grass_5"}, nil, nil, nil, ethereal.prairie)
+add_node({"ethereal:grove_dirt"}, 0.35, {"grove"}, 1, 100, {"default:grass_2", "default:grass_3",
+	"default:grass_4", "default:grass_5"}, nil, nil, nil, ethereal.grove)
+add_node({"ethereal:bamboo_dirt"}, 0.35, {"bamboo"}, 1, 100, {"default:grass_2", "default:grass_3",
+	"default:grass_4", "default:grass_5"}, nil, nil, nil, ethereal.bamboo)
+
+-- grass on sand
+add_node({"default:sand"}, 0.25, {"sandclay"}, 3, 3, {"default:grass_2", "default:grass_3"}, nil, nil, nil, ethereal.sandclay)
 
 -- ferns
-minetest.register_decoration({
-	deco_type = "simple",
-	place_on = "ethereal:grove_dirt",
-	sidelen = 80,
-	fill_ratio = 0.2,
-	biomes = {"grove"},
-	decoration = "ethereal:fern",
-})
+add_node({"ethereal:grove_dirt"}, 0.2, {"grove"}, 1, 100, {"ethereal:fern"}, nil, nil, nil, ethereal.grove)
+
 
 -- snow
-minetest.register_decoration({
-	deco_type = "simple",
-	place_on = {"ethereal:cold_dirt", "default:dirt_with_snow"},
-	sidelen = 80,
-	fill_ratio = 0.8,
-	biomes = {"snowy", "alpine"},
-	decoration = "default:snow",
-})
+add_node({"ethereal:cold_dirt"}, 0.8, {"snowy"}, 4, 40, {"default:snow"}, nil, nil, nil, ethereal.snowy)
+add_node({"default:dirt_with_snow"}, 0.8, {"alpine"}, 40, 140, {"default:snow"}, nil, nil, nil, ethereal.alpine)
 
 -- wild onion
-minetest.register_decoration({
-	deco_type = "simple",
-	place_on = {"ethereal:green_dirt", "ethereal:prairie_dirt"},
-	sidelen = 80,
-	fill_ratio = 0.25,
-	biomes = {"grassy", "grassytwo", "jumble", "prairie"},
-	decoration = "ethereal:onion_4",
-})
+add_node({"ethereal:green_dirt"}, 0.25, {"grassy"}, 1, 100, {"ethereal:onion_4"}, nil, nil, nil, ethereal.grassy)
+add_node({"ethereal:green_dirt"}, 0.25, {"grassytwo"}, 1, 100, {"ethereal:onion_4"}, nil, nil, nil, ethereal.grassytwo)
+add_node({"ethereal:green_dirt"}, 0.25, {"jumble"}, 1, 100, {"ethereal:onion_4"}, nil, nil, nil, ethereal.jumble)
+add_node({"ethereal:prairie_dirt"}, 0.25, {"prairie"}, 1, 100, {"ethereal:onion_4"}, nil, nil, nil, ethereal.prairie)
 
 -- papyrus
-minetest.register_decoration({
-	deco_type = "simple",
-	place_on = {"ethereal:green_dirt", "ethereal:jungle_dirt"},
-	sidelen = 80,
-	fill_ratio = 0.1,
-	biomes = {"grassy", "junglee"},
-	decoration = "default:papyrus",
-	height_max = 4,
-	spawn_by = "default:water_source",
-	num_spawn_by = 1,
-})
+add_node({"ethereal:green_dirt"}, 0.1, {"grassy"}, 1, 1, {"default:papyrus"}, 4, "default:water_source", 1, ethereal.grassy)
+add_node({"ethereal:jungle_dirt"}, 0.1, {"junglee"}, 1, 1, {"default:papyrus"}, 4, "default:water_source", 1, ethereal.junglee)
 
 --= Farming Redo plants
 
-if farming.mod and farming.mod == "redo" then
+if farming and farming.mod and farming.mod == "redo" then
 
 print ("[MOD] Ethereal - Farming Redo detected and in use")
 
 -- potato
-minetest.register_decoration({
-	deco_type = "simple",
-	place_on = {"ethereal:jungle_dirt"},
-	sidelen = 80,
-	fill_ratio = 0.035,
-	biomes = {"junglee"},
-	decoration = "farming:potato_3",
-})
+add_node({"ethereal:jungle_dirt"}, 0.035, {"junglee"}, 1, 100, {"farming:potato_3"}, nil, nil, nil, ethereal.junglee)
 
 -- carrot, cucumber, potato, tomato, corn, coffee, raspberry, rhubarb
-minetest.register_decoration({
-	deco_type = "simple",
-	place_on = {"ethereal:green_dirt", "ethereal:prairie_dirt"},
-	sidelen = 80,
-	fill_ratio = 0.05,
-	biomes = {"grassy", "grassytwo", "prairie", "jumble"},
-	decoration = {
-		"farming:carrot_7", "farming:cucumber_4", "farming:potato_3",
-		"farming:tomato_7", "farming:corn_8", "farming:coffee_5",
-		"farming:raspberry_4", "farming:rhubarb_3", "farming:blueberry_4"
-	},
-})
+add_node({"ethereal:green_dirt"}, 0.05, {"grassytwo"}, 1, 100, {"farming:carrot_7", "farming:cucumber_4",
+	"farming:potato_3", "farming:tomato_7", "farming:corn_8", "farming:coffee_5",
+	"farming:raspberry_4", "farming:rhubarb_3", "farming:blueberry_4"}, nil, nil, nil, ethereal.grassytwo)
+add_node({"ethereal:green_dirt"}, 0.05, {"grassy"}, 1, 100, {"farming:carrot_7", "farming:cucumber_4",
+	"farming:potato_3", "farming:tomato_7", "farming:corn_8", "farming:coffee_5",
+	"farming:raspberry_4", "farming:rhubarb_3", "farming:blueberry_4"}, nil, nil, nil, ethereal.grassy)
+add_node({"ethereal:green_dirt"}, 0.05, {"jumble"}, 1, 100, {"farming:carrot_7", "farming:cucumber_4",
+	"farming:potato_3", "farming:tomato_7", "farming:corn_8", "farming:coffee_5",
+	"farming:raspberry_4", "farming:rhubarb_3", "farming:blueberry_4"}, nil, nil, nil, ethereal.jumble)
+add_node({"ethereal:prairie_dirt"}, 0.05, {"prairie"}, 1, 100, {"farming:carrot_7", "farming:cucumber_4",
+	"farming:potato_3", "farming:tomato_7", "farming:corn_8", "farming:coffee_5",
+	"farming:raspberry_4", "farming:rhubarb_3", "farming:blueberry_4"}, nil, nil, nil, ethereal.prairie)
 
 -- melon and pumpkin
-minetest.register_decoration({
-	deco_type = "simple",
-	place_on = {"ethereal:green_dirt", "ethereal:jungle_dirt"},
-	sidelen = 80,
-	fill_ratio = 0.015,
-	biomes = {"grassy", "grassytwo", "junglee", "jumble"},
-	decoration = {"farming:melon_8", "farming:pumpkin_8"},
-	spawn_by = "default:water_source",
-	num_spawn_by = 1,
-})
+add_node({"ethereal:jungle_dirt"}, 0.015, {"junglee"}, 1, 1, {"farming:melon_8", "farming:pumpkin_8"}, nil, "default:water_source", 1, ethereal.junglee)
+add_node({"ethereal:green_dirt"}, 0.015, {"grassy"}, 1, 1, {"farming:melon_8", "farming:pumpkin_8"}, nil, "default:water_source", 1, ethereal.grassy)
+add_node({"ethereal:green_dirt"}, 0.015, {"grassytwo"}, 1, 1, {"farming:melon_8", "farming:pumpkin_8"}, nil, "default:water_source", 1, ethereal.grassytwo)
+add_node({"ethereal:green_dirt"}, 0.015, {"jumble"}, 1, 1, {"farming:melon_8", "farming:pumpkin_8"}, nil, "default:water_source", 1, ethereal.jumble)
 
 -- green beans
-minetest.register_decoration({
-	deco_type = "simple",
-	place_on = {"ethereal:green_dirt"},
-	sidelen = 80,
-	fill_ratio = 0.035,
-	biomes = {"grassytwo"},
-	decoration = "farming:beanbush",
-})
+add_node({"ethereal:green_dirt"}, 0.035, {"grassytwo"}, 1, 100, {"farming:beanbush"}, nil, nil, nil, ethereal.grassytwo)
 
 -- grape bushel
-minetest.register_decoration({
-	deco_type = "simple",
-	place_on = {"ethereal:green_dirt", "ethereal:prairie_dirt"},
-	sidelen = 80,
-	fill_ratio = 0.025,
-	biomes = {"grassytwo", "grassy", "prairie"},
-	decoration = "farming:grapebush",
-})
+add_node({"ethereal:green_dirt"}, 0.025, {"grassytwo"}, 1, 100, {"farming:grapebush"}, nil, nil, nil, ethereal.grassytwo)
+add_node({"ethereal:green_dirt"}, 0.025, {"grassy"}, 1, 100, {"farming:grapebush"}, nil, nil, nil, ethereal.grassy)
+add_node({"ethereal:prairie_dirt"}, 0.025, {"prairie"}, 1, 100, {"farming:grapebush"}, nil, nil, nil, ethereal.prairie)
 
 end
 
 -- is waterlily in game?
 if minetest.registered_nodes["flowers:waterlily"] then
+
+-- place in these beach areas
+local list = {
+	{"desert_ocean", ethereal.desert},
+	{"plains_ocean", ethereal.plains},
+	{"sandclay", ethereal.sandclay},
+	{"sandstone_ocean", ethereal.sandstone},
+	{"mesa_ocean", ethereal.mesa},
+	{"grove_ocean", ethereal.grove},
+	{"grassy_ocean", ethereal.grassy},
+}
+
+for _, row in ipairs(list) do
+
+if row[2] == 1 then
+
 	minetest.register_decoration({
 		deco_type = "schematic",
 		place_on = {"default:sand"},
@@ -740,13 +516,14 @@ if minetest.registered_nodes["flowers:waterlily"] then
 			octaves = 3,
 			persist = 0.7
 		},
-		biomes = {
-			"desert_ocean", "plains_ocean", "sandclay",
-			"sandstone_ocean", "mesa_ocean", "grove_ocean", "grassy_ocean",
-		},
+		biomes = {row[1]},
 		y_min = 0,
 		y_max = 0,
 		schematic = ethereal.waterlily,
 		rotation = "random",
 	})
+end
+
+end
+
 end
