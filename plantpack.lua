@@ -147,7 +147,7 @@ minetest.register_decoration({
 	place_on = {"default:sand", "default:green_dirt"},
 	sidelen = 16,
 	fill_ratio = 0.015,
-	biomes = {"sandclay", "lake", "grassy", "grassytwo", "jumble"},
+	biomes = {"sandclay", "grassy_ocean", "grassy", "grassytwo", "jumble"},
 	decoration = {
 		"bakedclay:wetlands_cattails", "bakedclay:wetlands_pickerel",
 		"bakedclay:wetlands_mannagrass", "bakedclay:wetlands_turtle"
@@ -171,7 +171,7 @@ minetest.register_decoration({
 	sidelen = 16,
 	fill_ratio = 0.004,
 	biomes = {
-		"mushroom", "prairie", "grayness", "plains", "desert", "lake",
+		"mushroom", "prairie", "grayness", "plains", "desert",
 		"junglee", "grassy", "grassytwo", "jumble", "snowy", "alpine",
 		"fiery", "mesa", "bamboo"
 	},

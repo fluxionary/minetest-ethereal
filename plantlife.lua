@@ -26,6 +26,19 @@ minetest.register_node("ethereal:fire_flower", {
 	end,
 })
 
+-- Fire Dust
+minetest.register_craftitem("ethereal:fire_dust", {
+	description = "Fire Dust",
+	inventory_image = "fire_dust.png",
+})
+
+minetest.register_craft({
+	output = "ethereal:fire_dust 2",
+	recipe = {
+		{'ethereal:fire_flower'},
+	}
+})
+
 -- Fern (boston)
 minetest.register_node("ethereal:fern", {
 	description = "Fern",
