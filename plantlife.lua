@@ -26,6 +26,12 @@ minetest.register_node("ethereal:fire_flower", {
 	end,
 })
 
+minetest.register_craft({
+	type = "fuel",
+	recipe = "ethereal:fire_flower",
+	burntime = 60,
+})
+
 -- Fire Dust
 minetest.register_craftitem("ethereal:fire_dust", {
 	description = "Fire Dust",
@@ -37,6 +43,12 @@ minetest.register_craft({
 	recipe = {
 		{'ethereal:fire_flower'},
 	}
+})
+
+minetest.register_craft({
+	type = "fuel",
+	recipe = "ethereal:fire_dust",
+	burntime = 30,
 })
 
 -- Fern (boston)
