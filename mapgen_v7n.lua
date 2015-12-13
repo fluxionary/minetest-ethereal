@@ -357,7 +357,7 @@ add_node({"ethereal:crystal_dirt"}, 0.02, {"frost"}, 1, 100, {"ethereal:crystal_
 	"ethereal:crystalgrass"}, nil, nil, nil, ethereal.frost)
 
 -- red shrub
-add_node({"ethereal:fiery_dirt"}, 0.20, {"fiery"}, 1, 100, {"ethereal:dry_shrub"}, nil, nil, nil, ethereal.fiery)
+add_node({"ethereal:fiery_dirt"}, 0.12, {"fiery"}, 1, 100, {"ethereal:dry_shrub"}, nil, nil, nil, ethereal.fiery)
 
 -- fire flower
 add_node({"ethereal:fiery_dirt"}, 0.02, {"fiery"}, 1, 100, {"ethereal:fire_flower"}, nil, nil, nil, ethereal.fiery)
