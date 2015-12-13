@@ -3,7 +3,7 @@ minetest.register_abm({
 	nodenames = {"group:flora"},
 	neighbors = {"group:soil"},
 	interval = 25,
-	chance = 10,
+	chance = 15,
 	catch_up = false,
 	action = function(pos, node)
 
@@ -40,6 +40,32 @@ minetest.register_abm({
 					grass.y = grass.y + 1
 
 					minetest.set_node(grass, {name = "ethereal:crystal_spike"})
+				end
+			end
+
+			return
+
+		elseif num > 3
+		and node.name == "ethereal:dry_shrub" then
+
+			local grass = minetest.find_nodes_in_area_under_air(
+				pos0, pos1, {"ethereal:dry_shrub"})
+
+			local fflower = minetest.find_nodes_in_area_under_air(
+				pos0, pos1, {"ethereal:fire_flower"})
+
+			if #grass > 4
+			and #fflower < 1 then
+
+				grass = grass[math.random(#grass)]
+
+				grass.y = grass.y - 1
+
+				if minetest.get_node(grass).name == "ethereal:fiery_dirt" then
+
+					grass.y = grass.y + 1
+
+					minetest.set_node(grass, {name = "ethereal:fire_flower"})
 				end
 			end
 
