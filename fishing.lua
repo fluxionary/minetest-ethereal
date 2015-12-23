@@ -67,6 +67,17 @@ minetest.register_craft({
 	}
 })
 
+-- default ethereal fish
+local fish = {
+	{"ethereal:fish_raw"},
+}
+
+-- xanadu server additional fish
+if minetest.get_modpath("xanadu") then
+	fish[2] = {"mobs:clownfish_raw"}
+	fish[3] = {"mobs:bluefish_raw"}
+end
+
 -- Fishing Rod (Baited)
 minetest.register_craftitem("ethereal:fishing_rod_baited", {
 	description = "Baited Fishing Rod",
@@ -84,12 +95,16 @@ minetest.register_craftitem("ethereal:fishing_rod_baited", {
 		if (node == "default:water_source"
 		or node == "default:river_water_source")
 		and math.random(1, 100) < 5 then
+
+			local type = fish[math.random(1, #fish)][1]
 			local inv = user:get_inventory()
-			if inv:room_for_item("main", {name = "ethereal:fish_raw"}) then
-				inv:add_item("main", {name = "ethereal:fish_raw"})
+
+			if inv:room_for_item("main", {name = type}) then
+				inv:add_item("main", {name = type})
 				return {name = "ethereal:fishing_rod"}
 			else
-				minetest.chat_send_player(user:get_player_name(), "Inventory full, Fish Got Away!")
+				minetest.chat_send_player(user:get_player_name(),
+					"Inventory full, Fish Got Away!")
 			end
 		end
 	end,
