@@ -10,126 +10,106 @@ else
 
 	print ("[Ethereal] Defining temporary mushrooms")
 
--- The following code was taken from minetest 0.4.13's flowers mod
+-- The following code was taken from minetest 0.4.13 dev flowers mod
 -- incase players are using older version of minetest
 
-local mushrooms_datas = {
-	{"brown", 2},
-	{"red", -6}
-}
+minetest.register_node(":flowers:mushroom_red", {
+	description = "Red Mushroom",
+	tiles = {"flowers_mushroom_red.png"},
+	inventory_image = "flowers_mushroom_red.png",
+	wield_image = "flowers_mushroom_red.png",
+	drawtype = "plantlike",
+	paramtype = "light",
+	sunlight_propagates = true,
+	walkable = false,
+	buildable_to = true,
+	groups = {snappy = 3, flammable = 3, attached_node = 1},
+	sounds = default.node_sound_leaves_defaults(),
+	on_use = minetest.item_eat(-5),
+	selection_box = {
+		type = "fixed",
+		fixed = {-0.3, -0.5, -0.3, 0.3, 0, 0.3}
+	}
+})
 
-for _, m in pairs(mushrooms_datas) do
-	local name, nut = m[1], m[2]
-
-	-- Register fertile mushrooms (these spawn on map and drop spores)
-
-	minetest.register_node(":flowers:mushroom_fertile_" .. name, {
-		description = string.sub(string.upper(name), 0, 1) ..
-			string.sub(name, 2) .. " Fertile Mushroom",
-		tiles = {"flowers_mushroom_" .. name .. ".png"},
-		inventory_image = "flowers_mushroom_" .. name .. ".png",
-		wield_image = "flowers_mushroom_" .. name .. ".png",
-		drawtype = "plantlike",
-		paramtype = "light",
-		sunlight_propagates = true,
-		walkable = false,
-		buildable_to = true,
-		groups = {snappy = 3, flammable = 3, attached_node = 1,
-			not_in_creative_inventory = 1},
-		drop = {
-			items = {
-				{items = {"flowers:mushroom_" .. name}},
-				{items = {"flowers:mushroom_spores_" .. name}, rarity = 4},
-				{items = {"flowers:mushroom_spores_" .. name}, rarity = 2},
-				{items = {"flowers:mushroom_spores_" .. name}, rarity = 2}
-			}
-		},
-		sounds = default.node_sound_leaves_defaults(),
-		on_use = minetest.item_eat(nut),
-		selection_box = {
-			type = "fixed",
-			fixed = {-0.3, -0.5, -0.3, 0.3, 0, 0.3}
-		}
-	})
-
-	-- Register infertile mushrooms (these do not drop spores)
-
-	minetest.register_node(":flowers:mushroom_" .. name, {
-		description = string.sub(string.upper(name), 0, 1) ..
-			string.sub(name, 2) .. " Mushroom",
-		tiles = {"flowers_mushroom_" .. name .. ".png"},
-		inventory_image = "flowers_mushroom_" .. name .. ".png",
-		wield_image = "flowers_mushroom_" .. name .. ".png",
-		drawtype = "plantlike",
-		paramtype = "light",
-		sunlight_propagates = true,
-		walkable = false,
-		buildable_to = true,
-		groups = {snappy = 3, flammable = 3, attached_node = 1},
-		sounds = default.node_sound_leaves_defaults(),
-		on_use = minetest.item_eat(nut),
-		selection_box = {
-			type = "fixed",
-			fixed = {-0.3, -0.5, -0.3, 0.3, 0, 0.3}
-		}
-	})
-
-	-- Register mushroom spores
-
-	minetest.register_node(":flowers:mushroom_spores_" .. name, {
-		description = string.sub(string.upper(name), 0, 1) ..
-			string.sub(name, 2) .. " Mushroom Spores",
-		drawtype = "signlike",
-		tiles = {"flowers_mushroom_spores_" .. name .. ".png"},
-		inventory_image = "flowers_mushroom_spores_" .. name .. ".png",
-		wield_image = "flowers_mushroom_spores_" .. name .. ".png",
-		paramtype = "light",
-		paramtype2 = "wallmounted",
-		sunlight_propagates = true,
-		walkable = false,
-		buildable_to = true,
-		selection_box = {
-			type = "wallmounted",
-		},
-		groups = {dig_immediate = 3, attached_node = 1},
-	})
+minetest.register_node(":flowers:mushroom_brown", {
+	description = "Brown Mushroom",
+	tiles = {"flowers_mushroom_brown.png"},
+	inventory_image = "flowers_mushroom_brown.png",
+	wield_image = "flowers_mushroom_brown.png",
+	drawtype = "plantlike",
+	paramtype = "light",
+	sunlight_propagates = true,
+	walkable = false,
+	buildable_to = true,
+	groups = {snappy = 3, flammable = 3, attached_node = 1},
+	sounds = default.node_sound_leaves_defaults(),
+	on_use = minetest.item_eat(1),
+	selection_box = {
+		type = "fixed",
+		fixed = {-0.3, -0.5, -0.3, 0.3, 0, 0.3}
+	}
+})
 
 end
 
-end -- END if red mushroom exists already
-
--- Register growing ABM
-
+-- mushroom spread and death
 minetest.register_abm({
-	nodenames = {"flowers:mushroom_spores_brown", "flowers:mushroom_spores_red"},
+	nodenames = {"flowers:mushroom_brown", "flowers:mushroom_red"},
 	interval = 11,
 	chance = 50,
-	catch_up = false,
 	action = function(pos, node)
-		local node_under = minetest.get_node_or_nil({x = pos.x,
-			y = pos.y - 1, z = pos.z})
+
+		if minetest.get_node_light(pos, nil) > 14 then
+			minetest.remove_node(pos)
+			return
+		end
+
+		local random = {
+			x = pos.x + math.random(-2,2),
+			y = pos.y + math.random(-1,1),
+			z = pos.z + math.random(-2,2)
+		}
+
+		local random_node = minetest.get_node_or_nil(random)
+
+		if not random_node
+		or random_node.name ~= "air" then
+			return
+		end
+
+		local node_under = minetest.get_node_or_nil({
+			x = random.x,
+			y = random.y - 1,
+			z = random.z
+		})
+
 		if not node_under then
 			return
 		end
-		if minetest.get_item_group(node_under.name, "soil") ~= 0 and
-				minetest.get_node_light(pos, nil) <= 13 then
-			if node.name == "flowers:mushroom_spores_brown" then
-				minetest.set_node(pos, {name = "flowers:mushroom_fertile_brown"})
-			elseif node.name == "flowers:mushroom_spores_red" then
-				minetest.set_node(pos, {name = "flowers:mushroom_fertile_red"})
-			end
+
+		if minetest.get_item_group(node_under.name, "soil") ~= 0
+		and minetest.get_node_light(pos, nil) < 13
+		and minetest.get_node_light(random, nil) < 13 then
+			minetest.set_node(random, {name = node.name})
 		end
 	end
 })
 
+-- these old mushroom related nodes can be simplified now
+minetest.register_alias("flowers:mushroom_spores_brown", "flowers:mushroom_brown")
+minetest.register_alias("flowers:mushroom_spores_red", "flowers:mushroom_red")
+minetest.register_alias("flowers:mushroom_fertile_brown", "flowers:mushroom_brown")
+minetest.register_alias("flowers:mushroom_fertile_red", "flowers:mushroom_red")
+
 -- set compatibility with old ethereal shrooms
-minetest.register_alias("ethereal:mushroom_craftingitem", "flowers:mushroom_spores_brown")
+minetest.register_alias("ethereal:mushroom_craftingitem", "flowers:mushroom_brown")
 minetest.register_alias("ethereal:mushroom_plant", "flowers:mushroom_brown")
 minetest.register_alias("ethereal:mushroom_soup_cooked", "ethereal:mushroom_soup")
-minetest.register_alias("ethereal:mushroom_1", "flowers:mushroom_spores_brown")
-minetest.register_alias("ethereal:mushroom_2", "flowers:mushroom_spores_brown")
-minetest.register_alias("ethereal:mushroom_3", "flowers:mushroom_fertile_brown")
-minetest.register_alias("ethereal:mushroom_4", "flowers:mushroom_fertile_brown")
+minetest.register_alias("ethereal:mushroom_1", "flowers:mushroom_brown")
+minetest.register_alias("ethereal:mushroom_2", "flowers:mushroom_brown")
+minetest.register_alias("ethereal:mushroom_3", "flowers:mushroom_brown")
+minetest.register_alias("ethereal:mushroom_4", "flowers:mushroom_brown")
 
 -- mushroom soup (Heals 1 heart)
 minetest.register_craftitem("ethereal:mushroom_soup", {
