@@ -15,18 +15,19 @@ local nb_pil = 	{
 
 -- Open/Close Gates
 function gate_rightclick(pos, node)
-	local gate, open = unpack(string.split(node.name, "_", 2))
-	local gate = gate.."_"
-	local sound, name
-	if open == "open" then
+
+	local split = string.split(node.name, "_")
+	local sound = "open"
+	local name = "open"
+
+	if split[3] == "open" then
 		sound = "close"
 		name = "closed"
-	else
-		sound = "open"
-		name = "open"
 	end
-	node.name = gate..name
-	minetest.set_node(pos, node)
+
+	node.name = split[1] .. "_" .. split[2] .. "_" .. name
+	minetest.swap_node(pos, node)
+
 	minetest.sound_play("doors_door_"..sound, {
 		pos = pos,
 		gain = 0.3,
@@ -52,7 +53,7 @@ local gates = {
 
 for _, row in pairs(gates) do
 
-minetest.register_node("ethereal:"..row[1].."gate_open", {
+minetest.register_node("ethereal:fencegate_"..row[1].."_open", {
 	tiles = {row[3]},
 	paramtype = "light",
 	paramtype2 = "facedir",
@@ -60,7 +61,7 @@ minetest.register_node("ethereal:"..row[1].."gate_open", {
 	is_ground_content = false,
 	walkable = true,
 	groups = {snappy = 1, choppy = 2, oddly_breakable_by_hand = 2, flammable = 2, not_in_inventory = 1},
-	drop = "ethereal:"..row[1].."gate_closed",
+	drop = "ethereal:fencegate_"..row[1].."_closed",
 	drawtype = "nodebox",
 	node_box = {
 		type = "fixed",
@@ -87,7 +88,9 @@ minetest.register_node("ethereal:"..row[1].."gate_open", {
 	on_rightclick = gate_rightclick,
 })
 
-minetest.register_node("ethereal:"..row[1].."gate_closed", {
+minetest.register_alias("ethereal:"..row[1].."gate_open", "ethereal:fencegate_"..row[1].."_open")
+
+minetest.register_node("ethereal:fencegate_"..row[1].."_closed", {
 	description = row[2].." Gate",
 	tiles = {row[3]},
 	inventory_image = "default_gate_overlay.png^"..row[3].."^default_gate_overlay.png^[makealpha:255,126,126",
@@ -114,9 +117,10 @@ minetest.register_node("ethereal:"..row[1].."gate_closed", {
 	},
 	on_rightclick = gate_rightclick,
 })
+minetest.register_alias("ethereal:"..row[1].."gate_closed", "ethereal:fencegate_"..row[1].."_closed")
 
 minetest.register_craft({
-	output = "ethereal:"..row[1].."gate_closed",
+	output = "ethereal:fencegate_"..row[1].."_closed",
 	recipe = {
 		 {"group:stick", row[4], "group:stick"},
 		 {"group:stick", row[4], "group:stick"},

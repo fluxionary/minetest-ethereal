@@ -223,7 +223,7 @@ minetest.register_abm({
 		
 		-- grow
 		local height = minetest.get_item_group(node.name, "strawberry") + 1
-		minetest.set_node(pos, {name = "ethereal:strawberry_"..height})
+		minetest.swap_node(pos, {name = "ethereal:strawberry_"..height})
 	end
 })
 

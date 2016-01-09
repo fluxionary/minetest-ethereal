@@ -46,7 +46,7 @@ ethereal.add_tree = function (pos, ofx, ofz, schem)
 		return
 	end
 	-- remove sapling and place schematic
-	minetest.set_node(pos, {name = "air"})
+	minetest.swap_node(pos, {name = "air"})
 	minetest.place_schematic(
 		{x = pos.x - ofx, y = pos.y, z =pos.z - ofz},
 		schem, "random", {}, false

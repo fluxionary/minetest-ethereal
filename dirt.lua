@@ -42,7 +42,7 @@ dirt.type = {
 	{"Crystal"}, {"Mushroom"}, {"Fiery"}, {"Gray"},
 }
 
-for _, row in ipairs(dirt.type) do
+for _, row in pairs(dirt.type) do
 
 	local desc = row[1]
 	local name = desc:lower()
@@ -89,7 +89,7 @@ minetest.register_abm({
 			"group:ethereal_grass")
 		local n
 		-- count new grass nodes
-		for _,p in ipairs(positions) do
+		for _,p in pairs(positions) do
 			n = minetest.get_node_or_nil(p)
 			if n and n.name then
 				count_grasses[n.name] = (count_grasses[n.name] or 0) + 1
@@ -100,7 +100,7 @@ minetest.register_abm({
 				end
 			end
 		end
-		minetest.set_node(pos, {name = curr_type})
+		minetest.swap_node(pos, {name = curr_type})
 	end
 })
 
@@ -125,7 +125,7 @@ minetest.register_abm({
 		if name ~= "ignore" and nodedef and not ((nodedef.sunlight_propagates or
 				nodedef.paramtype == "light") and
 				nodedef.liquidtype == "none") then
-			minetest.set_node(pos, {name = "default:dirt"})
+			minetest.swap_node(pos, {name = "default:dirt"})
 		end
 	end
 })

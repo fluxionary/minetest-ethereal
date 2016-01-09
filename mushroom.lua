@@ -51,8 +51,6 @@ minetest.register_node(":flowers:mushroom_brown", {
 	}
 })
 
-end
-
 -- mushroom spread and death
 minetest.register_abm({
 	nodenames = {"flowers:mushroom_brown", "flowers:mushroom_red"},
@@ -89,12 +87,14 @@ minetest.register_abm({
 		end
 
 		if minetest.get_item_group(node_under.name, "soil") ~= 0
-		and minetest.get_node_light(pos, nil) < 13
-		and minetest.get_node_light(random, nil) < 13 then
-			minetest.set_node(random, {name = node.name})
+		and minetest.get_node_light(pos, nil) < 9
+		and minetest.get_node_light(random, nil) < 9 then
+			minetest.swap_node(random, {name = node.name})
 		end
 	end
 })
+
+end
 
 -- these old mushroom related nodes can be simplified now
 minetest.register_alias("flowers:mushroom_spores_brown", "flowers:mushroom_brown")

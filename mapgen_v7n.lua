@@ -360,7 +360,7 @@ add_node({"ethereal:crystal_dirt"}, 0.02, {"frost"}, 1, 100, {"ethereal:crystal_
 add_node({"ethereal:fiery_dirt"}, 0.12, {"fiery"}, 1, 100, {"ethereal:dry_shrub"}, nil, nil, nil, ethereal.fiery)
 
 -- fire flower
-add_node({"ethereal:fiery_dirt"}, 0.02, {"fiery"}, 1, 100, {"ethereal:fire_flower"}, nil, nil, nil, ethereal.fiery)
+--add_node({"ethereal:fiery_dirt"}, 0.02, {"fiery"}, 1, 100, {"ethereal:fire_flower"}, nil, nil, nil, ethereal.fiery)
 
 -- snowy grass
 add_node({"ethereal:gray_dirt"}, 0.05, {"grayness"}, 1, 100, {"ethereal:snowygrass"}, nil, nil, nil, ethereal.grayness)

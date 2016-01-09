@@ -166,13 +166,13 @@ minetest.register_abm({
 			if height < 14
 			and pos.y < 0
 			and minetest.get_node(pos).name == "default:water_source" then
-				minetest.set_node(pos, {name = "ethereal:seaweed"})
+				minetest.swap_node(pos, {name = "ethereal:seaweed"})
 			end
 
 		else
 			pos.y = pos.y + 1
 			if minetest.get_node(pos).name == "default:water_source" then
-				minetest.set_node(pos, {name = "ethereal:coral"..sel})
+				minetest.swap_node(pos, {name = "ethereal:coral"..sel})
 			end
 
 		end

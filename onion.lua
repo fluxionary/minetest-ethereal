@@ -94,7 +94,7 @@ minetest.register_abm({
 		
 		-- grow
 		node.name = "ethereal:onion_"..minetest.get_item_group(node.name, "onion") + 1
-		minetest.set_node(pos, node)
+		minetest.swap_node(pos, node)
 	end
 })
 

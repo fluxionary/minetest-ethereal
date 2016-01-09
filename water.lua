@@ -47,7 +47,7 @@ minetest.register_abm({
 	chance = 100,
 	catch_up = false,
 	action = function(pos, node)
-		minetest.set_node(pos, {name = "default:mossycobble"})
+		minetest.swap_node(pos, {name = "default:mossycobble"})
 	end
 })
 
@@ -68,7 +68,7 @@ minetest.register_abm({
 			{"default:water_source", "default:river_water_source"})
 
 		if water and #water > 0 then
-			minetest.set_node(water[1], {name = "default:ice"})
+			minetest.swap_node(water[1], {name = "default:ice"})
 		end
 	end,
 })
@@ -97,11 +97,11 @@ minetest.register_abm({
 		or node.name == "default:snowblock"
 		or node.name == "ethereal:icebrick"
 		or node.name == "ethereal:snowbrick" then
-			minetest.set_node(pos, {name = water_node.."_source"})
+			minetest.swap_node(pos, {name = water_node.."_source"})
 		elseif node.name == "default:snow" then
-			minetest.set_node(pos, {name = water_node.."_flowing"})
+			minetest.swap_node(pos, {name = water_node.."_flowing"})
 		elseif node.name == "default:dirt_with_snow" then
-			minetest.set_node(pos, {name = "default:dirt_with_grass"})
+			minetest.swap_node(pos, {name = "default:dirt_with_grass"})
 		end
 
 		nodeupdate(pos)
@@ -117,9 +117,9 @@ minetest.register_abm({
 	catch_up = false,
 	action = function(pos, node)
 		if node == "ethereal:dry_dirt" then
-			minetest.set_node(pos, {name = "default:dirt"})
+			minetest.swap_node(pos, {name = "default:dirt"})
 		else
-			minetest.set_node(pos, {name = "ethereal:green_dirt"})
+			minetest.swap_node(pos, {name = "ethereal:green_dirt"})
 		end
 	end,
 })
@@ -145,7 +145,7 @@ minetest.register_abm({
 			{x = pos.x, y = pos.y + 1, z = pos.z},
 			{"group:water"})
 		if num > 0 then
-			minetest.set_node(pos, {name = "default:water_flowing"})
+			minetest.swap_node(pos, {name = "default:water_flowing"})
 			minetest.add_item(pos, {name = node.name})
 		end
 	end,

@@ -39,7 +39,7 @@ minetest.register_abm({
 
 					grass.y = grass.y + 1
 
-					minetest.set_node(grass, {name = "ethereal:crystal_spike"})
+					minetest.swap_node(grass, {name = "ethereal:crystal_spike"})
 				end
 			end
 
@@ -54,7 +54,7 @@ minetest.register_abm({
 			local fflower = minetest.find_nodes_in_area_under_air(
 				pos0, pos1, {"ethereal:fire_flower"})
 
-			if #grass > 4
+			if #grass > 5
 			and #fflower < 1 then
 
 				grass = grass[math.random(#grass)]
@@ -65,7 +65,7 @@ minetest.register_abm({
 
 					grass.y = grass.y + 1
 
-					minetest.set_node(grass, {name = "ethereal:fire_flower"})
+					minetest.swap_node(grass, {name = "ethereal:fire_flower"})
 				end
 			end
 
@@ -91,7 +91,7 @@ minetest.register_abm({
 			end
 
 			if minetest.get_node(seedling).name == "air" then
-				minetest.set_node(seedling, {name = node.name})
+				minetest.swap_node(seedling, {name = node.name})
 			end
 		end
 	end,

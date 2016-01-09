@@ -13,7 +13,7 @@ local fences = {
 	{"birch", "Birch Wood", "moretrees_birch_wood.png", "ethereal:birch_wood"},
 }
 
-for _, row in ipairs(fences) do
+for _, row in pairs(fences) do
 
 minetest.register_node("ethereal:fence_"..row[1], {
 	description = row[2].." Fence",

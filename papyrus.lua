@@ -48,7 +48,7 @@ minetest.register_abm({
 					z = pos.z
 				}, 1, 1, ethereal.bambootree)
 			else
-				minetest.set_node(pos, {name = node.name})
+				minetest.swap_node(pos, {name = node.name})
 			end
 		end
 

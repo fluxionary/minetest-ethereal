@@ -16,7 +16,8 @@ Ethereal v7 Mapgen mod for Minetest
 - Dirt with dry grass turns into green grass when near water
 - Ice or snow above sea level melts into river water
 - Disabling ethereal biomes no longer shows error messages
-- Fire Flowers re-generate, can also be made into Fire Dust
+- Fire Flowers re-generate, can also be made into Fire Dust and both are fuel
+- Optimize and tidy code
 
 ### 1.18
 

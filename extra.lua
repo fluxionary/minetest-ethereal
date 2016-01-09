@@ -97,7 +97,7 @@ minetest.register_node("ethereal:glostone", {
 	description = "Glo Stone",
 	tiles = {"glostone.png"},
 	groups = {cracky = 3},
-	light_source = default.LIGHT_MAX - 1,
+	light_source = 13,
 	drop = "ethereal:glostone",
 	sounds = default.node_sound_stone_defaults(),
 })
@@ -290,8 +290,9 @@ minetest.register_tool("ethereal:light_staff", {
 		local node = minetest.get_node_or_nil(pos)
 		if node then node = node.name else return end
 
-		if node == "default:stone" then
-			minetest.set_node(pos, {name="ethereal:glostone"})
+		if node == "default:stone"
+		or node == "default:desert_stone" then
+			minetest.swap_node(pos, {name="ethereal:glostone"})
 			if not minetest.setting_getbool("creative_mode") then
 				itemstack:add_wear(65535 / 149) -- 150 uses
 			end
@@ -318,13 +319,14 @@ minetest.register_on_generated(function(minp, maxp)
 	local bpos
 	for key, pos in pairs(minetest.find_nodes_in_area_under_air(minp, maxp, "default:stone_with_coal")) do
 		bpos = {x = pos.x, y = pos.y + 1, z = pos.z }
-		if minetest.get_node(bpos).name == "air" then
+		if math.random(1, 2) == 1
+		and minetest.get_node(bpos).name == "air" then
 			if bpos.y > -3000 and bpos.y < -2000 then
-				minetest.set_node(bpos, {name = "ethereal:illumishroom3"})
+				minetest.swap_node(bpos, {name = "ethereal:illumishroom3"})
 			elseif bpos.y > -2000 and bpos.y < -1000 then
-				minetest.set_node(bpos, {name = "ethereal:illumishroom2"})
+				minetest.swap_node(bpos, {name = "ethereal:illumishroom2"})
 			elseif bpos.y > -1000 and bpos.y < -30 then
-				minetest.set_node(bpos, {name = "ethereal:illumishroom"})
+				minetest.swap_node(bpos, {name = "ethereal:illumishroom"})
 			end
 		end
 	end
