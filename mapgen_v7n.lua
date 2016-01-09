@@ -382,7 +382,7 @@ local list = {
 }
 
 -- wild red and brown mushrooms
-for _, row in ipairs(list) do
+for _, row in pairs(list) do
 
 if row[3] == 1 then
 minetest.register_decoration({
@@ -500,7 +500,7 @@ local list = {
 	{"grassy_ocean", ethereal.grassy},
 }
 
-for _, row in ipairs(list) do
+for _, row in pairs(list) do
 
 if row[2] == 1 then
 
