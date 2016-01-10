@@ -186,7 +186,7 @@ minetest.register_node("ethereal:quicksand", {
 	walkable = false,
 	climbable = false,
 	post_effect_color = {r = 230, g = 210, b = 160, a = 245},
-	groups = {crumbly = 3, falling_node = 1, sand = 1, liquid = 3, disable_jump = 1},
+	groups = {crumbly = 3, sand = 1, liquid = 3, disable_jump = 1},
 	sounds = default.node_sound_sand_defaults(),
 })
 
@@ -208,7 +208,7 @@ minetest.register_node("ethereal:quicksand2", {
 	walkable = false,
 	climbable = false,
 	post_effect_color = {r = 230, g = 210, b = 160, a = 245},
-	groups = {crumbly = 3, falling_node = 1, sand = 1, liquid = 3, disable_jump = 1},
+	groups = {crumbly = 3, sand = 1, liquid = 3, disable_jump = 1},
 	sounds = default.node_sound_sand_defaults(),
 })
 
@@ -313,18 +313,26 @@ minetest.register_craft({
 
 -- Generate Illumishroom in caves next to coal
 minetest.register_on_generated(function(minp, maxp)
+
 	if minp.y > -30 or maxp.y < -3000 then
 		return
 	end
+
 	local bpos
+
 	for key, pos in pairs(minetest.find_nodes_in_area_under_air(minp, maxp, "default:stone_with_coal")) do
+
 		bpos = {x = pos.x, y = pos.y + 1, z = pos.z }
+
 		if math.random(1, 2) == 1
 		and minetest.get_node(bpos).name == "air" then
+
 			if bpos.y > -3000 and bpos.y < -2000 then
 				minetest.swap_node(bpos, {name = "ethereal:illumishroom3"})
+
 			elseif bpos.y > -2000 and bpos.y < -1000 then
 				minetest.swap_node(bpos, {name = "ethereal:illumishroom2"})
+
 			elseif bpos.y > -1000 and bpos.y < -30 then
 				minetest.swap_node(bpos, {name = "ethereal:illumishroom"})
 			end

@@ -63,4 +63,4 @@ else
 	dofile(path .. "/stairs.lua")
 end
 
-print ("[MOD] Ethereal mod loaded")
+print ("[MOD] Ethereal loaded")
