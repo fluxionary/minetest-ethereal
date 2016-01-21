@@ -6,7 +6,7 @@ minetest.register_node("ethereal:crystal_spike", {
 	inventory_image = "crystal_spike.png",
 	wield_image = "crystal_spike.png",
 	paramtype = "light",
-	light_source = default.LIGHT_MAX - 7,
+	light_source = 7,
 	sunlight_propagates = true,
 	walkable = false,
 	damage_per_second = 1,
@@ -38,7 +38,7 @@ minetest.register_craft({
 minetest.register_node("ethereal:crystal_block", {
 	description = "Crystal Block",
 	tiles = {"crystal_block.png"},
-	light_source = default.LIGHT_MAX - 5,
+	light_source = 9,
 	is_ground_content = false,
 	groups = {cracky = 1, level = 2, puts_out_fire = 1},
 	sounds = default.node_sound_glass_defaults(),
@@ -152,28 +152,33 @@ minetest.register_tool("ethereal:shovel_crystal", {
 
 	on_use = function(itemstack, user, pointed_thing)
 
-		if pointed_thing.type ~= "node" then return end
+		if pointed_thing.type ~= "node" then
+			return
+		end
 
 		-- Check if node protected
-		if not minetest.is_protected(pointed_thing.under, user:get_player_name()) then
+		if minetest.is_protected(pointed_thing.under, user:get_player_name()) then
+			return
+		end
 
-			local pos = pointed_thing.under
-			local nn = minetest.get_node_or_nil(pos)
-			if nn then nn = nn.name else return end
+		local pos = pointed_thing.under
+		local nn = minetest.get_node(pos).name
 
-			-- Is node dirt, sand or gravel
-			if minetest.get_item_group(nn, "crumbly") > 0 then
+		-- Is node dirt, sand or gravel
+		if minetest.get_item_group(nn, "crumbly") > 0 then
 
-				local inv = user:get_inventory()
+			local inv = user:get_inventory()
 
-				minetest.remove_node(pointed_thing.under)
-				nodeupdate(pos)
-				
-				inv:add_item("main", {name = nn})
-				itemstack:add_wear(65535 / 100) -- 111 uses
-				minetest.sound_play("default_dirt_footstep", {pos = pos, gain = 0.35})
-				return itemstack
-			end
+			minetest.remove_node(pointed_thing.under)
+
+			nodeupdate(pos)
+
+			inv:add_item("main", {name = nn})
+			itemstack:add_wear(65535 / 100) -- 111 uses
+
+			minetest.sound_play("default_dirt_footstep", {pos = pos, gain = 0.35})
+
+			return itemstack
 		end
 	end,
 })

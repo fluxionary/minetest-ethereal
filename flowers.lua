@@ -90,9 +90,7 @@ minetest.register_abm({
 				return
 			end
 
-			if minetest.get_node(seedling).name == "air" then
-				minetest.swap_node(seedling, {name = node.name})
-			end
+			minetest.swap_node(seedling, {name = node.name})
 		end
 	end,
 })

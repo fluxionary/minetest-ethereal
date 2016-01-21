@@ -14,6 +14,7 @@ minetest.register_abm({
 		local high = 4
 
 		pos.y = pos.y - 1
+
 		local nod = minetest.get_node_or_nil(pos)
 
 		if not nod
@@ -23,10 +24,11 @@ minetest.register_abm({
 		end
 
 		if node.name == "ethereal:bamboo" then
-			high = 8 -- was 5
+			high = 8
 		end
 
 		pos.y = pos.y + 1
+
 		local height = 0
 
 		while height < high
@@ -40,8 +42,10 @@ minetest.register_abm({
 		if nod
 		and nod.name == "air"
 		and height < high then
+
 			if node.name == "ethereal:bamboo"
 			and height == (high - 1) then
+
 				ethereal.add_tree({
 					x = pos.x,
 					y = oripos,

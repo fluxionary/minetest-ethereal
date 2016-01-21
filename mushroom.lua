@@ -59,14 +59,16 @@ minetest.register_abm({
 	action = function(pos, node)
 
 		if minetest.get_node_light(pos, nil) > 14 then
+
 			minetest.remove_node(pos)
+
 			return
 		end
 
 		local random = {
-			x = pos.x + math.random(-2,2),
-			y = pos.y + math.random(-1,1),
-			z = pos.z + math.random(-2,2)
+			x = pos.x + math.random(-2, 2),
+			y = pos.y + math.random(-1, 1),
+			z = pos.z + math.random(-2, 2)
 		}
 
 		local random_node = minetest.get_node_or_nil(random)

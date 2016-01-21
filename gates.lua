@@ -26,6 +26,7 @@ function gate_rightclick(pos, node)
 	end
 
 	node.name = split[1] .. "_" .. split[2] .. "_" .. name
+
 	minetest.swap_node(pos, node)
 
 	minetest.sound_play("doors_door_"..sound, {
@@ -60,7 +61,10 @@ minetest.register_node("ethereal:fencegate_"..row[1].."_open", {
 	sunlight_propagates = true,
 	is_ground_content = false,
 	walkable = true,
-	groups = {snappy = 1, choppy = 2, oddly_breakable_by_hand = 2, flammable = 2, not_in_inventory = 1},
+	groups = {
+		snappy = 1, choppy = 2, oddly_breakable_by_hand = 2,
+		flammable = 2, not_in_inventory = 1
+	},
 	drop = "ethereal:fencegate_"..row[1].."_closed",
 	drawtype = "nodebox",
 	node_box = {
@@ -93,8 +97,10 @@ minetest.register_alias("ethereal:"..row[1].."gate_open", "ethereal:fencegate_".
 minetest.register_node("ethereal:fencegate_"..row[1].."_closed", {
 	description = row[2].." Gate",
 	tiles = {row[3]},
-	inventory_image = "default_gate_overlay.png^"..row[3].."^default_gate_overlay.png^[makealpha:255,126,126",
-	wield_image = "default_gate_overlay.png^"..row[3].."^default_gate_overlay.png^[makealpha:255,126,126",
+	inventory_image = "default_gate_overlay.png^" .. row[3]
+		.. "^default_gate_overlay.png^[makealpha:255,126,126",
+	wield_image = "default_gate_overlay.png^" .. row[3]
+		.. "^default_gate_overlay.png^[makealpha:255,126,126",
 	paramtype = "light",
 	paramtype2 = "facedir",
 	sunlight_propagates = true,

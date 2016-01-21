@@ -138,11 +138,11 @@ minetest.register_ore({
 	clust_scarcity = 10*10*10,
 	clust_num_ores = 24,
 	clust_size     = 4,
-	y_max     = -14,
+	y_max     = -12,
 	y_min     = -100,
 })
 
--- randomly generate coral or seaweed and have seaweed grow up to 10 high
+-- randomly generate coral or seaweed and have seaweed grow up to 14 high
 minetest.register_abm({
 	nodenames = {"ethereal:sandy"},
 	neighbors = {"group:water"},
@@ -152,29 +152,42 @@ minetest.register_abm({
 	action = function(pos, node)
 
 		local sel = math.random(1, 5)
-		if sel == 1
-		or node.name == "ethereal:seaweed" then
-			local height = 0
 
-			while (minetest.get_node(pos).name == "ethereal:seaweed"
-			or minetest.get_node(pos).name == "ethereal:sandy")
-			and height < 14 do
+		pos.y = pos.y + 1
+
+		local nod = minetest.get_node(pos).name
+
+		if nod == "default:water_source"
+		and sel > 1 then
+
+			if minetest.get_node(pos).name == "default:water_source" then
+
+				minetest.swap_node(pos, {name = "ethereal:coral" .. sel})
+			end
+
+			return
+		end
+
+		if nod == "ethereal:seaweed"
+		or sel == 1 then
+
+			local height = 0
+			local high = 14
+
+			while height < high
+			and minetest.get_node(pos).name == "ethereal:seaweed" do
 				height = height + 1
 				pos.y = pos.y + 1
 			end
 
-			if height < 14
-			and pos.y < 0
+			if pos.y < 1
+			and height < high
 			and minetest.get_node(pos).name == "default:water_source" then
+
 				minetest.swap_node(pos, {name = "ethereal:seaweed"})
 			end
 
-		else
-			pos.y = pos.y + 1
-			if minetest.get_node(pos).name == "default:water_source" then
-				minetest.swap_node(pos, {name = "ethereal:coral"..sel})
-			end
-
 		end
+
 	end,
 })

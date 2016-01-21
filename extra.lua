@@ -1,4 +1,4 @@
--- Vines
+-- vines
 minetest.register_node("ethereal:vine", {
 	description = "Vine",
 	drawtype = "signlike",
@@ -106,8 +106,6 @@ minetest.register_craft({
 	output = "ethereal:glostone",
 	recipe = {
 		{"default:torch", "default:stone", "dye:yellow"},
-		{"", "", ""},
-		{"", "", ""},
 	}
 })
 
@@ -287,15 +285,17 @@ minetest.register_tool("ethereal:light_staff", {
 			return
 		end
 
-		local node = minetest.get_node_or_nil(pos)
-		if node then node = node.name else return end
+		local node = minetest.get_node(pos).name
 
 		if node == "default:stone"
 		or node == "default:desert_stone" then
-			minetest.swap_node(pos, {name="ethereal:glostone"})
+
+			minetest.swap_node(pos, {name = "ethereal:glostone"})
+
 			if not minetest.setting_getbool("creative_mode") then
 				itemstack:add_wear(65535 / 149) -- 150 uses
 			end
+
 			return itemstack
 		end
 
@@ -319,13 +319,13 @@ minetest.register_on_generated(function(minp, maxp)
 	end
 
 	local bpos
+	local coal = minetest.find_nodes_in_area_under_air(minp, maxp, "default:stone_with_coal")
 
-	for key, pos in pairs(minetest.find_nodes_in_area_under_air(minp, maxp, "default:stone_with_coal")) do
+	for n = 1, #coal do
 
-		bpos = {x = pos.x, y = pos.y + 1, z = pos.z }
+		bpos = {x = coal[n].x, y = coal[n].y + 1, z = coal[n].z }
 
-		if math.random(1, 2) == 1
-		and minetest.get_node(bpos).name == "air" then
+		if math.random(1, 2) == 1 then
 
 			if bpos.y > -3000 and bpos.y < -2000 then
 				minetest.swap_node(bpos, {name = "ethereal:illumishroom3"})

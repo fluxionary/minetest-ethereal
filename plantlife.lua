@@ -17,8 +17,7 @@ minetest.register_node("ethereal:fire_flower", {
 		fixed = {-0.5, -0.5, -0.5, 0.5, -5/16, 0.5},
 	},
 	on_punch = function(pos, node, puncher)
-		--local item = puncher:get_wielded_item()
-		--local itemname = item:get_name()
+
 		puncher:punch(puncher, 1.0, {
 			full_punch_interval = 1.0,
 			damage_groups = {fleshy = 2}
@@ -151,8 +150,9 @@ minetest.register_node("ethereal:crystalgrass", {
 
 -- Define Moss Types (Has grass textures on all sides)
 function ethereal.add_moss(typ, descr, texture, receipe_item)
-	minetest.register_node("ethereal:"..typ.."_moss", {
-		description = descr.." Moss",
+
+	minetest.register_node("ethereal:" .. typ .. "_moss", {
+		description = descr .. " Moss",
 		tiles = {texture},
 		groups = {crumbly = 3},
 		sounds = default.node_sound_dirt_defaults()
@@ -170,7 +170,7 @@ ethereal.add_moss( "fiery", "Fiery", "ethereal_grass_fiery_top.png", "ethereal:d
 ethereal.add_moss( "gray", "Gray", "ethereal_grass_gray_top.png", "ethereal:snowygrass")
 ethereal.add_moss( "green", "Green", "default_grass.png", "default:jungleleaves")
 
--- apple
+-- fix apples hanging in sky when no tree around
 minetest.override_item("default:apple", {
 	drop = "default:apple",
 })
@@ -341,7 +341,7 @@ minetest.register_node("ethereal:bamboo", {
 		type = "fixed",
 		fixed = {-0.3, -0.5, -0.3, 0.3, 0.5, 0.3}
 	},
-	groups = {choppy = 3, oddly_breakable_by_hand = 1, flammable = 2, tree = 1}, -- added tree
+	groups = {choppy = 3, oddly_breakable_by_hand = 1, flammable = 2, tree = 1},
 	sounds = default.node_sound_leaves_defaults(),
 	after_dig_node = function(pos, node, metadata, digger)
 		default.dig_up(pos, node, digger)
@@ -364,13 +364,10 @@ minetest.register_node("ethereal:bamboo_sprout", {
 	paramtype = "light",
 	sunlight_propagates = true,
 	walkable = false,
-	--buildable_to = true,
-	--groups = {snappy = 3, flora = 1, attached_node = 1, flammable = 2},
 	groups = {
 		snappy = 3, attached_node = 1, flammable = 2,
 		dig_immediate = 3, ethereal_sapling = 1
 	},
-	--sounds = default.node_sound_leaves_defaults(),
 	sounds = default.node_sound_defaults(),
 	selection_box = {
 		type = "fixed",
@@ -462,7 +459,7 @@ for _,items in pairs({
 	{"default:ice", "default:snow"},
 	{"ethereal:dry_dirt", "default:desert_sand"},
 }) do
-	local a,b = unpack(items)
+	local a, b = unpack(items)
 	minetest.register_craft({
 		output = b.." 5",
 		recipe = {
@@ -531,7 +528,7 @@ minetest.register_node("ethereal:candle", {
 		},
 	},	
 	paramtype = "light",
-	light_source = default.LIGHT_MAX - 3,
+	light_source = 11,
 	sunlight_propagates = true,
 	walkable = false,
 	groups = {dig_immediate = 3, attached_node = 1},
@@ -543,7 +540,7 @@ minetest.register_node("ethereal:candle", {
 })
 
 minetest.register_craft({
-	output = "ethereal:candle 6",
+	output = "ethereal:candle 4",
 	recipe = {
 		{"","farming:cotton"},
 		{"","ethereal:palm_wax"},

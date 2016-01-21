@@ -15,29 +15,31 @@ local fences = {
 
 for _, row in pairs(fences) do
 
-minetest.register_node("ethereal:fence_"..row[1], {
-	description = row[2].." Fence",
-	drawtype = "fencelike",
-	is_ground_content = false,
-	tiles = {row[3]},
-	inventory_image = "default_fence_overlay.png^"..row[3].."^default_fence_overlay.png^[makealpha:255,126,126",
-	wield_image = "default_fence_overlay.png^"..row[3].."^default_fence_overlay.png^[makealpha:255,126,126",
-	paramtype = "light",
-	sunlight_propagates = true,
-	selection_box = {
-		type = "fixed",
-		fixed = {-1/7, -1/2, -1/7, 1/7, 1/2, 1/7},
-	},
-	groups = {choppy = 2, oddly_breakable_by_hand = 2, flammable = 2},
-	sounds = default.node_sound_wood_defaults(),
-})
+	minetest.register_node("ethereal:fence_"..row[1], {
+		description = row[2].." Fence",
+		drawtype = "fencelike",
+		is_ground_content = false,
+		tiles = {row[3]},
+		inventory_image = "default_fence_overlay.png^" .. row[3]
+			.. "^default_fence_overlay.png^[makealpha:255,126,126",
+		wield_image = "default_fence_overlay.png^" .. row[3]
+			.. "^default_fence_overlay.png^[makealpha:255,126,126",
+		paramtype = "light",
+		sunlight_propagates = true,
+		selection_box = {
+			type = "fixed",
+			fixed = {-1/7, -1/2, -1/7, 1/7, 1/2, 1/7},
+		},
+		groups = {choppy = 2, oddly_breakable_by_hand = 2, flammable = 2},
+		sounds = default.node_sound_wood_defaults(),
+	})
 
-minetest.register_craft({
-	output = "ethereal:fence_"..row[1].." 4",
-	recipe = {
-		{row[4], "group:stick", row[4]},
-		{row[4], "group:stick", row[4]},
-	}
-})
+	minetest.register_craft({
+		output = "ethereal:fence_"..row[1].." 4",
+		recipe = {
+			{row[4], "group:stick", row[4]},
+			{row[4], "group:stick", row[4]},
+		}
+	})
 
 end

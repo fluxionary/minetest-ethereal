@@ -16,7 +16,7 @@ minetest.register_node("ethereal:acacia_leaves", {
 	inventory_image = "moretrees_acacia_leaves.png",
 	wield_image = "moretrees_acacia_leaves.png",
 	paramtype = "light",
-	walkable = false,
+	walkable = ethereal.leafwalk,
 	visual_scale = 1.2,
 	waving = 1,
 	groups = {snappy = 3, leafdecay = 3, leaves = 1, flammable = 2},
@@ -37,7 +37,7 @@ minetest.override_item("default:acacia_leaves", {
 	inventory_image = "moretrees_acacia_leaves.png",
 	wield_image = "moretrees_acacia_leaves.png",
 	visual_scale = 1.2,
-	walkable = false,
+	walkable = ethereal.leafwalk,
 	drop = {
 		max_items = 1,
 		items = {
@@ -57,7 +57,7 @@ minetest.register_node("ethereal:willow_twig", {
 	inventory_image = "willow_twig.png",
 	wield_image = "willow_twig.png",
 	paramtype = "light",
-	walkable = false,
+	walkable = ethereal.leafwalk,
 	visual_scale = 1.2,
 	waving = 1,
 	groups = {snappy = 3, leafdecay = 3, leaves = 1, flammable = 2},
@@ -81,7 +81,7 @@ minetest.register_node("ethereal:redwood_leaves", {
 	inventory_image = "redwood_leaves.png",
 	wield_image = "redwood_leaves.png",
 	paramtype = "light",
-	walkable = false,
+	walkable = ethereal.leafwalk,
 	waving = 1,
 	groups = {snappy = 3, leafdecay = 3, leaves = 1, flammable = 2},
 	drop = {
@@ -101,7 +101,7 @@ minetest.override_item("default:leaves", {
 	visual_scale = 1.2,
 	inventory_image = "default_leaves.png",
 	wield_image = "default_leaves.png",
-	walkable = false,
+	walkable = ethereal.leafwalk,
 	drop = {
 		max_items = 1,
 		items = {
@@ -120,7 +120,7 @@ minetest.register_node("ethereal:orange_leaves", {
 	inventory_image = "orange_leaves.png",
 	wield_image = "orange_leaves.png",
 	paramtype = "light",
-	walkable = false,
+	walkable = ethereal.leafwalk,
 	waving = 1,
 	groups = {snappy = 3, leafdecay = 3, leaves = 1, flammable = 2},
 	drop = {
@@ -140,7 +140,7 @@ minetest.override_item("default:jungleleaves", {
 	visual_scale = 1.2,
 	inventory_image = "default_jungleleaves.png",
 	wield_image = "default_jungleleaves.png",
-	walkable = false,
+	walkable = ethereal.leafwalk,
 	drop = {
 		max_items = 1,
 		items = {
@@ -159,7 +159,7 @@ minetest.register_node("ethereal:bananaleaves", {
 	inventory_image = "banana_leaf.png",
 	wield_image = "banana_leaf.png",
 	paramtype = "light",
-	walkable = false,
+	walkable = ethereal.leafwalk,
 	waving = 1,
 	groups = {snappy = 3, leafdecay = 3, leaves = 1, flammable = 2},
 	drop = {
@@ -182,7 +182,7 @@ minetest.register_node("ethereal:yellowleaves", {
 	inventory_image = "yellow_leaves.png",
 	wield_image = "yellow_leaves.png",
 	paramtype = "light",
-	walkable = false,
+	walkable = ethereal.leafwalk,
 	waving = 1,
 	groups = {snappy = 3, leafdecay = 3, leaves = 1},
 	drop = {
@@ -208,7 +208,7 @@ minetest.register_node("ethereal:palmleaves", {
 	inventory_image = "moretrees_palm_leaves.png",
 	wield_image = "moretrees_palm_leaves.png",
 	paramtype = "light",
-	walkable = false,
+	walkable = ethereal.leafwalk,
 	waving = 1,
 	groups = {snappy = 3, leafdecay = 3, leaves = 1, flammable = 2},
 	drop = {
@@ -231,7 +231,7 @@ minetest.register_node("ethereal:birch_leaves", {
 	inventory_image = "moretrees_birch_leaves.png",
 	wield_image = "moretrees_birch_leaves.png",
 	paramtype = "light",
-	walkable = false,
+	walkable = ethereal.leafwalk,
 	waving = 1,
 	groups = {snappy = 3, leafdecay = 3, leaves = 1, flammable = 2},
 	drop = {
@@ -252,7 +252,7 @@ minetest.override_item("default:pine_needles", {
 	tiles = {"pine_leaves.png"},
 	inventory_image = "pine_leaves.png",
 	wield_image = "pine_leaves.png",
-	walkable = false,
+	walkable = ethereal.leafwalk,
 	drop = {
 		max_items = 1,
 		items = {
@@ -273,7 +273,7 @@ minetest.register_node("ethereal:frost_leaves", {
 	inventory_image = "ethereal_frost_leaves.png",
 	wield_image = "ethereal_frost_leaves.png",
 	paramtype = "light",
-	walkable = false,
+	walkable = ethereal.leafwalk,
 	waving = 1,
 	groups = {snappy = 3, leafdecay = 3, leaves = 1, puts_out_fire = 1},
 	drop = {
@@ -347,7 +347,7 @@ minetest.register_node("ethereal:bamboo_leaves", {
 	inventory_image = "bamboo_leaves.png",
 	wield_image = "bamboo_leaves.png",
 	paramtype = "light",
-	walkable = false,
+	walkable = ethereal.leafwalk,
 	waving = 1,
 	groups = {snappy = 3, leafdecay = 3, leaves = 1, flammable = 2},
 	drop = {

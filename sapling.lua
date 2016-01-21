@@ -57,8 +57,11 @@ local path = minetest.get_modpath("ethereal").."/schematics/"
 
 ethereal.grow_sapling = function (pos, node)
 
-	local under =  minetest.get_node_or_nil({x = pos.x, y = pos.y - 1, z = pos.z})
-	if under then under = under.name else return end
+	local under =  minetest.get_node({
+		x = pos.x,
+		y = pos.y - 1,
+		z = pos.z
+	}).name
 
 	-- Check if Sapling is growing on correct substrate
 	if node.name == "ethereal:yellow_tree_sapling"
@@ -139,13 +142,15 @@ minetest.register_craftitem("ethereal:tree_tool", {
 	description = "Tree Tool",
 	inventory_image = "default_stick.png",
 	on_use = function(itemstack, user, pointed_thing)
+
 		if not pointed_thing
 		or pointed_thing.type ~= "node" then
 			return
 		end
+
 		local pos = pointed_thing.under
-		local nod = minetest.get_node_or_nil(pos)
-		if not nod then return end
+		local nod = minetest.get_node(pos)
+
 		ethereal.grow_sapling(pos, nod)
 	end,
 })

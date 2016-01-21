@@ -36,15 +36,14 @@ minetest.register_craft({
 	cooktime = 3,
 })
 
-local dirt = {}
-dirt.type = {
-	{"Bamboo"}, {"Jungle"}, {"Grove"}, {"Prairie"}, {"Cold"},
-	{"Crystal"}, {"Mushroom"}, {"Fiery"}, {"Gray"},
+local dirts = {
+	"Bamboo", "Jungle", "Grove", "Prairie", "Cold",
+	"Crystal", "Mushroom", "Fiery", "Gray"
 }
 
-for _, row in pairs(dirt.type) do
+for n = 1, #dirts do
 
-	local desc = row[1]
+	local desc = dirts[n]
 	local name = desc:lower()
 
 	minetest.register_node("ethereal:"..name.."_dirt", {
@@ -80,31 +79,34 @@ minetest.register_abm({
 	chance = 2,
 	catch_up = false,
 	action = function(pos, node)
+
 		local count_grasses = {}
 		local curr_max  = 0
 		local curr_type = "ethereal:green_dirt" -- fallback
-		local positions = minetest.find_nodes_in_area_under_air(
-			{x = (pos.x - 2), y = (pos.y - 1), z = (pos.z - 2)},
-			{x = (pos.x + 2), y = (pos.y + 1), z = (pos.z + 2)},
+		local positions = minetest.find_nodes_in_area(
+			{x = (pos.x - 1), y = (pos.y - 2), z = (pos.z - 1)},
+			{x = (pos.x + 1), y = (pos.y + 2), z = (pos.z + 1)},
 			"group:ethereal_grass")
-		local n
+
 		-- count new grass nodes
 		for _,p in pairs(positions) do
-			n = minetest.get_node_or_nil(p)
-			if n and n.name then
-				count_grasses[n.name] = (count_grasses[n.name] or 0) + 1
-				-- we found a grass type with more than current max
-				if count_grasses[n.name] > curr_max then
-					curr_max = count_grasses[n.name]
-					curr_type = n.name
-				end
+
+			local n = minetest.get_node(p).name
+
+			count_grasses[n] = (count_grasses[n] or 0) + 1
+
+			-- we found a grass type with more than current max
+			if count_grasses[n] > curr_max then
+				curr_max = count_grasses[n]
+				curr_type = n
 			end
 		end
+
 		minetest.swap_node(pos, {name = curr_type})
 	end
 })
 
--- make dirt with dry grass spreads like ethereal grasses
+-- have dirt with dry grass spreads like ethereal grasses
 minetest.override_item("default:dirt_with_dry_grass", {
 	groups = {crumbly = 3, soil = 1, ethereal_grass = 1},
 })
@@ -116,21 +118,25 @@ minetest.register_abm({
 	chance = 20,
 	catch_up = false,
 	action = function(pos, node)
+
 		local name = minetest.get_node({
 			x = pos.x,
 			y = pos.y + 1,
 			z = pos.z
 		}).name
+
 		local nodedef = minetest.registered_nodes[name]
-		if name ~= "ignore" and nodedef and not ((nodedef.sunlight_propagates or
-				nodedef.paramtype == "light") and
-				nodedef.liquidtype == "none") then
+
+		if name ~= "ignore" and nodedef
+		and not ((nodedef.sunlight_propagates or nodedef.paramtype == "light")
+		and nodedef.liquidtype == "none") then
+
 			minetest.swap_node(pos, {name = "default:dirt"})
 		end
 	end
 })
 
--- If Baked Clay mod not active, make Red and Orange nodes
+-- If Baked Clay mod not active, make Red, Orange and Grey nodes
 if not minetest.get_modpath("bakedclay") then
 
 	minetest.register_node(":bakedclay:red", {

@@ -1,6 +1,6 @@
 --[[
 
-	Minetest Ethereal Mod 1.19 (13th December 2015)
+	Minetest Ethereal Mod 1.19 (21st January 2016)
 
 	Created by ChinChow
 
@@ -9,7 +9,8 @@
 ]]
 
 ethereal = {}
-ethereal.leaftype = 0 -- 0 for 2D plantlike, 1 for 3D allfaces
+ethereal.leaftype = 1 -- 0 for 2D plantlike, 1 for 3D allfaces
+ethereal.leafwalk = true -- true for walkable leaves, false to fall through
 
 -- Set following to 1 to enable biome or 0 to disable
 ethereal.glacier   = 1 -- Ice glaciers with snow

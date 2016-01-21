@@ -89,6 +89,7 @@ minetest.register_abm({
 	action = function(pos, node)
 
 		local water_node = "default:water"
+
 		if pos.y > 2 then
 			water_node = "default:river_water"
 		end
@@ -98,8 +99,10 @@ minetest.register_abm({
 		or node.name == "ethereal:icebrick"
 		or node.name == "ethereal:snowbrick" then
 			minetest.swap_node(pos, {name = water_node.."_source"})
+
 		elseif node.name == "default:snow" then
 			minetest.swap_node(pos, {name = water_node.."_flowing"})
+
 		elseif node.name == "default:dirt_with_snow" then
 			minetest.swap_node(pos, {name = "default:dirt_with_grass"})
 		end
@@ -116,6 +119,7 @@ minetest.register_abm({
 	chance = 2,
 	catch_up = false,
 	action = function(pos, node)
+
 		if node == "ethereal:dry_dirt" then
 			minetest.swap_node(pos, {name = "default:dirt"})
 		else
@@ -132,20 +136,26 @@ minetest.register_abm({
 	chance = 1,
 	catch_up = false,
 	action = function(pos, node)
+
 		local num = #minetest.find_nodes_in_area(
 			{x = pos.x - 1, y = pos.y, z = pos.z},
 			{x = pos.x + 1, y = pos.y, z = pos.z},
 			{"group:water"})
+
 		num = num + #minetest.find_nodes_in_area(
 			{x = pos.x, y = pos.y, z = pos.z - 1},
 			{x = pos.x, y = pos.y, z = pos.z + 1},
 			{"group:water"})
+
 		num = num + #minetest.find_nodes_in_area(
 			{x = pos.x, y = pos.y + 1, z = pos.z},
 			{x = pos.x, y = pos.y + 1, z = pos.z},
 			{"group:water"})
+
 		if num > 0 then
+
 			minetest.swap_node(pos, {name = "default:water_flowing"})
+
 			minetest.add_item(pos, {name = node.name})
 		end
 	end,

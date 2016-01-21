@@ -87,10 +87,11 @@ minetest.register_craftitem("ethereal:fishing_rod_baited", {
 	liquids_pointable = true,
 	on_use = function (itemstack, user, pointed_thing)
 
-		if pointed_thing.type ~= "node" then return end
+		if pointed_thing.type ~= "node" then
+			return
+		end
 		
-		local node = minetest.get_node_or_nil(pointed_thing.under)
-		if node then node = node.name else return end
+		local node = minetest.get_node(pointed_thing.under).name
 
 		if (node == "default:water_source"
 		or node == "default:river_water_source")
@@ -100,7 +101,9 @@ minetest.register_craftitem("ethereal:fishing_rod_baited", {
 			local inv = user:get_inventory()
 
 			if inv:room_for_item("main", {name = type}) then
+
 				inv:add_item("main", {name = type})
+
 				return {name = "ethereal:fishing_rod"}
 			else
 				minetest.chat_send_player(user:get_player_name(),
