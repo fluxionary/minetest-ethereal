@@ -1,5 +1,5 @@
 -- override default dirt (to stop caves cutting away dirt)
-minetest.override_item("default:dirt", {is_ground_content = false})
+minetest.override_item("default:dirt", {is_ground_content = ethereal.cavedirt})
 
 -- green dirt
 minetest.register_node("ethereal:green_dirt", {
@@ -9,7 +9,7 @@ minetest.register_node("ethereal:green_dirt", {
 		"default_dirt.png",
 		"default_dirt.png^default_grass_side.png"
 	},
-	is_ground_content = false,
+	is_ground_content = ethereal.cavedirt,
 	groups = {crumbly = 3, soil = 1, ethereal_grass = 1},
 	soil = {
 		base = "ethereal:green_dirt",
@@ -24,7 +24,7 @@ minetest.register_node("ethereal:green_dirt", {
 minetest.register_node("ethereal:dry_dirt", {
 	description = "Dried Dirt",
 	tiles = {"ethereal_dry_dirt.png"},
-	is_ground_content = false,
+	is_ground_content = ethereal.cavedirt,
 	groups = {crumbly = 3},
 	sounds = default.node_sound_dirt_defaults()
 })
@@ -53,7 +53,7 @@ for n = 1, #dirts do
 			"default_dirt.png",
 			"default_dirt.png^ethereal_grass_"..name.."_side.png"
 		},
-		is_ground_content = false,
+		is_ground_content = ethereal.cavedirt,
 		groups = {crumbly = 3, soil = 1, ethereal_grass = 1},
 		soil = {
 			base = "ethereal:"..name.."_dirt",
@@ -143,7 +143,7 @@ if not minetest.get_modpath("bakedclay") then
 		description = "Red Baked Clay",
 		tiles = {"baked_clay_red.png"},
 		groups = {cracky = 3},
-		is_ground_content = false,
+		is_ground_content = ethereal.cavedirt,
 		sounds = default.node_sound_stone_defaults(),
 	})
 
@@ -151,7 +151,7 @@ if not minetest.get_modpath("bakedclay") then
 		description = "Orange Baked Clay",
 		tiles = {"baked_clay_orange.png"},
 		groups = {cracky = 3},
-		is_ground_content = false,
+		is_ground_content = ethereal.cavedirt,
 		sounds = default.node_sound_stone_defaults(),
 	})
 
@@ -159,7 +159,7 @@ if not minetest.get_modpath("bakedclay") then
 		description = "Grey Baked Clay",
 		tiles = {"baked_clay_grey.png"},
 		groups = {cracky = 3},
-		is_ground_content = false,
+		is_ground_content = ethereal.cavedirt,
 		sounds = default.node_sound_stone_defaults(),
 	})
 
