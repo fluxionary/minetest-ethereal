@@ -50,6 +50,37 @@ minetest.register_craft({
 	burntime = 20,
 })
 
+
+-- light strings (glowing vine)
+minetest.register_node("ethereal:lightstring", {
+	description = "Light String Vine",
+	drawtype = "signlike",
+	tiles = {"lightstring.png"},
+	inventory_image = "lightstring.png",
+	wield_image = "lightstring.png",
+	paramtype = "light",
+	paramtype2 = "wallmounted",
+	light_source = 10,
+	walkable = false,
+	climbable = true,
+	is_ground_content = false,
+	selection_box = {
+		type = "wallmounted",
+	},
+	groups = {choppy = 3, oddly_breakable_by_hand = 1},
+	legacy_wallmounted = true,
+	sounds = default.node_sound_leaves_defaults(),
+})
+
+minetest.register_craft({
+	output = "ethereal:lightstring 8",
+	recipe = {
+		{"ethereal:vine", "ethereal:vine", "ethereal:vine"},
+		{"ethereal:vine", "ethereal:fire_dust", "ethereal:vine"},
+		{"ethereal:vine", "ethereal:vine", "ethereal:vine"},
+	},
+})
+
 -- Fern (boston)
 minetest.register_node("ethereal:fern", {
 	description = "Fern",
