@@ -105,7 +105,7 @@ minetest.override_item("default:leaves", {
 	drop = {
 		max_items = 1,
 		items = {
-			{items = {"ethereal:tree_sapling"}, rarity = 20},
+			{items = {"ethereal:tree_sapling"}, rarity = 15},
 			{items = {"default:leaves"}}
 		}
 	},
@@ -126,7 +126,7 @@ minetest.register_node("ethereal:orange_leaves", {
 	drop = {
 		max_items = 1,
 		items = {
-			{items = {"ethereal:orange_tree_sapling"}, rarity = 20},
+			{items = {"ethereal:orange_tree_sapling"}, rarity = 15},
 			{items = {"ethereal:orange_leaves"}}
 		}
 	},
@@ -165,7 +165,7 @@ minetest.register_node("ethereal:bananaleaves", {
 	drop = {
 		max_items = 1,
 		items = {
-			{items = {"ethereal:banana_tree_sapling"}, rarity = 20},
+			{items = {"ethereal:banana_tree_sapling"}, rarity = 15},
 			{items = {"ethereal:bananaleaves"}}
 		}
 	},
@@ -214,7 +214,7 @@ minetest.register_node("ethereal:palmleaves", {
 	drop = {
 		max_items = 1,
 		items = {
-			{items = {"ethereal:palm_sapling"}, rarity = 20},
+			{items = {"ethereal:palm_sapling"}, rarity = 15},
 			{items = {"ethereal:palmleaves"}}
 		}
 	},
@@ -279,7 +279,7 @@ minetest.register_node("ethereal:frost_leaves", {
 	drop = {
 		max_items = 1,
 		items = {
-			{items = {"ethereal:frost_tree_sapling"}, rarity = 20},
+			{items = {"ethereal:frost_tree_sapling"}, rarity = 15},
 			{items = {"ethereal:frost_leaves"}}
 		}
 	},
