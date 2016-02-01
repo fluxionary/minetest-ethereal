@@ -54,7 +54,7 @@ minetest.register_abm({
 			local fflower = minetest.find_nodes_in_area_under_air(
 				pos0, pos1, {"ethereal:fire_flower"})
 
-			if #grass > 6
+			if #grass > 7
 			and #fflower < 1 then
 
 				grass = grass[math.random(#grass)]
