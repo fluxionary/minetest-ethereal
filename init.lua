@@ -1,6 +1,6 @@
 --[[
 
-	Minetest Ethereal Mod 1.19 (21st January 2016)
+	Minetest Ethereal Mod 1.19 (23rd March 2016)
 
 	Created by ChinChow
 
