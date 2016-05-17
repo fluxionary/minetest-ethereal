@@ -1,6 +1,6 @@
 --[[
 
-	Minetest Ethereal Mod 1.19 (23rd March 2016)
+	Minetest Ethereal Mod (17th May 2016)
 
 	Created by ChinChow
 
@@ -57,12 +57,14 @@ dofile(path .. "/extra.lua")
 dofile(path .. "/sealife.lua")
 dofile(path .. "/fences.lua")
 dofile(path .. "/gates.lua")
-dofile(path .. "/mapgen_v7n.lua") -- 0.4.13+
+dofile(path .. "/mapgen.lua")
+dofile(path .. "/food.lua")
+dofile(path .. "/bonemeal.lua")
+dofile(path .. "/compatibility.lua")
+dofile(path .. "/stairs.lua")
 
 if minetest.get_modpath("xanadu") then
 	dofile(path .. "/plantpack.lua")
-else
-	dofile(path .. "/stairs.lua")
 end
 
 print ("[MOD] Ethereal loaded")

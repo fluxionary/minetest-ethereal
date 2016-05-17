@@ -1,3 +1,4 @@
+
 -- Ice Brick
 minetest.register_node("ethereal:icebrick", {
 	description = "Ice Brick",
@@ -37,18 +38,6 @@ minetest.register_craft({
 		{'default:snowblock', 'default:snowblock'},
 		{'default:snowblock', 'default:snowblock'},
 	}
-})
-
--- Over time Cobble placed in water changes to Mossy Cobble
-minetest.register_abm({
-	nodenames = {"default:cobble"},
-	neighbors = {"group:water"},
-	interval = 17,
-	chance = 100,
-	catch_up = false,
-	action = function(pos, node)
-		minetest.swap_node(pos, {name = "default:mossycobble"})
-	end
 })
 
 -- If Crystal Spike, Crystal Dirt, Snow near Water, change Water to Ice
@@ -154,7 +143,7 @@ minetest.register_abm({
 
 		if num > 0 then
 
-			minetest.swap_node(pos, {name = "default:water_flowing"})
+			minetest.swap_node(pos, {name = "air"})
 
 			minetest.add_item(pos, {name = node.name})
 		end

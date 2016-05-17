@@ -1,38 +1,42 @@
 
--- Orange Tree (built column by column, bottom to top)
+-- orange tree
 
-local i = "air"
-local t = "default:tree"
-local l = "ethereal:orange_leaves"
-local o = "ethereal:orange"
+local ai = {name = "air", param1 = 000}
+local lp = {name = "ethereal:orange_leaves", param1 = 255}
+local lr = {name = "ethereal:orange_leaves", param1 = 200}
+local tr = {name = "default:tree", param1 = 255}
+local of = {name = "ethereal:orange", param1 = 100}
 
 ethereal.orangetree = {
-	size = {x=3, y=6, z=3},
+
+	size = {x = 3, y = 6, z = 3},
+
 	data = {
 
-		{name=i, param1=000}, {name=i, param1=000}, {name=i, param1=000},
-		{name=i, param1=000}, {name=i, param1=000}, {name=i, param1=000},
-		{name=i, param1=000}, {name=i, param1=000}, {name=i, param1=000},
-		{name=l, param1=223}, {name=l, param1=223}, {name=o, param1=100},
-		{name=l, param1=255}, {name=l, param1=255}, {name=l, param1=255},
-		{name=l, param1=223}, {name=o, param1=100}, {name=l, param1=223},
+		ai, ai, ai,
+		ai, ai, ai,
+		ai, ai, ai,
+		lr, lr, of,
+		lp, lp, lp,
+		lr, of, lr,
 
-		{name=i, param1=000}, {name=t, param1=255}, {name=i, param1=000},
-		{name=i, param1=000}, {name=t, param1=255}, {name=i, param1=000},
-		{name=i, param1=000}, {name=t, param1=255}, {name=i, param1=000},
-		{name=l, param1=223}, {name=t, param1=255}, {name=l, param1=223},
-		{name=l, param1=255}, {name=t, param1=255}, {name=l, param1=255},
-		{name=l, param1=223}, {name=l, param1=255}, {name=l, param1=223},
+		ai, tr, ai,
+		ai, tr, ai,
+		ai, tr, ai,
+		lr, tr, lr,
+		lp, tr, lp,
+		lr, lp, lr,
 
-		{name=i, param1=000}, {name=i, param1=000}, {name=i, param1=000},
-		{name=i, param1=000}, {name=i, param1=000}, {name=i, param1=000},
-		{name=i, param1=000}, {name=i, param1=000}, {name=i, param1=000},
-		{name=o, param1=100}, {name=l, param1=223}, {name=l, param1=223},
-		{name=l, param1=255}, {name=l, param1=255}, {name=l, param1=255},
-		{name=l, param1=223}, {name=l, param1=223}, {name=l, param1=223},
+		ai, ai, ai,
+		ai, ai, ai,
+		ai, ai, ai,
+		of, lr, lr,
+		lp, lp, lp,
+		lr, lr, lr,
 
 	},
+
 	yslice_prob = {
-		{ypos=1, prob=127},
+		{ypos = 1, prob = 127},
 	},
 }

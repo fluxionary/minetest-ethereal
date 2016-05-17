@@ -28,9 +28,8 @@ minetest.register_craftitem("ethereal:crystal_ingot", {
 minetest.register_craft({
 	output = "ethereal:crystal_ingot",
 	recipe = {
-		{"default:mese_crystal", "ethereal:crystal_spike", ""},
-		{"ethereal:crystal_spike", "default:mese_crystal", ""},
-		{"", "", ""},
+		{"default:mese_crystal", "ethereal:crystal_spike"},
+		{"ethereal:crystal_spike", "default:mese_crystal"},
 	}
 })
 
@@ -82,9 +81,9 @@ minetest.register_tool("ethereal:sword_crystal", {
 minetest.register_craft({
 	output = "ethereal:sword_crystal",
 	recipe = {
-		{"", "ethereal:crystal_ingot", ""},
-		{"", "ethereal:crystal_ingot", ""},
-		{"", "default:steel_ingot", ""},
+		{"ethereal:crystal_ingot"},
+		{"ethereal:crystal_ingot"},
+		{"default:steel_ingot"},
 	}
 })
 
@@ -186,9 +185,9 @@ minetest.register_tool("ethereal:shovel_crystal", {
 minetest.register_craft({
 	output = "ethereal:shovel_crystal",
 	recipe = {
-		{"", "ethereal:crystal_ingot", ""},
-		{"", "default:steel_ingot", ""},
-		{"", "default:steel_ingot", ""},
+		{"ethereal:crystal_ingot"},
+		{"default:steel_ingot"},
+		{"default:steel_ingot"},
 	}
 })
 

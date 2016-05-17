@@ -1,3 +1,4 @@
+
 -- override default dirt (to stop caves cutting away dirt)
 minetest.override_item("default:dirt", {is_ground_content = ethereal.cavedirt})
 
@@ -66,39 +67,54 @@ for n = 1, #dirts do
 
 end
 
--- Compatibility with old maps
-minetest.register_alias("ethereal:crystal_topped_dirt", "ethereal:crystal_dirt")
-minetest.register_alias("ethereal:fiery_dirt_top", "ethereal:fiery_dirt")
-minetest.register_alias("ethereal:gray_dirt_top", "ethereal:gray_dirt")
-minetest.register_alias("ethereal:green_dirt_top", "ethereal:green_dirt")
+-- re-register dirt types for abm
+dirts = {
+	"ethereal:bamboo_dirt", "ethereal:jungle_dirt", "ethereal:grove_dirt",
+	"ethereal:prairie_dirt", "ethereal:cold_dirt", "ethereal:crystal_dirt",
+	"ethereal:mushroom_dirt", "ethereal:fiery_dirt", "ethereal:gray_dirt",
+	"default:dirt_with_dry_grass"
+}
 
--- check surrounding grass and change dirt to same colour (by Sokomine)
+-- check surrounding grass and change dirt to same colour
 minetest.register_abm({
-	nodenames = {"default:dirt_with_grass"},
-	interval = 5,
-	chance = 2,
+	nodenames = {"default:dirt_with_grass", "default:dirt"},
+	neighbors = {"air"},
+	interval = 6,
+	chance = 65,
 	catch_up = false,
+
 	action = function(pos, node)
 
-		local count_grasses = {}
-		local curr_max  = 0
+		-- not enough light
+		local above = {x = pos.x, y = pos.y + 1, z = pos.z}
+
+		if (minetest.get_node_light(above) or 0) < 13 then
+			return
+		end
+
+		-- water above grass
+		local name = minetest.get_node(above).name
+		local nodef = minetest.registered_nodes[name]
+
+		if name == "ignore" or not nodef or nodef.liquidtype ~= "none" then
+			return
+		end
+
+		local curr_max, num  = 0
 		local curr_type = "ethereal:green_dirt" -- fallback
-		local positions = minetest.find_nodes_in_area(
-			{x = (pos.x - 1), y = (pos.y - 2), z = (pos.z - 1)},
-			{x = (pos.x + 1), y = (pos.y + 2), z = (pos.z + 1)},
+		local positions, grasses = minetest.find_nodes_in_area(
+			{x = (pos.x - 2), y = (pos.y - 2), z = (pos.z - 2)},
+			{x = (pos.x + 2), y = (pos.y + 2), z = (pos.z + 2)},
 			"group:ethereal_grass")
 
 		-- count new grass nodes
-		for _,p in pairs(positions) do
+		for _,p in pairs(dirts) do
 
-			local n = minetest.get_node(p).name
+			num = grasses[p] or 0
 
-			count_grasses[n] = (count_grasses[n] or 0) + 1
-
-			-- we found a grass type with more than current max
-			if count_grasses[n] > curr_max then
-				curr_max = count_grasses[n]
-				curr_type = n
+			if num > curr_max then
+				curr_max = num
+				curr_type = p
 			end
 		end
 
@@ -114,8 +130,8 @@ minetest.override_item("default:dirt_with_dry_grass", {
 -- if grass devoid of light, change to dirt
 minetest.register_abm({
 	nodenames = {"group:ethereal_grass"},
-	interval = 2,
-	chance = 20,
+	interval = 8,
+	chance = 40, -- 50
 	catch_up = false,
 	action = function(pos, node)
 
@@ -164,3 +180,45 @@ if not minetest.get_modpath("bakedclay") then
 	})
 
 end
+
+-- Quicksand (old style, sinking inside shows black instead of yellow effect,
+-- works ok with noclip enabled though)
+minetest.register_node("ethereal:quicksand", {
+	description = "Quicksand",
+	tiles = {"default_sand.png"},
+	drop = "default:sand",
+	liquid_viscosity = 15,
+	liquidtype = "source",
+	liquid_alternative_flowing = "ethereal:quicksand",
+	liquid_alternative_source = "ethereal:quicksand",
+	liquid_renewable = false,
+	liquid_range = 0,
+	drowning = 1,
+	walkable = false,
+	climbable = false,
+	post_effect_color = {r = 230, g = 210, b = 160, a = 245},
+	groups = {crumbly = 3, sand = 1, liquid = 3, disable_jump = 1},
+	sounds = default.node_sound_sand_defaults(),
+})
+
+-- Quicksand (new style, sinking inside shows yellow effect with or without noclip,
+-- but old quicksand is shown as black until block placed nearby to update light)
+minetest.register_node("ethereal:quicksand2", {
+	description = "Quicksand",
+	tiles = {"default_sand.png"},
+	drawtype = "glasslike",
+	paramtype = "light",
+	drop = "default:sand",
+	liquid_viscosity = 15,
+	liquidtype = "source",
+	liquid_alternative_flowing = "ethereal:quicksand2",
+	liquid_alternative_source = "ethereal:quicksand2",
+	liquid_renewable = false,
+	liquid_range = 0,
+	drowning = 1,
+	walkable = false,
+	climbable = false,
+	post_effect_color = {r = 230, g = 210, b = 160, a = 245},
+	groups = {crumbly = 3, sand = 1, liquid = 3, disable_jump = 1},
+	sounds = default.node_sound_sand_defaults(),
+})

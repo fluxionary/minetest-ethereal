@@ -1,35 +1,39 @@
 
--- Bush (built column by column, bottom to top)
+-- bush
 
-local i = "air"
-local b = "ethereal:bush"
+local ai = {name = "air", param1 = 000}
+local bp = {name = "ethereal:bush", param1 = 255}
+local br = {name = "ethereal:bush", param1 = 100}
 
 ethereal.bush = {
-	size = {x=5, y=3, z=5},
+
+	size = {x = 5, y = 3, z = 5},
+
 	data = {
 
-{name=b, param1=100}, {name=b, param1=255}, {name=b, param1=255}, {name=b, param1=255}, {name=b, param1=100},
-{name=i, param1=000}, {name=i, param1=000}, {name=i, param1=000}, {name=i, param1=000}, {name=i, param1=000},
-{name=i, param1=000}, {name=i, param1=000}, {name=i, param1=000}, {name=i, param1=000}, {name=i, param1=000},
+		br, bp, bp, bp, br,
+		ai, ai, ai, ai, ai,
+		ai, ai, ai, ai, ai,
 
-{name=b, param1=255}, {name=b, param1=255}, {name=b, param1=255}, {name=b, param1=255}, {name=b, param1=255},
-{name=i, param1=000}, {name=b, param1=100}, {name=b, param1=255}, {name=b, param1=100}, {name=i, param1=000},
-{name=i, param1=000}, {name=i, param1=000}, {name=i, param1=000}, {name=i, param1=000}, {name=i, param1=000},
+		bp, bp, bp, bp, bp,
+		ai, br, bp, br, ai,
+		ai, ai, ai, ai, ai,
 
-{name=b, param1=255}, {name=b, param1=255}, {name=b, param1=255}, {name=b, param1=255}, {name=b, param1=255},
-{name=i, param1=000}, {name=b, param1=255}, {name=b, param1=255}, {name=b, param1=255}, {name=i, param1=000},
-{name=i, param1=000}, {name=i, param1=000}, {name=b, param1=100}, {name=i, param1=000}, {name=i, param1=000},
+		bp, bp, bp, bp, bp,
+		ai, bp, bp, bp, ai,
+		ai, ai, br, ai, ai,
 
-{name=b, param1=255}, {name=b, param1=255}, {name=b, param1=255}, {name=b, param1=255}, {name=b, param1=255},
-{name=i, param1=000}, {name=b, param1=100}, {name=b, param1=255}, {name=b, param1=100}, {name=i, param1=000},
-{name=i, param1=000}, {name=i, param1=000}, {name=i, param1=000}, {name=i, param1=000}, {name=i, param1=000},
+		bp, bp, bp, bp, bp,
+		ai, br, bp, br, ai,
+		ai, ai, ai, ai, ai,
 
-{name=b, param1=100}, {name=b, param1=255}, {name=b, param1=255}, {name=b, param1=255}, {name=b, param1=100},
-{name=i, param1=000}, {name=i, param1=000}, {name=i, param1=000}, {name=i, param1=000}, {name=i, param1=000},
-{name=i, param1=000}, {name=i, param1=000}, {name=i, param1=000}, {name=i, param1=000}, {name=i, param1=000},
+		br, bp, bp, bp, br,
+		ai, ai, ai, ai, ai,
+		ai, ai, ai, ai, ai,
 
 	},
+
 	yslice_prob = {
-		{ypos=1, prob=127},
+		{ypos = 1, prob = 127},
 	},
 }

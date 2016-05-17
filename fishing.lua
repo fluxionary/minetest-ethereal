@@ -85,6 +85,7 @@ minetest.register_craftitem("ethereal:fishing_rod_baited", {
 	wield_image = "fishing_rod_wield.png",
 	stack_max = 1,
 	liquids_pointable = true,
+
 	on_use = function (itemstack, user, pointed_thing)
 
 		if pointed_thing.type ~= "node" then

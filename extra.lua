@@ -1,29 +1,137 @@
--- vines
-minetest.register_node("ethereal:vine", {
-	description = "Vine",
-	drawtype = "signlike",
-	tiles = {"vine.png"},
-	inventory_image = "vine.png",
-	wield_image = "vine.png",
+
+-- Bamboo Flooring
+minetest.register_node("ethereal:bamboo_floor", {
+	description = ("Bamboo Floor"),
+	drawtype = 'nodebox',
+	tiles = { "bamboo_floor.png" },
+	wield_image = "bamboo_floor.png",
+	inventory_image = "bamboo_floor.png",
 	paramtype = "light",
 	paramtype2 = "wallmounted",
-	walkable = false,
-	climbable = true,
-	is_ground_content = false,
-	selection_box = {
+	walkable = true,
+	node_box = {
 		type = "wallmounted",
+		wall_top    = {-0.5, 0.4375, -0.5, 0.5, 0.5, 0.5},
+		wall_bottom = {-0.5, -0.5, -0.5, 0.5, -0.4375, 0.5},
+		wall_side   = {-0.5, -0.5, -0.5, -0.4375, 0.5, 0.5},
 	},
-	groups = {choppy = 3, oddly_breakable_by_hand = 1},
-	legacy_wallmounted = true,
-	sounds = default.node_sound_leaves_defaults(),
+	selection_box = {type = "wallmounted"},
+	groups = {snappy = 3, choppy = 3 , flammable = 2},
+	sounds = default.node_sound_wood_defaults(),
+})
+
+-- Craft Bamboo into Bamboo Flooring
+minetest.register_craft({
+	output = "ethereal:bamboo_floor 2",
+	recipe = {
+		{"ethereal:bamboo", "ethereal:bamboo", "ethereal:bamboo"},
+		{"ethereal:bamboo", "ethereal:bamboo", "ethereal:bamboo"},
+		{"ethereal:bamboo", "ethereal:bamboo", "ethereal:bamboo"},
+	}
+})
+
+-- Craft Bamboo into Paper
+minetest.register_craft({
+	output = "default:paper 6",
+	recipe = {
+		{"ethereal:bamboo", "ethereal:bamboo"},
+		{"ethereal:bamboo", "ethereal:bamboo"},
+		{"ethereal:bamboo", "ethereal:bamboo"},
+	}
+})
+
+-- X pattern craft recipes (5x 'a' in X pattern gives 5 of 'b')
+for _,items in pairs({
+	{"default:cobble", "default:gravel"},
+	{"default:gravel", "default:dirt"},
+	{"default:dirt", "default:sand"},
+	{"default:ice", "default:snow"},
+	{"ethereal:dry_dirt", "default:desert_sand"},
+}) do
+	local a, b = unpack(items)
+	minetest.register_craft({
+		output = b.." 5",
+		recipe = {
+			{a, "", a},
+			{"", a, ""},
+			{a, "", a},
+		}
+	})
+end
+
+-- Paper (2x3 string = 4 paper)
+minetest.register_craft({
+	output = "default:paper 4",
+	recipe = {
+		{"farming:string", "farming:string"},
+		{"farming:string", "farming:string"},
+		{"farming:string", "farming:string"},
+	}
+})
+
+-- Palm Wax
+minetest.register_craftitem("ethereal:palm_wax", {
+	description = "Palm Wax",
+	inventory_image = "palm_wax.png",
+	wield_image = "palm_wax.png",
 })
 
 minetest.register_craft({
-	output = "ethereal:vine 2",
+	type = "cooking",
+	cooktime = 10,
+	output = "ethereal:palm_wax",
+	recipe = "ethereal:palmleaves"
+})
+
+-- Candle from Wax and String/Cotton
+minetest.register_node("ethereal:candle", {
+	description = "Candle",
+	drawtype = "plantlike",
+	inventory_image = "candle_static.png",
+	wield_image = "candle_static.png",
+	tiles = {
+		{
+			name = "candle.png",
+			animation={
+				type="vertical_frames",
+				aspect_w = 32,
+				aspect_h = 32,
+				length = 1.0
+			}
+		},
+	},	
+	paramtype = "light",
+	light_source = 11,
+	sunlight_propagates = true,
+	walkable = false,
+	groups = {dig_immediate = 3, attached_node = 1},
+	sounds = default.node_sound_defaults(),
+	selection_box = {
+		type = "fixed",
+		fixed = { -0.15, -0.5, -0.15, 0.15, 0.2, 0.15 }
+	},
+})
+
+minetest.register_craft({
+	output = "ethereal:candle 2",
 	recipe = {
-		{"group:leaves", "group:leaves", ""},
-		{"group:leaves", "group:leaves", ""},
-		{"group:leaves", "group:leaves", ""},
+		{"farming:cotton"},
+		{"ethereal:palm_wax"},
+		{"ethereal:palm_wax"},
+	}
+})
+
+-- Wooden Bowl
+minetest.register_craftitem("ethereal:bowl", {
+	description = "Bowl",
+	inventory_image = "bowl.png",
+})
+
+minetest.register_craft({
+	output = "ethereal:bowl",
+	recipe = {
+		{"group:wood", "", "group:wood"},
+		{"", "group:wood", ""},
 	}
 })
 
@@ -109,26 +217,6 @@ minetest.register_craft({
 	}
 })
 
--- Ladder (Changes default recipe to give 2x ladders instead of only 1)
-minetest.register_craft({
-	output = "default:ladder 2",
-	recipe = {
-		{"group:stick", "", "group:stick"},
-		{"group:stick", "group:stick", "group:stick"},
-		{"group:stick", "", "group:stick"},
-	}
-})
-
--- Signs (Changes default recipe to give 4x signs instead of only 1)
-minetest.register_craft({
-	output = "default:sign_wall 4",
-	recipe = {
-		{"group:wood", "group:wood", "group:wood"},
-		{"group:wood", "group:wood", "group:wood"},
-		{"", "group:stick", ""},
-	}
-})
-
 -- Charcoal Lump
 minetest.register_craftitem("ethereal:charcoal_lump", {
 	description = "Lump of Charcoal",
@@ -144,7 +232,7 @@ minetest.register_craft({
 })
 
 minetest.register_craft({
-	output = "ethereal:charcoal_lump 4",
+	output = "ethereal:charcoal_lump 2",
 	type = "cooking",
 	recipe = "group:tree",
 	cooktime = 4
@@ -163,106 +251,6 @@ minetest.register_craft({
 		{"ethereal:charcoal_lump"},
 		{"default:stick"},
 	}
-})
-
--- Obsidian Brick (now in default game so added compatibility for old maps)
-minetest.register_alias("ethereal:obsidian_brick", "default:obsidianbrick")
-
--- Quicksand (old style, sinking inside shows black instead of yellow effect,
--- works ok with noclip enabled though)
-minetest.register_node("ethereal:quicksand", {
-	description = "Quicksand",
-	tiles = {"default_sand.png"},
-	drop = "default:sand",
-	liquid_viscosity = 15,
-	liquidtype = "source",
-	liquid_alternative_flowing = "ethereal:quicksand",
-	liquid_alternative_source = "ethereal:quicksand",
-	liquid_renewable = false,
-	liquid_range = 0,
-	drowning = 1,
-	walkable = false,
-	climbable = false,
-	post_effect_color = {r = 230, g = 210, b = 160, a = 245},
-	groups = {crumbly = 3, sand = 1, liquid = 3, disable_jump = 1},
-	sounds = default.node_sound_sand_defaults(),
-})
-
--- Quicksand (new style, sinking inside shows yellow effect with or without noclip,
--- but old quicksand is shown as black until block placed nearby to update light)
-minetest.register_node("ethereal:quicksand2", {
-	description = "Quicksand",
-	tiles = {"default_sand.png"},
-	drawtype = "glasslike",
-	paramtype = "light",
-	drop = "default:sand",
-	liquid_viscosity = 15,
-	liquidtype = "source",
-	liquid_alternative_flowing = "ethereal:quicksand2",
-	liquid_alternative_source = "ethereal:quicksand2",
-	liquid_renewable = false,
-	liquid_range = 0,
-	drowning = 1,
-	walkable = false,
-	climbable = false,
-	post_effect_color = {r = 230, g = 210, b = 160, a = 245},
-	groups = {crumbly = 3, sand = 1, liquid = 3, disable_jump = 1},
-	sounds = default.node_sound_sand_defaults(),
-})
-
--- Illuminated Cave Shrooms (Red, Green and Blue)
-minetest.register_node("ethereal:illumishroom", {
-	description = "Red Illumishroom",
-	drawtype = "plantlike",
-	tiles = { "illumishroom.png" },
-	inventory_image = "illumishroom.png",
-	wield_image = "illumishroom.png",
-	paramtype = "light",
-	light_source = 5,
-	sunlight_propagates = true,
-	walkable = false,
-	groups = {dig_immediate = 3, attached_node = 1,flammable = 3},
-	sounds = default.node_sound_leaves_defaults(),
-	selection_box = {
-		type = "fixed",
-		fixed = {-0.5, -0.5, -0.5, 0.5, -5/16, 0.5},
-	},
-})
-
-minetest.register_node("ethereal:illumishroom2", {
-	description = "Green Illumishroom",
-	drawtype = "plantlike",
-	tiles = { "illumishroom2.png" },
-	inventory_image = "illumishroom2.png",
-	wield_image = "illumishroom2.png",
-	paramtype = "light",
-	light_source = 5,
-	sunlight_propagates = true,
-	walkable = false,
-	groups = {dig_immediate = 3, attached_node = 1,flammable = 3},
-	sounds = default.node_sound_leaves_defaults(),
-	selection_box = {
-		type = "fixed",
-		fixed = {-0.5, -0.5, -0.5, 0.5, -5/16, 0.5},
-	},
-})
-
-minetest.register_node("ethereal:illumishroom3", {
-	description = "Cyan Illumishroom",
-	drawtype = "plantlike",
-	tiles = { "illumishroom3.png" },
-	inventory_image = "illumishroom3.png",
-	wield_image = "illumishroom3.png",
-	paramtype = "light",
-	light_source = 5,
-	sunlight_propagates = true,
-	walkable = false,
-	groups = {dig_immediate = 3, attached_node = 1,flammable = 3},
-	sounds = default.node_sound_leaves_defaults(),
-	selection_box = {
-		type = "fixed",
-		fixed = {-0.5, -0.5, -0.5, 0.5, -5/16, 0.5},
-	},
 })
 
 -- Staff of Light (by Xanthin)
@@ -310,32 +298,3 @@ minetest.register_craft({
 		{"ethereal:illumishroom3", "default:steel_ingot", "ethereal:illumishroom3"}
 	}
 })
-
--- Generate Illumishroom in caves next to coal
-minetest.register_on_generated(function(minp, maxp)
-
-	if minp.y > -30 or maxp.y < -3000 then
-		return
-	end
-
-	local bpos
-	local coal = minetest.find_nodes_in_area_under_air(minp, maxp, "default:stone_with_coal")
-
-	for n = 1, #coal do
-
-		bpos = {x = coal[n].x, y = coal[n].y + 1, z = coal[n].z }
-
-		if math.random(1, 2) == 1 then
-
-			if bpos.y > -3000 and bpos.y < -2000 then
-				minetest.swap_node(bpos, {name = "ethereal:illumishroom3"})
-
-			elseif bpos.y > -2000 and bpos.y < -1000 then
-				minetest.swap_node(bpos, {name = "ethereal:illumishroom2"})
-
-			elseif bpos.y > -1000 and bpos.y < -30 then
-				minetest.swap_node(bpos, {name = "ethereal:illumishroom"})
-			end
-		end
-	end
-end)

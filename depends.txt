@@ -2,4 +2,5 @@ default
 farming
 stairs
 flowers
+doors
 bakedclay?

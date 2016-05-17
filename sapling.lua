@@ -1,3 +1,26 @@
+
+-- Bamboo Sprout
+minetest.register_node("ethereal:bamboo_sprout", {
+	description = "Bamboo Sprout",
+	drawtype = "plantlike",
+	tiles = {"bamboo_sprout.png"},
+	inventory_image = "bamboo_sprout.png",
+	wield_image = "bamboo_sprout.png",
+	paramtype = "light",
+	sunlight_propagates = true,
+	walkable = false,
+	groups = {
+		snappy = 3, attached_node = 1, flammable = 2,
+		dig_immediate = 3, ethereal_sapling = 1
+	},
+	sounds = default.node_sound_defaults(),
+	selection_box = {
+		type = "fixed",
+		fixed = {-0.5, -0.5, -0.5, 0.5, -5/16, 0.5},
+	},
+	on_use = minetest.item_eat(-2),
+})
+
 -- Register Saplings
 ethereal.register_sapling = function(name, desc, texture)
 
@@ -5,9 +28,9 @@ ethereal.register_sapling = function(name, desc, texture)
 		description = desc .. " Tree Sapling",
 		drawtype = "plantlike",
 		visual_scale = 1.0,
-		tiles = {texture .. "_sapling.png"},
-		inventory_image = texture .. "_sapling.png",
-		wield_image = texture .. "_sapling.png",
+		tiles = {texture .. ".png"},
+		inventory_image = texture .. ".png",
+		wield_image = texture .. ".png",
 		paramtype = "light",
 		sunlight_propagates = true,
 		is_ground_content = false,
@@ -24,22 +47,18 @@ ethereal.register_sapling = function(name, desc, texture)
 	})
 end
 
-ethereal.register_sapling("ethereal:willow", "Willow", "willow")
-ethereal.register_sapling("ethereal:yellow_tree", "Healing", "yellow_tree")
-ethereal.register_sapling("ethereal:tree", "Apple", "ethereal_tree")
-ethereal.register_sapling("ethereal:jungle_tree","Jungle", "ethereal_jungle_tree")
-ethereal.register_sapling("ethereal:pine_tree", "Pine", "ethereal_pine_tree")
-ethereal.register_sapling("ethereal:big_tree", "Big", "ethereal_big_tree")
-ethereal.register_sapling("ethereal:banana_tree", "Banana", "banana_tree")
-ethereal.register_sapling("ethereal:frost_tree", "Frost", "ethereal_frost_tree")
-ethereal.register_sapling("ethereal:mushroom", "Mushroom", "ethereal_mushroom")
-ethereal.register_sapling("ethereal:palm", "Palm", "moretrees_palm")
-ethereal.register_sapling("ethereal:redwood", "Redwood", "redwood")
-ethereal.register_sapling("ethereal:orange_tree", "Orange", "orange_tree")
-ethereal.register_sapling("ethereal:acacia", "Acacia", "moretrees_acacia")
-ethereal.register_sapling("ethereal:birch", "Birch", "moretrees_birch")
+ethereal.register_sapling("ethereal:willow", "Willow", "willow_sapling")
+ethereal.register_sapling("ethereal:yellow_tree", "Healing", "yellow_tree_sapling")
+ethereal.register_sapling("ethereal:big_tree", "Big", "ethereal_big_tree_sapling")
+ethereal.register_sapling("ethereal:banana_tree", "Banana", "banana_tree_sapling")
+ethereal.register_sapling("ethereal:frost_tree", "Frost", "ethereal_frost_tree_sapling")
+ethereal.register_sapling("ethereal:mushroom", "Mushroom", "ethereal_mushroom_sapling")
+ethereal.register_sapling("ethereal:palm", "Palm", "moretrees_palm_sapling")
+ethereal.register_sapling("ethereal:redwood", "Redwood", "redwood_sapling")
+ethereal.register_sapling("ethereal:orange_tree", "Orange", "orange_tree_sapling")
+ethereal.register_sapling("ethereal:birch", "Birch", "moretrees_birch_sapling")
 
-ethereal.add_tree = function (pos, ofx, ofz, schem)
+ethereal.add_tree = function (pos, ofx, ofy, ofz, schem)
 	-- check for schematic
 	if not schem then
 		print ("Schematic not found")
@@ -48,12 +67,60 @@ ethereal.add_tree = function (pos, ofx, ofz, schem)
 	-- remove sapling and place schematic
 	minetest.swap_node(pos, {name = "air"})
 	minetest.place_schematic(
-		{x = pos.x - ofx, y = pos.y, z =pos.z - ofz},
-		schem, "random", {}, false
-	)
+		{x = pos.x - ofx, y = pos.y - ofy, z = pos.z - ofz},
+		schem, 0, nil, false)
 end
 
 local path = minetest.get_modpath("ethereal").."/schematics/"
+
+-- grow tree functions
+function ethereal.grow_yellow_tree(pos)
+	ethereal.add_tree(pos, 4, 0, 4, path .. "yellowtree.mts")
+end
+
+function ethereal.grow_big_tree(pos)
+	ethereal.add_tree(pos, 4, 0, 4, path .. "bigtree.mts")
+end
+
+function ethereal.grow_banana_tree(pos)
+	ethereal.add_tree(pos, 3, 0, 3, ethereal.bananatree)
+end
+
+function ethereal.grow_frost_tree(pos)
+	ethereal.add_tree(pos, 4, 0, 4, path .. "frosttrees.mts")
+end
+
+function ethereal.grow_mushroom_tree(pos)
+	ethereal.add_tree(pos, 4, 0, 4, path .. "mushroomone.mts")
+end
+
+function ethereal.grow_palm_tree(pos)
+	ethereal.add_tree(pos, 4, 0, 4, path .. "palmtree.mts")
+end
+
+function ethereal.grow_willow_tree(pos)
+	ethereal.add_tree(pos, 5, 0, 5, path .. "willow.mts")
+end
+
+function ethereal.grow_redwood_tree(pos)
+	if math.random(1, 2) == 1 then
+		ethereal.add_tree(pos, 9, 3, 9, path .. "redwood.mts") -- shinji
+	else
+		ethereal.add_tree(pos, 8, 6, 8, path .. "redwood_tree.mts") -- iska
+	end
+end
+
+function ethereal.grow_orange_tree(pos)
+	ethereal.add_tree(pos, 1, 0, 1, ethereal.orangetree)
+end
+
+function ethereal.grow_bamboo_tree(pos)
+	ethereal.add_tree(pos, 1, 0, 1, ethereal.bambootree)
+end
+
+function ethereal.grow_birch_tree(pos)
+	ethereal.add_tree(pos, 2, 0, 2, ethereal.birchtree)
+end
 
 ethereal.grow_sapling = function (pos, node)
 
@@ -63,68 +130,52 @@ ethereal.grow_sapling = function (pos, node)
 		z = pos.z
 	}).name
 
-	-- Check if Sapling is growing on correct substrate
+	-- Check if Ethereal Sapling is growing on correct substrate
 	if node.name == "ethereal:yellow_tree_sapling"
 	and under == "default:dirt_with_snow" then
-		ethereal.add_tree(pos, 4, 4, path .. "yellowtree.mts")
-
-	elseif node.name == "ethereal:tree_sapling"
-	and under == "ethereal:green_dirt" then
-		ethereal.add_tree(pos, 1, 1, ethereal.appletree)
-
-	elseif node.name == "ethereal:jungle_tree_sapling"
-	and under == "ethereal:jungle_dirt" then
-		ethereal.add_tree(pos, 6, 6, path .. "jungletree.mts")
-
-	elseif node.name == "ethereal:pine_tree_sapling"
-	and under == "ethereal:cold_dirt" then
-		ethereal.add_tree(pos, 3, 3, path .. "pinetree.mts")
+		ethereal.grow_yellow_tree(pos)
 
 	elseif node.name == "ethereal:big_tree_sapling"
 	and under == "ethereal:green_dirt" then
-		ethereal.add_tree(pos, 4, 4, path .. "bigtree.mts")
+		ethereal.grow_big_tree(pos)
 
 	elseif node.name == "ethereal:banana_tree_sapling"
 	and under == "ethereal:grove_dirt" then
-		ethereal.add_tree(pos, 3, 3, ethereal.bananatree)
+		ethereal.grow_banana_tree(pos)
 
 	elseif node.name == "ethereal:frost_tree_sapling"
 	and under == "ethereal:crystal_dirt" then
-		ethereal.add_tree(pos, 4, 4, path .. "frosttrees.mts")
+		ethereal.grow_frost_tree(pos)
 
 	elseif node.name == "ethereal:mushroom_sapling"
 	and under == "ethereal:mushroom_dirt" then
-		ethereal.add_tree(pos, 4, 4, path .. "mushroomone.mts")
+		ethereal.grow_mushroom_tree(pos)
 
 	elseif node.name == "ethereal:palm_sapling"
 	and under == "default:sand" then
-		ethereal.add_tree(pos, 4, 4, path .. "palmtree.mts")
+		ethereal.grow_palm_tree(pos)
 
 	elseif node.name == "ethereal:willow_sapling"
 	and under == "ethereal:gray_dirt" then
-		ethereal.add_tree(pos, 5, 5, path .. "willow.mts")
+		ethereal.grow_willow_tree(pos)
 
 	elseif node.name == "ethereal:redwood_sapling"
 	and under == "bakedclay:red" then
-		ethereal.add_tree(pos, 9, 9, path .. "redwood.mts")
+		ethereal.grow_redwood_tree(pos)
 
 	elseif node.name == "ethereal:orange_tree_sapling"
 	and under == "ethereal:prairie_dirt" then
-		ethereal.add_tree(pos, 1, 1, ethereal.orangetree)
-
-	elseif node.name == "ethereal:acacia_sapling"
-	and under == "default:dirt_with_dry_grass" then
-		ethereal.add_tree(pos, 5, 5, path .. "acaciatree.mts")
+		ethereal.grow_orange_tree(pos)
 
 	elseif node.name == "ethereal:bamboo_sprout"
 	and under == "ethereal:bamboo_dirt" then
-		ethereal.add_tree(pos, 1, 1, ethereal.bambootree)
+		ethereal.grow_bamboo_tree(pos)
 
 	elseif node.name == "ethereal:birch_sapling"
 	and under == "ethereal:green_dirt" then
-		ethereal.add_tree(pos, 2, 2, ethereal.birchtree)
-
+		ethereal.grow_birch_tree(pos)
 	end
+
 end
 
 -- Grow saplings
@@ -134,23 +185,13 @@ minetest.register_abm({
 	chance = 50,
 	catch_up = false,
 	action = function(pos, node)
-		ethereal.grow_sapling(pos, node)
-	end,
-})
 
-minetest.register_craftitem("ethereal:tree_tool", {
-	description = "Tree Tool",
-	inventory_image = "default_stick.png",
-	on_use = function(itemstack, user, pointed_thing)
+		local light_level = minetest.get_node_light(pos)
 
-		if not pointed_thing
-		or pointed_thing.type ~= "node" then
+		if not light_level or light_level < 13 then
 			return
 		end
 
-		local pos = pointed_thing.under
-		local nod = minetest.get_node(pos)
-
-		ethereal.grow_sapling(pos, nod)
+		ethereal.grow_sapling(pos, node)
 	end,
 })

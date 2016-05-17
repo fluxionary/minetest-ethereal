@@ -7,6 +7,16 @@ Ethereal v7 Mapgen mod for Minetest
 
 ## Changelog
 
+### 1.20
+
+- Tweaked Ethereal to work with new features and nodes in Minetest 0.4.13+
+- Added bones found in dirt and bonemeal to make tree's and crops grow quicker
+- Tree's follow default rules where saplings need light to grow
+- Using default schematics for apple, pine, acacia and jungle tree's
+- Tidied and split code into separate files
+- Redid coloured grass spread function to run better
+- Added support for moreblock's stairsplus feature
+
 ### 1.19
 
 - Added new biome routine to help restructure biomes

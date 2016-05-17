@@ -1,3 +1,4 @@
+
 -- override default papyrus to make it walkable
 minetest.override_item("default:papyrus", {walkable = true, sunlight_propagates = true})
 
@@ -5,8 +6,8 @@ minetest.override_item("default:papyrus", {walkable = true, sunlight_propagates 
 minetest.register_abm({
 	nodenames = {"default:papyrus", "ethereal:bamboo"},
 	neighbors = {"group:soil"},
-	interval = 50,
-	chance = 20,
+	interval = 14, --50,
+	chance = 71, --20,
 	catch_up = false,
 	action = function(pos, node)
 

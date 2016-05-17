@@ -11,8 +11,8 @@ minetest.register_decoration({
 	fill_ratio = 0.005,
 	biomes = {"desert", "sandstone"},
 	decoration = {
-		"bakedclay:cactus_echinocereus", "bakedclay:cactus_matucana",
-		"bakedclay:cactus_baseball", "bakedclay:cactus_golden"
+		"xanadu:cactus_echinocereus", "xanadu:cactus_matucana",
+		"xanadu:cactus_baseball", "xanadu:cactus_golden"
 	},
 })
 
@@ -24,8 +24,8 @@ minetest.register_decoration({
 	fill_ratio = 0.004,
 	biomes = {"desert", "sandstone"},
 	decoration = {
-		"bakedclay:desert_kangaroo", "bakedclay:desert_brittle",
-		"bakedclay:desert_ocotillo", "bakedclay:desert_whitesage"
+		"xanadu:desert_kangaroo", "xanadu:desert_brittle",
+		"xanadu:desert_ocotillo", "xanadu:desert_whitesage"
 	},
 })
 
@@ -39,8 +39,8 @@ minetest.register_decoration({
 	fill_ratio = 0.005,
 	biomes = {"prairie", "grassy", "grassytwo"},
 	decoration = {
-		"bakedclay:grass_prairie", "bakedclay:grass_cord",
-		"bakedclay:grass_wheatgrass", "bakedclay:desert_whitesage"
+		"xanadu:grass_prairie", "xanadu:grass_cord",
+		"xanadu:grass_wheatgrass", "xanadu:desert_whitesage"
 	},
 })
 
@@ -55,8 +55,8 @@ minetest.register_decoration({
 	fill_ratio = 0.005,
 	biomes = {"prairie", "grassy", "grassytwo", "bamboo"},
 	decoration = {
-		"bakedclay:flower_jacobsladder", "bakedclay:flower_thistle",
-		"bakedclay:flower_wildcarrot"
+		"xanadu:flower_jacobsladder", "xanadu:flower_thistle",
+		"xanadu:flower_wildcarrot"
 	},
 })
 
@@ -70,8 +70,8 @@ minetest.register_decoration({
 	fill_ratio = 0.005,
 	biomes = {"prairie", "grassy", "grassytwo", "grove"},
 	decoration = {
-		"bakedclay:flower_delphinium", "bakedclay:flower_celosia",
-		"bakedclay:flower_daisy", "bakedclay:flower_bluerose"
+		"xanadu:flower_delphinium", "xanadu:flower_celosia",
+		"xanadu:flower_daisy", "xanadu:flower_bluerose"
 	},
 })
 
@@ -89,7 +89,7 @@ minetest.register_decoration({
 		"prairie", "grassy", "grassytwo", "grove", "junglee",
 		"grayness", "jumble"
 	},
-	decoration = {"bakedclay:shrub_kerria", "bakedclay:shrub_spicebush"},
+	decoration = {"xanadu:shrub_kerria", "xanadu:shrub_spicebush"},
 })
 
 --= Jungle Biome
@@ -101,9 +101,9 @@ minetest.register_decoration({
 	fill_ratio = 0.007,
 	biomes = {"junglee", "jumble"},
 	decoration = {
-		"bakedclay:rainforest_guzmania", "bakedclay:rainforest_devil",
-		"bakedclay:rainforest_lazarus", "bakedclay:rainforest_lollipop",
-		"bakedclay:mushroom_woolly"
+		"xanadu:rainforest_guzmania", "xanadu:rainforest_devil",
+		"xanadu:rainforest_lazarus", "xanadu:rainforest_lollipop",
+		"xanadu:mushroom_woolly"
 	},
 })
 
@@ -119,9 +119,9 @@ minetest.register_decoration({
 	fill_ratio = 0.005,
 	biomes = {"snowy", "alpine", "grayness"},
 	decoration = {
-		"bakedclay:mountain_edelweiss", "bakedclay:mountain_armeria",
-		"bakedclay:mountain_bellflower", "bakedclay:mountain_willowherb",
-		"bakedclay:mountain_bistort"
+		"xanadu:mountain_edelweiss", "xanadu:mountain_armeria",
+		"xanadu:mountain_bellflower", "xanadu:mountain_willowherb",
+		"xanadu:mountain_bistort"
 	},
 
 })
@@ -135,8 +135,8 @@ minetest.register_decoration({
 	fill_ratio = 0.005,
 	biomes = {"mushroom"},
 	decoration = {
-		"bakedclay:mushroom_powderpuff", "bakedclay:mushroom_chanterelle",
-		"bakedclay:mushroom_parasol"
+		"xanadu:mushroom_powderpuff", "xanadu:mushroom_chanterelle",
+		"xanadu:mushroom_parasol"
 	},
 })
 
@@ -149,8 +149,8 @@ minetest.register_decoration({
 	fill_ratio = 0.015,
 	biomes = {"sandclay", "grassy_ocean", "grassy", "grassytwo", "jumble"},
 	decoration = {
-		"bakedclay:wetlands_cattails", "bakedclay:wetlands_pickerel",
-		"bakedclay:wetlands_mannagrass", "bakedclay:wetlands_turtle"
+		"xanadu:wetlands_cattails", "xanadu:wetlands_pickerel",
+		"xanadu:wetlands_mannagrass", "xanadu:wetlands_turtle"
 	},
 	spawn_by = "default:water_source",
 	num_spawn_by = 1,
@@ -166,7 +166,7 @@ minetest.register_decoration({
 		"ethereal:dirt_with_snow", "ethereal:jungle_dirt",
 		"ethereal:prairie_dirt", "ethereal:grove_dirt",
 		"ethereal:dry_dirt", "ethereal:fiery_dirt", "default:sand",
-		"default:desert_sand", "bakedclay:red", "ethereal:bamboo_dirt"
+		"default:desert_sand", "xanadu:red", "ethereal:bamboo_dirt"
 	},
 	sidelen = 16,
 	fill_ratio = 0.004,
@@ -175,16 +175,18 @@ minetest.register_decoration({
 		"junglee", "grassy", "grassytwo", "jumble", "snowy", "alpine",
 		"fiery", "mesa", "bamboo"
 	},
-	decoration = {"bakedclay:spooky_thornbush", "bakedclay:spooky_baneberry"},
+	decoration = {"xanadu:spooky_thornbush", "xanadu:spooky_baneberry"},
 })
 
--- Extra recipe for hearty stew
+--= Poppy's growing in Clearing Biome in memory of RealBadAngel
 
-minetest.register_craft({
-	output = "ethereal:hearty_stew",
-	recipe = {
-		{"ethereal:wild_onion_plant","ethereal:mushroom_plant", "farming:beans"},
-		{"","ethereal:mushroom_plant", ""},
-		{"","ethereal:bowl", ""},
-	}
+minetest.register_decoration({
+	deco_type = "simple",
+	place_on = {
+		"ethereal:green_dirt",
+	},
+	sidelen = 16,
+	fill_ratio = 0.004,
+	biomes = {"clearing"},
+	decoration = {"xanadu:poppy"},
 })
