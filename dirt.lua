@@ -108,13 +108,13 @@ minetest.register_abm({
 			"group:ethereal_grass")
 
 		-- count new grass nodes
-		for _,p in pairs(dirts) do
+		for n = 1, #dirts do
 
-			num = grasses[p] or 0
+			num = grasses[dirts[n]] or 0
 
 			if num > curr_max then
 				curr_max = num
-				curr_type = p
+				curr_type = dirts[n]
 			end
 		end
 

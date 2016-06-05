@@ -170,14 +170,14 @@ local function growth(pointed_thing)
 	local stage = ""
 
 	-- grow registered crops
-	for _, row in pairs(crops) do
+	for n = 1, #crops do
 
-		if string.find(node.name, row[1]) then
+		if string.find(node.name, crops[n][1]) then
 
 			stage = tonumber( node.name:split("_")[2] )
-			stage = math.min(stage + math.random(1, 4), row[2])
+			stage = math.min(stage + math.random(1, 4), crops[n][2])
 
-			minetest.set_node(pos, {name = row[1] .. stage})
+			minetest.set_node(pos, {name = crops[n][1] .. stage})
 
 			return
 

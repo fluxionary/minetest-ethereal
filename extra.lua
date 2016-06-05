@@ -41,20 +41,22 @@ minetest.register_craft({
 })
 
 -- X pattern craft recipes (5x 'a' in X pattern gives 5 of 'b')
-for _,items in pairs({
+local cheat = {
 	{"default:cobble", "default:gravel"},
 	{"default:gravel", "default:dirt"},
 	{"default:dirt", "default:sand"},
 	{"default:ice", "default:snow"},
 	{"ethereal:dry_dirt", "default:desert_sand"},
-}) do
-	local a, b = unpack(items)
+}
+
+for n = 1, #cheat do
+
 	minetest.register_craft({
-		output = b.." 5",
+		output = cheat[n][2] .. " 5",
 		recipe = {
-			{a, "", a},
-			{"", a, ""},
-			{a, "", a},
+			{cheat[n][1], "", cheat[n][1]},
+			{"", cheat[n][1], ""},
+			{cheat[n][1], "", cheat[n][1]},
 		}
 	})
 end
