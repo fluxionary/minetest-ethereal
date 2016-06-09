@@ -3,7 +3,7 @@
 Ethereal v7 Mapgen mod for Minetest
 
 ## Forum Topic
-- https://forum.minetest.net/viewtopic.php?id=7656
+- https://forum.minetest.net/viewtopic.php?f=11&t=14638
 
 ## Changelog
 
