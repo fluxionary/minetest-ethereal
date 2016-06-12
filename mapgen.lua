@@ -229,8 +229,7 @@ add_schem({"ethereal:green_dirt"}, 0.03, {"grassy"}, 1, 100, dpath .. "apple_tre
 add_schem({"ethereal:green_dirt"}, 0.001, {"jumble"}, 1, 100, path .. "bigtree.mts", ethereal.jumble)
 
 -- aspen tree
-add_schem({"ethereal:green_dirt"}, 0.02, {"grassytwo"}, 1, 50,
-	minetest.get_modpath("default").."/schematics/aspen_tree.mts", ethereal.jumble)
+add_schem({"ethereal:green_dirt"}, 0.02, {"grassytwo"}, 1, 50, dpath .. "aspen_tree.mts", ethereal.jumble)
 
 -- birch tree
 add_schem({"ethereal:green_dirt"}, 0.02, {"grassytwo"}, 50, 100, ethereal.birchtree, ethereal.grassytwo)
