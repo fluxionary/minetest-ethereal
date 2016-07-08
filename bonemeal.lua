@@ -66,8 +66,7 @@ local crops = {
 local function growth(pointed_thing)
 
 	local pos = pointed_thing.under
-
-	node = minetest.get_node(pos)
+	local node = minetest.get_node(pos)
 
 	if node.name == ""
 	or node.name == "ignore" then
