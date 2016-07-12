@@ -68,8 +68,7 @@ local function growth(pointed_thing)
 	local pos = pointed_thing.under
 	local node = minetest.get_node(pos)
 
-	if node.name == ""
-	or node.name == "ignore" then
+	if node.name == "ignore" then
 		return
 	end
 

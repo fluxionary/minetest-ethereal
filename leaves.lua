@@ -195,7 +195,7 @@ minetest.register_node("ethereal:palmleaves", {
 	drop = {
 		max_items = 1,
 		items = {
-			{items = {"ethereal:palm_sapling"}, rarity = 15},
+			{items = {"ethereal:palm_sapling"}, rarity = 10},
 			{items = {"ethereal:palmleaves"}}
 		}
 	},
