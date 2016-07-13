@@ -7,12 +7,19 @@ minetest.register_craftitem("ethereal:bone", {
 	inventory_image = "bone.png",
 })
 
--- bonemeal recipe
+-- bonemeal recipes
 minetest.register_craft({
 	type = "shapeless",
-	output = 'ethereal:bonemeal 3',
+	output = 'ethereal:bonemeal 2',
 	recipe = {'ethereal:bone'},
 })
+
+minetest.register_craft({
+	type = "shapeless",
+	output = 'ethereal:bonemeal 4',
+	recipe = {'bones:bones'},
+})
+
 
 -- add bones to dirt
 minetest.override_item("default:dirt", {
