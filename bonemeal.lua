@@ -162,7 +162,16 @@ local function growth(pointed_thing)
 			default.grow_new_jungle_tree(pos)
 
 		elseif node.name == "default:pine_sapling" then
-			default.grow_new_pine_tree(pos)
+
+			if #minetest.find_nodes_in_area(
+				{x = pos.x - 1, y = pos.y - 1, z = pos.z - 1},
+				{x = pos.x + 1, y = pos.y + 1, z = pos.z + 1},
+				{"default:snow", "default:snowblock", "default:dirt_with_snow"}) > 0 then
+
+				default.grow_new_snowy_pine_tree(pos)
+			else
+				default.grow_new_pine_tree(pos)
+			end
 
 		elseif node.name == "default:acacia_sapling" then
 			default.grow_new_acacia_tree(pos)
