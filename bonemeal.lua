@@ -69,6 +69,20 @@ local crops = {
 	{"farming:barley_", 7},
 }
 
+-- check if sapling has enough height room to grow
+local function enough_height(pos, height)
+
+	local nod = minetest.line_of_sight(
+		{x = pos.x, y = pos.y + 1, z = pos.z},
+		{x = pos.x, y = pos.y + height, z = pos.z})
+
+	if not nod then
+		return false -- obstructed
+	else
+		return true -- can grow
+	end
+end
+
 -- growing routine
 local function growth(pointed_thing)
 
@@ -121,47 +135,61 @@ local function growth(pointed_thing)
 		end
 
 		-- grow ethereal tree
-		if node.name == "ethereal:palm_sapling" then
+		if node.name == "ethereal:palm_sapling"
+		and enough_height(pos, 9) then
 			ethereal.grow_palm_tree(pos)
 
-		elseif node.name == "ethereal:yellow_tree_sapling" then
+		elseif node.name == "ethereal:yellow_tree_sapling"
+		and enough_height(pos, 19) then
 			ethereal.grow_yellow_tree(pos)
 
-		elseif node.name == "ethereal:big_tree_sapling" then
+		elseif node.name == "ethereal:big_tree_sapling"
+		and enough_height(pos, 7) then
 			ethereal.grow_big_tree(pos)
 
-		elseif node.name == "ethereal:banana_tree_sapling" then
+		elseif node.name == "ethereal:banana_tree_sapling"
+		and enough_height(pos, 8) then
 			ethereal.grow_banana_tree(pos)
 
-		elseif node.name == "ethereal:frost_tree_sapling" then
+		elseif node.name == "ethereal:frost_tree_sapling"
+		and enough_height(pos, 19) then
 			ethereal.grow_frost_tree(pos)
 
-		elseif node.name == "ethereal:mushroom_sapling" then
+		elseif node.name == "ethereal:mushroom_sapling"
+		and enough_height(pos, 11) then
 			ethereal.grow_mushroom_tree(pos)
 
-		elseif node.name == "ethereal:willow_sapling" then
+		elseif node.name == "ethereal:willow_sapling"
+		and enough_height(pos, 14) then
 			ethereal.grow_willow_tree(pos)
 
-		elseif node.name == "ethereal:redwood_sapling" then
+		elseif node.name == "ethereal:redwood_sapling"
+		and enough_height(pos, 31) then
 			ethereal.grow_redwood_tree(pos)
 
-		elseif node.name == "ethereal:orange_tree_sapling" then
+		elseif node.name == "ethereal:orange_tree_sapling"
+		and enough_height(pos, 6) then
 			ethereal.grow_orange_tree(pos)
 
-		elseif node.name == "ethereal:bamboo_sprout" then
+		elseif node.name == "ethereal:bamboo_sprout"
+		and enough_height(pos, 18) then
 			ethereal.grow_bamboo_tree(pos)
 
-		elseif node.name == "ethereal:birch_sapling" then
+		elseif node.name == "ethereal:birch_sapling"
+		and enough_height(pos, 7) then
 			ethereal.grow_birch_tree(pos)
 
 		-- grow default tree
-		elseif node.name == "default:sapling" then
+		elseif node.name == "default:sapling"
+		and enough_height(pos, 7) then
 			default.grow_new_apple_tree(pos)
 
-		elseif node.name == "default:junglesapling" then
+		elseif node.name == "default:junglesapling"
+		and enough_height(pos, 15) then
 			default.grow_new_jungle_tree(pos)
 
-		elseif node.name == "default:pine_sapling" then
+		elseif node.name == "default:pine_sapling"
+		and enough_height(pos, 11) then
 
 			if #minetest.find_nodes_in_area(
 				{x = pos.x - 1, y = pos.y - 1, z = pos.z - 1},
@@ -173,10 +201,12 @@ local function growth(pointed_thing)
 				default.grow_new_pine_tree(pos)
 			end
 
-		elseif node.name == "default:acacia_sapling" then
+		elseif node.name == "default:acacia_sapling"
+		and enough_height(pos, 7) then
 			default.grow_new_acacia_tree(pos)
 
-		elseif node.name == "default:aspen_sapling" then
+		elseif node.name == "default:aspen_sapling"
+		and enough_height(pos, 11) then
 			default.grow_new_aspen_tree(pos)
 		end
 
