@@ -122,6 +122,13 @@ local function growth(pointed_thing)
 			z = pos.z
 		})
 
+		local height = minetest.registered_nodes[node.name].grown_height
+
+		-- do we have enough height to grow sapling into tree?
+		if height and not enough_height(pos, height) then
+			return
+		end
+
 		-- specific check for palm tree's, so they grow on sand
 		if node.name == "ethereal:palm_sapling"
 		and under.name == "default:sand" then
@@ -135,48 +142,37 @@ local function growth(pointed_thing)
 		end
 
 		-- grow ethereal tree
-		if node.name == "ethereal:palm_sapling"
-		and enough_height(pos, 9) then
+		if node.name == "ethereal:palm_sapling" then
 			ethereal.grow_palm_tree(pos)
 
-		elseif node.name == "ethereal:yellow_tree_sapling"
-		and enough_height(pos, 19) then
+		elseif node.name == "ethereal:yellow_tree_sapling" then
 			ethereal.grow_yellow_tree(pos)
 
-		elseif node.name == "ethereal:big_tree_sapling"
-		and enough_height(pos, 7) then
+		elseif node.name == "ethereal:big_tree_sapling" then
 			ethereal.grow_big_tree(pos)
 
-		elseif node.name == "ethereal:banana_tree_sapling"
-		and enough_height(pos, 8) then
+		elseif node.name == "ethereal:banana_tree_sapling" then
 			ethereal.grow_banana_tree(pos)
 
-		elseif node.name == "ethereal:frost_tree_sapling"
-		and enough_height(pos, 19) then
+		elseif node.name == "ethereal:frost_tree_sapling" then
 			ethereal.grow_frost_tree(pos)
 
-		elseif node.name == "ethereal:mushroom_sapling"
-		and enough_height(pos, 11) then
+		elseif node.name == "ethereal:mushroom_sapling" then
 			ethereal.grow_mushroom_tree(pos)
 
-		elseif node.name == "ethereal:willow_sapling"
-		and enough_height(pos, 14) then
+		elseif node.name == "ethereal:willow_sapling" then
 			ethereal.grow_willow_tree(pos)
 
-		elseif node.name == "ethereal:redwood_sapling"
-		and enough_height(pos, 31) then
+		elseif node.name == "ethereal:redwood_sapling" then
 			ethereal.grow_redwood_tree(pos)
 
-		elseif node.name == "ethereal:orange_tree_sapling"
-		and enough_height(pos, 6) then
+		elseif node.name == "ethereal:orange_tree_sapling" then
 			ethereal.grow_orange_tree(pos)
 
-		elseif node.name == "ethereal:bamboo_sprout"
-		and enough_height(pos, 18) then
+		elseif node.name == "ethereal:bamboo_sprout" then
 			ethereal.grow_bamboo_tree(pos)
 
-		elseif node.name == "ethereal:birch_sapling"
-		and enough_height(pos, 7) then
+		elseif node.name == "ethereal:birch_sapling" then
 			ethereal.grow_birch_tree(pos)
 
 		-- grow default tree
