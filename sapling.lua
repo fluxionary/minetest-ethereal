@@ -21,10 +21,11 @@ minetest.register_node("ethereal:bamboo_sprout", {
 		fixed = {-0.5, -0.5, -0.5, 0.5, -5/16, 0.5},
 	},
 	on_use = minetest.item_eat(-2),
+	grown_height = 11,
 })
 
 -- Register Saplings
-ethereal.register_sapling = function(name, desc, texture)
+ethereal.register_sapling = function(name, desc, texture, height)
 
 	minetest.register_node(name .. "_sapling", {
 		description = S(desc .. " Tree Sapling"),
@@ -46,19 +47,20 @@ ethereal.register_sapling = function(name, desc, texture)
 			ethereal_sapling = 1, sapling = 1, attached_node = 1
 		},
 		sounds = default.node_sound_defaults(),
+		grown_height = height,
 	})
 end
 
-ethereal.register_sapling("ethereal:willow", "Willow", "willow_sapling")
-ethereal.register_sapling("ethereal:yellow_tree", "Healing", "yellow_tree_sapling")
-ethereal.register_sapling("ethereal:big_tree", "Big", "ethereal_big_tree_sapling")
-ethereal.register_sapling("ethereal:banana_tree", "Banana", "banana_tree_sapling")
-ethereal.register_sapling("ethereal:frost_tree", "Frost", "ethereal_frost_tree_sapling")
-ethereal.register_sapling("ethereal:mushroom", "Mushroom", "ethereal_mushroom_sapling")
-ethereal.register_sapling("ethereal:palm", "Palm", "moretrees_palm_sapling")
-ethereal.register_sapling("ethereal:redwood", "Redwood", "redwood_sapling")
-ethereal.register_sapling("ethereal:orange_tree", "Orange", "orange_tree_sapling")
-ethereal.register_sapling("ethereal:birch", "Birch", "moretrees_birch_sapling")
+ethereal.register_sapling("ethereal:willow", "Willow", "willow_sapling", 14)
+ethereal.register_sapling("ethereal:yellow_tree", "Healing", "yellow_tree_sapling", 19)
+ethereal.register_sapling("ethereal:big_tree", "Big", "ethereal_big_tree_sapling", 7)
+ethereal.register_sapling("ethereal:banana_tree", "Banana", "banana_tree_sapling", 8)
+ethereal.register_sapling("ethereal:frost_tree", "Frost", "ethereal_frost_tree_sapling", 19)
+ethereal.register_sapling("ethereal:mushroom", "Mushroom", "ethereal_mushroom_sapling", 11)
+ethereal.register_sapling("ethereal:palm", "Palm", "moretrees_palm_sapling", 9)
+ethereal.register_sapling("ethereal:redwood", "Redwood", "redwood_sapling", 31)
+ethereal.register_sapling("ethereal:orange_tree", "Orange", "orange_tree_sapling", 6)
+ethereal.register_sapling("ethereal:birch", "Birch", "moretrees_birch_sapling", 7)
 
 ethereal.add_tree = function (pos, ofx, ofy, ofz, schem)
 	-- check for schematic
@@ -124,6 +126,20 @@ function ethereal.grow_birch_tree(pos)
 	ethereal.add_tree(pos, 2, 0, 2, ethereal.birchtree)
 end
 
+-- check if sapling has enough height room to grow
+local function enough_height(pos, height)
+
+	local nod = minetest.line_of_sight(
+		{x = pos.x, y = pos.y + 1, z = pos.z},
+		{x = pos.x, y = pos.y + height, z = pos.z})
+
+	if not nod then
+		return false -- obstructed
+	else
+		return true -- can grow
+	end
+end
+
 ethereal.grow_sapling = function (pos, node)
 
 	local under =  minetest.get_node({
@@ -132,60 +148,66 @@ ethereal.grow_sapling = function (pos, node)
 		z = pos.z
 	}).name
 
+	if not minetest.registered_nodes[node.name] then
+		return
+	end
+
+	local height = minetest.registered_nodes[node.name].grown_height
+
 	-- Check if Ethereal Sapling is growing on correct substrate
 	if node.name == "ethereal:yellow_tree_sapling"
 	and under == "default:dirt_with_snow"
-	and enough_height(pos, 19) then
+	and enough_height(pos, height) then
 		ethereal.grow_yellow_tree(pos)
 
 	elseif node.name == "ethereal:big_tree_sapling"
 	and under == "ethereal:green_dirt"
-	and enough_height(pos, 7) then
+	and enough_height(pos, height) then
 		ethereal.grow_big_tree(pos)
 
 	elseif node.name == "ethereal:banana_tree_sapling"
 	and under == "ethereal:grove_dirt"
-	and enough_height(pos, 8) then
+	and enough_height(pos, height) then
 		ethereal.grow_banana_tree(pos)
 
 	elseif node.name == "ethereal:frost_tree_sapling"
 	and under == "ethereal:crystal_dirt"
-	and enough_height(pos, 19) then
+	and enough_height(pos, height) then
 		ethereal.grow_frost_tree(pos)
 
 	elseif node.name == "ethereal:mushroom_sapling"
 	and under == "ethereal:mushroom_dirt"
-	and enough_height(pos, 11) then
+	and enough_height(pos, height) then
 		ethereal.grow_mushroom_tree(pos)
 
 	elseif node.name == "ethereal:palm_sapling"
 	and under == "default:sand"
-	and enough_height(pos, 9) then
+	and enough_height(pos, height) then
 		ethereal.grow_palm_tree(pos)
 
 	elseif node.name == "ethereal:willow_sapling"
 	and under == "ethereal:gray_dirt"
-	and enough_height(pos, 14) then
+	and enough_height(pos, height) then
 		ethereal.grow_willow_tree(pos)
 
 	elseif node.name == "ethereal:redwood_sapling"
 	and under == "bakedclay:red"
-	and enough_height(pos, 31) then
+	and enough_height(pos, height) then
 		ethereal.grow_redwood_tree(pos)
 
 	elseif node.name == "ethereal:orange_tree_sapling"
 	and under == "ethereal:prairie_dirt"
-	and enough_height(pos, 6) then
+	and enough_height(pos, height) then
 		ethereal.grow_orange_tree(pos)
 
 	elseif node.name == "ethereal:bamboo_sprout"
 	and under == "ethereal:bamboo_dirt"
-	and enough_height(pos, 18) then
+	and enough_height(pos, height) then
 		ethereal.grow_bamboo_tree(pos)
 
 	elseif node.name == "ethereal:birch_sapling"
 	and under == "ethereal:green_dirt"
-	and enough_height(pos, 7) then
+	and enough_height(pos, height) then
 		ethereal.grow_birch_tree(pos)
 	end
 

@@ -11,7 +11,7 @@ Ethereal v7 Mapgen mod for Minetest
 
  - Saplings need clear space above to grow (depending on height of tree)
  - Bonemeal changes to suit new sapling growth
- - Fixed and tweaks
+ - Fixes and tweaks
 
 ### 1.20
 
