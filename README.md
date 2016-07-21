@@ -1,6 +1,6 @@
 # ethereal
 
-Ethereal v7 Mapgen mod for Minetest
+Ethereal Mapgen mod for Minetest (works on all except v6)
 
 ## Forum Topic
 - https://forum.minetest.net/viewtopic.php?f=11&t=14638
