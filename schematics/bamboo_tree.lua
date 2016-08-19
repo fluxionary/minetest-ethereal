@@ -75,3 +75,8 @@ ethereal.bambootree = {
 		{ypos = 3, prob = 127},
 	},
 }
+
+minetest.override_item("default:papyrus", {
+	walkable = true,
+	sunlight_propagates = true
+})

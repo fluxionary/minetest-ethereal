@@ -13,7 +13,7 @@ minetest.register_node("ethereal:bamboo_sprout", {
 	walkable = false,
 	groups = {
 		snappy = 3, attached_node = 1, flammable = 2,
-		dig_immediate = 3, ethereal_sapling = 1
+		dig_immediate = 3, sapling = 1
 	},
 	sounds = default.node_sound_defaults(),
 	selection_box = {
@@ -209,6 +209,7 @@ end
 
 -- Grow saplings
 minetest.register_abm({
+	label = "Ethereal grow sapling",
 	nodenames = {"group:ethereal_sapling"},
 	interval = 10,
 	chance = 50,

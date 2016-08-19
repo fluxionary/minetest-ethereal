@@ -68,6 +68,7 @@ minetest.register_node("ethereal:onion_5", table.copy(crop_def))
 if not farming or not farming.mod or farming.mod ~= "redo" then
 
 minetest.register_abm({
+	label = "Ethereal grow onion",
 	nodenames = {"ethereal:onion_1", "ethereal:onion_2", "ethereal:onion_3", "ethereal:onion_4"},
 	neighbors = {"farming:soil_wet"},
 	interval = 9,

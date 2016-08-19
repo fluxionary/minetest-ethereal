@@ -20,6 +20,11 @@ minetest.register_craft({
 	recipe = {'bones:bones'},
 })
 
+minetest.register_craft( {
+	type = "shapeless",
+	output = "dye:white 2",
+	recipe = {"ethereal:bonemeal"},
+})
 
 -- add bones to dirt
 minetest.override_item("default:dirt", {

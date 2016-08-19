@@ -1,6 +1,6 @@
 --[[
 
-	Minetest Ethereal Mod (5th June 2016)
+	Minetest Ethereal Mod (9th August 2016)
 
 	Created by ChinChow
 
@@ -53,8 +53,6 @@ dofile(path .. "/plantlife.lua")
 dofile(path .. "/mushroom.lua")
 dofile(path .. "/onion.lua")
 dofile(path .. "/crystal.lua")
-dofile(path .. "/papyrus.lua")
-dofile(path .. "/flowers.lua")
 dofile(path .. "/water.lua")
 dofile(path .. "/dirt.lua")
 dofile(path .. "/leaves.lua")

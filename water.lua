@@ -44,6 +44,7 @@ minetest.register_craft({
 
 -- If Crystal Spike, Crystal Dirt, Snow near Water, change Water to Ice
 minetest.register_abm({
+	label = "Ethereal freeze water",
 	nodenames = {
 		"ethereal:crystal_spike", "default:snow", "default:snowblock",
 		"ethereal:snowbrick"
@@ -53,19 +54,19 @@ minetest.register_abm({
 	chance = 4,
 	catch_up = false,
 	action = function(pos, node)
-		local water = minetest.find_nodes_in_area_under_air(
-			{x = pos.x - 1, y = pos.y - 1, z = pos.z - 1},
-			{x = pos.x + 1, y = pos.y + 1, z = pos.z + 1},
+
+		local near = minetest.find_node_near(pos, 1,
 			{"default:water_source", "default:river_water_source"})
 
-		if water and #water > 0 then
-			minetest.swap_node(water[1], {name = "default:ice"})
+		if near then
+			minetest.swap_node(near, {name = "default:ice"})
 		end
 	end,
 })
 
 -- If Heat Source near Ice or Snow then melt
 minetest.register_abm({
+	label = "Ethereal melt snow/ice",
 	nodenames = {
 		"default:ice", "default:snowblock", "default:snow",
 		"default:dirt_with_snow", "ethereal:snowbrick", "ethereal:icebrick"
@@ -104,6 +105,7 @@ minetest.register_abm({
 
 -- If Water Source near Dry Dirt, change to normal Dirt
 minetest.register_abm({
+	label = "Ethereal wet dry dirt",
 	nodenames = {"ethereal:dry_dirt", "default:dirt_with_dry_grass"},
 	neighbors = {"group:water"},
 	interval = 15,
@@ -121,6 +123,7 @@ minetest.register_abm({
 
 -- If torch touching water then drop as item
 minetest.register_abm({
+	label = "Ethereal drop torch",
 	nodenames = {"default:torch"},
 	neighbors = {"group:water"},
 	interval = 5,

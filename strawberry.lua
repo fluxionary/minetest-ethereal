@@ -87,6 +87,7 @@ minetest.register_node("ethereal:strawberry_8", table.copy(crop_def))
 if not farming or not farming.mod or farming.mod ~= "redo" then
 
 minetest.register_abm({
+	label = "Ethereal grow strawberry",
 	nodenames = {
 		"ethereal:strawberry_1", "ethereal:strawberry_2", "ethereal:strawberry_3",
 		"ethereal:strawberry_4", "ethereal:strawberry_5", "ethereal:strawberry_6",

@@ -137,6 +137,7 @@ minetest.register_node("ethereal:sandy", {
 
 -- randomly generate coral or seaweed and have seaweed grow up to 14 high
 minetest.register_abm({
+	label = "Grow coral/seaweed",
 	nodenames = {"ethereal:sandy"},
 	neighbors = {"group:water"},
 	interval = 15,
