@@ -192,10 +192,8 @@ local function growth(pointed_thing)
 		elseif node.name == "default:pine_sapling"
 		and enough_height(pos, 11) then
 
-			if #minetest.find_nodes_in_area(
-				{x = pos.x - 1, y = pos.y - 1, z = pos.z - 1},
-				{x = pos.x + 1, y = pos.y + 1, z = pos.z + 1},
-				{"default:snow", "default:snowblock", "default:dirt_with_snow"}) > 0 then
+			if minetest.find_node_near(pos, 1,
+				{"default:snow", "default:snowblock", "default:dirt_with_snow"}) then
 
 				default.grow_new_snowy_pine_tree(pos)
 			else
