@@ -26,6 +26,16 @@ minetest.register_craft( {
 	recipe = {"ethereal:bonemeal"},
 })
 
+-- have animalmaterials bone craft into bonemeal if found
+if minetest.get_modpath('animalmaterials') then
+
+	minetest.register_craft({
+		type = "shapeless",
+		output = 'ethereal:bonemeal 2',
+		recipe = {'animalmaterials:bone'},
+	})
+end
+
 -- add bones to dirt
 minetest.override_item("default:dirt", {
 	drop = {
