@@ -147,15 +147,13 @@ end
 -- flower spread, also crystal and fire flower regeneration
 local flower_spread = function(pos, node)
 
-	local light = minetest.get_node_light(pos)
-
-	if not light
-	or light < 13 then
+	if (minetest.get_node_light(pos) or 0) < 13 then
 		return
 	end
 
 	local pos0 = {x = pos.x - 4, y = pos.y - 2, z = pos.z - 4}
 	local pos1 = {x = pos.x + 4, y = pos.y + 2, z = pos.z + 4}
+
 	local num = #minetest.find_nodes_in_area_under_air(pos0, pos1, "group:flora")
 
 	if num > 3
@@ -167,15 +165,15 @@ local flower_spread = function(pos, node)
 		if #grass > 4
 		and not minetest.find_node_near(pos, 4, {"ethereal:crystal_spike"}) then
 
-			grass = grass[math.random(#grass)]
+			pos = grass[math.random(#grass)]
 
-			grass.y = grass.y - 1
+			pos.y = pos.y - 1
 
-			if minetest.get_node(grass).name == "ethereal:crystal_dirt" then
+			if minetest.get_node(pos).name == "ethereal:crystal_dirt" then
 
-				grass.y = grass.y + 1
+				pos.y = pos.y + 1
 
-				minetest.swap_node(grass, {name = "ethereal:crystal_spike"})
+				minetest.swap_node(pos, {name = "ethereal:crystal_spike"})
 			end
 		end
 
@@ -190,15 +188,15 @@ local flower_spread = function(pos, node)
 		if #grass > 8
 		and not minetest.find_node_near(pos, 4, {"ethereal:fire_flower"}) then
 
-			grass = grass[math.random(#grass)]
+			pos = grass[math.random(#grass)]
 
-			grass.y = grass.y - 1
+			pos.y = pos.y - 1
 
-			if minetest.get_node(grass).name == "ethereal:fiery_dirt" then
+			if minetest.get_node(pos).name == "ethereal:fiery_dirt" then
 
-				grass.y = grass.y + 1
+				pos.y = pos.y + 1
 
-				minetest.swap_node(grass, {name = "ethereal:fire_flower"})
+				minetest.swap_node(pos, {name = "ethereal:fire_flower"})
 			end
 		end
 
@@ -213,17 +211,20 @@ local flower_spread = function(pos, node)
 
 	if #seedling > 0 then
 
-		seedling = seedling[math.random(#seedling)]
-		seedling.y = seedling.y + 1
+		pos = seedling[math.random(#seedling)]
 
-		light = minetest.get_node_light(seedling)
-
-		if not light
-		or light < 13 then
+		-- default farming has desert sand as soil, so dont spread on this
+		if minetest.get_node(pos).name == "default:desert_sand" then
 			return
 		end
 
-		minetest.swap_node(seedling, {name = node.name})
+		pos.y = pos.y + 1
+
+		if (minetest.get_node_light(pos) or 0) < 13 then
+			return
+		end
+
+		minetest.swap_node(pos, {name = node.name})
 	end
 end
 
@@ -310,7 +311,7 @@ for _, ab in pairs(minetest.registered_abms) do
 	elseif label == "Flower spread"
 	or node1 == "group:flora" then
 
-		--ab.interval = 2
+		--ab.interval = 1
 		--ab.chance = 1
 		ab.nodenames = {"group:flora"}
 		ab.neighbors = {"group:soil"}
