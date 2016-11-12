@@ -1,6 +1,6 @@
 --[[
 
-	Minetest Ethereal Mod (9th August 2016)
+	Minetest Ethereal Mod (12th November 2016)
 
 	Created by ChinChow
 
@@ -69,6 +69,7 @@ dofile(path .. "/food.lua")
 dofile(path .. "/bonemeal.lua")
 dofile(path .. "/compatibility.lua")
 dofile(path .. "/stairs.lua")
+dofile(path .. "/lucky_block.lua")
 
 if minetest.get_modpath("xanadu") then
 	dofile(path .. "/plantpack.lua")

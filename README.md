@@ -5,6 +5,9 @@ Ethereal Mapgen mod for Minetest (works on all except v6)
 ## Forum Topic
 - https://forum.minetest.net/viewtopic.php?f=11&t=14638
 
+## Lucky Blocks
+35
+
 ## Changelog
 
 ### 1.21
