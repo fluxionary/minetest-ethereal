@@ -156,6 +156,11 @@ local flower_spread = function(pos, node)
 
 	local num = #minetest.find_nodes_in_area_under_air(pos0, pos1, "group:flora")
 
+	-- stop flowers spreading too much just below top of map block
+	if minetest.find_node_near(pos, 2, "ignore") then
+		return
+	end
+
 	if num > 3
 	and node.name == "ethereal:crystalgrass" then
 
