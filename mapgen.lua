@@ -57,11 +57,45 @@ add_biome("desert", nil, "default:desert_sand", 1, "default:desert_sand", 3,
 add_biome("desert_ocean", nil, "default:sand", 1, "default:sand", 2,
 	"default:desert_stone", nil, nil, nil, nil, -192, 3, 35, 20, ethereal.desert)
 
-add_biome("glacier", "default:snowblock", "default:snowblock", 1,
-	"default:snowblock", 3, "default:ice", "default:ice", 10, -8, 31000, 0, 50, ethereal.glacier)
+if ethereal.glacier == 1 then
+	minetest.register_biome({
+		name = "glacier",
+		node_dust = "default:snowblock",
+		node_top = "default:snowblock",
+		depth_top = 1,
+		node_filler = "default:snowblock",
+		depth_filler = 3,
+		node_stone = "default:ice",
+		node_water_top = "default:ice",
+		depth_water_top = 10,
+		--node_water = "",
+		node_river_water = "default:ice",
+		node_riverbed = "default:gravel",
+		depth_riverbed = 2,
+		y_min = -8,
+		y_max = 31000,
+		heat_point = 0,
+		humidity_point = 50,
+	})
 
-add_biome("glacier_ocean", "default:snowblock", "default:sand", 1, "default:sand", 3,
-	nil, nil, nil, nil, nil, -112, -9, 0, 50, ethereal.glacier)
+	minetest.register_biome({
+		name = "glacier_ocean",
+		node_dust = "default:snowblock",
+		node_top = "default:sand",
+		depth_top = 1,
+		node_filler = "default:sand",
+		depth_filler = 3,
+		--node_stone = "",
+		--node_water_top = "",
+		--depth_water_top = ,
+		--node_water = "",
+		--node_river_water = "",
+		y_min = -112,
+		y_max = -9,
+		heat_point = 0,
+		humidity_point = 50,
+	})
+end
 
 add_biome("clearing", nil, "ethereal:green_dirt", 1, "default:dirt", 3,
 	nil, nil, nil, nil, nil, 3, 71, 45, 65, 1) -- ADDED
