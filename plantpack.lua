@@ -147,7 +147,7 @@ minetest.register_decoration({
 	place_on = {"default:sand", "ethereal:green_dirt"},
 	sidelen = 16,
 	fill_ratio = 0.015,
-	biomes = {"sandclay", "grassy_ocean", "grassy", "grassytwo", "jumble"},
+	biomes = {"sandclay", "grassy_ocean", "grassy", "grassytwo", "jumble", "swamp"},
 	decoration = {
 		"xanadu:wetlands_cattails", "xanadu:wetlands_pickerel",
 		"xanadu:wetlands_mannagrass", "xanadu:wetlands_turtle"

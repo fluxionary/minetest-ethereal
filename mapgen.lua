@@ -205,6 +205,12 @@ add_biome("fiery_ocean", nil, "default:sand", 1, "default:sand", 2,
 add_biome("sandclay", nil, "default:sand", 3, "default:clay", 2,
 	nil, nil, nil, nil, nil, 1, 11, 65, 2, ethereal.sandclay)
 
+add_biome("swamp", nil, "ethereal:green_dirt", 1, "default:dirt", 3,
+	nil, nil, nil, nil, nil, 1, 7, 90, 90, ethereal.swamp)
+
+add_biome("swamp_ocean", nil, "default:sand", 2, "default:clay", 2,
+	nil, nil, nil, nil, nil, -192, 1, 90, 90, ethereal.swamp)
+
 --= schematic decorations
 
 local add_schem = function(a, b, c, d, e, f, g)
@@ -312,6 +318,9 @@ add_schem({"ethereal:bamboo_dirt"}, 0.025, {"bamboo"}, 1, 100, ethereal.bambootr
 -- bush
 add_schem({"ethereal:bamboo_dirt"}, 0.08, {"bamboo"}, 1, 100, ethereal.bush, ethereal.bamboo)
 
+-- vine tree
+add_schem({"ethereal:green_dirt"}, 0.02, {"swamp"}, 1, 100, path .. "vinetree.mts", ethereal.swamp)
+
 --= simple decorations
 
 local add_node = function(a, b, c, d, e, f, g, h, i, j)
@@ -386,7 +395,8 @@ local list = {
 	{"grassy", "ethereal:green_dirt", ethereal.grassy},
 	{"grassytwo", "ethereal:green_dirt", ethereal.grassytwo},
 	{"prairie", "ethereal:prairie_dirt", ethereal.prairie},
-	{"mushroom", "ethereal:mushroom_dirt", ethereal.mushroom}
+	{"mushroom", "ethereal:mushroom_dirt", ethereal.mushroom},
+	{"swamp", "ethereal:green_dirt", ethereal.swamp},
 }
 
 -- wild red and brown mushrooms
@@ -417,6 +427,7 @@ end
 -- jungle grass
 add_node({"ethereal:jungle_dirt"}, 0.10, {"junglee"}, 1, 100, {"default:junglegrass"}, nil, nil, nil, ethereal.junglee)
 add_node({"ethereal:green_dirt"}, 0.15, {"jumble"}, 1, 100, {"default:junglegrass"}, nil, nil, nil, ethereal.jumble)
+add_node({"ethereal:green_dirt"}, 0.25, {"swamp"}, 1, 100, {"default:junglegrass"}, nil, nil, nil, ethereal.swamp)
 
 -- grass
 add_node({"ethereal:green_dirt"}, 0.35, {"grassy"}, 1, 100, {"default:grass_2", "default:grass_3",
@@ -433,15 +444,15 @@ add_node({"ethereal:grove_dirt"}, 0.35, {"grove"}, 1, 100, {"default:grass_2", "
 	"default:grass_4", "default:grass_5"}, nil, nil, nil, ethereal.grove)
 add_node({"ethereal:bamboo_dirt"}, 0.35, {"bamboo"}, 1, 100, {"default:grass_2", "default:grass_3",
 	"default:grass_4", "default:grass_5"}, nil, nil, nil, ethereal.bamboo)
-add_node({"ethereal:green_dirt"}, 0.25, {"clearing"}, 1, 100, {"default:grass_2", "default:grass_3",
+add_node({"ethereal:green_dirt"}, 0.35, {"clearing", "swamp"}, 1, 100, {"default:grass_3",
 	"default:grass_4"}, nil, nil, nil, 1)
 
 -- grass on sand
-add_node({"default:sand"}, 0.25, {"sandclay"}, 3, 3, {"default:grass_2", "default:grass_3"}, nil, nil, nil, ethereal.sandclay)
+add_node({"default:sand"}, 0.25, {"sandclay"}, 3, 4, {"default:grass_2", "default:grass_3"}, nil, nil, nil, ethereal.sandclay)
 
 -- ferns
 add_node({"ethereal:grove_dirt"}, 0.2, {"grove"}, 1, 100, {"ethereal:fern"}, nil, nil, nil, ethereal.grove)
-
+add_node({"ethereal:green_dirt"}, 0.1, {"swamp"}, 1, 100, {"ethereal:fern"}, nil, nil, nil, ethereal.swamp)
 
 -- snow
 add_node({"ethereal:cold_dirt"}, 0.8, {"snowy"}, 4, 40, {"default:snow"}, nil, nil, nil, ethereal.snowy)
@@ -456,6 +467,7 @@ add_node({"ethereal:prairie_dirt"}, 0.25, {"prairie"}, 1, 100, {"ethereal:onion_
 -- papyrus
 add_node({"ethereal:green_dirt"}, 0.1, {"grassy"}, 1, 1, {"default:papyrus"}, 4, "default:water_source", 1, ethereal.grassy)
 add_node({"ethereal:jungle_dirt"}, 0.1, {"junglee"}, 1, 1, {"default:papyrus"}, 4, "default:water_source", 1, ethereal.junglee)
+add_node({"ethereal:green_dirt"}, 0.1, {"swamp"}, 1, 1, {"default:papyrus"}, 4, "default:water_source", 1, ethereal.swamp)
 
 --= Farming Redo plants
 
@@ -505,6 +517,7 @@ local list = {
 	{"mesa_ocean", ethereal.mesa},
 	{"grove_ocean", ethereal.grove},
 	{"grassy_ocean", ethereal.grassy},
+	{"swamp_ocean", ethereal.swamp},
 }
 
 for _, row in pairs(list) do

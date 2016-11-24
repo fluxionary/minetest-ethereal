@@ -1,6 +1,6 @@
 --[[
 
-	Minetest Ethereal Mod (16th November 2016)
+	Minetest Ethereal Mod (24th November 2016)
 
 	Created by ChinChow
 
@@ -37,6 +37,7 @@ ethereal.plains    = 1 -- Dry dirt with scorched trees
 ethereal.savannah  = 1 -- Dry yellow grass with acacia tree's
 ethereal.fiery     = 1 -- Red grass with lava craters
 ethereal.sandclay  = 1 -- Sand areas with clay underneath
+ethereal.swamp     = 1 -- Swamp areas with vines on tree's, mushrooms, lilly's and clay sand
 
 -- Intllib
 local S
