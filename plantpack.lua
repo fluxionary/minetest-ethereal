@@ -144,7 +144,7 @@ minetest.register_decoration({
 
 minetest.register_decoration({
 	deco_type = "simple",
-	place_on = {"default:sand", "default:green_dirt"},
+	place_on = {"default:sand", "ethereal:green_dirt"},
 	sidelen = 16,
 	fill_ratio = 0.015,
 	biomes = {"sandclay", "grassy_ocean", "grassy", "grassytwo", "jumble"},

@@ -562,3 +562,86 @@ minetest.register_on_generated(function(minp, maxp)
 		end
 	end
 end)
+
+-- is baked clay mod active? add new flowers if so
+if minetest.get_modpath("bakedclay") then
+
+minetest.register_decoration({
+	deco_type = "simple",
+	place_on = {
+		"ethereal:prairie_grass", "ethereal:green_dirt",
+		"ethereal:grove_dirt"
+	},
+	sidelen = 16,
+	noise_params = {
+		offset = 0,
+		scale = 0.004,
+		spread = {x = 100, y = 100, z = 100},
+		seed = 7133,
+		octaves = 3,
+		persist = 0.6
+	},
+	y_min = 10,
+	y_max = 90,
+	decoration = "bakedclay:delphinium",
+})
+
+minetest.register_decoration({
+	deco_type = "simple",
+	place_on = {
+		"ethereal:prairie_grass", "ethereal:green_dirt",
+		"ethereal:grove_dirt", "ethereal:bamboo_dirt"
+	},
+	sidelen = 16,
+	noise_params = {
+		offset = 0,
+		scale = 0.004,
+		spread = {x = 100, y = 100, z = 100},
+		seed = 7134,
+		octaves = 3,
+		persist = 0.6
+	},
+	y_min = 15,
+	y_max = 90,
+	decoration = "bakedclay:thistle",
+})
+
+minetest.register_decoration({
+	deco_type = "simple",
+	place_on = {"ethereal:jungle_dirt"},
+	sidelen = 16,
+	noise_params = {
+		offset = 0,
+		scale = 0.01,
+		spread = {x = 100, y = 100, z = 100},
+		seed = 7135,
+		octaves = 3,
+		persist = 0.6
+	},
+	y_min = 1,
+	y_max = 90,
+	decoration = "bakedclay:lazarus",
+	spawn_by = "default:jungletree",
+	num_spawn_by = 1,
+})
+
+minetest.register_decoration({
+	deco_type = "simple",
+	place_on = {"ethereal:green_dirt", "default:sand"},
+	sidelen = 16,
+	noise_params = {
+		offset = 0,
+		scale = 0.009,
+		spread = {x = 100, y = 100, z = 100},
+		seed = 7136,
+		octaves = 3,
+		persist = 0.6
+	},
+	y_min = 1,
+	y_max = 15,
+	decoration = "bakedclay:mannagrass",
+	spawn_by = "group:water",
+	num_spawn_by = 1,
+})
+
+end

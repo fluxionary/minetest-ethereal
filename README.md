@@ -16,6 +16,7 @@ Ethereal Mapgen mod for Minetest (works on all except v6)
  - Bonemeal changes to suit new sapling growth
  - Fixes and tweaks
  - Added default Abm overrides
+ - Added 4 new plants from baked clay mod to mapgen
 
 ### 1.20
 
