@@ -206,10 +206,10 @@ add_biome("sandclay", nil, "default:sand", 3, "default:clay", 2,
 	nil, nil, nil, nil, nil, 1, 11, 65, 2, ethereal.sandclay)
 
 add_biome("swamp", nil, "ethereal:green_dirt", 1, "default:dirt", 3,
-	nil, nil, nil, nil, nil, 1, 7, 90, 90, ethereal.swamp)
+	nil, nil, nil, nil, nil, 1, 7, 80, 90, ethereal.swamp)
 
 add_biome("swamp_ocean", nil, "default:sand", 2, "default:clay", 2,
-	nil, nil, nil, nil, nil, -192, 1, 90, 90, ethereal.swamp)
+	nil, nil, nil, nil, nil, -192, 1, 80, 90, ethereal.swamp)
 
 --= schematic decorations
 
