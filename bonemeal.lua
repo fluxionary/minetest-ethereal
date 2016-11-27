@@ -125,7 +125,8 @@ local function growth(pointed_thing)
 	})
 
 	-- 50/50 chance of growing a sapling
-	if minetest.get_item_group(node.name, "sapling") > 0 then
+	if minetest.get_item_group(node.name, "sapling") > 0
+	or minetest.get_item_group(node.name, "ethereal_sapling") > 0 then
 
 		if math.random(1, 2) == 1 then
 			return
