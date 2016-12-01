@@ -163,9 +163,9 @@ minetest.register_node("ethereal:stone_ladder", {
 minetest.register_craft({
 	output = "ethereal:stone_ladder 4",
 	recipe = {
-		{"default:cobble", "", "default:cobble"},
-		{"default:cobble", "default:cobble", "default:cobble"},
-		{"default:cobble", "", "default:cobble"},
+		{"group:stone", "", "group:stone"},
+		{"group:stone", "group:stone", "group:stone"},
+		{"group:stone", "", "group:stone"},
 	}
 })
 
@@ -262,6 +262,7 @@ minetest.register_tool("ethereal:light_staff", {
 	description = S("Staff of Light"),
 	inventory_image = "light_staff.png",
 	wield_image = "light_staff.png",
+	sound = {breaks = "default_tool_breaks"},
 	stack_max = 1,
 	on_use = function(itemstack, user, pointed_thing)
 

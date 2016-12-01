@@ -1,6 +1,6 @@
 --[[
 
-	Minetest Ethereal Mod (24th November 2016)
+	Minetest Ethereal Mod (1st December 2016)
 
 	Created by ChinChow
 
@@ -12,6 +12,8 @@ ethereal = {}
 ethereal.leaftype = 0 -- 0 for 2D plantlike, 1 for 3D allfaces
 ethereal.leafwalk = false -- true for walkable leaves, false to fall through
 ethereal.cavedirt = true -- caves chop through dirt when true
+ethereal.torchdrop = true -- torches drop when touching water
+ethereal.papyruswalk = true -- papyrus can be walked on
 
 -- Set following to 1 to enable biome or 0 to disable
 ethereal.glacier   = 1 -- Ice glaciers with snow

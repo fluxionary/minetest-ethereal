@@ -36,6 +36,14 @@ minetest.register_craft({
 	}
 })
 
+minetest.register_craft({
+	output = "ethereal:crystal_ingot",
+	recipe = {
+		{"ethereal:crystal_spike", "default:mese_crystal"},
+		{"default:mese_crystal", "ethereal:crystal_spike"},
+	}
+})
+
 -- Crystal Block
 minetest.register_node("ethereal:crystal_block", {
 	description = S("Crystal Block"),
@@ -78,7 +86,8 @@ minetest.register_tool("ethereal:sword_crystal", {
 			},
 		},
 		damage_groups = {fleshy = 10},
-	}
+	},
+	sound = {breaks = "default_tool_breaks"},
 })
 
 minetest.register_craft({
@@ -107,6 +116,7 @@ minetest.register_tool("ethereal:axe_crystal", {
 		},
 		damage_groups = {fleshy = 7},
 	},
+	sound = {breaks = "default_tool_breaks"},
 })
 
 minetest.register_craft({
@@ -115,6 +125,15 @@ minetest.register_craft({
 		{'ethereal:crystal_ingot', 'ethereal:crystal_ingot'},
 		{'ethereal:crystal_ingot', 'default:steel_ingot'},
 		{'', 'default:steel_ingot'},
+	}
+})
+
+minetest.register_craft({
+	output = 'ethereal:axe_crystal',
+	recipe = {
+		{'ethereal:crystal_ingot', 'ethereal:crystal_ingot'},
+		{'default:steel_ingot', 'ethereal:crystal_ingot'},
+		{'default:steel_ingot', ''},
 	}
 })
 
@@ -135,6 +154,7 @@ minetest.register_tool("ethereal:pick_crystal", {
 		},
 		damage_groups = {fleshy = 7},
 	},
+	sound = {breaks = "default_tool_breaks"},
 })
 
 minetest.register_craft({
@@ -152,6 +172,7 @@ minetest.register_tool("ethereal:shovel_crystal", {
 	inventory_image = "crystal_shovel.png",
 	wield_image = "crystal_shovel.png^[transformR90",
 
+	sound = {breaks = "default_tool_breaks"},
 	on_use = function(itemstack, user, pointed_thing)
 
 		if pointed_thing.type ~= "node" then
@@ -176,7 +197,10 @@ minetest.register_tool("ethereal:shovel_crystal", {
 			nodeupdate(pos)
 
 			inv:add_item("main", {name = nn})
-			itemstack:add_wear(65535 / 100) -- 111 uses
+
+			if not minetest.setting_getbool("creative_mode") then
+				itemstack:add_wear(65535 / 100) -- 111 uses
+			end
 
 			minetest.sound_play("default_dirt_footstep", {pos = pos, gain = 0.35})
 

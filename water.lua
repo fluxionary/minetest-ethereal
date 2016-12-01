@@ -29,8 +29,9 @@ minetest.register_node("ethereal:snowbrick", {
 	is_ground_content = false,
 	groups = {crumbly = 3, melts = 1},
 	sounds = default.node_sound_dirt_defaults({
-		footstep = {name="default_snow_footstep", gain = 0.25},
-		dug = {name="default_snow_footstep", gain = 0.75},
+		footstep = {name = "default_snow_footstep", gain = 0.15},
+		dug = {name = "default_snow_footstep", gain = 0.2},
+		dig = {name = "default_snow_footstep", gain = 0.2},
 	}),
 })
 
@@ -121,10 +122,12 @@ minetest.register_abm({
 	end,
 })
 
--- If torch touching water then drop as item
+-- If torch touching water then drop as item (when enabled)
+if ethereal.torchdrop == true then
+
 minetest.register_abm({
 	label = "Ethereal drop torch",
-	nodenames = {"default:torch"},
+	nodenames = {"default:torch", "group:torch"}, -- group:torch for new 3d torches
 	neighbors = {"group:water"},
 	interval = 5,
 	chance = 1,
@@ -150,7 +153,9 @@ minetest.register_abm({
 
 			minetest.swap_node(pos, {name = "air"})
 
-			minetest.add_item(pos, {name = node.name})
+			minetest.add_item(pos, {name = "default:torch"})
 		end
 	end,
 })
+
+end
