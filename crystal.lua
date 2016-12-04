@@ -171,7 +171,6 @@ minetest.register_tool("ethereal:shovel_crystal", {
 	description = S("Crystal (soft touch) Shovel"),
 	inventory_image = "crystal_shovel.png",
 	wield_image = "crystal_shovel.png^[transformR90",
-
 	sound = {breaks = "default_tool_breaks"},
 	on_use = function(itemstack, user, pointed_thing)
 
@@ -232,10 +231,11 @@ minetest.register_tool("ethereal:crystal_gilly_staff", {
 })
 
 minetest.register_craft({
+	type = "shapeless",
 	output = "ethereal:crystal_gilly_staff",
 	recipe = {
-		{"ethereal:green_moss", "ethereal:gray_moss", "ethereal:fiery_moss"},
-		{"ethereal:crystal_moss", "ethereal:crystal_ingot", "ethereal:mushroom_moss"},
-		{"", "ethereal:crystal_ingot", ""},
-	}
+		"ethereal:green_moss", "ethereal:gray_moss", "ethereal:fiery_moss",
+		"ethereal:crystal_moss", "ethereal:crystal_ingot", "ethereal:mushroom_moss",
+		"ethereal:crystal_ingot"
+	},
 })

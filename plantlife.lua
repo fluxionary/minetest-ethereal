@@ -219,12 +219,14 @@ function ethereal.add_moss(typ, descr, texture, receipe_item)
 		description = S(descr .. " Moss"),
 		tiles = {texture},
 		groups = {crumbly = 3},
-		sounds = default.node_sound_dirt_defaults()
+		sounds = default.node_sound_dirt_defaults({
+			footstep = {name = "default_grass_footstep", gain = 0.4}})
 	})
 
 	minetest.register_craft({
+		type = "shapeless",
 		output = "ethereal:"..typ.."_moss",
-		recipe = {{"default:dirt", receipe_item }}
+		recipe = {"default:dirt", receipe_item }
 	})
 end
 
