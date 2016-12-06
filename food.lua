@@ -1,11 +1,6 @@
 
 local S = ethereal.intllib
 
--- fix apples hanging in sky when no tree around
-minetest.override_item("default:apple", {
-	drop = "default:apple",
-})
-
 -- Banana (Heals one heart when eaten)
 minetest.register_node("ethereal:banana", {
 	description = S("Banana"),

@@ -12,14 +12,14 @@ stairs.register_all("crystal_block", "ethereal:crystal_block",
 	default.node_sound_glass_defaults())
 
 stairs.register_all("icebrick", "ethereal:icebrick",
-	{crumbly = 3, melts = 1},
+	{cracky = 3, puts_out_fire = 1, cools_lava = 1},
 	{"brick_ice.png"},
 	S("Ice Brick Stair"),
 	S("Ice Brick Slab"),
 	default.node_sound_glass_defaults())
 		
 stairs.register_all("snowbrick", "ethereal:snowbrick",
-	{crumbly = 3, melts = 1},
+	{crumbly = 3, puts_out_fire = 1, cools_lava = 1},
 	{"brick_snow.png"},
 	S("Snow Brick Stair"),
 	S("Snow Brick Slab"),
@@ -118,14 +118,14 @@ stairsplus:register_all("ethereal", "crystal_block", "ethereal:crystal_block", {
 stairsplus:register_all("ethereal", "icebrick", "ethereal:icebrick", {
 	description = S("Ice Brick"),
 	tiles = {"brick_ice.png"},
-	groups = {crumbly = 3, melts = 1},
+	groups = {cracky = 3, puts_out_fire = 1, cools_lava = 1},
 	sounds = default.node_sound_glass_defaults(),
 })
 
 stairsplus:register_all("ethereal", "snowbrick", "ethereal:snowbrick", {
 	description = S("Snow Brick"),
 	tiles = {"brick_snow.png"},
-	groups = {crumbly = 3, melts = 1},
+	groups = {crumbly = 3, puts_out_fire = 1, cools_lava = 1},
 	sounds = default.node_sound_dirt_defaults({
 		footstep = {name = "default_snow_footstep", gain = 0.25},
 		dug = {name = "default_snow_footstep", gain = 0.75},
@@ -220,20 +220,21 @@ stairs.register_stair_and_slab("crystal_block", "ethereal:crystal_block",
 	default.node_sound_glass_defaults())
 
 stairs.register_stair_and_slab("icebrick", "ethereal:icebrick",
-	{crumbly = 3, melts = 1},
+	{cracky = 3, puts_out_fire = 1, cools_lava = 1},
 	{"brick_ice.png"},
 	S("Ice Brick Stair"),
 	S("Ice Brick Slab"),
 	default.node_sound_glass_defaults())
 		
 stairs.register_stair_and_slab("snowbrick", "ethereal:snowbrick",
-	{crumbly = 3, melts = 1},
+	{crumbly = 3, puts_out_fire = 1, cools_lava = 1},
 	{"brick_snow.png"},
 	S("Snow Brick Stair"),
 	S("Snow Brick Slab"),
 	default.node_sound_dirt_defaults({
-		footstep = {name = "default_snow_footstep", gain = 0.25},
-		dug = {name = "default_snow_footstep", gain = 0.75},
+		footstep = {name = "default_snow_footstep", gain = 0.15},
+		dug = {name = "default_snow_footstep", gain = 0.2},
+		dig = {name = "default_snow_footstep", gain = 0.2}
 	}))
 
 stairs.register_stair_and_slab("dry_dirt", "ethereal:dry_dirt",

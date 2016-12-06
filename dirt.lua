@@ -408,3 +408,16 @@ minetest.register_node("ethereal:quicksand2", {
 	groups = {crumbly = 3, sand = 1, liquid = 3, disable_jump = 1},
 	sounds = default.node_sound_sand_defaults(),
 })
+
+-- craft quicksand
+minetest.register_craft({
+	output = "ethereal:quicksand2",
+	recipe = {
+		{"group:sand", "group:sand", "group:sand"},
+		{"group:sand", "group:water_bucket", "group:sand"},
+		{"group:sand", "group:sand", "group:sand"},
+	},
+	replacements = {
+		{"group:water_bucket", "bucket:bucket_empty"}
+	}
+})

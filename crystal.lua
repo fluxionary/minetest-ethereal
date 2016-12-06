@@ -13,7 +13,7 @@ minetest.register_node("ethereal:crystal_spike", {
 	sunlight_propagates = true,
 	walkable = false,
 	damage_per_second = 1,
-	groups = {cracky = 1, falling_node = 1, puts_out_fire = 1},
+	groups = {cracky = 1, falling_node = 1, puts_out_fire = 1, cools_lava = 1},
 	sounds = default.node_sound_glass_defaults(),
 	selection_box = {
 		type = "fixed",
@@ -50,7 +50,7 @@ minetest.register_node("ethereal:crystal_block", {
 	tiles = {"crystal_block.png"},
 	light_source = 9,
 	is_ground_content = false,
-	groups = {cracky = 1, level = 2, puts_out_fire = 1},
+	groups = {cracky = 1, level = 2, puts_out_fire = 1, cools_lava = 1},
 	sounds = default.node_sound_glass_defaults(),
 })
 
@@ -110,8 +110,8 @@ minetest.register_tool("ethereal:axe_crystal", {
 		groupcaps = {
 			choppy = {
 				times = {[1] = 2.00, [2] = 0.80, [3] = 0.40},
-				uses = 30,
-				maxlevel = 2
+				uses = 40,
+				maxlevel = 3
 			},
 		},
 		damage_groups = {fleshy = 7},
@@ -152,7 +152,7 @@ minetest.register_tool("ethereal:pick_crystal", {
 				maxlevel = 3
 			},
 		},
-		damage_groups = {fleshy = 7},
+		damage_groups = {fleshy = 6},
 	},
 	sound = {breaks = "default_tool_breaks"},
 })

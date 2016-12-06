@@ -8,7 +8,7 @@ minetest.register_node("ethereal:icebrick", {
 	paramtype = "light",
 	freezemelt = "default:water_source",
 	is_ground_content = false,
-	groups = {cracky = 3, melts = 1},
+	groups = {cracky = 3, puts_out_fire = 1, cools_lava = 1},
 	sounds = default.node_sound_glass_defaults(),
 })
 
@@ -27,7 +27,7 @@ minetest.register_node("ethereal:snowbrick", {
 	paramtype = "light",
 	freezemelt = "default:water_source",
 	is_ground_content = false,
-	groups = {crumbly = 3, melts = 1},
+	groups = {crumbly = 3, puts_out_fire = 1, cools_lava = 1},
 	sounds = default.node_sound_dirt_defaults({
 		footstep = {name = "default_snow_footstep", gain = 0.15},
 		dug = {name = "default_snow_footstep", gain = 0.2},

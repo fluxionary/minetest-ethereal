@@ -42,6 +42,8 @@ minetest.register_craft({
 	}
 })
 
+if ethereal.xcraft == true then
+
 -- X pattern craft recipes (5x 'a' in X pattern gives 5 of 'b')
 local cheat = {
 	{"default:cobble", "default:gravel", 5},
@@ -62,6 +64,8 @@ for n = 1, #cheat do
 		}
 	})
 end
+
+end -- END if
 
 -- Paper (2x3 string = 4 paper)
 minetest.register_craft({
@@ -215,10 +219,9 @@ minetest.register_node("ethereal:glostone", {
 })
 
 minetest.register_craft({
+	type = "shapeless",
 	output = "ethereal:glostone",
-	recipe = {
-		{"default:torch", "default:stone", "dye:yellow"},
-	}
+	recipe = {"default:torch", "default:stone", "dye:yellow"}
 })
 
 -- Charcoal Lump
