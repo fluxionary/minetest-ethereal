@@ -68,7 +68,9 @@ for n = 1, #dirts do
 			wet = "farming:soil_wet"
 		},
 		drop = "default:dirt",
-		sounds = default.node_sound_dirt_defaults()
+		sounds = default.node_sound_dirt_defaults({
+			footstep = {name = "default_grass_footstep", gain = 0.25},
+		}),
 	})
 
 end

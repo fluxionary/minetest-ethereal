@@ -5,7 +5,7 @@ local S = ethereal.intllib
 if stairs and stairs.mod and stairs.mod == "redo" then
 
 stairs.register_all("crystal_block", "ethereal:crystal_block",
-	{cracky = 1, level = 2},
+	{cracky = 1, level = 2, puts_out_fire = 1, cools_lava = 1},
 	{"crystal_block.png"},
 	S("Crystal Block Stair"),
 	S("Crystal Block Slab"),
@@ -111,7 +111,7 @@ elseif minetest.global_exists("stairsplus") then
 stairsplus:register_all("ethereal", "crystal_block", "ethereal:crystal_block", {
 	description = S("Crystal block"),
 	tiles = {"crystal_block.png"},
-	groups = {cracky = 1, falling_node = 1, puts_out_fire = 1},
+	groups = {cracky = 1, falling_node = 1, puts_out_fire = 1, cools_lava = 1},
 	sounds = default.node_sound_glass_defaults(),
 })
 
@@ -213,7 +213,7 @@ stairsplus:register_all("ethereal", "bamboo_wood", "ethereal:bamboo_floor", {
 else
 
 stairs.register_stair_and_slab("crystal_block", "ethereal:crystal_block",
-	{cracky = 1, level = 2},
+	{cracky = 1, level = 2, puts_out_fire = 1, cools_lava = 1},
 	{"crystal_block.png"},
 	S("Crystal Block Stair"),
 	S("Crystal Block Slab"),
