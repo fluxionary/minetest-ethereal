@@ -206,7 +206,7 @@ minetest.register_tool("ethereal:shovel_crystal", {
 				itemstack:add_wear(65535 / 100) -- 111 uses
 			end
 
-			minetest.sound_play("default_dig_crumbly", {pos = pos, gain = 0.35})
+			minetest.sound_play("default_dig_crumbly", {pos = pos, gain = 0.4})
 
 			return itemstack
 		end
