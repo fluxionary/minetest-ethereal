@@ -31,8 +31,8 @@ stairs.register_all("snowbrick", "ethereal:snowbrick",
 stairs.register_all("dry_dirt", "ethereal:dry_dirt",
 	{crumbly = 3},
 	{"ethereal_dry_dirt.png"},
-	S("Dry Dirt Stair"),
-	S("Dry Dirt Slab"),
+	S("Dried Dirt Stair"),
+	S("Dried Dirt Slab"),
 	default.node_sound_dirt_defaults())
 
 stairs.register_all("mushroom_trunk", "ethereal:mushroom_trunk",
@@ -133,7 +133,7 @@ stairsplus:register_all("ethereal", "snowbrick", "ethereal:snowbrick", {
 })
 
 stairsplus:register_all("ethereal", "dry_dirt", "ethereal:dry_dirt", {
-	description = S("Dry Dirt"),
+	description = S("Dried Dirt"),
 	tiles = {"ethereal_dry_dirt.png"},
 	groups = {crumbly = 3},
 	sounds = default.node_sound_dirt_defaults(),
@@ -240,8 +240,8 @@ stairs.register_stair_and_slab("snowbrick", "ethereal:snowbrick",
 stairs.register_stair_and_slab("dry_dirt", "ethereal:dry_dirt",
 	{crumbly = 3},
 	{"ethereal_dry_dirt.png"},
-	S("Dry Dirt Stair"),
-	S("Dry Dirt Slab"),
+	S("Dried Dirt Stair"),
+	S("Dried Dirt Slab"),
 	default.node_sound_dirt_defaults())
 
 stairs.register_stair_and_slab("mushroom_trunk", "ethereal:mushroom_trunk",
