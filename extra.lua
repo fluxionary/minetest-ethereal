@@ -116,7 +116,7 @@ minetest.register_node("ethereal:candle", {
 	sounds = default.node_sound_defaults(),
 	selection_box = {
 		type = "fixed",
-		fixed = { -0.15, -0.5, -0.15, 0.15, 0.2, 0.15 }
+		fixed = { -0.15, -0.5, -0.15, 0.15, 0, 0.15 }
 	},
 })
 

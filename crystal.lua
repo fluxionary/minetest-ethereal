@@ -17,7 +17,7 @@ minetest.register_node("ethereal:crystal_spike", {
 	sounds = default.node_sound_glass_defaults(),
 	selection_box = {
 		type = "fixed",
-		fixed = {-0.5, -0.5, -0.5, 0.5, -5/16, 0.5},
+		fixed = {-5 / 16, -0.5, -5 / 16, 5 / 16, 0.41, 5 / 16},
 	},
 })
 

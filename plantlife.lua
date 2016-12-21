@@ -18,7 +18,7 @@ minetest.register_node("ethereal:fire_flower", {
 	sounds = default.node_sound_leaves_defaults(),
 	selection_box = {
 		type = "fixed",
-		fixed = {-0.5, -0.5, -0.5, 0.5, -5/16, 0.5},
+		fixed = {-5 / 16, -0.5, -5 / 16, 5 / 16, 1 / 2, 5 / 16},
 	},
 
 	on_punch = function(pos, node, puncher)
@@ -138,7 +138,7 @@ minetest.register_node("ethereal:fern", {
 	sounds = default.node_sound_leaves_defaults(),
 	selection_box = {
 		type = "fixed",
-		fixed = {-0.5, -0.5, -0.5, 0.5, -5/16, 0.5}
+		fixed = {-5 / 16, -0.5, -5 / 16, 5 / 16, 0.67, 5 / 16},
 	},
 })
 
@@ -166,7 +166,7 @@ minetest.register_node("ethereal:dry_shrub", {
 	sounds = default.node_sound_leaves_defaults(),
 	selection_box = {
 		type = "fixed",
-		fixed = {-0.5, -0.5, -0.5, 0.5, -5/16, 0.5}
+		fixed = {-5 / 16, -0.5, -5 / 16, 5 / 16, 4 / 16, 5 / 16},
 	},
 })
 
@@ -187,7 +187,7 @@ minetest.register_node("ethereal:snowygrass", {
 	sounds = default.node_sound_leaves_defaults(),
 	selection_box = {
 		type = "fixed",
-		fixed = {-0.5, -0.5, -0.5, 0.5, -5/16, 0.5}
+		fixed = {-5 / 16, -0.5, -5 / 16, 5 / 16, 5 / 16, 5 / 16},
 	},
 })
 
@@ -208,7 +208,7 @@ minetest.register_node("ethereal:crystalgrass", {
 	sounds = default.node_sound_leaves_defaults(),
 	selection_box = {
 		type = "fixed",
-		fixed = {-0.5, -0.5, -0.5, 0.5, -5/16, 0.5}
+		fixed = {-5 / 16, -0.5, -5 / 16, 5 / 16, 5 / 16, 5 / 16},
 	},
 })
 
@@ -251,7 +251,7 @@ minetest.register_node("ethereal:illumishroom", {
 	sounds = default.node_sound_leaves_defaults(),
 	selection_box = {
 		type = "fixed",
-		fixed = {-0.5, -0.5, -0.5, 0.5, -5/16, 0.5},
+		fixed = {-6 / 16, -0.5, -6 / 16, 6 / 16, 0.47, 6 / 16},
 	},
 })
 
@@ -269,7 +269,7 @@ minetest.register_node("ethereal:illumishroom2", {
 	sounds = default.node_sound_leaves_defaults(),
 	selection_box = {
 		type = "fixed",
-		fixed = {-0.5, -0.5, -0.5, 0.5, -5/16, 0.5},
+		fixed = {-6 / 16, -0.5, -6 / 16, 6 / 16, 0.47, 6 / 16},
 	},
 })
 
@@ -287,6 +287,6 @@ minetest.register_node("ethereal:illumishroom3", {
 	sounds = default.node_sound_leaves_defaults(),
 	selection_box = {
 		type = "fixed",
-		fixed = {-0.5, -0.5, -0.5, 0.5, -5/16, 0.5},
+		fixed = {-6 / 16, -0.5, -6 / 16, 6 / 16, 0.47, 6 / 16},
 	},
 })
