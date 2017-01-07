@@ -18,6 +18,7 @@ Ethereal Mapgen mod for Minetest (works on all except v6)
  - Added default Abm overrides
  - Added 4 new plants from baked clay mod to mapgen
  - Added swamp biome to outskirts of bamboo areas
+ - Added coral and silver sand to mapgen (0.4.15 only)
 
 ### 1.20
 

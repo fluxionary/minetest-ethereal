@@ -136,8 +136,13 @@ add_biome("caves", nil, "default:desert_stone", 3, "air", 8,
 add_biome("grayness", nil, "ethereal:gray_dirt", 1, "default:dirt", 3,
 	nil, nil, nil, nil, nil, 2, 41, 15, 30, ethereal.grayness)
 
-add_biome("grayness_ocean", nil, "default:sand", 1, "default:sand", 2,
-	nil, nil, nil, nil, nil, -192, 1, 15, 30, ethereal.grayness)
+if minetest.registered_nodes["default:silver_sand"] then
+	add_biome("grayness_ocean", nil, "default:silver_sand", 2, "default:sand", 2,
+		nil, nil, nil, nil, nil, -192, 1, 15, 30, ethereal.grayness)
+else
+	add_biome("grayness_ocean", nil, "default:sand", 1, "default:sand", 2,
+		nil, nil, nil, nil, nil, -192, 1, 15, 30, ethereal.grayness)
+end
 
 add_biome("grassytwo", nil, "ethereal:green_dirt", 1, "default:dirt", 3,
 	nil, nil, nil, nil, nil, 1, 91, 15, 40, ethereal.grassytwo)
@@ -575,6 +580,38 @@ minetest.register_on_generated(function(minp, maxp)
 		end
 	end
 end)
+
+-- coral reef (0.4.15 only)
+if minetest.registered_nodes["default:coral_orange"] then
+
+-- override corals so crystal shovel can pick them up intact
+minetest.override_item("default:coral_skeleton", {groups = {crumbly = 3}})
+minetest.override_item("default:coral_orange", {groups = {crumbly = 3}})
+minetest.override_item("default:coral_brown", {groups = {crumbly = 3}})
+
+	minetest.register_decoration({
+		deco_type = "schematic",
+		place_on = {"default:sand"},
+		noise_params = {
+			offset = -0.1,
+			scale = 0.1,
+			spread = {x = 200, y = 200, z = 200},
+			seed = 7013,
+			octaves = 3,
+			persist = 1,
+		},
+		biomes = {
+			"desert_ocean",
+			"grove_ocean",
+		},
+		y_min = -8,
+		y_max = -2,
+		schematic = dpath .. "corals.mts",
+		flags = "place_center_x, place_center_z",
+		rotation = "random",
+	})
+end
+
 
 -- is baked clay mod active? add new flowers if so
 if minetest.get_modpath("bakedclay") then

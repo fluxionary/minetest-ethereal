@@ -101,6 +101,7 @@ minetest.register_abm({
 		end
 
 		nodeupdate(pos)
+		--minetest.check_for_falling(pos)
 	end,
 })
 
