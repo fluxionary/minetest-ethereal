@@ -20,7 +20,7 @@ minetest.register_node("ethereal:bamboo_sprout", {
 		type = "fixed",
 		fixed = {-4 / 16, -0.5, -4 / 16, 4 / 16, 0, 4 / 16}
 	},
-	on_use = minetest.item_eat(-2),
+	on_use = minetest.item_eat(2),
 	grown_height = 11,
 })
 
@@ -44,7 +44,7 @@ ethereal.register_sapling = function(name, desc, texture, height)
 		},
 		groups = {
 			snappy = 2, dig_immediate = 3, flammable = 2,
-			ethereal_sapling = 1, attached_node = 1
+			ethereal_sapling = 1, attached_node = 1, sapling = 1
 		},
 		sounds = default.node_sound_leaves_defaults(),
 		grown_height = height,
@@ -226,9 +226,10 @@ minetest.register_abm({
 	end,
 })
 
--- burn saplings
+--[[ burn saplings
 minetest.register_craft({
 	type = "fuel",
 	recipe = "group:ethereal_sapling",
 	burntime = 10,
 })
+]]
