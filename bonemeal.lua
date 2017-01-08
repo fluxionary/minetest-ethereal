@@ -98,6 +98,25 @@ local function enough_height(pos, height)
 	end
 end
 
+-- moretrees specific function
+local function more_tree(pos, object)
+
+	if type(object) == "table" and object.axiom then
+		-- grow L-system tree
+		minetest.remove_node(pos)
+		minetest.spawn_tree(pos, object)
+print ("--- table")
+	elseif type(object) == "string" and minetest.registered_nodes[object] then
+		-- place node
+		minetest.set_node(pos, {name = object})
+print ("--- string")
+	elseif type(object) == "function" then
+		-- function
+		object(pos)
+print ("--- function")
+	end
+end
+
 -- growing routine
 local function growth(pointed_thing)
 
@@ -190,6 +209,41 @@ local function growth(pointed_thing)
 
 		elseif node.name == "ethereal:birch_sapling" then
 			ethereal.grow_birch_tree(pos)
+
+-- grow moretree's sapling
+elseif node.name == "moretrees:beech_sapling" then
+	more_tree(pos, moretrees.spawn_beech_object)
+elseif node.name == "moretrees:apple_tree_sapling" then
+	more_tree(pos, moretrees.spawn_apple_tree_object)
+elseif node.name == "moretrees:oak_sapling" then
+	more_tree(pos, moretrees.spawn_oak_object)
+elseif node.name == "moretrees:sequoia_sapling" then
+	more_tree(pos, moretrees.spawn_sequoia_object)
+elseif node.name == "moretrees:birch_sapling" then
+	--more_tree(pos, moretrees.spawn_birch_object)
+	moretrees.grow_birch(pos)
+elseif node.name == "moretrees:palm_sapling" then
+	more_tree(pos, moretrees.spawn_palm_object)
+elseif node.name == "moretrees:date_palm_sapling" then
+	more_tree(pos, moretrees.spawn_date_palm_object)
+elseif node.name == "moretrees:spruce_sapling" then
+	--more_tree(pos, moretrees.spawn_spruce_object)
+	moretrees.grow_spruce(pos)
+elseif node.name == "moretrees:cedar_sapling" then
+	more_tree(pos, moretrees.spawn_cedar_object)
+elseif node.name == "moretrees:poplar_sapling" then
+	more_tree(pos, moretrees.spawn_poplar_object)
+elseif node.name == "moretrees:willow_sapling" then
+	more_tree(pos, moretrees.spawn_willow_object)
+elseif node.name == "moretrees:rubber_tree_sapling" then
+	more_tree(pos, moretrees.spawn_rubber_tree_object)
+elseif node.name == "moretrees:fir_sapling" then
+	--more_tree(pos, moretrees.spawn_fir_object)
+	if minetest.find_node_near(pos, 1, {"default:snow"}) then
+		moretrees.grow_fir_snow(pos)
+	else
+		moretrees.grow_fir(pos)
+	end
 
 		-- grow default tree
 		elseif node.name == "default:sapling"
