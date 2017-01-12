@@ -74,7 +74,7 @@ minetest.register_abm({
 	},
 	neighbors = {
 		"fire:basic_fire", "default:lava_source", "default:lava_flowing",
-		"default:furnace_active", "default:torch"
+		"default:furnace_active", "group:torch", "default:torch"
 	},
 	interval = 5,
 	chance = 4,
@@ -100,8 +100,7 @@ minetest.register_abm({
 			minetest.swap_node(pos, {name = "default:dirt_with_grass"})
 		end
 
-		nodeupdate(pos)
-		--minetest.check_for_falling(pos)
+		ethereal.check_falling(pos)
 	end,
 })
 

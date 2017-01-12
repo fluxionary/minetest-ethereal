@@ -105,15 +105,15 @@ local function more_tree(pos, object)
 		-- grow L-system tree
 		minetest.remove_node(pos)
 		minetest.spawn_tree(pos, object)
-print ("--- table")
+
 	elseif type(object) == "string" and minetest.registered_nodes[object] then
 		-- place node
 		minetest.set_node(pos, {name = object})
-print ("--- string")
+
 	elseif type(object) == "function" then
 		-- function
 		object(pos)
-print ("--- function")
+
 	end
 end
 

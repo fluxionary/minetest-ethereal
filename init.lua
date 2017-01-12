@@ -1,6 +1,6 @@
 --[[
 
-	Minetest Ethereal Mod (7th January 2017)
+	Minetest Ethereal Mod (12th January 2017)
 
 	Created by ChinChow
 
@@ -51,6 +51,9 @@ else
 	S = function(s) return s end
 end
 ethereal.intllib = S
+
+-- Falling node function
+ethereal.check_falling = minetest.check_for_falling or nodeupdate
 
 local path = minetest.get_modpath("ethereal")
 

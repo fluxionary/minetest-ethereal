@@ -193,8 +193,7 @@ minetest.register_tool("ethereal:shovel_crystal", {
 
 			minetest.remove_node(pointed_thing.under)
 
-			nodeupdate(pos)
-			--minetest.check_for_falling(pos)
+			ethereal.check_falling(pos)
 
 			if minetest.setting_getbool("creative_mode") then
 
