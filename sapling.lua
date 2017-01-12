@@ -189,7 +189,8 @@ ethereal.grow_sapling = function (pos, node)
 		ethereal.grow_willow_tree(pos)
 
 	elseif node.name == "ethereal:redwood_sapling"
-	and under == "bakedclay:red" then
+	--and under == "bakedclay:red" then
+	and under == "default:dirt_with_dry_grass" then
 		ethereal.grow_redwood_tree(pos)
 
 	elseif node.name == "ethereal:orange_tree_sapling"

@@ -106,7 +106,8 @@ add_biome("bamboo", nil, "ethereal:bamboo_dirt", 1, "default:dirt", 3,
 add_biome("bamboo_ocean", nil, "default:sand", 1, "default:sand", 2,
 	nil, nil, nil, nil, nil, -192, 2, 45, 75, ethereal.bamboo)
 
-add_biome("mesa", nil, "bakedclay:orange", 1, "bakedclay:orange", 15,
+--add_biome("mesa", nil, "bakedclay:orange", 1, "bakedclay:orange", 15,
+add_biome("mesa", nil, "default:dirt_with_dry_grass", 1, "bakedclay:orange", 15,
 	nil, nil, nil, nil, nil, 1, 71, 25, 28, ethereal.mesa)
 
 add_biome("mesa_ocean", nil, "default:sand", 1, "default:sand", 2,
@@ -236,7 +237,8 @@ local add_schem = function(a, b, c, d, e, f, g)
 end
 
 -- redwood tree
-add_schem({"bakedclay:orange"}, 0.0025, {"mesa"}, 1, 100, path .. "redwood.mts", ethereal.mesa)
+--add_schem({"bakedclay:orange"}, 0.0025, {"mesa"}, 1, 100, path .. "redwood.mts", ethereal.mesa)
+add_schem({"default:dirt_with_dry_grass"}, 0.0025, {"mesa"}, 1, 100, path .. "redwood.mts", ethereal.mesa)
 
 -- banana tree
 add_schem({"ethereal:grove_dirt"}, 0.015, {"grove"}, 1, 100, ethereal.bananatree, ethereal.grove)
@@ -360,6 +362,8 @@ add_node({"bakedclay:red", "bakedclay:orange"}, 0.015, {"mesa"}, 1, 100, {"defau
 -- dry grass
 add_node({"default:dirt_with_dry_grass"}, 0.25, {"savannah"}, 1, 100, {"default:dry_grass_2",
 	"default:dry_grass_3", "default:dry_grass_4", "default:dry_grass_5"}, nil, nil, nil, ethereal.savannah)
+add_node({"default:dirt_with_dry_grass"}, 0.10, {"mesa"}, 1, 100, {"default:dry_grass_2",
+	"default:dry_grass_3", "default:dry_grass_4", "default:dry_grass_5"}, nil, nil, nil, ethereal.mesa)
 
 -- flowers & strawberry
 add_node({"ethereal:green_dirt"}, 0.025, {"grassy"}, 1, 100, {"flowers:dandelion_white",

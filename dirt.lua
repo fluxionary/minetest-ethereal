@@ -4,7 +4,7 @@ local S = ethereal.intllib
 -- override default dirt (to stop caves cutting away dirt)
 minetest.override_item("default:dirt", {is_ground_content = ethereal.cavedirt})
 
--- green dirt
+--[[ green dirt
 minetest.register_node("ethereal:green_dirt", {
 	description = S("Green Dirt"),
 	tiles = {
@@ -23,7 +23,8 @@ minetest.register_node("ethereal:green_dirt", {
 	sounds = default.node_sound_dirt_defaults({
 		footstep = {name = "default_grass_footstep", gain = 0.25},
 	}),
-})
+})]]
+minetest.register_alias("ethereal:green_dirt", "default:dirt_with_grass")
 
 -- dry dirt
 minetest.register_node("ethereal:dry_dirt", {

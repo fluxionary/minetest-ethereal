@@ -10,6 +10,13 @@ Ethereal Mapgen mod for Minetest (works on all except v6)
 
 ## Changelog
 
+### 1.22
+
+ - Added coral and silver sand to mapgen (0.4.15 only)
+ - Replaced ethereal:green_dirt with default:dirt_with_grass for mortrees compatibility
+ - Mesa biomes are now topped with dirt with dry grass (redwood saplings grow on dry grass)
+ - Added bonemeal support for moretree's saplings
+
 ### 1.21
 
  - Saplings need clear space above to grow (depending on height of tree)
@@ -18,7 +25,6 @@ Ethereal Mapgen mod for Minetest (works on all except v6)
  - Added default Abm overrides
  - Added 4 new plants from baked clay mod to mapgen
  - Added swamp biome to outskirts of bamboo areas
- - Added coral and silver sand to mapgen (0.4.15 only)
 
 ### 1.20
 
