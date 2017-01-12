@@ -165,7 +165,8 @@ ethereal.grow_sapling = function (pos, node)
 		ethereal.grow_yellow_tree(pos)
 
 	elseif node.name == "ethereal:big_tree_sapling"
-	and under == "ethereal:green_dirt" then
+	--and under == "ethereal:green_dirt" then
+	and under == "default:dirt_with_grass" then
 		ethereal.grow_big_tree(pos)
 
 	elseif node.name == "ethereal:banana_tree_sapling"
@@ -202,7 +203,8 @@ ethereal.grow_sapling = function (pos, node)
 		ethereal.grow_bamboo_tree(pos)
 
 	elseif node.name == "ethereal:birch_sapling"
-	and under == "ethereal:green_dirt" then
+	--and under == "ethereal:green_dirt" then
+	and under == "default:dirt_with_grass" then
 		ethereal.grow_birch_tree(pos)
 	end
 
@@ -212,8 +214,8 @@ end
 minetest.register_abm({
 	label = "Ethereal grow sapling",
 	nodenames = {"group:ethereal_sapling"},
-	interval = 10,
-	chance = 50,
+	interval = 1,--10,
+	chance = 1,--50,
 	catch_up = false,
 	action = function(pos, node)
 
