@@ -214,8 +214,8 @@ end
 minetest.register_abm({
 	label = "Ethereal grow sapling",
 	nodenames = {"group:ethereal_sapling"},
-	interval = 1,--10,
-	chance = 1,--50,
+	interval = 10,
+	chance = 50,
 	catch_up = false,
 	action = function(pos, node)
 
