@@ -1,6 +1,6 @@
 --[[
 
-	Minetest Ethereal Mod (12th January 2017)
+	Minetest Ethereal Mod (16th January 2017)
 
 	Created by ChinChow
 
@@ -74,10 +74,17 @@ dofile(path .. "/fences.lua")
 dofile(path .. "/gates.lua")
 dofile(path .. "/mapgen.lua")
 dofile(path .. "/food.lua")
-dofile(path .. "/bonemeal.lua")
 dofile(path .. "/compatibility.lua")
 dofile(path .. "/stairs.lua")
 dofile(path .. "/lucky_block.lua")
+
+-- Use bonemeal mod instead of ethereal's own if found
+if minetest.get_modpath("bonemeal") then
+	minetest.register_alias("ethereal:bone", "bonemeal:bone")
+	minetest.register_alias("ethereal:bonemeal", "bonemeal:bonemeal")
+else
+	dofile(path .. "/bonemeal.lua")
+end
 
 if minetest.get_modpath("xanadu") then
 	dofile(path .. "/plantpack.lua")
