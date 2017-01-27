@@ -305,6 +305,12 @@ minetest.register_node("ethereal:mushroom_pore", {
 	sounds = default.node_sound_dirt_defaults(),
 })
 
+minetest.register_craft({
+	type = "fuel",
+	recipe = "ethereal:mushroom_pore",
+	burntime = 3,
+})
+
 -- hedge block
 minetest.register_node("ethereal:bush", {
 	description = S("Bush"),
@@ -321,6 +327,12 @@ minetest.register_craft({
 		{"group:leaves", "ethereal:bamboo_leaves", "group:leaves"},
 		{"group:leaves", "group:leaves", "group:leaves"},
 	}
+})
+
+minetest.register_craft({
+	type = "fuel",
+	recipe = "ethereal:bush",
+	burntime = 1,
 })
 
 -- bush block #2
@@ -343,6 +355,12 @@ minetest.register_craft({
 	}
 })
 
+minetest.register_craft({
+	type = "fuel",
+	recipe = "ethereal:bush2",
+	burntime = 1,
+})
+
 -- bush block #3
 minetest.register_node("ethereal:bush3", {
 	drawtype = "allfaces_optional",
@@ -361,4 +379,10 @@ minetest.register_craft({
 		{"group:leaves", "default:pine_needles", "group:leaves"},
 		{"group:leaves", "group:leaves", "group:leaves"},
 	}
+})
+
+minetest.register_craft({
+	type = "fuel",
+	recipe = "ethereal:bush3",
+	burntime = 1,
 })
