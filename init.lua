@@ -9,6 +9,7 @@
 ]]
 
 ethereal = {}
+ethereal.version = "1.22"
 ethereal.leaftype = 0 -- 0 for 2D plantlike, 1 for 3D allfaces
 ethereal.leafwalk = false -- true for walkable leaves, false to fall through
 ethereal.cavedirt = true -- caves chop through dirt when true
