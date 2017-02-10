@@ -8,7 +8,7 @@
 
 ]]
 
-ethereal = {}
+ethereal = {} -- DO NOT change settings below, use the settings.conf file
 ethereal.version = "1.22"
 ethereal.leaftype = 0 -- 0 for 2D plantlike, 1 for 3D allfaces
 ethereal.leafwalk = false -- true for walkable leaves, false to fall through
@@ -17,8 +17,6 @@ ethereal.torchdrop = true -- torches drop when touching water
 ethereal.papyruswalk = true -- papyrus can be walked on
 ethereal.lilywalk = true -- waterlilies can be walked on
 ethereal.xcraft = true -- allow cheat crafts for cobble->gravel->dirt->sand, ice->snow, dry dirt->desert sand
-
--- Set following to 1 to enable biome or 0 to disable
 ethereal.glacier   = 1 -- Ice glaciers with snow
 ethereal.bamboo    = 1 -- Bamboo with sprouts
 ethereal.mesa      = 1 -- Mesa red and orange clay with giant redwood
