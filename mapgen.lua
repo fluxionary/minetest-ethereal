@@ -586,7 +586,7 @@ minetest.register_on_generated(function(minp, maxp)
 end)
 
 -- coral reef (0.4.15 only)
-if minetest.registered_nodes["default:coral_orange"] then
+if ethereal.reefs == 1 and minetest.registered_nodes["default:coral_orange"] then
 
 -- override corals so crystal shovel can pick them up intact
 minetest.override_item("default:coral_skeleton", {groups = {crumbly = 3}})

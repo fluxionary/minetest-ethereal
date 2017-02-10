@@ -43,6 +43,18 @@ ethereal.savannah  = 1 -- Dry yellow grass with acacia tree's
 ethereal.fiery     = 1 -- Red grass with lava craters
 ethereal.sandclay  = 1 -- Sand areas with clay underneath
 ethereal.swamp     = 1 -- Swamp areas with vines on tree's, mushrooms, lilly's and clay sand
+ethereal.sealife   = 1 -- Enable coral and seaweed
+ethereal.reefs     = 1 -- Enable new coral reefs in default
+
+local path = minetest.get_modpath("ethereal")
+
+-- Load new settings if found
+local input = io.open(path.."/settings.conf", "r")
+if input then
+	dofile(path .. "/settings.conf")
+	input:close()
+	input = nil
+end
 
 -- Intllib
 local S
@@ -55,8 +67,6 @@ ethereal.intllib = S
 
 -- Falling node function
 ethereal.check_falling = minetest.check_for_falling or nodeupdate
-
-local path = minetest.get_modpath("ethereal")
 
 dofile(path .. "/plantlife.lua")
 dofile(path .. "/mushroom.lua")

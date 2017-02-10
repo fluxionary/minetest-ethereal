@@ -16,6 +16,7 @@ Ethereal Mapgen mod for Minetest (works on all except v6)
  - Replaced ethereal:green_dirt with default:dirt_with_grass for mortrees compatibility
  - Mesa biomes are now topped with dirt with dry grass (redwood saplings grow on dry grass)
  - Added bonemeal support for moretree's saplings
+ - Added settings.conf file example so that settings remain after mod update
 
 ### 1.21
 

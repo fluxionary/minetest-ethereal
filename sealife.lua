@@ -136,6 +136,7 @@ minetest.register_node("ethereal:sandy", {
 })
 
 -- randomly generate coral or seaweed and have seaweed grow up to 14 high
+if ethereal.sealife == 1 then
 minetest.register_abm({
 	label = "Grow coral/seaweed",
 	nodenames = {"ethereal:sandy"},
@@ -185,3 +186,4 @@ minetest.register_abm({
 
 	end,
 })
+end
