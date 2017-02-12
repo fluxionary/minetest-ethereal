@@ -30,7 +30,6 @@ ethereal.register_sapling = function(name, desc, texture, height)
 	minetest.register_node(name .. "_sapling", {
 		description = S(desc .. " Tree Sapling"),
 		drawtype = "plantlike",
-		visual_scale = 1.0,
 		tiles = {texture .. ".png"},
 		inventory_image = texture .. ".png",
 		wield_image = texture .. ".png",

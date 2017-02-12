@@ -118,7 +118,7 @@ minetest.register_craft({
 minetest.register_node("ethereal:fern", {
 	description = S("Fern"),
 	drawtype = "plantlike",
-	visual_scale = 1.2,
+	visual_scale = 1.4,
 	tiles = {"fern.png"},
 	inventory_image = "fern.png",
 	wield_image = "fern.png",
@@ -153,7 +153,6 @@ minetest.register_craftitem("ethereal:fern_tubers", {
 minetest.register_node("ethereal:dry_shrub", {
 	description = S("Fiery Dry Shrub"),
 	drawtype = "plantlike",
-	visual_scale = 1.0,
 	tiles = {"ethereal_dry_shrub.png"},
 	inventory_image = "ethereal_dry_shrub.png",
 	wield_image = "ethereal_dry_shrub.png",

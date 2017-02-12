@@ -5,7 +5,6 @@ local S = ethereal.intllib
 minetest.register_node("ethereal:banana", {
 	description = S("Banana"),
 	drawtype = "torchlike",
-	visual_scale = 1.0,
 	tiles = {"banana_single.png"},
 	inventory_image = "banana_single.png",
 	wield_image = "banana_single.png",
@@ -53,7 +52,6 @@ minetest.register_craft({
 minetest.register_node("ethereal:orange", {
 	description = S("Orange"),
 	drawtype = "plantlike",
-	visual_scale = 1.0,
 	tiles = {"farming_orange.png"},
 	inventory_image = "farming_orange.png",
 	wield_image = "farming_orange.png",
@@ -128,7 +126,6 @@ minetest.register_craftitem("ethereal:coconut_slice", {
 minetest.register_node("ethereal:golden_apple", {
 	description = S("Golden Apple"),
 	drawtype = "plantlike",
-	visual_scale = 1.0,
 	tiles = {"default_apple_gold.png"},
 	inventory_image = "default_apple_gold.png",
 	wield_image = "default_apple_gold.png",

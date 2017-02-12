@@ -11,7 +11,7 @@ end
 -- default apple tree leaves
 minetest.override_item("default:leaves", {
 	drawtype = leaftype,
-	visual_scale = 1.2,
+	visual_scale = 1.4,
 	inventory_image = "default_leaves.png",
 	wield_image = "default_leaves.png",
 	walkable = ethereal.leafwalk,
@@ -20,7 +20,7 @@ minetest.override_item("default:leaves", {
 -- default jungle tree leaves
 minetest.override_item("default:jungleleaves", {
 	drawtype = leaftype,
-	visual_scale = 1.2,
+	visual_scale = 1.4,
 	inventory_image = "default_jungleleaves.png",
 	wield_image = "default_jungleleaves.png",
 	walkable = ethereal.leafwalk,
@@ -29,7 +29,7 @@ minetest.override_item("default:jungleleaves", {
 -- default pine tree leaves
 minetest.override_item("default:pine_needles", {
 	drawtype = leaftype,
-	visual_scale = 1.2,
+	visual_scale = 1.4,
 	inventory_image = "default_pine_needles.png",
 	wield_image = "default_pine_needles.png",
 	walkable = ethereal.leafwalk,
@@ -49,7 +49,7 @@ minetest.override_item("default:acacia_leaves", {
 --	tiles = {"moretrees_acacia_leaves.png"},
 	inventory_image = "default_acacia_leaves.png",
 	wield_image = "default_acacia_leaves.png",
-	visual_scale = 1.2,
+	visual_scale = 1.4,
 	walkable = ethereal.leafwalk,
 })
 
@@ -58,7 +58,7 @@ minetest.override_item("default:aspen_leaves", {
 	drawtype = leaftype,
 	inventory_image = "default_aspen_leaves.png",
 	wield_image = "default_aspen_leaves.png",
-	visual_scale = 1.2,
+	visual_scale = 1.4,
 	walkable = ethereal.leafwalk,
 })
 
@@ -71,7 +71,7 @@ minetest.register_node("ethereal:willow_twig", {
 	wield_image = "willow_twig.png",
 	paramtype = "light",
 	walkable = ethereal.leafwalk,
-	visual_scale = 1.2,
+	visual_scale = 1.4,
 	waving = 1,
 	groups = {snappy = 3, leafdecay = 3, leaves = 1, flammable = 2},
 	drop = {
@@ -89,7 +89,7 @@ minetest.register_node("ethereal:willow_twig", {
 minetest.register_node("ethereal:redwood_leaves", {
 	description = S("Redwood Leaves"),
 	drawtype = leaftype,
-	visual_scale = 1.2,
+	visual_scale = 1.4,
 	tiles = {"redwood_leaves.png"},
 	inventory_image = "redwood_leaves.png",
 	wield_image = "redwood_leaves.png",
@@ -112,7 +112,7 @@ minetest.register_node("ethereal:redwood_leaves", {
 minetest.register_node("ethereal:orange_leaves", {
 	description = S("Orange Leaves"),
 	drawtype = leaftype,
-	visual_scale = 1.2,
+	visual_scale = 1.4,
 	tiles = {"orange_leaves.png"},
 	inventory_image = "orange_leaves.png",
 	wield_image = "orange_leaves.png",
@@ -135,7 +135,7 @@ minetest.register_node("ethereal:orange_leaves", {
 minetest.register_node("ethereal:bananaleaves", {
 	description = S("Banana Leaves"),
 	drawtype = leaftype,
-	visual_scale = 1.2,
+	visual_scale = 1.4,
 	tiles = {"banana_leaf.png"},
 	inventory_image = "banana_leaf.png",
 	wield_image = "banana_leaf.png",
@@ -158,7 +158,7 @@ minetest.register_node("ethereal:bananaleaves", {
 minetest.register_node("ethereal:yellowleaves", {
 	description = S("Healing Tree Leaves"),
 	drawtype = leaftype,
-	visual_scale = 1.2,
+	visual_scale = 1.4,
 	tiles = {"yellow_leaves.png"},
 	inventory_image = "yellow_leaves.png",
 	wield_image = "yellow_leaves.png",
@@ -184,7 +184,7 @@ minetest.register_node("ethereal:yellowleaves", {
 minetest.register_node("ethereal:palmleaves", {
 	description = S("Palm Leaves"),
 	drawtype = leaftype,
-	visual_scale = 1.2,
+	visual_scale = 1.4,
 	tiles = {"moretrees_palm_leaves.png"},
 	inventory_image = "moretrees_palm_leaves.png",
 	wield_image = "moretrees_palm_leaves.png",
@@ -207,7 +207,7 @@ minetest.register_node("ethereal:palmleaves", {
 minetest.register_node("ethereal:birch_leaves", {
 	description = S("Birch Leaves"),
 	drawtype = leaftype,
-	visual_scale = 1.2,
+	visual_scale = 1.4,
 	tiles = {"moretrees_birch_leaves.png"},
 	inventory_image = "moretrees_birch_leaves.png",
 	wield_image = "moretrees_birch_leaves.png",
@@ -230,7 +230,7 @@ minetest.register_node("ethereal:birch_leaves", {
 minetest.register_node("ethereal:frost_leaves", {
 	description = S("Frost Leaves"),
 	drawtype = leaftype,
-	visual_scale = 1.2,
+	visual_scale = 1.4,
 	tiles = {"ethereal_frost_leaves.png"},
 	inventory_image = "ethereal_frost_leaves.png",
 	wield_image = "ethereal_frost_leaves.png",
@@ -254,7 +254,7 @@ minetest.register_node("ethereal:frost_leaves", {
 minetest.register_node("ethereal:bamboo_leaves", {
 	description = S("Bamboo Leaves"),
 	drawtype = leaftype,
-	visual_scale = 1.2,
+	visual_scale = 1.4,
 	tiles = {"bamboo_leaves.png"},
 	inventory_image = "bamboo_leaves.png",
 	wield_image = "bamboo_leaves.png",
