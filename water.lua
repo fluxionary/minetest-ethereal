@@ -125,9 +125,16 @@ minetest.register_abm({
 -- If torch touching water then drop as item (when enabled)
 if ethereal.torchdrop == true then
 
+local torch_drop = "default:torch"
+
+if minetest.get_modpath("real_torch") then
+	torch_drop = "real_torch:torch"
+end
+
 minetest.register_abm({
 	label = "Ethereal drop torch",
-	nodenames = {"default:torch", "default:torch_wall", "default:torch_ceiling"},
+	nodenames = {"default:torch", "default:torch_wall", "default:torch_ceiling",
+	"real_torch:torch", "real_torch:torch_wall", "real_torch:torch_ceiling"},
 	neighbors = {"group:water"},
 	interval = 5,
 	chance = 1,
@@ -154,7 +161,7 @@ end
 
 			minetest.set_node(pos, {name = "air"})
 
-			minetest.add_item(pos, {name = "default:torch"})
+			minetest.add_item(pos, {name = torch_drop})
 		end
 	end,
 })

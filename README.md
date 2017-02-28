@@ -17,6 +17,7 @@ Ethereal Mapgen mod for Minetest (works on all except v6)
  - Mesa biomes are now topped with dirt with dry grass (redwood saplings grow on dry grass)
  - Added bonemeal support for moretree's saplings
  - Added settings.conf file example so that settings remain after mod update
+ - Added support for Real Torch so that torches near water drop an unlit torch
 
 ### 1.21
 
