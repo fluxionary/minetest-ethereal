@@ -18,6 +18,7 @@ Ethereal Mapgen mod for Minetest (works on all except v6)
  - Added bonemeal support for moretree's saplings
  - Added settings.conf file example so that settings remain after mod update
  - Added support for Real Torch so that torches near water drop an unlit torch
+ - Added support for new leafdecay functions (0.4.15 dev)
 
 ### 1.21
 

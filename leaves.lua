@@ -46,7 +46,6 @@ minetest.override_item("default:pine_needles", {
 -- default acacia tree leaves
 minetest.override_item("default:acacia_leaves", {
 	drawtype = leaftype,
---	tiles = {"moretrees_acacia_leaves.png"},
 	inventory_image = "default_acacia_leaves.png",
 	wield_image = "default_acacia_leaves.png",
 	visual_scale = 1.4,
@@ -386,3 +385,62 @@ minetest.register_craft({
 	recipe = "ethereal:bush3",
 	burntime = 1,
 })
+
+-- compatibility check for new mt version with leafdecay function
+if minetest.registered_nodes["default:dirt_with_rainforest_litter"] then
+
+default.register_leafdecay({
+	trunks = {"default:tree"},
+	leaves = {"default:apple", "default:leaves", "ethereal:orange", "ethereal:orange_leaves"},
+	radius = 3
+})
+
+default.register_leafdecay({
+	trunks = {"ethereal:willow_trunk"},
+	leaves = {"ethereal:willow_twig"},
+	radius = 3
+})
+
+default.register_leafdecay({
+	trunks = {"ethereal:redwood_trunk"},
+	leaves = {"ethereal:redwood_leaves"},
+	radius = 3
+})
+
+default.register_leafdecay({
+	trunks = {"ethereal:frost_tree"},
+	leaves = {"ethereal:frost_leaves"},
+	radius = 3
+})
+
+default.register_leafdecay({
+	trunks = {"ethereal:yellow_trunk"},
+	leaves = {"ethereal:yellowleaves", "ethereal:golden_apple"},
+	radius = 3
+})
+
+default.register_leafdecay({
+	trunks = {"ethereal:palm_trunk"},
+	leaves = {"ethereal:palmleaves", "ethereal:coconut"},
+	radius = 3
+})
+
+default.register_leafdecay({
+	trunks = {"ethereal:banana_trunk"},
+	leaves = {"ethereal:bananaleaves", "ethereal:banana"},
+	radius = 3
+})
+
+default.register_leafdecay({
+	trunks = {"ethereal:birch_trunk"},
+	leaves = {"ethereal:birch_leaves"},
+	radius = 3
+})
+
+default.register_leafdecay({
+	trunks = {"ethereal:bamboo"},
+	leaves = {"ethereal:bamboo_leaves"},
+	radius = 1
+})
+
+end

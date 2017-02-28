@@ -1,6 +1,6 @@
 --[[
 
-	Minetest Ethereal Mod (16th January 2017)
+	Minetest Ethereal Mod (28th February 2017)
 
 	Created by ChinChow
 
@@ -72,8 +72,9 @@ dofile(path .. "/onion.lua")
 dofile(path .. "/crystal.lua")
 dofile(path .. "/water.lua")
 dofile(path .. "/dirt.lua")
-dofile(path .. "/leaves.lua")
+dofile(path .. "/food.lua")
 dofile(path .. "/wood.lua")
+dofile(path .. "/leaves.lua")
 dofile(path .. "/sapling.lua")
 dofile(path .. "/strawberry.lua")
 dofile(path .. "/fishing.lua")
@@ -82,7 +83,6 @@ dofile(path .. "/sealife.lua")
 dofile(path .. "/fences.lua")
 dofile(path .. "/gates.lua")
 dofile(path .. "/mapgen.lua")
-dofile(path .. "/food.lua")
 dofile(path .. "/compatibility.lua")
 dofile(path .. "/stairs.lua")
 dofile(path .. "/lucky_block.lua")
