@@ -126,9 +126,11 @@ minetest.register_abm({
 if ethereal.torchdrop == true then
 
 local torch_drop = "default:torch"
+local drop_sound = "fire_extinguish_flame"
 
 if minetest.get_modpath("real_torch") then
 	torch_drop = "real_torch:torch"
+	drop_sound = "real_torch_extinguish"
 end
 
 minetest.register_abm({
@@ -145,21 +147,27 @@ minetest.register_abm({
 			{x = pos.x - 1, y = pos.y, z = pos.z},
 			{x = pos.x + 1, y = pos.y, z = pos.z},
 			{"group:water"})
-if num == 0 then
-		num = num + #minetest.find_nodes_in_area(
-			{x = pos.x, y = pos.y, z = pos.z - 1},
-			{x = pos.x, y = pos.y, z = pos.z + 1},
-			{"group:water"})
-end
-if num == 0 then
-		num = num + #minetest.find_nodes_in_area(
-			{x = pos.x, y = pos.y + 1, z = pos.z},
-			{x = pos.x, y = pos.y + 1, z = pos.z},
-			{"group:water"})
-end
+
+		if num == 0 then
+			num = num + #minetest.find_nodes_in_area(
+				{x = pos.x, y = pos.y, z = pos.z - 1},
+				{x = pos.x, y = pos.y, z = pos.z + 1},
+				{"group:water"})
+		end
+
+		if num == 0 then
+			num = num + #minetest.find_nodes_in_area(
+				{x = pos.x, y = pos.y + 1, z = pos.z},
+				{x = pos.x, y = pos.y + 1, z = pos.z},
+				{"group:water"})
+		end
+
 		if num > 0 then
 
 			minetest.set_node(pos, {name = "air"})
+
+			minetest.sound_play({name = drop_sound, gain = 0.2},
+				{pos = pos, max_hear_distance = 10})
 
 			minetest.add_item(pos, {name = torch_drop})
 		end
