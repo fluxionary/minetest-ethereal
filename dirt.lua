@@ -80,7 +80,8 @@ dirts = {
 	"ethereal:prairie_dirt", "ethereal:cold_dirt", "ethereal:crystal_dirt",
 	"ethereal:mushroom_dirt", "ethereal:fiery_dirt", "ethereal:gray_dirt",
 	"default:dirt_with_grass", "default:dirt_with_dry_grass", "ethereal:green_dirt",
-	"default:dirt_with_snow", "default:dirt_with_dry_grass"
+	"default:dirt_with_snow", "default:dirt_with_dry_grass",
+	"default:dirt_with_rainforest_litter"
 }
 
 -- check surrounding grass and change dirt to same colour
@@ -107,8 +108,9 @@ local grass_spread = function(pos, node)
 	local positions, grasses = minetest.find_nodes_in_area(
 		{x = pos.x - 1, y = pos.y - 2, z = pos.z - 1},
 		{x = pos.x + 1, y = pos.y + 2, z = pos.z + 1},
-		{"group:ethereal_grass", "default:dirt_with_grass",
-		"default:dirt_with_dry_grass", "default:dirt_with_snow"})
+--		{"group:ethereal_grass", "default:dirt_with_grass",
+--		"default:dirt_with_dry_grass", "default:dirt_with_snow"})
+		dirts)
 
 	-- count new grass nodes
 	for n = 1, #dirts do
@@ -159,7 +161,7 @@ local flower_spread = function(pos, node)
 	local pos0 = {x = pos.x - 4, y = pos.y - 2, z = pos.z - 4}
 	local pos1 = {x = pos.x + 4, y = pos.y + 2, z = pos.z + 4}
 
-	local num = #minetest.find_nodes_in_area_under_air(pos0, pos1, "group:flora")
+	local num = #minetest.find_nodes_in_area(pos0, pos1, "group:flora")
 
 	-- stop flowers spreading too much just below top of map block
 	if minetest.find_node_near(pos, 2, "ignore") then

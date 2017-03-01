@@ -81,7 +81,7 @@ minetest.register_decoration({
 	place_on = {
 		"ethereal:prairie_grass", "ethereal:green_dirt",
 		"ethereal:grove_dirt", "ethereal:jungle_grass",
-		"ethereal:gray_dirt"
+		"ethereal:gray_dirt", "default:dirt_with_rainforest_litter"
 	},
 	sidelen = 16,
 	fill_ratio = 0.005,
@@ -96,7 +96,7 @@ minetest.register_decoration({
 
 minetest.register_decoration({
 	deco_type = "simple",
-	place_on = {"ethereal:jungle_dirt", "ethereal:green_dirt"},
+	place_on = {"ethereal:jungle_dirt", "ethereal:green_dirt", "default:dirt_with_rainforest_litter"},
 	sidelen = 16,
 	fill_ratio = 0.007,
 	biomes = {"junglee", "jumble"},
@@ -166,7 +166,8 @@ minetest.register_decoration({
 		"ethereal:dirt_with_snow", "ethereal:jungle_dirt",
 		"ethereal:prairie_dirt", "ethereal:grove_dirt",
 		"ethereal:dry_dirt", "ethereal:fiery_dirt", "default:sand",
-		"default:desert_sand", "xanadu:red", "ethereal:bamboo_dirt"
+		"default:desert_sand", "xanadu:red", "ethereal:bamboo_dirt",
+		"default:dirt_with_rainforest_litter"
 	},
 	sidelen = 16,
 	fill_ratio = 0.004,
