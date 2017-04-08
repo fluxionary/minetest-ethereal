@@ -42,7 +42,7 @@ ethereal.fiery     = 1 -- Red grass with lava craters
 ethereal.sandclay  = 1 -- Sand areas with clay underneath
 ethereal.swamp     = 1 -- Swamp areas with vines on tree's, mushrooms, lilly's and clay sand
 ethereal.sealife   = 1 -- Enable coral and seaweed
-ethereal.reefs     = 1 -- Enable new coral reefs in default
+ethereal.reefs     = 1 -- Enable new 0.4.15 coral reefs in default
 
 local path = minetest.get_modpath("ethereal")
 
