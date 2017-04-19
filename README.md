@@ -20,6 +20,7 @@ Ethereal Mapgen mod for Minetest (works on all except v6)
  - Added support for Real Torch so that torches near water drop an unlit torch
  - Added support for new leafdecay functions (0.4.15 dev)
  - Mapgen will use dirt_with_rainforest_litter for jungles if found
+ - Added bushes to mapgen
 
 ### 1.21
 

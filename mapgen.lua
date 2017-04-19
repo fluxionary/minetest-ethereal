@@ -333,6 +333,52 @@ add_schem({"ethereal:bamboo_dirt"}, 0.08, {"bamboo"}, 1, 100, ethereal.bush, eth
 -- vine tree
 add_schem({"ethereal:green_dirt"}, 0.02, {"swamp"}, 1, 100, path .. "vinetree.mts", ethereal.swamp)
 
+-- bushes
+
+if minetest.registered_nodes["default:acacia_bush_stem"] then
+
+	minetest.register_decoration({
+		deco_type = "schematic",
+		place_on = {"default:dirt_with_grass", "default:dirt_with_snow"},
+		sidelen = 16,
+		noise_params = {
+			offset = -0.004,
+			scale = 0.01,
+			spread = {x = 100, y = 100, z = 100},
+			seed = 137,
+			octaves = 3,
+			persist = 0.7,
+		},
+		biomes = {"grassy", "grassytwo", "jumble"},
+		y_min = 1,
+		y_max = 31000,
+		schematic = dpath .. "/bush.mts",
+		flags = "place_center_x, place_center_z",
+	})
+
+	-- Acacia bush
+
+	minetest.register_decoration({
+		deco_type = "schematic",
+		place_on = {"default:dirt_with_dry_grass"},
+		sidelen = 16,
+		noise_params = {
+			offset = -0.004,
+			scale = 0.01,
+			spread = {x = 100, y = 100, z = 100},
+			seed = 90155,
+			octaves = 3,
+			persist = 0.7,
+		},
+		biomes = {"savannah", "mesa"},
+		y_min = 1,
+		y_max = 31000,
+		schematic = dpath .. "/acacia_bush.mts",
+		flags = "place_center_x, place_center_z",
+	})
+
+end
+
 --= simple decorations
 
 local add_node = function(a, b, c, d, e, f, g, h, i, j)
