@@ -440,7 +440,7 @@ default.register_leafdecay({
 default.register_leafdecay({
 	trunks = {"ethereal:bamboo"},
 	leaves = {"ethereal:bamboo_leaves"},
-	radius = 1
+	radius = 2
 })
 
 end
