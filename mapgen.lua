@@ -588,6 +588,24 @@ minetest.register_decoration({
 	num_spawn_by = 1,
 })
 
+minetest.register_decoration({
+	deco_type = "simple",
+	place_on = {"default:dirt_with_grass", "default:dirt_with_rainforest_litter"},
+	sidelen = 16,
+	noise_params = {
+		offset = 0,
+		scale = 0.06,
+		spread = {x = 100, y = 100, z = 100},
+		seed = 760,
+		octaves = 3,
+		persist = 0.6
+	},
+	y_min = 5,
+	y_max = 35,
+	decoration = {"farming:chili_8"},
+	spawn_by = "group:tree",
+	num_spawn_by = 1,
+})
 end
 
 -- place waterlily in beach areas

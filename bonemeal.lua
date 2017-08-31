@@ -83,6 +83,7 @@ local crops = {
 	{"ethereal:onion_", 5},
 	{"farming:barley_", 7},
 	{"farming:hemp_", 8},
+	{"farming:chili_", 8},
 }
 
 -- check if sapling has enough height room to grow
