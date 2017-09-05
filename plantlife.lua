@@ -78,9 +78,9 @@ minetest.register_node("ethereal:vine", {
 minetest.register_craft({
 	output = "ethereal:vine 2",
 	recipe = {
-		{"group:leaves", "group:leaves"},
-		{"group:leaves", "group:leaves"},
-		{"group:leaves", "group:leaves"},
+		{"group:leaves", "", "group:leaves"},
+		{"", "group:leaves", ""},
+		{"group:leaves", "", "group:leaves"},
 	}
 })
 
