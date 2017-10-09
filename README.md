@@ -10,6 +10,10 @@ Ethereal Mapgen mod for Minetest (works on all except v6)
 
 ## Changelog
 
+### 1.24
+
+ - Updating code to newer functions, requires Minetest 0.4.16 and above
+
 ### 1.23
 
  - Added bonemeal support for bush sapling and acacia bush sapling

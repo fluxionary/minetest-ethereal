@@ -295,17 +295,12 @@ minetest.register_craftitem("ethereal:bonemeal", {
 				return
 			end
 
-			if not minetest.setting_getbool("creative_mode") then
+			if not ethereal.check_creative(user:get_player_name()) then
 
-				local item = user:get_wielded_item()
-
-				item:take_item()
-				user:set_wielded_item(item)
+				itemstack:take_item()
 			end
 
 			growth(pointed_thing)
-
-			itemstack:take_item()
 
 			return itemstack
 		end

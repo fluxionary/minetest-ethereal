@@ -1,6 +1,6 @@
 --[[
 
-	Minetest Ethereal Mod (1st March 2017)
+	Minetest Ethereal Mod
 
 	Created by ChinChow
 
@@ -9,7 +9,7 @@
 ]]
 
 ethereal = {} -- DO NOT change settings below, use the settings.conf file
-ethereal.version = "1.22"
+ethereal.version = "1.24"
 ethereal.leaftype = 0 -- 0 for 2D plantlike, 1 for 3D allfaces
 ethereal.leafwalk = false -- true for walkable leaves, false to fall through
 ethereal.cavedirt = true -- caves chop through dirt when true
@@ -71,6 +71,12 @@ ethereal.intllib = S
 
 -- Falling node function
 ethereal.check_falling = minetest.check_for_falling or nodeupdate
+
+-- creative check
+local creative_mode_cache = minetest.settings:get_bool("creative_mode")
+function ethereal.check_creative(name)
+	return creative_mode_cache or minetest.check_player_privs(name, {creative = true})
+end
 
 dofile(path .. "/plantlife.lua")
 dofile(path .. "/mushroom.lua")
