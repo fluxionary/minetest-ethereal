@@ -70,7 +70,7 @@ minetest.register_node("ethereal:vine", {
 	selection_box = {
 		type = "wallmounted",
 	},
-	groups = {choppy = 3, oddly_breakable_by_hand = 1},
+	groups = {choppy = 3, oddly_breakable_by_hand = 1, flammable = 2},
 	legacy_wallmounted = true,
 	sounds = default.node_sound_leaves_defaults(),
 })
@@ -100,7 +100,7 @@ minetest.register_node("ethereal:lightstring", {
 	selection_box = {
 		type = "wallmounted",
 	},
-	groups = {choppy = 3, oddly_breakable_by_hand = 1},
+	groups = {choppy = 3, oddly_breakable_by_hand = 1, flammable = 2},
 	legacy_wallmounted = true,
 	sounds = default.node_sound_leaves_defaults(),
 })
@@ -161,7 +161,7 @@ minetest.register_node("ethereal:dry_shrub", {
 	waving = 1,
 	walkable = false,
 	buildable_to = true,
-	groups = {snappy = 3, flora = 1, attached_node = 1},
+	groups = {snappy = 3, flora = 1, attached_node = 1, flammable = 2},
 	sounds = default.node_sound_leaves_defaults(),
 	selection_box = {
 		type = "fixed",
