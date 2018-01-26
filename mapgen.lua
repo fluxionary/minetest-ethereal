@@ -588,7 +588,7 @@ minetest.register_decoration({
 	sidelen = 16,
 	noise_params = {
 		offset = 0,
-		scale = 0.06,
+		scale = 0.09,
 		spread = {x = 100, y = 100, z = 100},
 		seed = 760,
 		octaves = 3,
@@ -596,7 +596,7 @@ minetest.register_decoration({
 	},
 	y_min = 5,
 	y_max = 35,
-	decoration = {"farming:chili_8"},
+	decoration = {"farming:chili_8", "farming:garlic_5", "farming:pepper_5", "farming:onion_5"},
 	spawn_by = "group:tree",
 	num_spawn_by = 1,
 })
