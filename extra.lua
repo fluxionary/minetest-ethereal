@@ -133,6 +133,7 @@ minetest.register_craft({
 minetest.register_craftitem("ethereal:bowl", {
 	description = S("Bowl"),
 	inventory_image = "bowl.png",
+	groups = {food_bowl = 1, flammable = 2},
 })
 
 minetest.register_craft({

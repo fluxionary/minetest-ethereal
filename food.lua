@@ -38,7 +38,7 @@ minetest.register_craftitem("ethereal:banana_dough", {
 minetest.register_craft({
 	type = "shapeless",
 	output = "ethereal:banana_dough",
-	recipe = {"farming:flour", "ethereal:banana"}
+	recipe = {"group:food_flour", "group:food_banana"}
 })
 
 minetest.register_craft({
@@ -164,9 +164,9 @@ minetest.register_craftitem("ethereal:hearty_stew", {
 minetest.register_craft({
 	output = "ethereal:hearty_stew",
 	recipe = {
-		{"ethereal:wild_onion_plant","ethereal:mushroom_plant", "ethereal:fern_tubers"},
-		{"","ethereal:mushroom_plant", ""},
-		{"","ethereal:bowl", ""},
+		{"group:food_onion","flowers:mushroom_brown", "group:food_tuber"},
+		{"","flowers:mushroom_brown", ""},
+		{"","group:food_bowl", ""},
 	}
 })
 
@@ -175,9 +175,9 @@ if farming and farming.mod and farming.mod == "redo" then
 minetest.register_craft({
 	output = "ethereal:hearty_stew",
 	recipe = {
-		{"ethereal:wild_onion_plant","ethereal:mushroom_plant", "farming:beans"},
-		{"","ethereal:mushroom_plant", ""},
-		{"","ethereal:bowl", ""},
+		{"group:food_onion","flowers:mushroom_brown", "group:food_beans"},
+		{"","flowers:mushroom_brown", ""},
+		{"","group:food_bowl", ""},
 	}
 })
 end
