@@ -12,7 +12,7 @@ minetest.register_node("ethereal:bamboo_sprout", {
 	sunlight_propagates = true,
 	walkable = false,
 	groups = {
-		snappy = 3, attached_node = 1, flammable = 2,
+		food_bamboo_sprout = 1, snappy = 3, attached_node = 1, flammable = 2,
 		dig_immediate = 3, ethereal_sapling = 1
 	},
 	sounds = default.node_sound_defaults(),
