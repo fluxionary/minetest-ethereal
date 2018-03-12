@@ -13,6 +13,7 @@ Ethereal Mapgen mod for Minetest (works on all except v6)
 ### 1.24
 
  - Updating code to newer functions, requires Minetest 0.4.16 and above
+ - Added food groups to be more compatible with other food mods
 
 ### 1.23
 

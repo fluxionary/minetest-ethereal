@@ -16,7 +16,7 @@ minetest.register_node("ethereal:banana", {
 		fixed = {-0.31, -0.5, -0.31, 0.31, 0.5, 0.31}
 	},
 	groups = {
-		fleshy = 3, dig_immediate = 3, flammable = 2,
+		food_banana = 1, fleshy = 3, dig_immediate = 3, flammable = 2,
 		leafdecay = 1, leafdecay_drop = 1
 	},
 	drop = "ethereal:banana",
@@ -63,7 +63,7 @@ minetest.register_node("ethereal:orange", {
 		fixed = {-0.27, -0.37, -0.27, 0.27, 0.44, 0.27}
 	},
 	groups = {
-		fleshy = 3, dig_immediate = 3, flammable = 2,
+		food_orange = 1, fleshy = 3, dig_immediate = 3, flammable = 2,
 		leafdecay = 3, leafdecay_drop = 1
 	},
 	drop = "ethereal:orange",
@@ -81,6 +81,7 @@ minetest.register_craftitem("ethereal:pine_nuts", {
 	description = S("Pine Nuts"),
 	inventory_image = "pine_nuts.png",
 	wield_image = "pine_nuts.png",
+	groups = {food_pine_nuts = 1, flammable = 2},
 	on_use = minetest.item_eat(1),
 })
 
@@ -89,6 +90,7 @@ minetest.register_craftitem("ethereal:banana_bread", {
 	description = S("Banana Loaf"),
 	inventory_image = "banana_bread.png",
 	wield_image = "banana_bread.png",
+	groups = {food_bread = 1, flammable = 3},
 	on_use = minetest.item_eat(6),
 })
 
@@ -107,7 +109,7 @@ minetest.register_node("ethereal:coconut", {
 		fixed = {-0.31, -0.43, -0.31, 0.31, 0.44, 0.31}
 	},
 	groups = {
-		snappy = 1, oddly_breakable_by_hand = 1, cracky = 1,
+		food_coconut = 1, snappy = 1, oddly_breakable_by_hand = 1, cracky = 1,
 		choppy = 1, flammable = 1, leafdecay = 3, leafdecay_drop = 1
 	},
 	drop = "ethereal:coconut_slice 4",
@@ -119,6 +121,7 @@ minetest.register_craftitem("ethereal:coconut_slice", {
 	description = S("Coconut Slice"),
 	inventory_image = "moretrees_coconut_slice.png",
 	wield_image = "moretrees_coconut_slice.png",
+	groups = {food_coconut_slice = 1, flammable = 1},
 	on_use = minetest.item_eat(1),
 })
 

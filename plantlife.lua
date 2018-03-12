@@ -146,6 +146,7 @@ minetest.register_node("ethereal:fern", {
 minetest.register_craftitem("ethereal:fern_tubers", {
 	description = S("Fern Tubers"),
 	inventory_image = "fern_tubers.png",
+	groups = {food_tuber = 1, flammable = 2},
 	on_use = minetest.item_eat(1),
 })
 
