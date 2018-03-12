@@ -57,7 +57,8 @@ for n = 1, #dirts do
 		tiles = {
 			"ethereal_grass_"..name.."_top.png",
 			"default_dirt.png",
-			"default_dirt.png^ethereal_grass_"..name.."_side.png"
+			{name = "default_dirt.png^ethereal_grass_"..name.."_side.png",
+					tileable_vertical = false}
 		},
 		is_ground_content = ethereal.cavedirt,
 		groups = {crumbly = 3, soil = 1, ethereal_grass = 1},
