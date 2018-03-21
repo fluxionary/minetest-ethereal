@@ -88,6 +88,7 @@ local crops = {
 	{"farming:onion_", 5},
 	{"farming:pepper_", 5},
 	{"farming:pineapple_", 8},
+	{"farming:pea_", 5},
 }
 
 -- check if sapling has enough height room to grow
