@@ -137,7 +137,7 @@ minetest.register_craftitem("ethereal:bowl", {
 })
 
 minetest.register_craft({
-	output = "ethereal:bowl",
+	output = "ethereal:bowl 4",
 	recipe = {
 		{"group:wood", "", "group:wood"},
 		{"", "group:wood", ""},
