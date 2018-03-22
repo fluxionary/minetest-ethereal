@@ -73,7 +73,7 @@ local crops = {
 	{"farming:blueberry_", 4},
 	{"farming:raspberry_", 4},
 	{"farming:carrot_", 8},
-	{"farming:cocoa_", 3},
+	{"farming:cocoa_", 4},
 	{"farming:coffee_", 5},
 	{"farming:cucumber_", 4},
 	{"farming:potato_", 4},
