@@ -538,13 +538,15 @@ add_node({"ethereal:green_dirt"}, 0.05, {"grassytwo"}, 1, 100, {"farming:carrot_
 	"farming:raspberry_4", "farming:rhubarb_3", "farming:blueberry_4"}, nil, nil, nil, ethereal.grassytwo)
 add_node({"ethereal:green_dirt"}, 0.05, {"grassy"}, 1, 100, {"farming:carrot_7", "farming:cucumber_4",
 	"farming:potato_3", "farming:tomato_7", "farming:corn_8", "farming:coffee_5",
-	"farming:raspberry_4", "farming:rhubarb_3", "farming:blueberry_4"}, nil, nil, nil, ethereal.grassy)
+	"farming:raspberry_4", "farming:rhubarb_3", "farming:blueberry_4",
+	"farming:beetroot_5"}, nil, nil, nil, ethereal.grassy)
 add_node({"ethereal:green_dirt"}, 0.05, {"jumble"}, 1, 100, {"farming:carrot_7", "farming:cucumber_4",
 	"farming:potato_3", "farming:tomato_7", "farming:corn_8", "farming:coffee_5",
 	"farming:raspberry_4", "farming:rhubarb_3", "farming:blueberry_4"}, nil, nil, nil, ethereal.jumble)
 add_node({"ethereal:prairie_dirt"}, 0.05, {"prairie"}, 1, 100, {"farming:carrot_7", "farming:cucumber_4",
 	"farming:potato_3", "farming:tomato_7", "farming:corn_8", "farming:coffee_5",
-	"farming:raspberry_4", "farming:rhubarb_3", "farming:blueberry_4", "farming:pea_5"}, nil, nil, nil, ethereal.prairie)
+	"farming:raspberry_4", "farming:rhubarb_3", "farming:blueberry_4",
+	"farming:pea_5", "farming:beetroot_5"}, nil, nil, nil, ethereal.prairie)
 
 -- melon and pumpkin
 add_node({"ethereal:jungle_dirt", "default:dirt_with_rainforest_litter"}, 0.015, {"junglee"}, 1, 1, {"farming:melon_8", "farming:pumpkin_8"}, nil, "default:water_source", 1, ethereal.junglee)
