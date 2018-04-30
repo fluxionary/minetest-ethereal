@@ -42,7 +42,7 @@ minetest.override_item("default:dirt", {
 		max_items = 1,
 		items = {
 			{
-				items = {'ethereal:bone', 'default:dirt'},
+				items = {'ethereal:bone'},
 				rarity = 30,
 			},
 			{
