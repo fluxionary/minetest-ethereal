@@ -99,12 +99,13 @@ dofile(path .. "/compatibility.lua")
 dofile(path .. "/stairs.lua")
 dofile(path .. "/lucky_block.lua")
 
--- Use bonemeal mod instead of ethereal's own if found
+-- Set bonemeal aliases
 if minetest.get_modpath("bonemeal") then
 	minetest.register_alias("ethereal:bone", "bonemeal:bone")
 	minetest.register_alias("ethereal:bonemeal", "bonemeal:bonemeal")
-else
-	dofile(path .. "/bonemeal.lua")
+else -- or return to where it came from
+	minetest.register_alias("ethereal:bone", "default:dirt")
+	minetest.register_alias("ethereal:bonemeal", "default:dirt")
 end
 
 if minetest.get_modpath("xanadu") then
