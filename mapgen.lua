@@ -803,3 +803,14 @@ minetest.register_decoration({
 })
 
 end
+
+if ethereal.desert and minetest.get_modpath("wine") then
+minetest.register_decoration({
+	deco_type = "simple",
+	place_on = {"default:desert_sand"},
+	sidelen = 16,
+	fill_ratio = 0.001,
+	biomes = {"desert"},
+	decoration = {"wine:blue_agave"},
+})
+end
