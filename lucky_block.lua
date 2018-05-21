@@ -33,7 +33,6 @@ lucky_block:add_blocks({
 	{"dro", {"ethereal:palm_sapling"} ,5},
 	{"dro", {"ethereal:birch_sapling"} ,5},
 	{"dro", {"ethereal:redwood_sapling"} ,1},
-	{"dro", {"ethereal:green_dirt"}, 10},
 	{"dro", {"ethereal:prairie_dirt"}, 10},
 	{"dro", {"ethereal:grove_dirt"}, 10},
 	{"dro", {"ethereal:cold_dirt"}, 10},

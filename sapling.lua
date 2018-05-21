@@ -165,7 +165,6 @@ ethereal.grow_sapling = function (pos, node)
 		ethereal.grow_yellow_tree(pos)
 
 	elseif node.name == "ethereal:big_tree_sapling"
-	--and under == "ethereal:green_dirt" then
 	and under == "default:dirt_with_grass" then
 		ethereal.grow_big_tree(pos)
 
@@ -203,7 +202,6 @@ ethereal.grow_sapling = function (pos, node)
 		ethereal.grow_bamboo_tree(pos)
 
 	elseif node.name == "ethereal:birch_sapling"
-	--and under == "ethereal:green_dirt" then
 	and under == "default:dirt_with_grass" then
 		ethereal.grow_birch_tree(pos)
 	end
