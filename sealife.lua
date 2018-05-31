@@ -31,6 +31,25 @@ minetest.register_craft( {
 	recipe = {"ethereal:seaweed",},
 })
 
+-- agar powder
+minetest.register_craftitem("ethereal:agar_powder", {
+	description = S("Agar Powder"),
+	inventory_image = "ethereal_agar_powder.png",
+	groups = {food_gelatin = 1, flammable = 2},
+})
+
+minetest.register_craft({
+	output = "ethereal:agar_powder 3",
+	recipe = {
+		{"group:food_seaweed", "group:food_seaweed", "group:food_seaweed"},
+		{"bucket:bucket_water", "bucket:bucket_water", "default:torch"},
+		{"bucket:bucket_water", "bucket:bucket_water", "default:torch"},
+	},
+	replacements = {
+		{"bucket:bucket_water", "bucket:bucket_empty 4"},
+	},
+})
+
 -- Blue Coral
 minetest.register_node("ethereal:coral2", {
 	description = S("Blue Coral"),
