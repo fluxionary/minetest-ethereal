@@ -65,7 +65,7 @@ minetest.register_abm({
 	end,
 })
 
--- If Heat Source near Ice or Snow then melt
+-- If Heat Source near Ice or Snow then melt.
 minetest.register_abm({
 	label = "Ethereal melt snow/ice",
 	nodenames = {
