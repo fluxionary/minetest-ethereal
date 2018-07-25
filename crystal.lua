@@ -253,4 +253,9 @@ minetest.override_item("ethereal:shovel_crystal", {
 	original_description = "Crystal Shovel",
 	description = toolranks.create_description("Crystal Shovel", 0, 1),
 	after_use = toolranks.new_afteruse})
+
+minetest.override_item("ethereal:sword_crystal", {
+	original_description = "Crystal Sword",
+	description = toolranks.create_description("Crystal Sword", 0, 1),
+	after_use = toolranks.new_afteruse})
 end
