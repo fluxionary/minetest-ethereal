@@ -15,6 +15,7 @@ Ethereal Mapgen mod for Minetest (works on all except v6)
  - Updating code to newer functions, requires Minetest 0.4.16 and above
  - Added food groups to be more compatible with other food mods
  - Bonemeal removed (use Bonemeal mod to replace https://forum.minetest.net/viewtopic.php?f=9&t=16446 )
+ - Crystal Ingot recipe requires a bucket of water, unless you are using builtin_item mod where you can mix ingredients by dropping in a pool of water instead
 
 ### 1.23
 
