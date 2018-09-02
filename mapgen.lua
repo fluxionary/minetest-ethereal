@@ -258,10 +258,40 @@ add_schem({"ethereal:crystal_dirt"}, 0.01, {"frost"}, 1, 100, path .. "frosttree
 add_schem({"ethereal:mushroom_dirt"}, 0.02, {"mushroom"}, 1, 100, path .. "mushroomone.mts", ethereal.mushroom)
 
 -- small lava crater
-add_schem({"ethereal:fiery_dirt"}, 0.01, {"fiery"}, 1, 100, path .. "volcanom.mts", ethereal.fiery)
+--add_schem({"ethereal:fiery_dirt"}, 0.01, {"fiery"}, 1, 100, path .. "volcanom.mts", ethereal.fiery)
+if ethereal.fiery then
 
+	minetest.register_decoration({
+		deco_type = "schematic",
+		place_on = {"ethereal:fiery_dirt"},
+		sidelen = 80,
+		fill_ratio = 0.01,
+		biomes = {"fiery"},
+		y_min = 1,
+		y_max = 100,
+		schematic = path .. "volcanom.mts",
+		flags = "place_center_x, place_center_z",
+		spawn_by = "ethereal:fiery_dirt",
+		num_spawn_by = 8,
+	})
+
+	minetest.register_decoration({
+		deco_type = "schematic",
+		place_on = {"ethereal:fiery_dirt"},
+		sidelen = 80,
+		fill_ratio = 0.003,
+		biomes = {"fiery"},
+		y_min = 1,
+		y_max = 100,
+		schematic = path .. "volcanol.mts",
+		flags = "place_center_x, place_center_z",
+		spawn_by = "ethereal:fiery_dirt",
+		num_spawn_by = 8,
+		rotation = "random",
+	})
+end
 -- large lava crater
-add_schem({"ethereal:fiery_dirt"}, 0.01, {"fiery"}, 1, 100, path .. "volcanol.mts", ethereal.fiery)
+--add_schem({"ethereal:fiery_dirt"}, 0.01, {"fiery"}, 1, 100, path .. "volcanol.mts", ethereal.fiery)
 
 -- default jungle tree
 add_schem({"ethereal:jungle_dirt", "default:dirt_with_rainforest_litter"}, 0.08, {"junglee"}, 1, 100, dpath .. "jungle_tree.mts", ethereal.junglee)

@@ -162,7 +162,7 @@ minetest.register_node("ethereal:dry_shrub", {
 	waving = 1,
 	walkable = false,
 	buildable_to = true,
-	groups = {snappy = 3, flora = 1, attached_node = 1, flammable = 2},
+	groups = {snappy = 3, flora = 1, attached_node = 1},
 	sounds = default.node_sound_leaves_defaults(),
 	selection_box = {
 		type = "fixed",
