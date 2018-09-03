@@ -1,6 +1,26 @@
 
 local S = ethereal.intllib
 
+-- Firethorn (poisonous when eaten raw, must be crushed and washed in flowing water 1st)
+minetest.register_node("ethereal:firethorn", {
+	description = S("Firethorn Shrub"),
+	drawtype = "plantlike",
+	tiles = {"ethereal_firethorn.png"},
+	inventory_image = "ethereal_firethorn.png",
+	wield_image = "ethereal_firethorn.png",
+	paramtype = "light",
+	sunlight_propagates = true,
+	waving = 1,
+	walkable = false,
+	buildable_to = true,
+	groups = {snappy = 3, flora = 1, attached_node = 1},
+	sounds = default.node_sound_leaves_defaults(),
+	selection_box = {
+		type = "fixed",
+		fixed = {-5 / 16, -0.5, -5 / 16, 5 / 16, 4 / 16, 5 / 16},
+	},
+})
+
 -- Fire Flower
 minetest.register_node("ethereal:fire_flower", {
 	description = S("Fire Flower"),

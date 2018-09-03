@@ -136,13 +136,17 @@ minetest.register_craftitem("ethereal:bowl", {
 	groups = {food_bowl = 1, flammable = 2},
 })
 
-minetest.register_craft({
-	output = "ethereal:bowl 4",
-	recipe = {
-		{"group:wood", "", "group:wood"},
-		{"", "group:wood", ""},
-	}
-})
+-- use farming redo's recipe if found
+if not minetest.registered_items["farming:bowl"] then
+
+	minetest.register_craft({
+		output = "ethereal:bowl 4",
+		recipe = {
+			{"group:wood", "", "group:wood"},
+			{"", "group:wood", ""},
+		}
+	})
+end
 
 -- stone Ladder
 minetest.register_node("ethereal:stone_ladder", {

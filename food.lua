@@ -197,3 +197,29 @@ minetest.register_craft({
 		{"bucket:bucket_empty","default:cactus"},
 	}
 })
+
+
+-- firethorn jelly
+minetest.register_craftitem("ethereal:firethorn_jelly", {
+	description = S("Firethorn Jelly"),
+	inventory_image = "ethereal_firethorn_jelly.png",
+	wield_image = "ethereal_firethorn_jelly.png",
+	on_use = minetest.item_eat(2, "vessels:glass_bottle"),
+})
+
+if minetest.registered_items["farming:bowl"] then
+
+minetest.register_craft({
+	type = "shapeless",
+	output = "ethereal:firethorn_jelly",
+	recipe = {
+		"farming:mortar_pestle","vessels:glass_bottle",
+		"ethereal:firethorn", "ethereal:firethorn", "ethereal:firethorn",
+		"bucket:bucket_water", "bucket:bucket_water", "bucket:bucket_water",
+	},
+	replacements = {
+		{"bucket:bucket_water", "bucket:bucket_empty 3"},
+		{"farming:mortar_pestle", "farming:mortar_pestle"},
+	},
+})
+end

@@ -6,9 +6,17 @@ Ethereal Mapgen mod for Minetest (works on all except v6)
 - https://forum.minetest.net/viewtopic.php?f=11&t=14638
 
 ## Lucky Blocks
-38
+41
 
 ## Changelog
+
+### 1.25
+
+ - Converted .mts files into schematic tables for easier editing
+ - Added firethorn shrub in glacier areas (can be crafted into jelly)
+ - Tweaked mapgen decorations
+ - Added more lucky blocks
+ - Added igloo to glacier biome
 
 ### 1.24
 

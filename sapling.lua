@@ -78,11 +78,11 @@ local path = minetest.get_modpath("ethereal").."/schematics/"
 
 -- grow tree functions
 function ethereal.grow_yellow_tree(pos)
-	ethereal.add_tree(pos, 4, 0, 4, path .. "yellowtree.mts")
+	ethereal.add_tree(pos, 4, 0, 4, ethereal.yellowtree)
 end
 
 function ethereal.grow_big_tree(pos)
-	ethereal.add_tree(pos, 4, 0, 4, path .. "bigtree.mts")
+	ethereal.add_tree(pos, 4, 0, 4, ethereal.bigtree)
 end
 
 function ethereal.grow_banana_tree(pos)
@@ -90,27 +90,23 @@ function ethereal.grow_banana_tree(pos)
 end
 
 function ethereal.grow_frost_tree(pos)
-	ethereal.add_tree(pos, 4, 0, 4, path .. "frosttrees.mts")
+	ethereal.add_tree(pos, 4, 0, 4, ethereal.frosttrees)
 end
 
 function ethereal.grow_mushroom_tree(pos)
-	ethereal.add_tree(pos, 4, 0, 4, path .. "mushroomone.mts")
+	ethereal.add_tree(pos, 4, 0, 4, ethereal.mushroomone)
 end
 
 function ethereal.grow_palm_tree(pos)
-	ethereal.add_tree(pos, 4, 0, 4, path .. "palmtree.mts")
+	ethereal.add_tree(pos, 4, 0, 4, ethereal.palmtree)
 end
 
 function ethereal.grow_willow_tree(pos)
-	ethereal.add_tree(pos, 5, 0, 5, path .. "willow.mts")
+	ethereal.add_tree(pos, 5, 0, 5, ethereal.willow)
 end
 
 function ethereal.grow_redwood_tree(pos)
-	if math.random(1, 2) == 1 then
-		ethereal.add_tree(pos, 9, 3, 9, path .. "redwood.mts") -- shinji
-	else
-		ethereal.add_tree(pos, 8, 6, 8, path .. "redwood_tree.mts") -- iska
-	end
+	ethereal.add_tree(pos, 7, 0, 7, ethereal.redwood_tree)
 end
 
 function ethereal.grow_orange_tree(pos)
@@ -160,7 +156,6 @@ ethereal.grow_sapling = function (pos, node)
 
 	-- Check if Ethereal Sapling is growing on correct substrate
 	if node.name == "ethereal:yellow_tree_sapling"
---	and under == "default:dirt_with_snow" then
 	and minetest.get_item_group(under, "soil") > 0 then
 		ethereal.grow_yellow_tree(pos)
 
@@ -189,7 +184,6 @@ ethereal.grow_sapling = function (pos, node)
 		ethereal.grow_willow_tree(pos)
 
 	elseif node.name == "ethereal:redwood_sapling"
-	--and under == "bakedclay:red" then
 	and under == "default:dirt_with_dry_grass" then
 		ethereal.grow_redwood_tree(pos)
 
@@ -226,11 +220,3 @@ minetest.register_abm({
 		ethereal.grow_sapling(pos, node)
 	end,
 })
-
---[[ burn saplings
-minetest.register_craft({
-	type = "fuel",
-	recipe = "group:ethereal_sapling",
-	burntime = 10,
-})
-]]

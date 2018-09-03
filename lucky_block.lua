@@ -14,6 +14,8 @@ lucky_block:add_schematics({
 })
 
 lucky_block:add_blocks({
+	{"dro", {"ethereal:firethorn"}, 3},
+	{"dro", {"ethereal:firethorn_jelly"}, 3},
 	{"nod", "ethereal:crystal_spike", 1},
 	{"sch", "pinetree", 0, false},
 	{"dro", {"ethereal:orange"}, 10},
@@ -35,6 +37,8 @@ lucky_block:add_blocks({
 	{"dro", {"ethereal:redwood_sapling"} ,1},
 	{"dro", {"ethereal:prairie_dirt"}, 10},
 	{"dro", {"ethereal:grove_dirt"}, 10},
+	{"fal", {"default:lava_source", "default:lava_source", "default:lava_source",
+			"default:lava_source", "default:lava_source"}, 1, true, 4},
 	{"dro", {"ethereal:cold_dirt"}, 10},
 	{"dro", {"ethereal:mushroom_dirt"}, 10},
 	{"dro", {"ethereal:fiery_dirt"}, 10},
