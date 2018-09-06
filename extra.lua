@@ -233,7 +233,6 @@ minetest.register_craft({
 minetest.register_craftitem("ethereal:charcoal_lump", {
 	description = S("Lump of Charcoal"),
 	inventory_image = "charcoal_lump.png",
-	wield_image = "charcoal_lump.png",
 })
 
 minetest.register_craft({
