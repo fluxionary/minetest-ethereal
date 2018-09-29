@@ -144,7 +144,13 @@ minetest.register_node("ethereal:golden_apple", {
 		leafdecay = 3,leafdecay_drop = 1
 	},
 	drop = "ethereal:golden_apple",
-	on_use = minetest.item_eat(20),
+--	on_use = minetest.item_eat(20),
+	on_use = function(itemstack, user, pointed_thing)
+		if user then
+			user:set_hp(20)
+			return minetest.do_item_eat(2, nil, itemstack, user, pointed_thing)
+		end
+	end,
 	sounds = default.node_sound_leaves_defaults(),
 	after_place_node = function(pos, placer, itemstack)
 		if placer:is_player() then
