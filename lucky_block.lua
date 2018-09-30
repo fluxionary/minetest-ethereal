@@ -6,8 +6,8 @@ if minetest.get_modpath("lucky_block") then
 local epath = minetest.get_modpath("ethereal") .. "/schematics/"
 
 lucky_block:add_schematics({
-	{"pinetree", epath .. "pinetree.mts", {x = 3, y = 0, z = 3}},
-	{"palmtree", epath .. "palmtree.mts", {x = 4, y = 0, z = 4}},
+	{"pinetree", ethereal.pinetree, {x = 3, y = 0, z = 3}},
+	{"palmtree", ethereal.palmtree, {x = 4, y = 0, z = 4}},
 	{"bananatree", ethereal.bananatree, {x = 3, y = 0, z = 3}},
 	{"orangetree", ethereal.orangetree, {x = 1, y = 0, z = 1}},
 	{"birchtree", ethereal.birchtree, {x = 2, y = 0, z = 2}},
