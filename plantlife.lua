@@ -233,7 +233,7 @@ minetest.register_node("ethereal:crystalgrass", {
 })
 
 -- Define Moss Types (Has grass textures on all sides)
-function ethereal.add_moss(typ, descr, texture, receipe_item)
+local add_moss = function(typ, descr, texture, receipe_item)
 
 	minetest.register_node("ethereal:" .. typ .. "_moss", {
 		description = S(descr .. " Moss"),
@@ -250,11 +250,11 @@ function ethereal.add_moss(typ, descr, texture, receipe_item)
 	})
 end
 
-ethereal.add_moss( "crystal", "Crystal", "ethereal_grass_crystal_top.png", "ethereal:frost_leaves")
-ethereal.add_moss( "mushroom", "Mushroom", "ethereal_grass_mushroom_top.png", "ethereal:mushroom")
-ethereal.add_moss( "fiery", "Fiery", "ethereal_grass_fiery_top.png", "ethereal:dry_shrub")
-ethereal.add_moss( "gray", "Gray", "ethereal_grass_gray_top.png", "ethereal:snowygrass")
-ethereal.add_moss( "green", "Green", "default_grass.png", "default:jungleleaves")
+add_moss( "crystal", "Crystal", "ethereal_grass_crystal_top.png", "ethereal:frost_leaves")
+add_moss( "mushroom", "Mushroom", "ethereal_grass_mushroom_top.png", "ethereal:mushroom")
+add_moss( "fiery", "Fiery", "ethereal_grass_fiery_top.png", "ethereal:dry_shrub")
+add_moss( "gray", "Gray", "ethereal_grass_gray_top.png", "ethereal:snowygrass")
+add_moss( "green", "Green", "default_grass.png", "default:jungleleaves")
 
 -- Illuminated Cave Shrooms (Red, Green and Blue)
 minetest.register_node("ethereal:illumishroom", {
@@ -267,7 +267,7 @@ minetest.register_node("ethereal:illumishroom", {
 	light_source = 5,
 	sunlight_propagates = true,
 	walkable = false,
-	groups = {dig_immediate = 3, attached_node = 1,flammable = 3},
+	groups = {dig_immediate = 3, attached_node = 1, flammable = 3},
 	sounds = default.node_sound_leaves_defaults(),
 	selection_box = {
 		type = "fixed",
@@ -285,7 +285,7 @@ minetest.register_node("ethereal:illumishroom2", {
 	light_source = 5,
 	sunlight_propagates = true,
 	walkable = false,
-	groups = {dig_immediate = 3, attached_node = 1,flammable = 3},
+	groups = {dig_immediate = 3, attached_node = 1, flammable = 3},
 	sounds = default.node_sound_leaves_defaults(),
 	selection_box = {
 		type = "fixed",
@@ -303,7 +303,7 @@ minetest.register_node("ethereal:illumishroom3", {
 	light_source = 5,
 	sunlight_propagates = true,
 	walkable = false,
-	groups = {dig_immediate = 3, attached_node = 1,flammable = 3},
+	groups = {dig_immediate = 3, attached_node = 1, flammable = 3},
 	sounds = default.node_sound_leaves_defaults(),
 	selection_box = {
 		type = "fixed",
