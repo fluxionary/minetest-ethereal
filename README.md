@@ -17,6 +17,7 @@ Ethereal Mapgen mod for Minetest (works on all except v6)
  - Tweaked mapgen decorations
  - Added more lucky blocks
  - Added igloo to glacier biome
+ - 2x2 bamboo = bamboo floor, 3x3 bamboo or 2x bamboo floor = bamboo block, blocks can be made into sticks, bamboo stairs need blocks to craft
 
 ### 1.24
 
