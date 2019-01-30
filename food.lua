@@ -211,6 +211,7 @@ minetest.register_craftitem("ethereal:firethorn_jelly", {
 	inventory_image = "ethereal_firethorn_jelly.png",
 	wield_image = "ethereal_firethorn_jelly.png",
 	on_use = minetest.item_eat(2, "vessels:glass_bottle"),
+	groups = {vessel = 1},
 })
 
 if minetest.registered_items["farming:bowl"] then
