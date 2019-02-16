@@ -129,7 +129,7 @@ function ethereal.grow_sakura_tree(pos)
     else
         white = nil
     end
-	add_tree(pos, 4, 0, 2, path .. "sakura.mts", white)
+	add_tree(pos, 4, 0, 3, path .. "sakura.mts", white)
 end
 
 -- check if sapling has enough height room to grow
