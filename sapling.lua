@@ -209,7 +209,10 @@ local grow_sapling = function(pos, node)
 	elseif node.name == "ethereal:birch_sapling"
 	and under == "default:dirt_with_grass" then
 		ethereal.grow_birch_tree(pos)
-	end
+	elseif node.name == "ethereal:sakura_sapling"
+	and under == "ethereal:bamboo_dirt" then
+		ethereal.grow_sakura_tree(pos)
+    end
 
 end
 
