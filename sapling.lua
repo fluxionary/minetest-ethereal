@@ -60,8 +60,9 @@ register_sapling("ethereal:palm", "Palm", "moretrees_palm_sapling", 9)
 register_sapling("ethereal:redwood", "Redwood", "redwood_sapling", 31)
 register_sapling("ethereal:orange_tree", "Orange", "orange_tree_sapling", 6)
 register_sapling("ethereal:birch", "Birch", "moretrees_birch_sapling", 7)
+register_sapling("ethereal:sakura", "Sakura", "ethereal_sakura_sapling", 10)
 
-local add_tree = function (pos, ofx, ofy, ofz, schem)
+local add_tree = function (pos, ofx, ofy, ofz, schem, replace)
 	-- check for schematic
 	if not schem then
 		print (S("Schematic not found"))
@@ -71,7 +72,7 @@ local add_tree = function (pos, ofx, ofy, ofz, schem)
 	minetest.swap_node(pos, {name = "air"})
 	minetest.place_schematic(
 		{x = pos.x - ofx, y = pos.y - ofy, z = pos.z - ofz},
-		schem, 0, nil, false)
+		schem, 0, replace, false)
 end
 
 local path = minetest.get_modpath("ethereal") .. "/schematics/"
@@ -119,6 +120,16 @@ end
 
 function ethereal.grow_birch_tree(pos)
 	add_tree(pos, 2, 0, 2, ethereal.birchtree)
+end
+
+function ethereal.grow_sakura_tree(pos)
+    local white = math.random(10)
+    if white == 1 then
+        white = {{"ethereal:sakura_leaves", "ethereal:sakura_leaves2"}}
+    else
+        white = nil
+    end
+	add_tree(pos, 4, 0, 2, path .. "sakura.mts", white)
 end
 
 -- check if sapling has enough height room to grow

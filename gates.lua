@@ -66,6 +66,13 @@ doors.register_fencegate("ethereal:fencegate_birch", {
 	groups = {choppy = 2, oddly_breakable_by_hand = 2, flammable = 2}
 })
 
+doors.register_fencegate("ethereal:fencegate_sakura", {
+	description = S("Sakura Wood Fence Gate"),
+	texture = "ethereal_sakura_wood.png",
+	material = "ethereal:sakura_wood",
+	groups = {choppy = 2, oddly_breakable_by_hand = 2, flammable = 2}
+})
+
 -- add compatibility for ethereal's to default wooden gates
 minetest.register_alias("ethereal:fencegate_wood_open", "doors:gate_wood_open")
 minetest.register_alias("ethereal:fencegate_wood_closed", "doors:gate_wood_closed")

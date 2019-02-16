@@ -114,10 +114,16 @@ add_biome("clearing", nil, "default:dirt_with_grass", 1, "default:dirt", 3,
 	nil, nil, nil, nil, nil, 3, 71, 45, 65, 1) -- ADDED
 
 add_biome("bamboo", nil, "ethereal:bamboo_dirt", 1, "default:dirt", 3,
-	nil, nil, nil, nil, nil, 3, 71, 45, 75, ethereal.bamboo)
+	nil, nil, nil, nil, nil, 25, 70, 45, 75, ethereal.bamboo)
 
-add_biome("bamboo_ocean", nil, "default:sand", 1, "default:sand", 2,
-	nil, nil, nil, nil, nil, -192, 2, 45, 75, ethereal.bamboo)
+--add_biome("bamboo_ocean", nil, "default:sand", 1, "default:sand", 2,
+	--nil, nil, nil, nil, nil, -192, 2, 45, 75, ethereal.bamboo)
+
+add_biome("sakura", nil, "ethereal:bamboo_dirt", 1, "default:dirt", 3,
+	nil, nil, nil, nil, nil, 3, 25, 45, 75, ethereal.sakura)
+
+add_biome("sakura_ocean", nil, "default:sand", 1, "default:sand", 2,
+	nil, nil, nil, nil, nil, -192, 2, 45, 75, ethereal.sakura)
 
 add_biome("mesa", nil, "default:dirt_with_dry_grass", 1, "bakedclay:orange", 15,
 	nil, nil, nil, nil, nil, 1, 71, 25, 28, ethereal.mesa)
@@ -236,7 +242,7 @@ add_biome("swamp_ocean", nil, "default:sand", 2, "default:clay", 2,
 
 --= schematic decorations
 
-local add_schem = function(a, b, c, d, e, f, g)
+local add_schem = function(a, b, c, d, e, f, g, h)
 
 	if g ~= 1 then return end
 
@@ -250,6 +256,7 @@ local add_schem = function(a, b, c, d, e, f, g)
 		y_max = e,
 		schematic = f,
 		flags = "place_center_x, place_center_z",
+        replacements = h,
 	})
 end
 
@@ -271,6 +278,9 @@ if ethereal.glacier then
 		rotation = "random",
 	})
 end
+
+--sakura tree
+add_schem({"ethereal:bamboo_dirt"}, 0.01, {"sakura"}, 1, 100, path .. "sakura.mts", ethereal.sakura)
 
 -- redwood tree
 add_schem({"default:dirt_with_dry_grass"}, 0.0025, {"mesa"}, 1, 100, ethereal.redwood_tree, ethereal.mesa)
@@ -576,6 +586,7 @@ add_node({"ethereal:bamboo_dirt"}, 0.35, {"bamboo"}, 1, 100, {"default:grass_2",
 	"default:grass_4", "default:grass_5"}, nil, nil, nil, ethereal.bamboo)
 add_node({"default:dirt_with_grass"}, 0.35, {"clearing", "swamp"}, 1, 100, {"default:grass_3",
 	"default:grass_4"}, nil, nil, nil, 1)
+add_node({"ethereal:bamboo_dirt"}, 0.35, {"sakura"}, 1, 100, {"default:grass_2", "default:grass_3", "default:grass_4", "default:grass_5"}, nil, nil, nil, ethereal.sakura)
 
 -- grass on sand
 add_node({"default:sand"}, 0.25, {"sandclay"}, 3, 4, {"default:grass_2", "default:grass_3"}, nil, nil, nil, ethereal.sandclay)
