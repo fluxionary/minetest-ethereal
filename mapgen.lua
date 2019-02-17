@@ -256,7 +256,7 @@ local add_schem = function(a, b, c, d, e, f, g, h)
 		y_max = e,
 		schematic = f,
 		flags = "place_center_x, place_center_z",
-        replacements = h,
+		replacements = h,
 	})
 end
 
@@ -280,7 +280,7 @@ if ethereal.glacier then
 end
 
 --sakura tree
-add_schem({"ethereal:bamboo_dirt"}, 0.01, {"sakura"}, 1, 100, path .. "sakura.mts", ethereal.sakura)
+add_schem({"ethereal:bamboo_dirt"}, 0.01, {"sakura"}, 7, 100, path .. "sakura.mts", ethereal.sakura)
 
 -- redwood tree
 add_schem({"default:dirt_with_dry_grass"}, 0.0025, {"mesa"}, 1, 100, ethereal.redwood_tree, ethereal.mesa)
