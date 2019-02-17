@@ -804,7 +804,7 @@ minetest.override_item("default:coral_brown", {groups = {crumbly = 3}})
 		},
 		y_min = -8,
 		y_max = -2,
-		schematic = dpath .. "corals.mts",
+		schematic = path .. "corals.mts",
 		flags = "place_center_x, place_center_z",
 		rotation = "random",
 	})
