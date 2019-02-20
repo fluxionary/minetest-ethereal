@@ -123,13 +123,11 @@ function ethereal.grow_birch_tree(pos)
 end
 
 function ethereal.grow_sakura_tree(pos)
-    local white = math.random(10)
-    if white == 1 then
-        white = {{"ethereal:sakura_leaves", "ethereal:sakura_leaves2"}}
-    else
-        white = nil
-    end
-	add_tree(pos, 4, 0, 3, path .. "sakura.mts", white)
+	if math.random(10) == 1 then
+		add_tree(pos, 4, 0, 3, path .. "sakura2.mts")
+	else
+		add_tree(pos, 4, 0, 3, path .. "sakura.mts")
+	end
 end
 
 -- check if sapling has enough height room to grow
