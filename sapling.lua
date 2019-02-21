@@ -124,9 +124,10 @@ end
 
 function ethereal.grow_sakura_tree(pos)
 	if math.random(10) == 1 then
-		add_tree(pos, 4, 0, 3, path .. "sakura2.mts")
+		add_tree(pos, 4, 0, 3, ethereal.sakura_tree,
+			{{"ethereal:sakura_leaves", "ethereal:sakura_leaves2"}})
 	else
-		add_tree(pos, 4, 0, 3, path .. "sakura.mts")
+		add_tree(pos, 4, 0, 3, ethereal.sakura_tree)
 	end
 end
 

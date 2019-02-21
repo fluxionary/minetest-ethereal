@@ -30,6 +30,7 @@ dofile(path .. "willow.lua")
 dofile(path .. "bigtree.lua")
 dofile(path .. "redwood_tree.lua")
 dofile(path .. "vinetree.lua")
+dofile(path .. "sakura.lua")
 dofile(path .. "igloo.lua")
 
 --= Biomes
@@ -280,7 +281,7 @@ if ethereal.glacier then
 end
 
 --sakura tree
-add_schem({"ethereal:bamboo_dirt"}, 0.01, {"sakura"}, 7, 100, path .. "sakura.mts", ethereal.sakura)
+add_schem({"ethereal:bamboo_dirt"}, 0.01, {"sakura"}, 7, 100, ethereal.sakura_tree, ethereal.sakura)
 
 -- redwood tree
 add_schem({"default:dirt_with_dry_grass"}, 0.0025, {"mesa"}, 1, 100, ethereal.redwood_tree, ethereal.mesa)
