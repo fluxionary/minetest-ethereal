@@ -494,4 +494,10 @@ default.register_leafdecay({
 	radius = 2
 })
 
+default.register_leafdecay({
+	trunks = {"ethereal:sakura_trunk"},
+	leaves = {"ethereal:sakura_leaves", "ethereal:sakura_leaves2"},
+	radius = 3
+})
+
 end
