@@ -85,3 +85,21 @@ minetest.register_alias("ethereal:fencegate_junglewood_closed", "doors:gate_jung
 
 minetest.register_alias("ethereal:fencegate_pine_open", "doors:gate_pine_wood_open")
 minetest.register_alias("ethereal:fencegate_pine_closed", "doors:gate_pine_wood_closed")
+
+-- sakura door
+doors.register_door("sakuragi:tobira", {
+		tiles = {
+			{name = "ethereal_sakura_door.png", backface_culling = true}
+		},
+		description = S("Sakura Wood Door"),
+		inventory_image = "ethereal_sakura_door_inv.png",
+		groups = {
+			snappy = 1, choppy = 2, oddly_breakable_by_hand = 2,
+			flammable = 2
+		},
+		recipe = {
+			{"group:stick",  "default:paper"},
+			{"default:paper",  "group:stick"},
+			{"ethereal:sakura_wood", "ethereal:sakura_wood"}
+		}
+})
