@@ -939,3 +939,108 @@ minetest.register_decoration({
 	decoration = {"wine:blue_agave"},
 })
 end
+
+if ethereal.tundra and minetest.registered_nodes["default:permafrost"] then
+minetest.register_biome({
+		name = "tundra_highland",
+		node_dust = "default:snow",
+		node_riverbed = "default:gravel",
+		depth_riverbed = 2,
+		y_max = 180,
+		y_min = 47,
+		heat_point = 0,
+		humidity_point = 40,
+	})
+
+	minetest.register_biome({
+		name = "tundra",
+		node_top = "default:permafrost_with_stones",
+		depth_top = 1,
+		node_filler = "default:permafrost",
+		depth_filler = 1,
+		node_riverbed = "default:gravel",
+		depth_riverbed = 2,
+		vertical_blend = 4,
+		y_max = 46,
+		y_min = 2,
+		heat_point = 0,
+		humidity_point = 40,
+	})
+
+	minetest.register_biome({
+		name = "tundra_beach",
+		node_top = "default:gravel",
+		depth_top = 1,
+		node_filler = "default:gravel",
+		depth_filler = 2,
+		node_riverbed = "default:gravel",
+		depth_riverbed = 2,
+		vertical_blend = 1,
+		y_max = 1,
+		y_min = -3,
+		heat_point = 0,
+		humidity_point = 40,
+	})
+
+	minetest.register_biome({
+		name = "tundra_ocean",
+		node_top = "default:sand",
+		depth_top = 1,
+		node_filler = "default:sand",
+		depth_filler = 3,
+		node_riverbed = "default:gravel",
+		depth_riverbed = 2,
+		vertical_blend = 1,
+		y_max = -4,
+		y_min = -112,
+		heat_point = 0,
+		humidity_point = 40,
+	})
+
+	-- Tundra moss
+
+	minetest.register_decoration({
+		deco_type = "simple",
+		place_on = {"default:permafrost_with_stones"},
+		sidelen = 4,
+		noise_params = {
+			offset = -0.8,
+			scale = 2.0,
+			spread = {x = 100, y = 100, z = 100},
+			seed = 53995,
+			octaves = 3,
+			persist = 1.0
+		},
+		biomes = {"tundra"},
+		y_max = 50,
+		y_min = 2,
+		decoration = "default:permafrost_with_moss",
+		place_offset_y = -1,
+		flags = "force_placement",
+	})
+
+	-- Tundra patchy snow
+
+	minetest.register_decoration({
+		deco_type = "simple",
+		place_on = {
+			"default:permafrost_with_moss",
+			"default:permafrost_with_stones",
+			"default:stone",
+			"default:gravel"
+		},
+		sidelen = 4,
+		noise_params = {
+			offset = 0,
+			scale = 1.0,
+			spread = {x = 100, y = 100, z = 100},
+			seed = 172555,
+			octaves = 3,
+			persist = 1.0
+		},
+		biomes = {"tundra", "tundra_beach"},
+		y_max = 50,
+		y_min = 1,
+		decoration = "default:snow",
+	})
+end

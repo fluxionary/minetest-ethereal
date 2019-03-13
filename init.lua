@@ -45,7 +45,8 @@ ethereal = {
 	swamp     = 1, -- Swamp areas with vines on tree's, mushrooms, lilly's and clay sand
 	sealife   = 1, -- Enable coral and seaweed
 	reefs     = 1, -- Enable new 0.4.15 coral reefs in default
-    sakura    = 1, -- Enable sakura biome with trees
+	sakura    = 1, -- Enable sakura biome with trees
+	tundra    = 1, -- Enable tuntra biome with permafrost
 }
 
 local path = minetest.get_modpath("ethereal")
