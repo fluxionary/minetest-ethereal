@@ -940,6 +940,33 @@ minetest.register_decoration({
 })
 end
 
+if ethereal.snowy and minetest.registered_nodes["default:fern_1"] then
+local function register_fern_decoration(seed, length)
+	minetest.register_decoration({
+		name = "default:fern_" .. length,
+		deco_type = "simple",
+		place_on = {
+			"ethereal:cold_dirt", "default:dirt_with_coniferous_litter"},
+		sidelen = 16,
+		noise_params = {
+			offset = 0,
+			scale = 0.2,
+			spread = {x = 100, y = 100, z = 100},
+			seed = seed,
+			octaves = 3,
+			persist = 0.7
+		},
+		y_max = 31000,
+		y_min = 6,
+		decoration = "default:fern_" .. length,
+	})
+end
+
+register_fern_decoration(14936, 3)
+register_fern_decoration(801, 2)
+register_fern_decoration(5, 1)
+end
+
 if ethereal.tundra and minetest.registered_nodes["default:permafrost"] then
 minetest.register_biome({
 		name = "tundra_highland",
@@ -1042,5 +1069,47 @@ minetest.register_biome({
 		y_max = 50,
 		y_min = 1,
 		decoration = "default:snow",
+	})
+end
+
+if minetest.get_modpath("butterflies") then
+minetest.register_decoration({
+	name = "butterflies:butterfly",
+	deco_type = "simple",
+	place_on = {"default:dirt_with_grass", "ethereal:prairie_dirt"},
+	place_offset_y = 2,
+	sidelen = 80,
+	fill_ratio = 0.005,
+	biomes = {"grassy", "grassytwo", "prairie", "jumble"},
+	y_max = 31000,
+	y_min = 1,
+	decoration = {
+		"butterflies:butterfly_white",
+		"butterflies:butterfly_red",
+		"butterflies:butterfly_violet"
+	},
+	spawn_by = "group:flower",
+	num_spawn_by = 1
+})
+end
+
+if minetest.get_modpath("fireflies") then
+	minetest.register_decoration({
+		name = "fireflies:firefly_low",
+		deco_type = "simple",
+		place_on = {
+			"default:dirt_with_grass",
+			"default:dirt_with_coniferous_litter",
+			"default:dirt_with_rainforest_litter",
+			"default:dirt",
+			"ethereal:cold_dirt",
+		},
+		place_offset_y = 2,
+		sidelen = 80,
+		fill_ratio = 0.0005,
+		biomes = {"grassy", "grassytwo", "snowy", "junglee", "swamp"},
+		y_max = 31000,
+		y_min = -1,
+		decoration = "fireflies:hidden_firefly",
 	})
 end
