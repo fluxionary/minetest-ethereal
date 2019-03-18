@@ -16,6 +16,7 @@ Ethereal Mapgen mod for Minetest (works on all except v6)
  - 1 in 10 chance of sakura sapling growing into white sakura
  - Bamboo grows in higher elevation while sakura grows in lower
  - Added sakura wood, stairs, fence, gate and door
+ - Added 5.0 checks to add new biomes and decoration
 
 ### 1.25
 
