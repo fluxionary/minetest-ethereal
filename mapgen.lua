@@ -422,6 +422,38 @@ add_schem({"ethereal:bamboo_dirt"}, 0.08, {"bamboo"}, 1, 100, ethereal.bush, eth
 -- vine tree
 add_schem({"default:dirt_with_grass"}, 0.02, {"swamp"}, 1, 100, ethereal.vinetree, ethereal.swamp)
 
+-- water pools in swamp areas if 5.0 detected
+if minetest.registered_nodes["default:permafrost"] then
+minetest.register_decoration({
+	deco_type = "simple",
+	place_on = {"default:dirt_with_grass"},
+	place_offset_y = -1,
+	sidelen = 16,
+	fill_ratio = 0.01,
+	biomes = {"swamp"},
+	y_max = 2,
+	y_min = 1,
+	flags = "force_placement",
+	decoration = "default:water_source",
+	spawn_by = "default:dirt_with_grass",
+	num_spawn_by = 8,
+})
+minetest.register_decoration({
+	deco_type = "simple",
+	place_on = {"default:dirt_with_grass"},
+	place_offset_y = -1,
+	sidelen = 16,
+	fill_ratio = 0.1,
+	biomes = {"swamp"},
+	y_max = 2,
+	y_min = 1,
+	flags = "force_placement",
+	decoration = "default:water_source",
+	spawn_by = {"default:dirt_with_grass", "default:water_source"},
+	num_spawn_by = 8,
+})
+end
+
 -- bush
 minetest.register_decoration({
 	deco_type = "schematic",
