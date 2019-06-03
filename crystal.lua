@@ -136,8 +136,9 @@ minetest.register_tool("ethereal:sword_crystal", {
 				maxlevel = 3
 			},
 		},
-		damage_groups = {sword = 1, fleshy = 10},
+		damage_groups = {fleshy = 10},
 	},
+	groups = {sword = 1},
 	sound = {breaks = "default_tool_breaks"},
 })
 
@@ -165,8 +166,9 @@ minetest.register_tool("ethereal:axe_crystal", {
 				maxlevel = 3
 			},
 		},
-		damage_groups = {axe = 1, fleshy = 7},
+		damage_groups = {fleshy = 7},
 	},
+	groups = {axe = 1},
 	sound = {breaks = "default_tool_breaks"},
 })
 
@@ -203,8 +205,9 @@ minetest.register_tool("ethereal:pick_crystal", {
 				maxlevel = 3
 			},
 		},
-		damage_groups = {pickaxe = 1, fleshy = 6},
+		damage_groups = {fleshy = 6},
 	},
+	groups = {pickaxe = 1},
 	sound = {breaks = "default_tool_breaks"},
 })
 
@@ -246,8 +249,9 @@ minetest.register_tool("ethereal:shovel_crystal", {
 		groupcaps={
 			crumbly = {times={[1]=1.10, [2]=0.50, [3]=0.30}, uses=30, maxlevel=3},
 		},
-		damage_groups = {shovel = 1, fleshy = 4},
+		damage_groups = {fleshy = 4},
 	},
+	groups = {shovel = 1},
 	sound = {breaks = "default_tool_breaks"},
 })
 
