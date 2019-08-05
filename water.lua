@@ -13,10 +13,10 @@ minetest.register_node("ethereal:icebrick", {
 })
 
 minetest.register_craft({
-	output = 'ethereal:icebrick 4',
+	output = "ethereal:icebrick 4",
 	recipe = {
-		{'default:ice', 'default:ice'},
-		{'default:ice', 'default:ice'},
+		{"default:ice", "default:ice"},
+		{"default:ice", "default:ice"},
 	}
 })
 
@@ -36,10 +36,10 @@ minetest.register_node("ethereal:snowbrick", {
 })
 
 minetest.register_craft({
-	output = 'ethereal:snowbrick 4',
+	output = "ethereal:snowbrick 4",
 	recipe = {
-		{'default:snowblock', 'default:snowblock'},
-		{'default:snowblock', 'default:snowblock'},
+		{"default:snowblock", "default:snowblock"},
+		{"default:snowblock", "default:snowblock"},
 	}
 })
 

@@ -173,20 +173,20 @@ minetest.register_tool("ethereal:axe_crystal", {
 })
 
 minetest.register_craft({
-	output = 'ethereal:axe_crystal',
+	output = "ethereal:axe_crystal",
 	recipe = {
-		{'ethereal:crystal_ingot', 'ethereal:crystal_ingot'},
-		{'ethereal:crystal_ingot', 'default:steel_ingot'},
-		{'', 'default:steel_ingot'},
+		{"ethereal:crystal_ingot", "ethereal:crystal_ingot"},
+		{"ethereal:crystal_ingot", "default:steel_ingot"},
+		{"", "default:steel_ingot"},
 	}
 })
 
 minetest.register_craft({
-	output = 'ethereal:axe_crystal',
+	output = "ethereal:axe_crystal",
 	recipe = {
-		{'ethereal:crystal_ingot', 'ethereal:crystal_ingot'},
-		{'default:steel_ingot', 'ethereal:crystal_ingot'},
-		{'default:steel_ingot', ''},
+		{"ethereal:crystal_ingot", "ethereal:crystal_ingot"},
+		{"default:steel_ingot", "ethereal:crystal_ingot"},
+		{"default:steel_ingot", ""},
 	}
 })
 

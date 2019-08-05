@@ -4,7 +4,7 @@ local S = ethereal.intllib
 -- Bamboo Flooring
 minetest.register_node("ethereal:bamboo_floor", {
 	description = S("Bamboo Floor"),
-	drawtype = 'nodebox',
+	drawtype = "nodebox",
 	tiles = { "bamboo_floor.png" },
 	wield_image = "bamboo_floor.png",
 	inventory_image = "bamboo_floor.png",
