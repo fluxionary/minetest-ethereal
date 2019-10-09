@@ -17,6 +17,7 @@ Ethereal Mapgen mod for Minetest (works on all except v6)
  - Bamboo grows in higher elevation while sakura grows in lower
  - Added sakura wood, stairs, fence, gate and door
  - Added 5.0 checks to add new biomes and decorations
+ - Fixed water abm for dry dirt and added check for minetest 5.1 dry dirt also
 
 ### 1.25
 
