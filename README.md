@@ -10,6 +10,11 @@ Ethereal Mapgen mod for Minetest (works on all except v6)
 
 ## Changelog
 
+### 1.27
+
+ - Added Etherium ore and dust
+ - Added sparse decoration of dry grass and shrub to caves biome
+
 ### 1.26
 
  - Added Sakura biome, pink sakura trees and saplings
