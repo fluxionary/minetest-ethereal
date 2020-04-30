@@ -188,8 +188,8 @@ add_biome("jumble_ocean", nil, "default:sand", 1, "default:sand", 2,
 	nil, nil, nil, nil, nil, -192, 1, 25, 50, ethereal.jumble)
 
 if minetest.registered_nodes["default:dirt_with_rainforest_litter"] then
-	add_biome("junglee", nil, "default:dirt_with_rainforest_litter", 1, "default:dirt", 3,
-		nil, nil, nil, nil, nil, 1, 71, 30, 60, ethereal.junglee)
+	add_biome("junglee", nil, "default:dirt_with_rainforest_litter", 1,
+	"default:dirt", 3, nil, nil, nil, nil, nil, 1, 71, 30, 60, ethereal.junglee)
 else
 	add_biome("junglee", nil, "ethereal:jungle_dirt", 1, "default:dirt", 3,
 		nil, nil, nil, nil, nil, 1, 71, 30, 60, ethereal.junglee)
@@ -225,10 +225,15 @@ add_biome("plains", nil, "ethereal:dry_dirt", 1, "default:dirt", 3,
 add_biome("plains_ocean", nil, "default:sand", 1, "default:sand", 2,
 	nil, nil, nil, nil, nil, -192, 2, 55, 25, ethereal.plains)
 
-add_biome("savannah", nil, "default:dirt_with_dry_grass", 1, "default:dirt", 3,
-	nil, nil, nil, nil, nil, 3, 50, 55, 25, ethereal.savannah)
+if minetest.registered_nodes["default:dry_dirt_with_dry_grass"] then
+	add_biome("savanna", nil, "default:dry_dirt_with_dry_grass", 1,
+	"default:dry_dirt", 3, nil, nil, nil, nil, nil, 3, 50, 55, 25, ethereal.savannah)
+else
+	add_biome("savanna", nil, "default:dirt_with_dry_grass", 1, "default:dirt",
+	3, nil, nil, nil, nil, nil, 3, 50, 55, 25, ethereal.savannah)
+end
 
-add_biome("savannah_ocean", nil, "default:sand", 1, "default:sand", 2,
+add_biome("savanna_ocean", nil, "default:sand", 1, "default:sand", 2,
 	nil, nil, nil, nil, nil, -192, 1, 55, 25, ethereal.savannah)
 
 add_biome("fiery", nil, "ethereal:fiery_dirt", 1, "default:dirt", 3,
@@ -379,7 +384,13 @@ add_schem({"default:dirt_with_grass"}, 0.02, {"grassytwo"}, 50, 100, ethereal.bi
 add_schem({"ethereal:prairie_dirt"}, 0.01, {"prairie"}, 1, 100, ethereal.orangetree, ethereal.prairie)
 
 -- default acacia tree
-add_schem({"default:dirt_with_dry_grass"}, 0.004, {"savannah"}, 1, 100, dpath .. "acacia_tree.mts", ethereal.savannah)
+if minetest.registered_nodes["default:dry_dirt_with_dry_grass"] then
+	add_schem({"default:dry_dirt_with_dry_grass"}, 0.004, {"savanna"}, 1, 100,
+	dpath .. "acacia_tree.mts", ethereal.savannah)
+else
+	add_schem({"default:dirt_with_dry_grass"}, 0.004, {"savanna"}, 1, 100,
+	dpath .. "acacia_tree.mts", ethereal.savannah)
+end
 
 -- large cactus (by Paramat)
 if ethereal.desert == 1 then
@@ -398,7 +409,7 @@ minetest.register_decoration({
 	biomes = {"desert"},
 	y_min = 5,
 	y_max = 31000,
-	schematic = dpath.."large_cactus.mts",
+	schematic = dpath .. "large_cactus.mts",
 	flags = "place_center_x", --, place_center_z",
 	rotation = "random",
 })
@@ -454,6 +465,28 @@ minetest.register_decoration({
 })
 end
 
+if minetest.registered_nodes["default:dry_dirt_with_dry_grass"] then
+	minetest.register_decoration({
+		deco_type = "simple",
+		place_on = {"default:dry_dirt_with_dry_grass"},
+		sidelen = 4,
+		noise_params = {
+			offset = -1.5,
+			scale = -1.5,
+			spread = {x = 200, y = 200, z = 200},
+			seed = 329,
+			octaves = 4,
+			persist = 1.0
+		},
+		biomes = {"savanna"},
+		y_max = 31000,
+		y_min = 1,
+		decoration = "default:dry_dirt",
+		place_offset_y = -1,
+		flags = "force_placement",
+	})
+end
+
 -- bush
 minetest.register_decoration({
 	deco_type = "schematic",
@@ -470,14 +503,14 @@ minetest.register_decoration({
 	biomes = {"grassy", "grassytwo", "jumble"},
 	y_min = 1,
 	y_max = 31000,
-	schematic = dpath .. "/bush.mts",
+	schematic = dpath .. "bush.mts",
 	flags = "place_center_x, place_center_z",
 })
 
 -- Acacia bush
 minetest.register_decoration({
 	deco_type = "schematic",
-	place_on = {"default:dirt_with_dry_grass"},
+	place_on = {"default:dirt_with_dry_grass", "default:dry_dirt_with_dry_grass"},
 	sidelen = 16,
 	noise_params = {
 		offset = -0.004,
@@ -487,12 +520,35 @@ minetest.register_decoration({
 		octaves = 3,
 		persist = 0.7,
 	},
-	biomes = {"savannah", "mesa"},
+	biomes = {"savanna", "mesa"},
 	y_min = 1,
 	y_max = 31000,
-	schematic = dpath .. "/acacia_bush.mts",
+	schematic = dpath .. "acacia_bush.mts",
 	flags = "place_center_x, place_center_z",
 })
+
+-- Pine bush
+if minetest.registered_nodes["default:pine_bush"] then
+	minetest.register_decoration({
+		name = "default:pine_bush",
+		deco_type = "schematic",
+		place_on = {"default:dirt_with_snow"},
+		sidelen = 16,
+		noise_params = {
+			offset = -0.004,
+			scale = 0.01,
+			spread = {x = 100, y = 100, z = 100},
+			seed = 137,
+			octaves = 3,
+			persist = 0.7,
+		},
+		biomes = {"alpine"},
+		y_max = 31000,
+		y_min = 4,
+		schematic = dpath .. "pine_bush.mts",
+		flags = "place_center_x, place_center_z",
+	})
+end
 
 --= simple decorations
 
@@ -529,8 +585,16 @@ add_node({"default:sandstone"}, 0.015, {"sandstone"}, 1, 100, {"default:dry_shru
 add_node({"bakedclay:red", "bakedclay:orange"}, 0.015, {"mesa"}, 1, 100, {"default:dry_shrub"}, nil, nil, nil, ethereal.mesa)
 
 -- dry grass
-add_node({"default:dirt_with_dry_grass"}, 0.25, {"savannah"}, 1, 100, {"default:dry_grass_2",
-	"default:dry_grass_3", "default:dry_grass_4", "default:dry_grass_5"}, nil, nil, nil, ethereal.savannah)
+if minetest.registered_nodes["default:dry_dirt_with_dry_grass"] then
+	add_node({"default:dry_dirt_with_dry_grass"}, 0.25, {"savanna"}, 1, 100,
+	{"default:dry_grass_2", "default:dry_grass_3", "default:dry_grass_4",
+	"default:dry_grass_5"}, nil, nil, nil, ethereal.savannah)
+else
+	add_node({"default:dirt_with_dry_grass"}, 0.25, {"savanna"}, 1, 100,
+	{"default:dry_grass_2", "default:dry_grass_3", "default:dry_grass_4",
+	"default:dry_grass_5"}, nil, nil, nil, ethereal.savannah)
+end
+
 add_node({"default:dirt_with_dry_grass"}, 0.10, {"mesa"}, 1, 100, {"default:dry_grass_2",
 	"default:dry_grass_3", "default:dry_grass_4", "default:dry_grass_5"}, nil, nil, nil, ethereal.mesa)
 add_node({"default:desert_stone"}, 0.005, {"caves"}, 5, 40, {"default:dry_grass_2",
@@ -652,8 +716,7 @@ minetest.register_decoration({
 	y_max = 31000,
 	y_min = 1,
 	place_offset_y = 1,
-	schematic = minetest.get_modpath("default")
-		.. "/schematics/blueberry_bush.mts",
+	schematic = dpath .. "blueberry_bush.mts",
 	flags = "place_center_x, place_center_z",
 })
 else
@@ -1002,7 +1065,7 @@ register_fern_decoration(5, 1)
 end
 
 if ethereal.tundra and minetest.registered_nodes["default:permafrost"] then
-minetest.register_biome({
+	minetest.register_biome({
 		name = "tundra_highland",
 		node_dust = "default:snow",
 		node_riverbed = "default:gravel",

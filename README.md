@@ -15,6 +15,8 @@ Ethereal Mapgen mod for Minetest (works on all except v6)
  - Added Etherium ore and dust
  - Added sparse decoration of dry grass and shrub to caves biome
  - Added sponges that spawn near coral, dry sponge in furnace to soak up water
+ - Added new savanna dirt and decorations
+ - Use default grass abms
 
 ### 1.26
 
