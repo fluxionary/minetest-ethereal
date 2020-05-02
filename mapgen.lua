@@ -227,14 +227,15 @@ add_biome("plains_ocean", nil, "default:sand", 1, "default:sand", 2,
 
 if minetest.registered_nodes["default:dry_dirt_with_dry_grass"] then
 	add_biome("savanna", nil, "default:dry_dirt_with_dry_grass", 1,
-	"default:dry_dirt", 3, nil, nil, nil, nil, nil, 3, 50, 55, 25, ethereal.savannah)
+	"default:dry_dirt", 3, nil, nil, nil, nil, nil, 3, 50, 55, 25,
+	ethereal.savanna)
 else
 	add_biome("savanna", nil, "default:dirt_with_dry_grass", 1, "default:dirt",
-	3, nil, nil, nil, nil, nil, 3, 50, 55, 25, ethereal.savannah)
+	3, nil, nil, nil, nil, nil, 3, 50, 55, 25, ethereal.savanna)
 end
 
 add_biome("savanna_ocean", nil, "default:sand", 1, "default:sand", 2,
-	nil, nil, nil, nil, nil, -192, 1, 55, 25, ethereal.savannah)
+	nil, nil, nil, nil, nil, -192, 1, 55, 25, ethereal.savanna)
 
 add_biome("fiery", nil, "ethereal:fiery_dirt", 1, "default:dirt", 3,
 	nil, nil, nil, nil, nil, 5, 20, 75, 10, ethereal.fiery)
@@ -386,10 +387,10 @@ add_schem({"ethereal:prairie_dirt"}, 0.01, {"prairie"}, 1, 100, ethereal.oranget
 -- default acacia tree
 if minetest.registered_nodes["default:dry_dirt_with_dry_grass"] then
 	add_schem({"default:dry_dirt_with_dry_grass"}, 0.004, {"savanna"}, 1, 100,
-	dpath .. "acacia_tree.mts", ethereal.savannah)
+	dpath .. "acacia_tree.mts", ethereal.savanna)
 else
 	add_schem({"default:dirt_with_dry_grass"}, 0.004, {"savanna"}, 1, 100,
-	dpath .. "acacia_tree.mts", ethereal.savannah)
+	dpath .. "acacia_tree.mts", ethereal.savanna)
 end
 
 -- large cactus (by Paramat)
@@ -588,11 +589,11 @@ add_node({"bakedclay:red", "bakedclay:orange"}, 0.015, {"mesa"}, 1, 100, {"defau
 if minetest.registered_nodes["default:dry_dirt_with_dry_grass"] then
 	add_node({"default:dry_dirt_with_dry_grass"}, 0.25, {"savanna"}, 1, 100,
 	{"default:dry_grass_2", "default:dry_grass_3", "default:dry_grass_4",
-	"default:dry_grass_5"}, nil, nil, nil, ethereal.savannah)
+	"default:dry_grass_5"}, nil, nil, nil, ethereal.savanna)
 else
 	add_node({"default:dirt_with_dry_grass"}, 0.25, {"savanna"}, 1, 100,
 	{"default:dry_grass_2", "default:dry_grass_3", "default:dry_grass_4",
-	"default:dry_grass_5"}, nil, nil, nil, ethereal.savannah)
+	"default:dry_grass_5"}, nil, nil, nil, ethereal.savanna)
 end
 
 add_node({"default:dirt_with_dry_grass"}, 0.10, {"mesa"}, 1, 100, {"default:dry_grass_2",
