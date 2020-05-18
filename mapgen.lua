@@ -152,7 +152,7 @@ add_biome("frost_ocean", nil, "default:sand", 1, "default:sand", 2,
 add_biome("grassy", nil, "default:dirt_with_grass", 1, "default:dirt", 3,
 	nil, nil, nil, nil, nil, 3, 91, 13, 40, ethereal.grassy)
 
-add_biome("grassy_ocean", nil, "defaut:sand", 2, "default:gravel", 1,
+add_biome("grassy_ocean", nil, "default:sand", 2, "default:gravel", 1,
 	nil, nil, nil, nil, nil, -31000, 3, 13, 40, ethereal.grassy)
 
 add_biome("caves", nil, "default:desert_stone", 3, "air", 8,
