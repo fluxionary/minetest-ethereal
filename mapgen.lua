@@ -612,7 +612,8 @@ add_node({"default:dirt_with_grass"}, 0.025, {"grassytwo"}, 1, 100, {"flowers:da
 -- prairie flowers & strawberry
 add_node({"ethereal:prairie_dirt"}, 0.035, {"prairie"}, 1, 100, {"flowers:dandelion_white",
 	"flowers:dandelion_yellow", "flowers:geranium", "flowers:rose", "flowers:tulip",
-	"flowers:viola", "ethereal:strawberry_7", "flowers:chrysanthemum_green", "flowers:tulip_black"}, nil, nil, nil, ethereal.prairie)
+	"flowers:viola", "ethereal:strawberry_7", "flowers:chrysanthemum_green", 
+"flowers:tulip_black"}, nil, nil, nil, ethereal.prairie)
 
 -- crystal spike & crystal grass
 add_node({"ethereal:crystal_dirt"}, 0.02, {"frost"}, 1, 100, {"ethereal:crystal_spike",
@@ -773,6 +774,11 @@ add_node({"ethereal:jungle_dirt", "default:dirt_with_rainforest_litter"}, 0.015,
 add_node({"default:dirt_with_grass"}, 0.015, {"grassy"}, 1, 1, {"farming:melon_8", "farming:pumpkin_8"}, nil, "default:water_source", 1, ethereal.grassy)
 add_node({"default:dirt_with_grass"}, 0.015, {"grassytwo"}, 1, 1, {"farming:melon_8", "farming:pumpkin_8"}, nil, "default:water_source", 1, ethereal.grassytwo)
 add_node({"default:dirt_with_grass"}, 0.015, {"jumble"}, 1, 1, {"farming:melon_8", "farming:pumpkin_8"}, nil, "default:water_source", 1, ethereal.jumble)
+
+-- mint
+add_node({"default:dirt_with_grass", "default:dirt_with_coniferous_grass", 
+"ethereal:bamboo_dirt"},
+	0.003, nil, 1, 75, "farming:mint_4", nil, "group:water", 1, 1)
 
 -- green beans
 add_node({"default:dirt_with_grass"}, 0.035, {"grassytwo"}, 1, 100, {"farming:beanbush"}, nil, nil, nil, ethereal.grassytwo)
