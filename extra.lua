@@ -112,9 +112,9 @@ end -- END if
 minetest.register_craft({
 	output = "default:paper 4",
 	recipe = {
-		{"farming:string", "farming:string"},
-		{"farming:string", "farming:string"},
-		{"farming:string", "farming:string"},
+		{"farming:cotton", "farming:cotton"},
+		{"farming:cotton", "farming:cotton"},
+		{"farming:cotton", "farming:cotton"},
 	}
 })
 
@@ -164,7 +164,7 @@ minetest.register_node("ethereal:candle", {
 minetest.register_craft({
 	output = "ethereal:candle 2",
 	recipe = {
-		{"farming:cotton"},
+		{"farming:string"},
 		{"ethereal:palm_wax"},
 		{"ethereal:palm_wax"},
 	}
