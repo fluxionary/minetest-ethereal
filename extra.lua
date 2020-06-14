@@ -92,6 +92,7 @@ local cheat = {
 	{"default:dirt", "default:sand", 5},
 	{"default:ice", "default:snow", 20},
 	{"ethereal:dry_dirt", "default:desert_sand", 5},
+	{"default:stone", "default:silver_sandstone", 5}
 }
 
 for n = 1, #cheat do
