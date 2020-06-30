@@ -194,6 +194,7 @@ minetest.register_craftitem("ethereal:bucket_cactus", {
 	inventory_image = "bucket_cactus.png",
 	wield_image = "bucket_cactus.png",
 	stack_max = 1,
+	groups = {vessel = 1, drink = 1},
 	on_use = minetest.item_eat(2, "bucket:bucket_empty"),
 })
 

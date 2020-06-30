@@ -5,6 +5,7 @@ local S = ethereal.intllib
 minetest.register_craftitem("ethereal:mushroom_soup", {
 	description = S("Mushroom Soup"),
 	inventory_image = "mushroom_soup.png",
+	groups = {drink = 1},
 	on_use = minetest.item_eat(5, "ethereal:bowl"),
 })
 
