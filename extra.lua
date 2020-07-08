@@ -113,8 +113,7 @@ end -- END if
 minetest.register_craft({
 	output = "default:paper 2",
 	recipe = {
-		{"farming:cotton", "farming:cotton"},
-		{"farming:cotton", "farming:cotton"}
+		{"farming:cotton", "farming:cotton", "farming:cotton"}
 	}
 })
 
