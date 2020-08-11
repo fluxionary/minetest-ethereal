@@ -482,7 +482,7 @@ default.register_leafdecay({
 
 default.register_leafdecay({
 	trunks = {"ethereal:banana_trunk"},
-	leaves = {"ethereal:bananaleaves", "ethereal:banana"},
+	leaves = {"ethereal:bananaleaves", "ethereal:banana", "ethereal:banana_bunch"},
 	radius = 3
 })
 
