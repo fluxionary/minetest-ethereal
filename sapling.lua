@@ -87,7 +87,13 @@ function ethereal.grow_big_tree(pos)
 end
 
 function ethereal.grow_banana_tree(pos)
-	add_tree(pos, 3, 0, 3, ethereal.bananatree)
+	if math.random(3) == 1
+	and minetest.find_node_near(pos, 1, {"farming:soil_wet"}) then
+		add_tree(pos, 3, 0, 3, ethereal.bananatree,
+			{{"ethereal:banana", "ethereal:banana_bunch"}})
+	else
+		add_tree(pos, 3, 0, 3, ethereal.bananatree)
+	end
 end
 
 function ethereal.grow_frost_tree(pos)
