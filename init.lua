@@ -13,12 +13,12 @@ ethereal = {
 
 	version = "1.27",
 	leaftype = minetest.settings:get('ethereal.leaftype') or 0,
-	leafwalk = minetest.settings:get_bool('ethereal.leafwalk') or false,
-	cavedirt = minetest.settings:get_bool('ethereal.cavedirt') or true,
-	torchdrop = minetest.settings:get_bool('ethereal.torchdrop') or true,
-	papyruswalk = minetest.settings:get_bool('ethereal.papyruswalk') or true,
-	lilywalk = minetest.settings:get_bool('ethereal.lilywalk') or true,
-	xcraft = minetest.settings:get_bool('ethereal.xcraft') or true,
+	leafwalk = minetest.settings:get_bool('ethereal.leafwalk', false),
+	cavedirt = minetest.settings:get_bool('ethereal.cavedirt', true),
+	torchdrop = minetest.settings:get_bool('ethereal.torchdrop', true),
+	papyruswalk = minetest.settings:get_bool('ethereal.papyruswalk', true),
+	lilywalk = minetest.settings:get_bool('ethereal.lilywalk', true),
+	xcraft = minetest.settings:get_bool('ethereal.xcraft', true),
 
 	glacier = minetest.settings:get('ethereal.glacier') or 1,
 	bamboo = minetest.settings:get('ethereal.bamboo') or 1,
