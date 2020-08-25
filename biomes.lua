@@ -32,9 +32,6 @@ local add_biome = function(a, l, m, n, o, p, b, c, d, e, f, g)
 	})
 end
 
--- add_biome(name, y_min, y_max, heat, humidity, biome enabled,
---       dust node, top node, depth, filler node, depth, stone node)
-
 
 -- always registered biomes
 add_biome("mountain", 140, 31000, 50, 50, 1,

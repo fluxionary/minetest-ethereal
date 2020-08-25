@@ -48,8 +48,6 @@ local add_schem = function(a, b, c, d, e, f, g, h, i, j, k)
 	})
 end
 
--- add_schem(place on, ratio, biomes, y_min, y_max, schem, biome enabled,
---       replace, spawn_by, num_spawn_by, rotation)
 
 -- igloo
 add_schem("default:snowblock", 0.0005, {"glacier"}, 3, 50,

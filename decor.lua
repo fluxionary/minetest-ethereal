@@ -700,7 +700,7 @@ end
 
 local random = math.random
 
--- Generate Illumishroom in caves next to coal
+-- Generate Illumishroom in caves on top of coal
 minetest.register_on_generated(function(minp, maxp)
 
 	if minp.y > -30 or maxp.y < -3000 then
@@ -713,9 +713,9 @@ minetest.register_on_generated(function(minp, maxp)
 
 	for n = 1, #coal do
 
-		if random(1, 2) == 1 then
+		if random(2) == 1 then
 
-			bpos = {x = coal[n].x, y = coal[n].y + 1, z = coal[n].z }
+			bpos = {x = coal[n].x, y = coal[n].y + 1, z = coal[n].z}
 
 			if bpos.y > -3000 and bpos.y < -2000 then
 				minetest.swap_node(bpos, {name = "ethereal:illumishroom3"})
