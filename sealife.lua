@@ -52,7 +52,7 @@ minetest.register_craft({
 
 -- Blue Coral
 minetest.register_node("ethereal:coral2", {
-	description = S("Blue Coral"),
+	description = S("Blue Glow Coral"),
 	drawtype = "plantlike",
 	tiles = {"coral2.png"},
 	inventory_image = "coral2.png",
@@ -75,7 +75,7 @@ minetest.register_craft( {
 
 -- Orange Coral
 minetest.register_node("ethereal:coral3", {
-	description = S("Orange Coral"),
+	description = S("Orange Glow Coral"),
 	drawtype = "plantlike",
 	tiles = {"coral3.png"},
 	inventory_image = "coral3.png",
@@ -98,7 +98,7 @@ minetest.register_craft( {
 
 -- Pink Coral
 minetest.register_node("ethereal:coral4", {
-	description = S("Pink Coral"),
+	description = S("Pink Glow Coral"),
 	drawtype = "plantlike",
 	tiles = {"coral4.png"},
 	inventory_image = "coral4.png",
@@ -121,7 +121,7 @@ minetest.register_craft( {
 
 -- Green Coral
 minetest.register_node("ethereal:coral5", {
-	description = S("Green Coral"),
+	description = S("Green Glow Coral"),
 	drawtype = "plantlike",
 	tiles = {"coral5.png"},
 	inventory_image = "coral5.png",
@@ -165,7 +165,7 @@ minetest.register_abm({
 	catch_up = false,
 	action = function(pos, node)
 
-		local sel = math.random(1, 6)
+		local sel = math.random(6)
 
 		pos.y = pos.y + 1
 
@@ -205,10 +205,8 @@ minetest.register_abm({
 
 				minetest.swap_node(pos, {name = "ethereal:seaweed"})
 			end
-
 		end
-
-	end,
+	end
 })
 end
 
@@ -260,7 +258,7 @@ minetest.register_node("ethereal:sponge", {
 		end
 
 		-- replace dry sponge with wet sponge
-		minetest.swap_node(pos, {name="ethereal:sponge_wet"})
+		minetest.swap_node(pos, {name = "ethereal:sponge_wet"})
 	end
 })
 
