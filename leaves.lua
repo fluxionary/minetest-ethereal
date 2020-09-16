@@ -504,4 +504,9 @@ default.register_leafdecay({
 	radius = 3
 })
 
+default.register_leafdecay({
+	trunks = {"ethereal:mushroom_trunk"},
+	leaves = {"ethereal:mushroom", "ethereal:mushroom_pore"},
+	radius = 3
+})
 end

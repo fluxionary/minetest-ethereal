@@ -18,6 +18,7 @@ Ethereal Mapgen mod for Minetest (works on all except v6)
  - Added new savanna dirt and decorations
  - Use default grass abms
  - Split and re-write mapgen files for tidier generation
+ - Giant Mushroom tops now decay when trunk removed
 
 ### 1.26
 
