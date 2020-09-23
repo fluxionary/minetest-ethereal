@@ -329,7 +329,7 @@ minetest.register_node("ethereal:sakura_leaves2", {
 minetest.register_node("ethereal:mushroom", {
 	description = S("Mushroom Cap"),
 	tiles = {"mushroom_block.png"},
-	groups = {choppy = 2, oddly_breakable_by_hand = 1, flammable = 2},
+	groups = {choppy = 2, oddly_breakable_by_hand = 1, flammable = 2, leafdecay = 3},
 	drop = {
 		max_items = 1,
 		items = {
@@ -352,7 +352,8 @@ minetest.register_node("ethereal:mushroom_pore", {
 	tiles = {"mushroom_pore.png"},
 	groups = {
 		snappy = 3, cracky = 3, choppy = 3, oddly_breakable_by_hand = 3,
-		flammable = 2, disable_jump = 1, fall_damage_add_percent = -100
+		flammable = 2, disable_jump = 1, fall_damage_add_percent = -100,
+		leafdecay = 3
 	},
 	sounds = default.node_sound_dirt_defaults(),
 })
