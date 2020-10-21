@@ -277,7 +277,7 @@ minetest.register_node("ethereal:quicksand", {
 -- but old quicksand is shown as black until block placed nearby to update light)
 minetest.register_node("ethereal:quicksand2", {
 	description = S("Quicksand"),
-	tiles = {"default_sand.png"},
+	tiles = {"default_sand.png^[colorize:#00004F10"},
 	drawtype = "glasslike",
 	paramtype = "light",
 	drop = "default:sand",
