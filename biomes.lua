@@ -8,7 +8,7 @@ minetest.clear_registered_decorations()
 local tmp, tmp2
 
 -- helper function
-local add_biome = function(a, l, m, n, o, p, b, c, d, e, f, g)
+local add_biome = function(a, l, m, n, o, p, b, c, d, e, f, g, nd, na, ns)
 
 	-- if not 1 then biome disabled, don't add
 	if p ~= 1 then return end
@@ -28,7 +28,11 @@ local add_biome = function(a, l, m, n, o, p, b, c, d, e, f, g)
 		y_min = l,
 		y_max = m,
 		heat_point = n,
-		humidity_point = o
+		humidity_point = o,
+
+		node_dungeon = nd or "default:cobble",
+		node_dungeon_alt = (nd and "") or "default:mossycobble",
+		node_dungeon_stair = ns or "stairs:stair_cobble",
 	})
 end
 
@@ -48,10 +52,12 @@ add_biome("underground", -31000, -192, 50, 50, 1,
 tmp = "default:desert_stone"
 
 add_biome("desert", 3, 23, 35, 20, ethereal.desert,
-	nil, "default:desert_sand", 1, "default:desert_sand", 3, tmp)
+	nil, "default:desert_sand", 1, "default:desert_sand", 3, tmp,
+	"default:desert_stone", nil, "stairs:stair_desert_stone")
 
 add_biome("desert_ocean", -192, 3, 35, 20, ethereal.desert,
-	nil, "default:sand", 1, "default:sand", 2, tmp)
+	nil, "default:sand", 1, "default:sand", 2, tmp,
+	"default:desert_stone", nil, "stairs:stair_desert_stone")
 
 
 add_biome("bamboo", 25, 70, 45, 75, ethereal.bamboo,
@@ -161,10 +167,12 @@ add_biome("mushroom_ocean", -192, 2, 45, 55, ethereal.mushroom,
 
 
 add_biome("sandstone", 3, 23, 50, 20, ethereal.sandstone,
-	nil, "default:sandstone", 1, "default:sandstone", 1, "default:sandstone")
+	nil, "default:sandstone", 1, "default:sandstone", 1, "default:sandstone",
+	"default:sandstone", nil, "stairs:stair_sandstone")
 
 add_biome("sandstone_ocean", -192, 2, 50, 20, ethereal.sandstone,
-	nil, "default:sand", 1, "default:sand", 2)
+	nil, "default:sand", 1, "default:sand", 2, "default:sandstone",
+	"default:sandstone", nil, "stairs:stair_sandstone")
 
 
 add_biome("quicksand", 1, 1, 50, 38, ethereal.quicksand,
@@ -225,6 +233,8 @@ if ethereal.glacier == 1 then
 		node_river_water = "default:ice",
 		node_riverbed = "default:gravel",
 		depth_riverbed = 2,
+		node_dungeon = "default:ice",
+		node_dungeon_stair = "stairs:stair_ice",
 		y_min = -8,
 		y_max = 31000,
 		heat_point = 0,
