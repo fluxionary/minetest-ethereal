@@ -53,6 +53,7 @@ local add_ore = function(a, b, c, d, e, f, g)
 	})
 end
 
+
 -- Coal
 add_ore("default:stone_with_coal", "default:desert_stone", 24*24*24, 27, 6, -31000, -16)
 

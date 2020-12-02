@@ -4,6 +4,12 @@ local S = ethereal.intllib
 -- Stairs Redo
 if stairs and stairs.mod and stairs.mod == "redo" then
 
+stairs.register_all("blue_marble_tile", "ethereal:blue_marble_tile",
+	{cracky = 1},
+	{"ethereal_blue_marble_tile.png"},
+	S("Blue Marble Tile"),
+	default.node_sound_stone_defaults())
+
 stairs.register_all("crystal_block", "ethereal:crystal_block",
 	{cracky = 1, level = 2, puts_out_fire = 1, cools_lava = 1},
 	{"crystal_block.png"},
@@ -15,7 +21,7 @@ stairs.register_all("icebrick", "ethereal:icebrick",
 	{"brick_ice.png"},
 	S("Ice Brick"),
 	default.node_sound_glass_defaults())
-		
+
 stairs.register_all("snowbrick", "ethereal:snowbrick",
 	{crumbly = 3, puts_out_fire = 1, cools_lava = 1},
 	{"brick_snow.png"},
@@ -99,6 +105,13 @@ stairs.register_all("sakura_wood", "ethereal:sakura_wood",
 
 -- Stairs Plus (in More Blocks)
 elseif minetest.global_exists("stairsplus") then
+
+stairsplus:register_all("ethereal", "blue_marble_tile", "ethereal:blue_marble_tile", {
+	description = S("Blue Marble Tile"),
+	tiles = {"ethereal_blue_marble_tile.png"},
+	groups = {cracky = 1},
+	sounds = default.node_sound_stone_defaults(),
+})
 
 stairsplus:register_all("ethereal", "crystal_block", "ethereal:crystal_block", {
 	description = S("Crystal block"),
@@ -211,6 +224,13 @@ stairsplus:register_all("ethereal", "sakura_wood", "ethereal:sakura_wood", {
 -- Default Stairs
 else
 
+stairs.register_stair_and_slab("blue_marble_tile", "ethereal:blue_marble_tile",
+	{cracky = 1},
+	{"ethereal_blue_marble_tile.png"},
+	S("Blue Marble Tile Stair"),
+	S("Blue Marble Tile Slab"),
+	default.node_sound_stone_defaults())
+
 stairs.register_stair_and_slab("crystal_block", "ethereal:crystal_block",
 	{cracky = 1, level = 2, puts_out_fire = 1, cools_lava = 1},
 	{"crystal_block.png"},
@@ -224,7 +244,7 @@ stairs.register_stair_and_slab("icebrick", "ethereal:icebrick",
 	S("Ice Brick Stair"),
 	S("Ice Brick Slab"),
 	default.node_sound_glass_defaults())
-		
+
 stairs.register_stair_and_slab("snowbrick", "ethereal:snowbrick",
 	{crumbly = 3, puts_out_fire = 1, cools_lava = 1},
 	{"brick_snow.png"},

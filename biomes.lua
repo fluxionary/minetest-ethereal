@@ -4,6 +4,34 @@ minetest.clear_registered_biomes()
 minetest.clear_registered_decorations()
 --minetest.clear_registered_ores()
 
+local S = ethereal.intllib
+
+
+-- Blue Marble Nodes
+minetest.register_node("ethereal:blue_marble", {
+	description = S("Blue Marble"),
+	tiles = {"ethereal_blue_marble.png"},
+	groups = {cracky = 1, stone = 1},
+	sounds = default.node_sound_stone_defaults(),
+})
+
+minetest.register_node("ethereal:blue_marble_tile", {
+	description = S("Blue Marble Tile"),
+	tiles = {"ethereal_blue_marble_tile.png"},
+	groups = {cracky = 1, stone = 1},
+	sounds = default.node_sound_stone_defaults(),
+})
+
+minetest.register_craft({
+	output = "ethereal:blue_marble_tile 9",
+	recipe = {
+		{"ethereal:blue_marble", "ethereal:blue_marble", "ethereal:blue_marble"},
+		{"ethereal:blue_marble", "ethereal:blue_marble", "ethereal:blue_marble"},
+		{"ethereal:blue_marble", "ethereal:blue_marble", "ethereal:blue_marble"},
+	}
+})
+
+
 -- helper strings
 local tmp, tmp2
 
@@ -115,8 +143,11 @@ end
 add_biome("grayness", 2, 41, 15, 30, ethereal.grayness,
 	nil, "ethereal:gray_dirt", 1, "default:dirt", 3)
 
-add_biome("grayness_ocean", -192, 1, 15, 30, ethereal.grayness,
-	nil, tmp, 2, "default:sand", 2)
+--add_biome("grayness_ocean", -192, 1, 15, 30, ethereal.grayness,
+--	nil, tmp, 2, "default:sand", 2)
+
+add_biome("grayness_ocean", -28, 1, 15, 30, ethereal.grayness,
+	nil, tmp, 2, "default:sand", 2, "ethereal:blue_marble")
 
 
 add_biome("grassytwo", 1, 91, 15, 40, ethereal.grassytwo,

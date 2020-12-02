@@ -6,7 +6,7 @@ Ethereal Mapgen mod for Minetest (works on all except v6)
 - https://forum.minetest.net/viewtopic.php?f=11&t=14638
 
 ## Lucky Blocks
-42
+45
 
 ## Changelog
 
@@ -19,6 +19,7 @@ Ethereal Mapgen mod for Minetest (works on all except v6)
  - Use default grass abms
  - Split and re-write mapgen files for tidier generation
  - Giant Mushroom tops now decay when trunk removed
+ - Added Blue Marble to grey biomes and Blue Marble Tile recipe
 
 ### 1.26
 
