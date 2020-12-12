@@ -23,6 +23,8 @@ dofile(path .. "redwood_tree.lua")
 dofile(path .. "vinetree.lua")
 dofile(path .. "sakura.lua")
 dofile(path .. "igloo.lua")
+dofile(path .. "lemon_tree.lua")
+dofile(path .. "olive_tree.lua")
 
 
 -- helper function
@@ -148,6 +150,14 @@ add_schem({"ethereal:bamboo_dirt"}, 0.08, {"bamboo"}, 1, 100, ethereal.bush,
 -- vine tree
 add_schem({"default:dirt_with_grass"}, 0.02, {"swamp"}, 1, 100,
 	ethereal.vinetree, ethereal.swamp)
+
+-- lemon tree
+add_schem({"ethereal:grove_dirt"}, 0.002, {"mediterranean"}, 5, 50,
+	ethereal.lemontree, ethereal.mediterranean)
+
+-- olive tree
+add_schem({"ethereal:grove_dirt"}, 0.002, {"mediterranean"}, 5, 35,
+	ethereal.olivetree, ethereal.mediterranean)
 
 
 -- default large cactus

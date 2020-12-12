@@ -103,6 +103,13 @@ stairs.register_all("sakura_wood", "ethereal:sakura_wood",
 	S("Sakura Wood"),
 	default.node_sound_wood_defaults())
 
+stairs.register_all("olive_wood", "ethereal:olive_wood",
+	{choppy = 2, oddly_breakable_by_hand = 1, flammable = 3},
+	{"olive_wood.png"},
+	S("Olive Wood stair"),
+	S("Olive Wood Slab"),
+	default.node_sound_wood_defaults())
+
 -- Stairs Plus (in More Blocks)
 elseif minetest.global_exists("stairsplus") then
 
@@ -217,6 +224,13 @@ stairsplus:register_all("ethereal", "bamboo_wood", "ethereal:bamboo_block", {
 stairsplus:register_all("ethereal", "sakura_wood", "ethereal:sakura_wood", {
 	description = S("Sakura"),
 	tiles = {"ethereal_sakura_wood.png"},
+	groups = {choppy = 2, oddly_breakable_by_hand = 1, flammable = 3},
+	sounds = default.node_sound_wood_defaults(),
+})
+
+stairsplus:register_all("ethereal", "olive_wood", "ethereal:olive_wood", {
+	description = S("Olive"),
+	tiles = {"olive_wood.png"},
 	groups = {choppy = 2, oddly_breakable_by_hand = 1, flammable = 3},
 	sounds = default.node_sound_wood_defaults(),
 })
@@ -339,4 +353,12 @@ stairs.register_stair_and_slab("sakura_wood", "ethereal:sakura_wood",
 	S("Sakura Wood Stair"),
 	S("Sakura Wood Slab"),
 	default.node_sound_wood_defaults())
+
+stairs.register_stair_and_slab("olive_wood", "ethereal:olive_wood",
+	{choppy = 2, oddly_breakable_by_hand = 1, flammable = 3},
+	{"olive_wood.png"},
+	S("Olive Wood Stair"),
+	S("Olive Wood Slab"),
+	default.node_sound_wood_defaults())
+
 end

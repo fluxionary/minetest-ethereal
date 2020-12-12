@@ -40,3 +40,4 @@ ethereal.swamp     = 1 -- Swamp areas with vines on tree's, mushrooms, lilly's a
 ethereal.sealife   = 1 -- Enable coral and seaweed
 ethereal.reefs     = 1 -- Enable new coral reefs in default
 ethereal.sakura    = 1 -- Enable sakura biomes with trees
+ethereal.mediterranean = 1 -- Enable Mediterranean biome

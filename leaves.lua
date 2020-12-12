@@ -325,6 +325,52 @@ minetest.register_node("ethereal:sakura_leaves2", {
 	after_place_node = default.after_place_leaves,
 })
 
+-- lemon tree leaves
+minetest.register_node("ethereal:lemon_leaves", {
+	description = S("Lemon Tree Leaves"),
+	drawtype = leaftype,
+	visual_scale = leafscale,
+	tiles = {"lemon_leaves.png"},
+	inventory_image = "lemon_leaves.png",
+	wield_image = "lemon_leaves.png",
+	paramtype = "light",
+	walkable = ethereal.leafwalk,
+	waving = 1,
+	groups = {snappy = 3, leafdecay = 3, leaves = 1, flammable = 2},
+	drop = {
+		max_items = 1,
+		items = {
+			{items = {"ethereal:lemon_tree_sapling"}, rarity = 25},
+			{items = {"ethereal:lemon_leaves"}}
+		}
+	},
+	sounds = default.node_sound_leaves_defaults(),
+	after_place_node = default.after_place_leaves,
+})
+
+-- olive tree leaves
+minetest.register_node("ethereal:olive_leaves", {
+	description = S("Olive Tree Leaves"),
+	drawtype = leaftype,
+	visual_scale = leafscale,
+	tiles = {"olive_leaves.png"},
+	inventory_image = "olive_leaves.png",
+	wield_image = "olive_leaves.png",
+	paramtype = "light",
+	walkable = ethereal.leafwalk,
+	waving = 1,
+	groups = {snappy = 3, leafdecay = 3, leaves = 1, flammable = 2},
+	drop = {
+		max_items = 1,
+		items = {
+			{items = {"ethereal:olive_tree_sapling"}, rarity = 25},
+			{items = {"ethereal:olive_leaves"}}
+		}
+	},
+	sounds = default.node_sound_leaves_defaults(),
+	after_place_node = default.after_place_leaves,
+})
+
 -- mushroom tops
 minetest.register_node("ethereal:mushroom", {
 	description = S("Mushroom Cap"),
@@ -446,8 +492,11 @@ if minetest.registered_nodes["default:dirt_with_rainforest_litter"] then
 default.register_leafdecay({
 	trunks = {"default:tree"},
 	leaves = {
-		"default:apple", "default:leaves", "ethereal:orange",
-		"ethereal:orange_leaves", "ethereal:vine"},
+		"default:apple", "default:leaves",
+		"ethereal:orange", "ethereal:orange_leaves",
+		"ethereal:lemon", "ethereal:lemon_leaves",
+		"ethereal:vine"
+	},
 	radius = 3
 })
 
@@ -502,6 +551,12 @@ default.register_leafdecay({
 default.register_leafdecay({
 	trunks = {"ethereal:sakura_trunk"},
 	leaves = {"ethereal:sakura_leaves", "ethereal:sakura_leaves2"},
+	radius = 3
+})
+
+default.register_leafdecay({
+	trunks = {"ethereal:olive_trunk"},
+	leaves = {"ethereal:olive_leaves", "ethereal:olive"},
 	radius = 3
 })
 

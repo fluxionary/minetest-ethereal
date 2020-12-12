@@ -255,6 +255,10 @@ add_node({"ethereal:grove_dirt"}, 0.35, {"grove"}, 1, 100,
 	{"default:grass_2", "default:grass_3", "default:grass_4",
 	"default:grass_5"}, nil, nil, nil, ethereal.grove)
 
+add_node({"ethereal:grove_dirt"}, 0.35, {"mediterranean"}, 1, 100,
+	{"default:grass_2", "default:grass_3", "default:grass_4",
+	"default:grass_5"}, nil, nil, nil, ethereal.mediterranean)
+
 add_node({"ethereal:bamboo_dirt"}, 0.35, {"bamboo"}, 1, 100,
 	{"default:grass_2", "default:grass_3", "default:grass_4",
 	"default:grass_5"}, nil, nil, nil, ethereal.bamboo)

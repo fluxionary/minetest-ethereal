@@ -48,6 +48,7 @@ ethereal = {
 	reefs = minetest.settings:get('ethereal.reefs') or 1,
 	sakura = minetest.settings:get('ethereal.sakura') or 1,
 	tundra = minetest.settings:get('ethereal.tundra') or 1,
+	mediterranean = minetest.settings:get('ethereal.mediterranean') or 1
 }
 
 local path = minetest.get_modpath("ethereal")

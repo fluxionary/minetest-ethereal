@@ -272,3 +272,102 @@ minetest.register_craft({
 	},
 })
 end
+
+
+-- Lemon
+minetest.register_node("ethereal:lemon", {
+	description = S("Lemon"),
+	drawtype = "plantlike",
+	tiles = {"lemon.png"},
+	inventory_image = "lemon_fruit.png",
+	wield_image = "lemon_fruit.png",
+	paramtype = "light",
+	sunlight_propagates = true,
+	walkable = false,
+	selection_box = {
+		type = "fixed",
+		fixed = {-0.27, -0.37, -0.27, 0.27, 0.44, 0.27}
+	},
+	groups = {
+		food_lemon = 1, fleshy = 3, dig_immediate = 3, flammable = 2,
+		leafdecay = 3, leafdecay_drop = 1
+	},
+	drop = "ethereal:lemon",
+	on_use = minetest.item_eat(3),
+	sounds = default.node_sound_leaves_defaults(),
+	after_place_node = function(pos, placer)
+		if placer:is_player() then
+			minetest.set_node(pos, {name = "ethereal:lemon", param2 = 1})
+		end
+	end,
+})
+
+-- Candied Lemon
+minetest.register_craftitem("ethereal:candied_lemon", {
+	description = S("Candied Lemon"),
+	inventory_image = "ethereal_candied_lemon.png",
+	wield_image = "ethereal_candied_lemon.png",
+	groups = {food_candied_lemon = 1},
+	on_use = minetest.item_eat(5),
+})
+
+minetest.register_craft({
+	type = "shapeless",
+	output = "ethereal:candied_lemon",
+	recipe = {
+		"farming:baking_tray", "ethereal:lemon", "group:food_sugar"
+	},
+	replacements = {
+		{"farming:baking_tray", "farming:baking_tray"}
+	},
+})
+
+-- Olive
+minetest.register_node("ethereal:olive", {
+	description = S("Olive"),
+	drawtype = "plantlike",
+	tiles = {"olive.png"},
+	inventory_image = "olive_fruit.png",
+	wield_image = "olive_fruit.png",
+	visual_scale = 0.2,
+	paramtype = "light",
+	sunlight_propagates = true,
+	walkable = false,
+	selection_box = {
+		type = "fixed",
+		fixed = {-0.1, -0.5, -0.1, 0.1, -0.3, 0.1}
+	},
+	groups = {
+		fleshy = 3, dig_immediate = 3, flammable = 2,
+		leafdecay = 3, leafdecay_drop = 1
+	},
+	drop = "ethereal:olive",
+	on_use = minetest.item_eat(1),
+	sounds = default.node_sound_leaves_defaults(),
+	after_place_node = function(pos, placer)
+		if placer:is_player() then
+			minetest.set_node(pos, {name = "ethereal:olive", param2 = 1})
+		end
+	end,
+})
+
+-- Olive Oil
+minetest.register_craftitem("ethereal:olive_oil", {
+	description = S("Olive Oil"),
+	inventory_image = "ethereal_olive_oil.png",
+	wield_image = "ethereal_olive_oil.png",
+	groups = {food_oil = 1, food_olive_oil = 1, vessel = 1},
+})
+
+minetest.register_craft({
+	type = "shapeless",
+	output = "ethereal:olive_oil",
+	recipe = {
+		"farming:juicer", "vessels:glass_bottle",
+		"ethereal:olive", "ethereal:olive", "ethereal:olive",
+		"ethereal:olive", "ethereal:olive", "ethereal:olive"
+	},
+	replacements = {
+		{"farming:juicer", "farming:juicer"}
+	},
+})

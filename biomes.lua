@@ -143,9 +143,6 @@ end
 add_biome("grayness", 2, 41, 15, 30, ethereal.grayness,
 	nil, "ethereal:gray_dirt", 1, "default:dirt", 3)
 
---add_biome("grayness_ocean", -192, 1, 15, 30, ethereal.grayness,
---	nil, tmp, 2, "default:sand", 2)
-
 add_biome("grayness_ocean", -28, 1, 15, 30, ethereal.grayness,
 	nil, tmp, 2, "default:sand", 2, "ethereal:blue_marble")
 
@@ -188,6 +185,10 @@ add_biome("grove", 3, 23, 45, 35, ethereal.grove,
 
 add_biome("grove_ocean", -192, 2, 45, 35, ethereal.grove,
 	nil, "default:sand", 1, "default:sand", 2)
+
+
+add_biome("mediterranean", 3, 50, 20, 45, ethereal.mediterranean,
+	nil, "ethereal:grove_dirt", 1, "default:dirt", 3)
 
 
 add_biome("mushroom", 3, 50, 45, 55, ethereal.mushroom,

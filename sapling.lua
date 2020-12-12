@@ -61,6 +61,9 @@ register_sapling("ethereal:redwood", "Redwood", "redwood_sapling", 31)
 register_sapling("ethereal:orange_tree", "Orange", "orange_tree_sapling", 6)
 register_sapling("ethereal:birch", "Birch", "moretrees_birch_sapling", 7)
 register_sapling("ethereal:sakura", "Sakura", "ethereal_sakura_sapling", 10)
+register_sapling("ethereal:lemon_tree", "Lemon", "lemon_tree_sapling", 7)
+register_sapling("ethereal:olive_tree", "Olive", "olive_tree_sapling", 10)
+
 
 local add_tree = function (pos, ofx, ofy, ofz, schem, replace)
 	-- check for schematic
@@ -135,6 +138,14 @@ function ethereal.grow_sakura_tree(pos)
 	else
 		add_tree(pos, 4, 0, 3, ethereal.sakura_tree)
 	end
+end
+
+function ethereal.grow_lemon_tree(pos)
+	add_tree(pos, 2, 0, 2, ethereal.lemontree)
+end
+
+function ethereal.grow_olive_tree(pos)
+	add_tree(pos, 3, 0, 3, ethereal.olivetree)
 end
 
 -- check if sapling has enough height room to grow
@@ -218,6 +229,14 @@ local grow_sapling = function(pos, node)
 	elseif node.name == "ethereal:sakura_sapling"
 	and under == "ethereal:bamboo_dirt" then
 		ethereal.grow_sakura_tree(pos)
+
+	elseif node.name == "ethereal:olive_tree_sapling"
+	and under == "ethereal:grove_dirt" then
+		ethereal.grow_olive_tree(pos)
+
+	elseif node.name == "ethereal:lemon_tree_sapling"
+	and under == "ethereal:grove_dirt" then
+		ethereal.grow_lemon_tree(pos)
 	end
 end
 
