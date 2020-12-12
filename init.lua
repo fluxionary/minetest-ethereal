@@ -11,7 +11,7 @@
  -- DO NOT change settings below, use the settings.conf file instead
 ethereal = {
 
-	version = "1.27",
+	version = "1.28",
 	leaftype = minetest.settings:get('ethereal.leaftype') or 0,
 	leafwalk = minetest.settings:get_bool('ethereal.leafwalk', false),
 	cavedirt = minetest.settings:get_bool('ethereal.cavedirt', true),

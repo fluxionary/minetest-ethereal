@@ -106,8 +106,7 @@ stairs.register_all("sakura_wood", "ethereal:sakura_wood",
 stairs.register_all("olive_wood", "ethereal:olive_wood",
 	{choppy = 2, oddly_breakable_by_hand = 1, flammable = 3},
 	{"olive_wood.png"},
-	S("Olive Wood stair"),
-	S("Olive Wood Slab"),
+	S("Olive Wood"),
 	default.node_sound_wood_defaults())
 
 -- Stairs Plus (in More Blocks)
