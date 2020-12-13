@@ -326,19 +326,19 @@ add_node({"ethereal:jungle_dirt", "default:dirt_with_rainforest_litter"},
 
 -- carrot, cucumber, potato, tomato, corn, coffee, raspberry, rhubarb
 add_node({"default:dirt_with_grass"}, 0.05, {"grassytwo"}, 1, 100,
-	{"farming:carrot_7", "farming:cucumber_4", "farming:potato_3",
+	{"farming:carrot_7", "farming:cucumber_4", "farming:potato_3", "farming:vanilla_7",
 	"farming:tomato_7", "farming:corn_8", "farming:coffee_5", "farming:blackberry_4",
 	"farming:raspberry_4", "farming:rhubarb_3", "farming:blueberry_4",
 	"farming:cabbage_6", "farming:lettuce_5"}, nil, nil, nil, ethereal.grassytwo)
 
 add_node({"default:dirt_with_grass"}, 0.05, {"grassy"}, 1, 100,
-	{"farming:carrot_7", "farming:cucumber_4", "farming:potato_3",
+	{"farming:carrot_7", "farming:cucumber_4", "farming:potato_3", "farming:vanilla_7",
 	"farming:tomato_7", "farming:corn_8", "farming:coffee_5", "farming:blackberry_4",
 	"farming:raspberry_4", "farming:rhubarb_3", "farming:blueberry_4",
 	"farming:beetroot_5"}, nil, nil, nil, ethereal.grassy)
 
 add_node({"default:dirt_with_grass"}, 0.05, {"jumble"}, 1, 100,
-	{"farming:carrot_7", "farming:cucumber_4", "farming:potato_3",
+	{"farming:carrot_7", "farming:cucumber_4", "farming:potato_3", "farming:vanilla_7",
 	"farming:tomato_7", "farming:corn_8", "farming:coffee_5", "farming:blackberry_4",
 	"farming:raspberry_4", "farming:rhubarb_3", "farming:blueberry_4",
 	"farming:cabbage_6", "farming:lettuce_5"}, nil, nil, nil, ethereal.jumble)
@@ -402,7 +402,7 @@ minetest.register_decoration({
 	y_max = 35,
 	decoration = {
 		"farming:chili_8", "farming:garlic_5", "farming:pepper_5", "farming:pepper_6",
-		"farming:onion_5", "farming:hemp_7", "farming:pepper_7",
+		"farming:onion_5", "farming:hemp_7", "farming:pepper_7", "farming:soy_5"
 	},
 	spawn_by = "group:tree",
 	num_spawn_by = 1,
@@ -422,7 +422,7 @@ minetest.register_decoration({
 	},
 	y_min = 18,
 	y_max = 30,
-	decoration = {"farming:pineapple_8"},
+	decoration = {"farming:pineapple_8", "farming:soy_5"},
 })
 end
 
