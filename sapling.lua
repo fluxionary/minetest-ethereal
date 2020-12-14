@@ -120,7 +120,7 @@ function ethereal.grow_redwood_tree(pos)
 end
 
 function ethereal.grow_orange_tree(pos)
-	add_tree(pos, 1, 0, 1, ethereal.orangetree)
+	add_tree(pos, 2, 0, 2, ethereal.orangetree)
 end
 
 function ethereal.grow_bamboo_tree(pos)
