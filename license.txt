@@ -25,5 +25,8 @@ Textures by Felfa (CC0)
    olive*.png
    lemon*.png
 
+Free texture from JMArtsDesign edited by myself:
+   ethereal_lemonade.png
+
 Notice: Most texture authors are written inside code as comments, anything with no name
 I have more than likely created myself :)

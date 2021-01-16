@@ -15,6 +15,7 @@ Ethereal Mapgen mod for Minetest (works on all except v6)
  - Added new Meditteranean biome with Lemon and Olive trees (thanks Felfa)
  - Added Candied Lemon and Olive Oil items and recipe
  - Rewrite stairs and add auto-select function
+ - Added Lemonade
 
 ### 1.27
 
