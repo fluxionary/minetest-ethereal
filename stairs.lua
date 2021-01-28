@@ -33,6 +33,14 @@ end
 -- Register Stairs (stair mod will be auto-selected)
 
 do_stair(
+	"Blue Marble",
+	"blue_marble",
+	"ethereal:blue_marble",
+	{cracky = 1},
+	{"ethereal_blue_marble.png"},
+	default.node_sound_stone_defaults())
+
+do_stair(
 	"Blue Marble Tile",
 	"blue_marble_tile",
 	"ethereal:blue_marble_tile",
