@@ -16,6 +16,7 @@ Ethereal Mapgen mod for Minetest (works on all except v6)
  - Added Candied Lemon and Olive Oil items and recipe
  - Rewrite stairs and add auto-select function
  - Added Lemonade
+ - Added smaller redwood trees, to grow large variety 2 saplings required
 
 ### 1.27
 

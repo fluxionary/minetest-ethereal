@@ -116,7 +116,11 @@ function ethereal.grow_willow_tree(pos)
 end
 
 function ethereal.grow_redwood_tree(pos)
-	add_tree(pos, 7, 0, 7, ethereal.redwood_tree)
+	if minetest.find_node_near(pos, 1, "ethereal:redwood_sapling") then
+		add_tree(pos, 7, 0, 7, ethereal.redwood_tree)
+	else
+		add_tree(pos, 4, 0, 4, ethereal.redwood_small_tree)
+	end
 end
 
 function ethereal.grow_orange_tree(pos)
