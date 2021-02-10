@@ -19,6 +19,7 @@ ethereal = {
 	papyruswalk = minetest.settings:get_bool('ethereal.papyruswalk', true),
 	lilywalk = minetest.settings:get_bool('ethereal.lilywalk', true),
 	xcraft = minetest.settings:get_bool('ethereal.xcraft', true),
+	flight = minetest.settings:get_bool('ethereal.flight', true),
 
 	glacier = minetest.settings:get('ethereal.glacier') or 1,
 	bamboo = minetest.settings:get('ethereal.bamboo') or 1,
@@ -108,6 +109,10 @@ dofile(path .. "/decor.lua")
 dofile(path .. "/compatibility.lua")
 dofile(path .. "/stairs.lua")
 dofile(path .. "/lucky_block.lua")
+
+if ethereal.flight then
+	dofile(path .. "/flight.lua")
+end
 
 -- Set bonemeal aliases
 if minetest.get_modpath("bonemeal") then

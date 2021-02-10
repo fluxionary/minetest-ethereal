@@ -6,7 +6,7 @@ Ethereal Mapgen mod for Minetest (works on all except v6)
 - https://forum.minetest.net/viewtopic.php?f=11&t=14638
 
 ## Lucky Blocks
-45
+46
 
 ## Changelog
 
@@ -17,6 +17,7 @@ Ethereal Mapgen mod for Minetest (works on all except v6)
  - Rewrite stairs and add auto-select function
  - Added Lemonade
  - Added smaller redwood trees, to grow large variety 2 saplings required
+ - Added Flight Potion (etherium dust arch, fire dust middle, empty bottle bottom)
 
 ### 1.27
 
