@@ -61,7 +61,7 @@ minetest.register_on_joinplayer(function(player)
 
 	if privs.fly then
 
-		local timer = tonumber(meta:get_string("ethereal:fly_timer"))
+		local timer = tonumber(meta:get_string("ethereal:fly_timer")) or 0
 
 		if timer <= 0 then
 			set_flight(player, nil)
