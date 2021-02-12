@@ -11,7 +11,7 @@ ethereal.torchdrop = true -- torches drop when touching water
 ethereal.papyruswalk = true -- papyrus can be walked on
 ethereal.lilywalk = true -- waterlilies can be walked on
 ethereal.xcraft = true -- allow cheat crafts for cobble->gravel->dirt->sand, ice->snow, dry dirt->desert sand
-ethereal.flight = true -- allow flight potion recipe
+ethereal.flight = true -- enable flight potion
 
 -- Set following to 1 to enable biome or false to disable
 ethereal.glacier   = 1 -- Ice glaciers with snow
