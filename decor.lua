@@ -344,10 +344,13 @@ add_node({"default:dirt_with_grass"}, 0.05, {"jumble"}, 1, 100,
 	"farming:cabbage_6", "farming:lettuce_5"}, nil, nil, nil, ethereal.jumble)
 
 add_node({"ethereal:prairie_dirt"}, 0.05, {"prairie"}, 1, 100,
-	{"farming:carrot_7", "farming:cucumber_4", "farming:potato_3",
+	{"farming:carrot_7", "farming:cucumber_4", "farming:potato_3", "farming:parsley_3",
 	"farming:tomato_7", "farming:corn_8", "farming:coffee_5", "farming:blackberry_4",
 	"farming:raspberry_4", "farming:rhubarb_3", "farming:blueberry_4",
 	"farming:pea_5", "farming:beetroot_5"}, nil, nil, nil, ethereal.prairie)
+
+add_node({"ethereal:grove_dirt"}, 0.025, {"mediterranean"}, 1, 100,
+	{"farming:parsley_3"}, nil, nil, nil, ethereal.mediterranean)
 
 -- melon and pumpkin
 add_node({"ethereal:jungle_dirt", "default:dirt_with_rainforest_litter"},
@@ -423,6 +426,25 @@ minetest.register_decoration({
 	y_min = 18,
 	y_max = 30,
 	decoration = {"farming:pineapple_8", "farming:soy_5"},
+})
+
+minetest.register_decoration({
+	deco_type = "simple",
+	place_on = {"ethereal:grove_dirt"},
+	sidelen = 16,
+	noise_params = {
+		offset = 0,
+		scale = 0.06,
+		spread = {x = 100, y = 100, z = 100},
+		seed = 448,
+		octaves = 3,
+		persist = 0.6
+	},
+	y_min = 15,
+	y_max = 40,
+	decoration = {"farming:artichoke_5"},
+	spawn_by = "group:tree",
+	num_spawn_by = 1,
 })
 end
 
