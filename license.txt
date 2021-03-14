@@ -22,11 +22,27 @@ THE SOFTWARE.
 
 
 Textures by Felfa (CC0)
-   olive*.png
-   lemon*.png
+  olive*.png
+  lemon*.png
 
-Free texture from JMArtsDesign edited by myself:
-   ethereal_lemonade.png
+Free textures from JMArtsDesign edited by myself:
+  ethereal_lemonade.png
+
+Free textures from Altairas on DeviantArt
+  ethereal_fish_chichlid.png
+  ethereal_fish_cooked.png
+
+Free textures from epicwannehz on DeviantArt
+  ethereal_fish_bluefin.png
+  ethereal_fish_blueram.png
+  ethereal_fish_catfish.png
+  ethereal_fish_clownfish.png
+  ethereal_fish_flathead.png
+  ethereal_fish_pike.png
+  ethereal_fish_plaice.png
+  ethereal_fish_pufferfish.png
+  ethereal_fish_redsnapper.png
+  ethereal_fish_salmon.png
 
 Notice: Most texture authors are written inside code as comments, anything with no name
 I have more than likely created myself :)

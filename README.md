@@ -18,6 +18,7 @@ Ethereal Mapgen mod for Minetest (works on all except v6)
  - Added Lemonade
  - Added smaller redwood trees, to grow large variety 2 saplings required
  - Added Flight Potion (etherium dust arch, fire dust middle, empty bottle bottom)
+ - Added new Fishing mechanics (inspired by Rootyjr's on mineclone2)
 
 ### 1.27
 
