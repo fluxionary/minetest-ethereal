@@ -471,6 +471,7 @@ minetest.register_craft({
 
 -- compatibility
 minetest.register_alias("ethereal:fish_raw", "ethereal:fish_chichlid")
+minetest.register_alias("ethereal:fishing_rod_baited", "ethereal:fishing_rod")
 
 
 -- Sashimi (Thanks to Natalia Grosner for letting me use the sashimi image)
