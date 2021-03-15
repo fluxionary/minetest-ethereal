@@ -57,6 +57,7 @@ ethereal.add_item = function(fish, junk, bonus)
 end
 
 
+-- fishing bob entity that is thrown into water
 minetest.register_entity("ethereal:prebob_entity", {
 
 	textures = {"ethereal_fishing_bob.png"},
@@ -119,102 +120,7 @@ minetest.register_entity("ethereal:prebob_entity", {
 })
 
 
-local use_rod = function(itemstack, player, pointed_thing)
-
-	local pos = player:get_pos()
-	local objs = minetest.get_objects_inside_radius(pos, 25)
-	local found = true
-	local ent
-
-	-- loop through entities and look for bobs
-	for n = 1, #objs do
-
-		ent = objs[n]:get_luaentity()
-
-		if ent
-		and ent.fisher
-		and (ent.name == "ethereal:prebob_entity" or ent.name == "ethereal:bob_entity")
-		and player:get_player_name() == ent.fisher then
-
-			found = false
-
-			if ent.bob == true then
-
-				local item
-				local r = random(100)
-
-				if r < 80 then
-
-					item = fish_items[random(#fish_items)]
-
-				elseif r > 80 and r < 96 then
-
-					item = junk_items[random(#junk_items)]
-
-				else
-
-					item = bonus_items[random(#bonus_items)]
-				end
-
-				-- make sure item exists, if not replace with default item
-				if not minetest.registered_items[item] then
-					item = default_item
-				end
-
---print ("---caught", item, r)
-
-				item = ItemStack(item)
-
-				local inv = player:get_inventory()
-
-				if inv:room_for_item("main", item) then
-					inv:add_item("main", item)
-				else
-					minetest.add_item(pos, item)
-				end
-			end
-
-			ent.object:remove()
-
-			return itemstack
-		end
-	end
-
-	-- loop through entities and look for bobs
-	for n = 1, #objs do
-
-		ent = objs[n]:get_luaentity()
-
-		if ent
-		and ent.fisher
-		and (ent.name == "ethereal:prebob_entity" or ent.name == "ethereal:bob_entity")
-		and player:get_player_name() == ent.fisher then
-
-			found = false
-
-			break
-		end
-	end
-
-	if found == true then
-
-		local playerpos = player:get_pos()
-		local dir = player:get_look_dir()
-		local pos = {x = playerpos.x, y = playerpos.y + 1.5, z = playerpos.z}
-
-		minetest.sound_play("default_dig_crumbly",
-			{pos = pos, gain = 0.4, max_hear_distance = 16}, true)
-
-		-- place actual bob
-		local obj = minetest.add_entity(pos, "ethereal:prebob_entity")
-
-		obj:set_velocity({x = dir.x * 8, y = dir.y * 8, z = dir.z * 8})
-		obj:set_acceleration({x = dir.x * -3, y = -9.8, z = dir.z * -3})
-		obj:get_luaentity().fisher = player and player:get_player_name()
-	end
-end
-
-
+-- fishing bob entity that moves from time to time
 minetest.register_entity("ethereal:bob_entity", {
 
 	textures = {"ethereal_fishing_bob.png"},
@@ -364,6 +270,104 @@ minetest.register_entity("ethereal:bob_entity", {
 })
 
 
+-- fishing rod function that throws pre bob, places bob and catches fish when it moves
+local use_rod = function(itemstack, player, pointed_thing)
+
+	local pos = player:get_pos()
+	local objs = minetest.get_objects_inside_radius(pos, 25)
+	local found = true
+	local ent
+
+	-- loop through entities and look for bobs
+	for n = 1, #objs do
+
+		ent = objs[n]:get_luaentity()
+
+		if ent
+		and ent.fisher
+		and (ent.name == "ethereal:prebob_entity" or ent.name == "ethereal:bob_entity")
+		and player:get_player_name() == ent.fisher then
+
+			found = false
+
+			if ent.bob == true then
+
+				local item
+				local r = random(100)
+
+				if r < 86 then
+
+					item = fish_items[random(#fish_items)]
+
+				elseif r > 85 and r < 96 then
+
+					item = junk_items[random(#junk_items)]
+
+				else
+
+					item = bonus_items[random(#bonus_items)]
+				end
+
+				-- make sure item exists, if not replace with default item
+				if not minetest.registered_items[item] then
+					item = default_item
+				end
+
+--print ("---caught", item, r)
+
+				item = ItemStack(item)
+
+				local inv = player:get_inventory()
+
+				if inv:room_for_item("main", item) then
+					inv:add_item("main", item)
+				else
+					minetest.add_item(pos, item)
+				end
+			end
+
+			ent.object:remove()
+
+			return itemstack
+		end
+	end
+
+	-- loop through entities and look for bobs
+	for n = 1, #objs do
+
+		ent = objs[n]:get_luaentity()
+
+		if ent
+		and ent.fisher
+		and (ent.name == "ethereal:prebob_entity" or ent.name == "ethereal:bob_entity")
+		and player:get_player_name() == ent.fisher then
+
+			found = false
+
+			break
+		end
+	end
+
+	if found == true then
+
+		local playerpos = player:get_pos()
+		local dir = player:get_look_dir()
+		local pos = {x = playerpos.x, y = playerpos.y + 1.5, z = playerpos.z}
+
+		minetest.sound_play("default_dig_crumbly",
+			{pos = pos, gain = 0.4, max_hear_distance = 16}, true)
+
+		-- place actual bob
+		local obj = minetest.add_entity(pos, "ethereal:prebob_entity")
+
+		obj:set_velocity({x = dir.x * 8, y = dir.y * 8, z = dir.z * 8})
+		obj:set_acceleration({x = dir.x * -3, y = -9.8, z = dir.z * -3})
+		obj:get_luaentity().fisher = player and player:get_player_name()
+	end
+end
+
+
+-- scan area for bobs that belong to player and remove
 local remove_bob = function(player)
 
 	local objs = minetest.get_objects_inside_radius(player:get_pos(), 25)
@@ -422,7 +426,7 @@ minetest.register_craft({
 
 minetest.register_craft({
 	type = "fuel",
-	recipe = "group:fishing_rod",
+	recipe = "ethereal:fishing_rod",
 	burntime = 15,
 })
 
@@ -468,12 +472,6 @@ minetest.register_craft({
 	cooktime = 8,
 })
 
-
--- compatibility
-minetest.register_alias("ethereal:fish_raw", "ethereal:fish_chichlid")
-minetest.register_alias("ethereal:fishing_rod_baited", "ethereal:fishing_rod")
-
-
 -- Sashimi (Thanks to Natalia Grosner for letting me use the sashimi image)
 minetest.register_craftitem("ethereal:sashimi", {
 	description = S("Sashimi"),
@@ -502,3 +500,7 @@ minetest.register_craft({
 		{"default:dirt","default:dirt"},
 	}
 })
+
+-- compatibility
+minetest.register_alias("ethereal:fish_raw", "ethereal:fish_chichlid")
+minetest.register_alias("ethereal:fishing_rod_baited", "ethereal:fishing_rod")
