@@ -15,7 +15,7 @@ local fish_items = {
 	"ethereal:fish_flathead",
 	"ethereal:fish_plaice",
 	"ethereal:fish_pufferfish",
-	"ethereal:fish_redsnapper",
+	"ethereal:fish_coy",
 	"ethereal:fish_salmon",
 	"ethereal:fish_chichlid"
 }
@@ -440,7 +440,7 @@ local fish = {
 	{"Flathead", "flathead", 2},
 	{"Plaice", "plaice", 2},
 	{"Pufferfish", "pufferfish", -2},
-	{"Red Snapper", "redsnapper", 2},
+	{"Coy", "coy", 2},
 	{"Salmon", "salmon", 2},
 	{"Chichlid", "chichlid", 2}
 }
