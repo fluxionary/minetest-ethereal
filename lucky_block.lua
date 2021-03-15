@@ -73,6 +73,21 @@ lucky_block:add_blocks({
 	{"flo", 5, {"ethereal:blue_marble_tile"}, 2},
 	{"dro", {"ethereal:blue_marble", "ethereal:blue_marble_tile"}, 8},
 	{"dro", {"ethereal:etherium_ore"}, 5},
+	{"nod", "default:chest", 0, {
+		{name = "ethereal:fish_bluefin", max = 7},
+		{name = "ethereal:fish_blueram", max = 7},
+		{name = "ethereal:fish_catfish", max = 7},
+		{name = "ethereal:fish_clownfish", max = 7},
+		{name = "ethereal:fish_pike", max = 7},
+		{name = "ethereal:fish_flathead", max = 7},
+		{name = "ethereal:fish_plaice", max = 7},
+		{name = "ethereal:fish_pufferfish", max = 5},
+		{name = "ethereal:fish_redsnapper", max = 7},
+		{name = "ethereal:fish_salmon", max = 7},
+		{name = "ethereal:fish_chichlid", max = 7},
+		{name = "ethereal:fishing_rod", max = 1},
+		{name = "ethereal:worm", max = 10},
+	}},
 })
 
 if minetest.get_modpath("3d_armor") then

@@ -6,7 +6,7 @@ Ethereal Mapgen mod for Minetest (works on all except v6)
 - https://forum.minetest.net/viewtopic.php?f=11&t=14638
 
 ## Lucky Blocks
-46
+47
 
 ## Changelog
 
@@ -19,6 +19,7 @@ Ethereal Mapgen mod for Minetest (works on all except v6)
  - Added smaller redwood trees, to grow large variety 2 saplings required
  - Added Flight Potion (etherium dust arch, fire dust middle, empty bottle bottom)
  - Added new Fishing mechanics (inspired by Rootyjr's on mineclone2)
+ - Added fishing api to add new items- ethereal.add_item(fish, junk, bonus)
 
 ### 1.27
 
