@@ -19,7 +19,8 @@ Ethereal Mapgen mod for Minetest (works on all except v6)
  - Added smaller redwood trees, to grow large variety 2 saplings required
  - Added Flight Potion (etherium dust arch, fire dust middle, empty bottle bottom)
  - Added new Fishing mechanics (inspired by Rootyjr's on mineclone2)
- - Added fishing api to add new items- ethereal.add_item(fish, junk, bonus)
+ - Added fishing api to add new items (read API.txt file)
+ - Certain fish can only be found in specific biomes
 
 ### 1.27
 

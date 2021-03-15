@@ -10,13 +10,13 @@ local fish_items = {
 	"ethereal:fish_bluefin",
 	"ethereal:fish_blueram",
 	"ethereal:fish_catfish",
-	"ethereal:fish_clownfish",
-	"ethereal:fish_pike",
-	"ethereal:fish_flathead",
+	{"ethereal:fish_clownfish", "savanna"},
+	{"ethereal:fish_pike", "grassy"},
+	{"ethereal:fish_flathead", "junglee"},
 	"ethereal:fish_plaice",
-	"ethereal:fish_pufferfish",
+	{"ethereal:fish_pufferfish", "desert_ocean"},
 	"ethereal:fish_salmon",
-	"ethereal:fish_chichlid",
+	{"ethereal:fish_chichlid", "junglee_ocean"},
 	{"ethereal:fish_coy", "sakura"}
 }
 
@@ -290,7 +290,7 @@ local find_item = function(list, pos)
 
 		elseif type(item) == "table" then
 
-			if biome == "" or item[2] == "" or item[2]:find(biome) then
+			if item[2] == "" or item[2]:find(biome) then
 				table.insert(items, item[1])
 			end
 		end
