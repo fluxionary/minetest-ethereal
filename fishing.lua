@@ -15,25 +15,27 @@ local fish_items = {
 	"ethereal:fish_flathead",
 	"ethereal:fish_plaice",
 	"ethereal:fish_pufferfish",
-	"ethereal:fish_coy",
 	"ethereal:fish_salmon",
-	"ethereal:fish_chichlid"
+	"ethereal:fish_chichlid",
+	{"ethereal:fish_coy", "sakura"}
 }
 
 local junk_items = {
 	"ethereal:bowl",
 	"default:stick",
 	"farming:string",
-	"ethereal:bamboo",
 	"default:papyrus",
-	"dye:black"
+	"dye:black",
+	{"ethereal:bamboo", "bamboo"}
 }
 
 local bonus_items = {
 	"mobs:nametag",
 	"mobs:saddle",
 	"flowers:waterlily",
-	"default:book"
+	"default:book",
+	{"ethereal:crystal_spike", "frost"},
+	{"ethereal:banana_bunch", "grove"}
 }
 
 local default_item = "default:dirt"
@@ -270,6 +272,41 @@ minetest.register_entity("ethereal:bob_entity", {
 })
 
 
+-- narrow item list depending on biome if applicable
+local find_item = function(list, pos)
+
+	local item
+	local items = {}
+	local data= minetest.get_biome_data(pos)
+	local biome = data and minetest.get_biome_name(data.biome) or ""
+
+	for n = 1, #list do
+
+		item = list[n]
+
+		if type(item) == "string" then
+
+			table.insert(items, item)
+
+		elseif type(item) == "table" then
+
+			if biome == "" or item[2] == "" or item[2]:find(biome) then
+				table.insert(items, item[1])
+			end
+		end
+
+	end
+
+--print("==biome: " .. biome, dump(items))
+
+	if #items > 0 then
+		return items[random(#items)]
+	end
+
+	return ""
+end
+
+
 -- fishing rod function that throws pre bob, places bob and catches fish when it moves
 local use_rod = function(itemstack, player, pointed_thing)
 
@@ -297,15 +334,15 @@ local use_rod = function(itemstack, player, pointed_thing)
 
 				if r < 86 then
 
-					item = fish_items[random(#fish_items)]
+					item = find_item(fish_items, pos)
 
 				elseif r > 85 and r < 96 then
 
-					item = junk_items[random(#junk_items)]
+					item = find_item(junk_items, pos)
 
 				else
 
-					item = bonus_items[random(#bonus_items)]
+					item = find_item(bonus_items, pos)
 				end
 
 				-- make sure item exists, if not replace with default item
