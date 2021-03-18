@@ -257,7 +257,7 @@ minetest.register_entity("ethereal:bob_entity", {
 				else
 					-- waiting over, bob that bobber and play splash sound
 					self.bob = true
-					self.patience = 0.8
+					self.patience = 1.5 -- timeframe to catch fish after bob
 					self.timer = 0
 
 					self.object:set_velocity({x = 0, y = -2, z = 0})
