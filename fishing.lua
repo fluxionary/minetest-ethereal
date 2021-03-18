@@ -391,7 +391,7 @@ local use_rod = function(itemstack, player, pointed_thing)
 		local dir = player:get_look_dir()
 		local pos = {x = playerpos.x, y = playerpos.y + 1.5, z = playerpos.z}
 
-		minetest.sound_play("default_dig_crumbly",
+		minetest.sound_play("ethereal_casting_rod",
 			{pos = pos, gain = 0.4, max_hear_distance = 16}, true)
 
 		-- place actual bob
