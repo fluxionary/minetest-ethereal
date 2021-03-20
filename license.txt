@@ -43,6 +43,11 @@ Free textures from epicwannehz on DeviantArt
   ethereal_fish_pufferfish.png
   ethereal_fish_redsnapper.png
   ethereal_fish_salmon.png
+  ethereal_fish_trout.png
+  ethereal_fish_piranha.png
+  ethereal_fish_angler.png
+  ethereal_fish_jellyfish.png
+  ethereal_fish_seahorse.png
 
 Notice: Most texture authors are written inside code as comments, anything with no name
 I have more than likely created myself :)

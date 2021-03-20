@@ -10,14 +10,19 @@ local fish_items = {
 	"ethereal:fish_bluefin",
 	"ethereal:fish_blueram",
 	"ethereal:fish_catfish",
+	"ethereal:fish_plaice",
+	"ethereal:fish_salmon",
 	{"ethereal:fish_clownfish", "savanna"},
 	{"ethereal:fish_pike", "grassy"},
 	{"ethereal:fish_flathead", "jungle"},
-	"ethereal:fish_plaice",
 	{"ethereal:fish_pufferfish", "desert_ocean"},
-	"ethereal:fish_salmon",
 	{"ethereal:fish_chichlid", "junglee_ocean"},
-	{"ethereal:fish_coy", "sakura"}
+	{"ethereal:fish_coy", "sakura"},
+	{"ethereal:fish_angler", "ocean"},
+	{"ethereal:fish_jellyfish", "ocean"},
+	{"ethereal:fish_seahorse", "ocean"},
+	{"ethereal:fish_piranha", "jungle"},
+	{"ethereal:fish_trout", "ocean"}
 }
 
 local junk_items = {
@@ -479,16 +484,29 @@ local fish = {
 	{"Pufferfish", "pufferfish", -2},
 	{"Coy", "coy", 2},
 	{"Salmon", "salmon", 2},
-	{"Chichlid", "chichlid", 2}
+	{"Chichlid", "chichlid", 2},
+	{"Angler", "angler", 2},
+	{"Jellyfish", "jellyfish", 0},
+	{"Seahorse", "seahorse", 0},
+	{"Piranha", "piranha", 2},
+	{"Trout", "trout", 2}
 }
 
 for n = 1, #fish do
 
+	local usage
+	local groups
+
+	if fish[n][3] > 0 then
+		usage = minetest.item_eat(fish[n][3])
+		groups = {food_fish_raw = 1, ethereal_fish = 1}
+	end
+
 	minetest.register_craftitem("ethereal:fish_" .. fish[n][2], {
 		description = S(fish[n][1]),
 		inventory_image = "ethereal_fish_" .. fish[n][2] .. ".png",
-		on_use = minetest.item_eat(fish[n][3]),
-		groups = {food_fish_raw = 1, ethereal_fish = 1}
+		on_use = usage,
+		groups = groups
 	})
 end
 
