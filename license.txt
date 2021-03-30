@@ -49,6 +49,9 @@ Free textures from epicwannehz on DeviantArt
   ethereal_fish_jellyfish.png
   ethereal_fish_seahorse.png
 
+Free textures from lisheng2121 (shutterstock)
+  ethereal_sushi_*.png
+
 Notice: Most texture authors are written inside code as comments, anything with no name
 I have more than likely created myself :)
 

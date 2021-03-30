@@ -401,3 +401,45 @@ minetest.register_craft({
 		{"farming:juicer", "farming:juicer"}
 	},
 })
+
+-- Kappa Maki (sushi with cucumber)
+minetest.register_craftitem("ethereal:sushi_kappamaki", {
+	description = S("Kappa Maki Sushi"),
+	inventory_image = "ethereal_sushi_kappa_maki.png",
+	on_use = minetest.item_eat(3),
+})
+
+minetest.register_craft({
+	output = "ethereal:sushi_kappamaki 2",
+	recipe = {
+		{"group:food_seaweed", "group:food_cucumber", "group:food_rice"}
+	}
+})
+
+-- Nigiri (sushi with raw fish)
+minetest.register_craftitem("ethereal:sushi_nigiri", {
+	description = S("Nigiri Sushi"),
+	inventory_image = "ethereal_sushi_nigiri.png",
+	on_use = minetest.item_eat(2),
+})
+
+minetest.register_craft({
+	output = "ethereal:sushi_nigiri 2",
+	recipe = {
+		{"group:food_rice", "group:food_fish_raw", ""}
+	}
+})
+
+-- Tamago (sushi with sweet egg)
+minetest.register_craftitem("ethereal:sushi_tomago", {
+	description = S("Tomago Sushi"),
+	inventory_image = "ethereal_sushi_tamago.png",
+	on_use = minetest.item_eat(2),
+})
+
+minetest.register_craft({
+	output = "ethereal:sushi_tomago 2",
+	recipe = {
+		{"group:food_seaweed", "group:food_egg", "group:food_rice"}
+	}
+})
