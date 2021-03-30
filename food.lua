@@ -431,14 +431,14 @@ minetest.register_craft({
 })
 
 -- Tamago (sushi with sweet egg)
-minetest.register_craftitem("ethereal:sushi_tomago", {
-	description = S("Tomago Sushi"),
+minetest.register_craftitem("ethereal:sushi_tamago", {
+	description = S("Tamago Sushi"),
 	inventory_image = "ethereal_sushi_tamago.png",
 	on_use = minetest.item_eat(2),
 })
 
 minetest.register_craft({
-	output = "ethereal:sushi_tomago 2",
+	output = "ethereal:sushi_tamago 2",
 	recipe = {
 		{"group:food_seaweed", "group:food_egg", "group:food_rice"}
 	}
