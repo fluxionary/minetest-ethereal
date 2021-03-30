@@ -327,7 +327,7 @@ minetest.register_tool("ethereal:light_staff", {
 
 		local node = minetest.get_node(pos).name
 		local def = minetest.registered_nodes[node]
-		local stone = def and def.groups and def.groups.stone
+		local stone = def and def.groups and def.groups.stone and def.groups.stone == 1
 
 		if stone then
 
