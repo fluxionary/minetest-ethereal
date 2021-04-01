@@ -126,17 +126,22 @@ local flower_spread = function(pos, node)
 		return
 	end
 
+	pos.y = pos.y - 1
+
+	local under = minetest.get_node(pos)
+
+	-- make sure we have soil underneath
+	if minetest.get_item_group(under.name, "soil") == 0
+	or under.name == "default:desert_sand" then
+		return
+	end
+
 	local seedling = minetest.find_nodes_in_area_under_air(
-		pos0, pos1, {"group:soil"})
+			pos0, pos1, {under.name})
 
 	if #seedling > 0 then
 
 		pos = seedling[math.random(#seedling)]
-
-		-- default farming has desert sand as soil, so dont spread on this
-		if minetest.get_node(pos).name == "default:desert_sand" then
-			return
-		end
 
 		pos.y = pos.y + 1
 
