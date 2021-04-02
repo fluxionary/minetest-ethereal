@@ -127,21 +127,12 @@ minetest.register_abm({
 	end,
 })
 
--- If torch touching water then drop as item (when enabled)
-if ethereal.torchdrop == true then
-
-local torch_drop = "default:torch"
-local drop_sound = "fire_extinguish_flame"
-
-if minetest.get_modpath("real_torch") then
-	torch_drop = "real_torch:torch"
-	drop_sound = "real_torch_extinguish"
-end
+-- when enabled, drop torches that are touching water
+if ethereal.torchdrop == true and not minetest.get_modpath("real_torch") then
 
 minetest.register_abm({
 	label = "Ethereal drop torch",
-	nodenames = {"default:torch", "default:torch_wall", "default:torch_ceiling",
-	"real_torch:torch", "real_torch:torch_wall", "real_torch:torch_ceiling"},
+	nodenames = {"default:torch", "default:torch_wall", "default:torch_ceiling"},
 	neighbors = {"group:water"},
 	interval = 5,
 	chance = 1,
@@ -171,12 +162,11 @@ minetest.register_abm({
 
 			minetest.set_node(pos, {name = "air"})
 
-			minetest.sound_play({name = drop_sound, gain = 0.2},
-				{pos = pos, max_hear_distance = 10})
+			minetest.sound_play("fire_extinguish_flame",
+					{pos = pos, gain = 0.2, max_hear_distance = 10})
 
-			minetest.add_item(pos, {name = torch_drop})
+			minetest.add_item(pos, {name = "default:torch"})
 		end
-	end,
+	end
 })
-
 end

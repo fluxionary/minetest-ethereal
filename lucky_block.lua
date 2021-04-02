@@ -91,6 +91,7 @@ lucky_block:add_blocks({
 		{name = "ethereal:fishing_rod", max = 1},
 		{name = "ethereal:worm", max = 10},
 	}},
+	{"dro", {"ethereal:lemon"}, 9},
 })
 
 if minetest.get_modpath("3d_armor") then
