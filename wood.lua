@@ -266,9 +266,9 @@ minetest.register_craft({
 minetest.register_node("ethereal:bamboo", {
 	description = S("Bamboo"),
 	drawtype = "plantlike",
-	tiles = {"bamboo.png"},
-	inventory_image = "bamboo.png",
-	wield_image = "bamboo.png",
+	tiles = {"bamboo_trunk.png"},
+	inventory_image = "bamboo_trunk.png",
+	wield_image = "bamboo_trunk.png",
 	paramtype = "light",
 	sunlight_propagates = true,
 	walkable = true,
