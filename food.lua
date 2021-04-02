@@ -5,9 +5,9 @@ local S = ethereal.intllib
 minetest.register_node("ethereal:banana", {
 	description = S("Banana"),
 	drawtype = "torchlike",
-	tiles = {"banana_single.png"},
-	inventory_image = "banana_single.png",
-	wield_image = "banana_single.png",
+	tiles = {"ethereal_banana_single.png"},
+	inventory_image = "ethereal_banana_single.png",
+	wield_image = "ethereal_banana_single.png",
 	paramtype = "light",
 	sunlight_propagates = true,
 	walkable = false,
@@ -26,16 +26,16 @@ minetest.register_node("ethereal:banana", {
 		if placer:is_player() then
 			minetest.set_node(pos, {name = "ethereal:banana", param2 = 1})
 		end
-	end,
+	end
 })
 
 -- Banana Bunch
 minetest.register_node("ethereal:banana_bunch", {
 	description = S("Banana Bunch"),
 	drawtype = "torchlike",
-	tiles = {"banana_bunch.png"},
-	inventory_image = "banana_bunch.png",
-	wield_image = "banana_bunch.png",
+	tiles = {"ethereal_banana_bunch.png"},
+	inventory_image = "ethereal_banana_bunch.png",
+	wield_image = "ethereal_banana_bunch.png",
 	paramtype = "light",
 	sunlight_propagates = true,
 	walkable = false,
@@ -54,7 +54,7 @@ minetest.register_node("ethereal:banana_bunch", {
 		if placer:is_player() then
 			minetest.set_node(pos, {name = "ethereal:banana_bunch", param2 = 1})
 		end
-	end,
+	end
 })
 
 -- Bunch to Single
@@ -73,7 +73,7 @@ minetest.register_craft({
 -- Banana Dough
 minetest.register_craftitem("ethereal:banana_dough", {
 	description = S("Banana Dough"),
-	inventory_image = "banana_dough.png",
+	inventory_image = "ethereal_banana_dough.png"
 })
 
 minetest.register_craft({
@@ -120,19 +120,19 @@ minetest.register_node("ethereal:orange", {
 -- Pine Nuts (Heals 1/2 heart when eaten)
 minetest.register_craftitem("ethereal:pine_nuts", {
 	description = S("Pine Nuts"),
-	inventory_image = "pine_nuts.png",
-	wield_image = "pine_nuts.png",
+	inventory_image = "ethereal_pine_nuts.png",
+	wield_image = "ethereal_pine_nuts.png",
 	groups = {food_pine_nuts = 1, flammable = 2},
-	on_use = minetest.item_eat(1),
+	on_use = minetest.item_eat(1)
 })
 
 -- Banana Loaf (Heals 3 hearts when eaten)
 minetest.register_craftitem("ethereal:banana_bread", {
 	description = S("Banana Loaf"),
-	inventory_image = "banana_bread.png",
-	wield_image = "banana_bread.png",
+	inventory_image = "ethereal_banana_bread.png",
+	wield_image = "ethereal_banana_bread.png",
 	groups = {food_bread = 1, flammable = 3},
-	on_use = minetest.item_eat(6),
+	on_use = minetest.item_eat(6)
 })
 
 -- Coconut (Gives 4 coconut slices, each heal 1/2 heart)
@@ -154,7 +154,7 @@ minetest.register_node("ethereal:coconut", {
 		choppy = 1, flammable = 1, leafdecay = 3, leafdecay_drop = 1
 	},
 	drop = "ethereal:coconut_slice 4",
-	sounds = default.node_sound_wood_defaults(),
+	sounds = default.node_sound_wood_defaults()
 })
 
 -- Coconut Slice (Heals half heart when eaten)
@@ -163,7 +163,7 @@ minetest.register_craftitem("ethereal:coconut_slice", {
 	inventory_image = "moretrees_coconut_slice.png",
 	wield_image = "moretrees_coconut_slice.png",
 	groups = {food_coconut_slice = 1, flammable = 1},
-	on_use = minetest.item_eat(1),
+	on_use = minetest.item_eat(1)
 })
 
 -- Golden Apple (Found on Healing Tree, heals all 10 hearts)
@@ -197,15 +197,15 @@ minetest.register_node("ethereal:golden_apple", {
 		if placer:is_player() then
 			minetest.set_node(pos, {name = "ethereal:golden_apple", param2 = 1})
 		end
-	end,
+	end
 })
 
 -- Hearty Stew (Heals 5 hearts - thanks to ZonerDarkRevention for his DokuCraft DeviantArt bowl texture)
 minetest.register_craftitem("ethereal:hearty_stew", {
 	description = S("Hearty Stew"),
-	inventory_image = "hearty_stew.png",
-	wield_image = "hearty_stew.png",
-	on_use = minetest.item_eat(10, "ethereal:bowl"),
+	inventory_image = "ethereal_hearty_stew.png",
+	wield_image = "ethereal_hearty_stew.png",
+	on_use = minetest.item_eat(10, "ethereal:bowl")
 })
 
 minetest.register_craft({
@@ -213,7 +213,7 @@ minetest.register_craft({
 	recipe = {
 		{"group:food_onion","flowers:mushroom_brown", "group:food_tuber"},
 		{"","flowers:mushroom_brown", ""},
-		{"","group:food_bowl", ""},
+		{"","group:food_bowl", ""}
 	}
 })
 
@@ -224,7 +224,7 @@ minetest.register_craft({
 	recipe = {
 		{"group:food_onion","flowers:mushroom_brown", "group:food_beans"},
 		{"","flowers:mushroom_brown", ""},
-		{"","group:food_bowl", ""},
+		{"","group:food_bowl", ""}
 	}
 })
 end
@@ -253,7 +253,7 @@ minetest.register_craftitem("ethereal:firethorn_jelly", {
 	inventory_image = "ethereal_firethorn_jelly.png",
 	wield_image = "ethereal_firethorn_jelly.png",
 	on_use = minetest.item_eat(2, "vessels:glass_bottle"),
-	groups = {vessel = 1},
+	groups = {vessel = 1}
 })
 
 if minetest.registered_items["farming:bowl"] then
@@ -264,12 +264,12 @@ minetest.register_craft({
 	recipe = {
 		"farming:mortar_pestle","vessels:glass_bottle",
 		"ethereal:firethorn", "ethereal:firethorn", "ethereal:firethorn",
-		"bucket:bucket_water", "bucket:bucket_water", "bucket:bucket_water",
+		"bucket:bucket_water", "bucket:bucket_water", "bucket:bucket_water"
 	},
 	replacements = {
 		{"bucket:bucket_water", "bucket:bucket_empty 3"},
-		{"farming:mortar_pestle", "farming:mortar_pestle"},
-	},
+		{"farming:mortar_pestle", "farming:mortar_pestle"}
+	}
 })
 end
 
@@ -278,9 +278,9 @@ end
 minetest.register_node("ethereal:lemon", {
 	description = S("Lemon"),
 	drawtype = "plantlike",
-	tiles = {"lemon.png"},
-	inventory_image = "lemon_fruit.png",
-	wield_image = "lemon_fruit.png",
+	tiles = {"ethereal_lemon.png"},
+	inventory_image = "ethereal_lemon_fruit.png",
+	wield_image = "ethereal_lemon_fruit.png",
 	paramtype = "light",
 	sunlight_propagates = true,
 	walkable = false,
@@ -299,7 +299,7 @@ minetest.register_node("ethereal:lemon", {
 		if placer:is_player() then
 			minetest.set_node(pos, {name = "ethereal:lemon", param2 = 1})
 		end
-	end,
+	end
 })
 
 -- Candied Lemon
@@ -308,7 +308,7 @@ minetest.register_craftitem("ethereal:candied_lemon", {
 	inventory_image = "ethereal_candied_lemon.png",
 	wield_image = "ethereal_candied_lemon.png",
 	groups = {food_candied_lemon = 1},
-	on_use = minetest.item_eat(5),
+	on_use = minetest.item_eat(5)
 })
 
 minetest.register_craft({
@@ -319,7 +319,7 @@ minetest.register_craft({
 	},
 	replacements = {
 		{"farming:baking_tray", "farming:baking_tray"}
-	},
+	}
 })
 
 -- Lemonade
@@ -356,9 +356,9 @@ minetest.register_craft({
 minetest.register_node("ethereal:olive", {
 	description = S("Olive"),
 	drawtype = "plantlike",
-	tiles = {"olive.png"},
-	inventory_image = "olive_fruit.png",
-	wield_image = "olive_fruit.png",
+	tiles = {"ethereal_olive.png"},
+	inventory_image = "ethereal_olive_fruit.png",
+	wield_image = "ethereal_olive_fruit.png",
 	visual_scale = 0.2,
 	paramtype = "light",
 	sunlight_propagates = true,
@@ -378,7 +378,7 @@ minetest.register_node("ethereal:olive", {
 		if placer:is_player() then
 			minetest.set_node(pos, {name = "ethereal:olive", param2 = 1})
 		end
-	end,
+	end
 })
 
 -- Olive Oil
@@ -386,7 +386,7 @@ minetest.register_craftitem("ethereal:olive_oil", {
 	description = S("Olive Oil"),
 	inventory_image = "ethereal_olive_oil.png",
 	wield_image = "ethereal_olive_oil.png",
-	groups = {food_oil = 1, food_olive_oil = 1, vessel = 1},
+	groups = {food_oil = 1, food_olive_oil = 1, vessel = 1}
 })
 
 minetest.register_craft({
@@ -399,14 +399,14 @@ minetest.register_craft({
 	},
 	replacements = {
 		{"farming:juicer", "farming:juicer"}
-	},
+	}
 })
 
 -- Kappa Maki (sushi with cucumber)
 minetest.register_craftitem("ethereal:sushi_kappamaki", {
 	description = S("Kappa Maki Sushi"),
 	inventory_image = "ethereal_sushi_kappa_maki.png",
-	on_use = minetest.item_eat(3),
+	on_use = minetest.item_eat(3)
 })
 
 minetest.register_craft({
@@ -420,7 +420,7 @@ minetest.register_craft({
 minetest.register_craftitem("ethereal:sushi_nigiri", {
 	description = S("Nigiri Sushi"),
 	inventory_image = "ethereal_sushi_nigiri.png",
-	on_use = minetest.item_eat(2),
+	on_use = minetest.item_eat(2)
 })
 
 minetest.register_craft({
@@ -434,7 +434,7 @@ minetest.register_craft({
 minetest.register_craftitem("ethereal:sushi_tamago", {
 	description = S("Tamago Sushi"),
 	inventory_image = "ethereal_sushi_tamago.png",
-	on_use = minetest.item_eat(2),
+	on_use = minetest.item_eat(2)
 })
 
 minetest.register_craft({

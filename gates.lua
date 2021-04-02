@@ -5,35 +5,35 @@ local S = ethereal.intllib
 
 doors.register_fencegate("ethereal:fencegate_scorched", {
 	description = S("Scorched Wood Fence Gate"),
-	texture = "scorched_tree.png",
+	texture = "ethereal_scorched_tree.png",
 	material = "ethereal:scorched_tree",
 	groups = {choppy = 2, oddly_breakable_by_hand = 2, flammable = 2}
 })
 
 doors.register_fencegate("ethereal:fencegate_frostwood", {
 	description = S("Frost Wood Fence Gate"),
-	texture = "frost_wood.png",
+	texture = "ethereal_frost_wood.png",
 	material = "ethereal:frost_wood",
 	groups = {choppy = 2, oddly_breakable_by_hand = 2, flammable = 2}
 })
 
 doors.register_fencegate("ethereal:fencegate_redwood", {
 	description = S("Redwood Fence Gate"),
-	texture = "redwood_wood.png",
+	texture = "ethereal_redwood_wood.png",
 	material = "ethereal:redwood_wood",
 	groups = {choppy = 2, oddly_breakable_by_hand = 2, flammable = 2}
 })
 
 doors.register_fencegate("ethereal:fencegate_willow", {
 	description = S("Willow Wood Fence Gate"),
-	texture = "willow_wood.png",
+	texture = "ethereal_willow_wood.png",
 	material = "ethereal:willow_wood",
 	groups = {choppy = 2, oddly_breakable_by_hand = 2, flammable = 2}
 })
 
 doors.register_fencegate("ethereal:fencegate_yellowwood", {
 	description = S("Healing Wood Fence Gate"),
-	texture = "yellow_wood.png",
+	texture = "ethereal_yellow_wood.png",
 	material = "ethereal:yellow_wood",
 	groups = {choppy = 2, oddly_breakable_by_hand = 2, flammable = 2}
 })
@@ -47,14 +47,14 @@ doors.register_fencegate("ethereal:fencegate_palm", {
 
 doors.register_fencegate("ethereal:fencegate_banana", {
 	description = S("Banana Wood Fence Gate"),
-	texture = "banana_wood.png",
+	texture = "ethereal_banana_wood.png",
 	material = "ethereal:banana_wood",
 	groups = {choppy = 2, oddly_breakable_by_hand = 2, flammable = 2}
 })
 
 doors.register_fencegate("ethereal:fencegate_mushroom", {
 	description = S("Mushroom Trunk Fence Gate"),
-	texture = "mushroom_trunk.png",
+	texture = "ethereal_mushroom_trunk.png",
 	material = "ethereal:mushroom_trunk",
 	groups = {choppy = 2, oddly_breakable_by_hand = 2, flammable = 2}
 })
@@ -88,22 +88,22 @@ minetest.register_alias("ethereal:fencegate_pine_closed", "doors:gate_pine_wood_
 
 -- sakura door
 doors.register_door("ethereal:door_sakura", {
-		tiles = {
-			{name = "ethereal_sakura_door.png", backface_culling = true}
-		},
-		description = S("Sakura Wood Door"),
-		inventory_image = "ethereal_sakura_door_inv.png",
-		groups = {
-			snappy = 1, choppy = 2, oddly_breakable_by_hand = 2,
-			flammable = 2
-		},
-		sound_open = "doors_glass_door_open",
-		sound_close = "doors_glass_door_close",
-		recipe = {
-			{"group:stick",  "default:paper"},
-			{"default:paper",  "group:stick"},
-			{"ethereal:sakura_wood", "ethereal:sakura_wood"}
-		}
+	tiles = {
+		{name = "ethereal_sakura_door.png", backface_culling = true}
+	},
+	description = S("Sakura Wood Door"),
+	inventory_image = "ethereal_sakura_door_inv.png",
+	groups = {
+		snappy = 1, choppy = 2, oddly_breakable_by_hand = 2,
+		flammable = 2
+	},
+	sound_open = "doors_glass_door_open",
+	sound_close = "doors_glass_door_close",
+	recipe = {
+		{"group:stick",  "default:paper"},
+		{"default:paper",  "group:stick"},
+		{"ethereal:sakura_wood", "ethereal:sakura_wood"}
+	}
 })
 
 minetest.register_alias("ethereal:sakura_door", "ethereal:door_sakura")

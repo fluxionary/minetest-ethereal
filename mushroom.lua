@@ -4,9 +4,9 @@ local S = ethereal.intllib
 -- mushroom soup (Heals 1 heart)
 minetest.register_craftitem("ethereal:mushroom_soup", {
 	description = S("Mushroom Soup"),
-	inventory_image = "mushroom_soup.png",
+	inventory_image = "ethereal_mushroom_soup.png",
 	groups = {drink = 1},
-	on_use = minetest.item_eat(5, "ethereal:bowl"),
+	on_use = minetest.item_eat(5, "ethereal:bowl")
 })
 
 minetest.register_craft({
@@ -14,7 +14,7 @@ minetest.register_craft({
 	recipe = {
 		{"flowers:mushroom_brown"},
 		{"flowers:mushroom_brown"},
-		{"group:food_bowl"},
+		{"group:food_bowl"}
 	}
 })
 
@@ -23,6 +23,6 @@ minetest.register_craft({
 	output = "ethereal:mushroom",
 	recipe = {
 		{"flowers:mushroom_red", "flowers:mushroom_red"},
-		{"flowers:mushroom_red", "flowers:mushroom_red"},
+		{"flowers:mushroom_red", "flowers:mushroom_red"}
 	}
 })

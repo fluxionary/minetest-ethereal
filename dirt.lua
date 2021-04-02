@@ -237,7 +237,7 @@ if not minetest.get_modpath("bakedclay") then
 		tiles = {"baked_clay_red.png"},
 		groups = {cracky = 3},
 		is_ground_content = ethereal.cavedirt,
-		sounds = default.node_sound_stone_defaults(),
+		sounds = default.node_sound_stone_defaults()
 	})
 
 	minetest.register_node(":bakedclay:orange", {
@@ -245,7 +245,7 @@ if not minetest.get_modpath("bakedclay") then
 		tiles = {"baked_clay_orange.png"},
 		groups = {cracky = 3},
 		is_ground_content = ethereal.cavedirt,
-		sounds = default.node_sound_stone_defaults(),
+		sounds = default.node_sound_stone_defaults()
 	})
 
 	minetest.register_node(":bakedclay:grey", {
@@ -253,7 +253,7 @@ if not minetest.get_modpath("bakedclay") then
 		tiles = {"baked_clay_grey.png"},
 		groups = {cracky = 3},
 		is_ground_content = ethereal.cavedirt,
-		sounds = default.node_sound_stone_defaults(),
+		sounds = default.node_sound_stone_defaults()
 	})
 
 end
@@ -275,7 +275,7 @@ minetest.register_node("ethereal:quicksand", {
 	climbable = false,
 	post_effect_color = {r = 230, g = 210, b = 160, a = 245},
 	groups = {crumbly = 3, sand = 1, liquid = 3, disable_jump = 1},
-	sounds = default.node_sound_sand_defaults(),
+	sounds = default.node_sound_sand_defaults()
 })
 
 -- Quicksand (new style, sinking inside shows yellow effect with or without noclip,
@@ -297,7 +297,7 @@ minetest.register_node("ethereal:quicksand2", {
 	climbable = false,
 	post_effect_color = {r = 230, g = 210, b = 160, a = 245},
 	groups = {crumbly = 3, sand = 1, liquid = 3, disable_jump = 1},
-	sounds = default.node_sound_sand_defaults(),
+	sounds = default.node_sound_sand_defaults()
 })
 
 -- craft quicksand
@@ -306,7 +306,7 @@ minetest.register_craft({
 	recipe = {
 		{"group:sand", "group:sand", "group:sand"},
 		{"group:sand", "bucket:bucket_water", "group:sand"},
-		{"group:sand", "group:sand", "group:sand"},
+		{"group:sand", "group:sand", "group:sand"}
 	},
 	replacements = {
 		{"bucket:bucket_water", "bucket:bucket_empty"}

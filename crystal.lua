@@ -1,13 +1,14 @@
 
 local S = ethereal.intllib
 
--- Crystal Spike (Hurts if you touch it - thanks to ZonerDarkRevention for his DokuCraft DeviantArt crystal texture)
+-- Crystal Spike (Hurts if you touch it)
+-- thanks to ZonerDarkRevention for his DokuCraft DeviantArt crystal texture
 minetest.register_node("ethereal:crystal_spike", {
 	description = S("Crystal Spike"),
 	drawtype = "plantlike",
-	tiles = { "crystal_spike.png" },
-	inventory_image = "crystal_spike.png",
-	wield_image = "crystal_spike.png",
+	tiles = {"ethereal_crystal_spike.png"},
+	inventory_image = "ethereal_crystal_spike.png",
+	wield_image = "ethereal_crystal_spike.png",
 	paramtype = "light",
 	light_source = 7,
 	sunlight_propagates = true,
@@ -22,14 +23,14 @@ minetest.register_node("ethereal:crystal_spike", {
 	node_box = {
 		type = "fixed",
 		fixed = {-5 / 16, -0.5, -5 / 16, 5 / 16, 0, 5 / 16},
-	},
+	}
 })
 
 -- Crystal Ingot
 minetest.register_craftitem("ethereal:crystal_ingot", {
 	description = S("Crystal Ingot"),
-	inventory_image = "crystal_ingot.png",
-	wield_image = "crystal_ingot.png",
+	inventory_image = "ethereal_crystal_ingot.png",
+	wield_image = "ethereal_crystal_ingot.png"
 })
 
 if minetest.get_modpath("builtin_item") then
@@ -98,11 +99,11 @@ minetest.register_craft({
 -- Crystal Block
 minetest.register_node("ethereal:crystal_block", {
 	description = S("Crystal Block"),
-	tiles = {"crystal_block.png"},
+	tiles = {"ethereal_crystal_block.png"},
 	light_source = 9,
 	is_ground_content = false,
 	groups = {cracky = 1, level = 2, puts_out_fire = 1, cools_lava = 1},
-	sounds = default.node_sound_glass_defaults(),
+	sounds = default.node_sound_glass_defaults()
 })
 
 minetest.register_craft({
@@ -124,8 +125,8 @@ minetest.register_craft({
 -- Crystal Sword (Powerful wee beastie)
 minetest.register_tool("ethereal:sword_crystal", {
 	description = S("Crystal Sword"),
-	inventory_image = "crystal_sword.png",
-	wield_image = "crystal_sword.png",
+	inventory_image = "ethereal_crystal_sword.png",
+	wield_image = "ethereal_crystal_sword.png",
 	tool_capabilities = {
 		full_punch_interval = 0.6,
 		max_drop_level = 1,
@@ -139,7 +140,7 @@ minetest.register_tool("ethereal:sword_crystal", {
 		damage_groups = {fleshy = 10},
 	},
 	groups = {sword = 1},
-	sound = {breaks = "default_tool_breaks"},
+	sound = {breaks = "default_tool_breaks"}
 })
 
 minetest.register_craft({
@@ -147,15 +148,15 @@ minetest.register_craft({
 	recipe = {
 		{"ethereal:crystal_ingot"},
 		{"ethereal:crystal_ingot"},
-		{"default:steel_ingot"},
+		{"default:steel_ingot"}
 	}
 })
 
 -- Crystal Axe
 minetest.register_tool("ethereal:axe_crystal", {
 	description = S("Crystal Axe"),
-	inventory_image = "crystal_axe.png",
-	wield_image = "crystal_axe.png",
+	inventory_image = "ethereal_crystal_axe.png",
+	wield_image = "ethereal_crystal_axe.png",
 	tool_capabilities = {
 		full_punch_interval = 0.8,
 		max_drop_level = 1,
@@ -164,12 +165,12 @@ minetest.register_tool("ethereal:axe_crystal", {
 				times = {[1] = 2.00, [2] = 0.80, [3] = 0.40},
 				uses = 40,
 				maxlevel = 3
-			},
+			}
 		},
 		damage_groups = {fleshy = 7},
 	},
 	groups = {axe = 1},
-	sound = {breaks = "default_tool_breaks"},
+	sound = {breaks = "default_tool_breaks"}
 })
 
 minetest.register_craft({
@@ -177,7 +178,7 @@ minetest.register_craft({
 	recipe = {
 		{"ethereal:crystal_ingot", "ethereal:crystal_ingot"},
 		{"ethereal:crystal_ingot", "default:steel_ingot"},
-		{"", "default:steel_ingot"},
+		{"", "default:steel_ingot"}
 	}
 })
 
@@ -186,15 +187,15 @@ minetest.register_craft({
 	recipe = {
 		{"ethereal:crystal_ingot", "ethereal:crystal_ingot"},
 		{"default:steel_ingot", "ethereal:crystal_ingot"},
-		{"default:steel_ingot", ""},
+		{"default:steel_ingot", ""}
 	}
 })
 
 -- Crystal Pick (This will last a while)
 minetest.register_tool("ethereal:pick_crystal", {
 	description = S("Crystal Pickaxe"),
-	inventory_image = "crystal_pick.png",
-	wield_image = "crystal_pick.png",
+	inventory_image = "ethereal_crystal_pick.png",
+	wield_image = "ethereal_crystal_pick.png",
 	tool_capabilities = {
 		full_punch_interval = 0.7,
 		max_drop_level = 3,
@@ -203,12 +204,12 @@ minetest.register_tool("ethereal:pick_crystal", {
 				times = {[1] = 1.8, [2] = 0.8, [3] = 0.40},
 				uses = 40,
 				maxlevel = 3
-			},
+			}
 		},
 		damage_groups = {fleshy = 6},
 	},
 	groups = {pickaxe = 1},
-	sound = {breaks = "default_tool_breaks"},
+	sound = {breaks = "default_tool_breaks"}
 })
 
 minetest.register_craft({
@@ -216,7 +217,7 @@ minetest.register_craft({
 	recipe = {
 		{"ethereal:crystal_ingot", "ethereal:crystal_ingot", "ethereal:crystal_ingot"},
 		{"", "default:steel_ingot", ""},
-		{"", "default:steel_ingot", ""},
+		{"", "default:steel_ingot", ""}
 	}
 })
 
@@ -242,8 +243,8 @@ end
 
 minetest.register_tool("ethereal:shovel_crystal", {
 	description = "Crystal Shovel",
-	inventory_image = "crystal_shovel.png",
-	wield_image = "crystal_shovel.png^[transformR90",
+	inventory_image = "ethereal_crystal_shovel.png",
+	wield_image = "ethereal_crystal_shovel.png^[transformR90",
 	tool_capabilities = {
 		full_punch_interval = 1.0,
 		max_drop_level = 1,
@@ -252,12 +253,12 @@ minetest.register_tool("ethereal:shovel_crystal", {
 				times = {[1] = 1.10, [2] = 0.50, [3] = 0.30},
 				uses = 30,
 				maxlevel = 3
-			},
+			}
 		},
 		damage_groups = {fleshy = 4},
 	},
 	groups = {shovel = 1},
-	sound = {breaks = "default_tool_breaks"},
+	sound = {breaks = "default_tool_breaks"}
 })
 
 minetest.register_craft({
@@ -265,21 +266,21 @@ minetest.register_craft({
 	recipe = {
 		{"ethereal:crystal_ingot"},
 		{"default:steel_ingot"},
-		{"default:steel_ingot"},
+		{"default:steel_ingot"}
 	}
 })
 
 -- Crystal Gilly Staff (replenishes air supply when used)
 minetest.register_tool("ethereal:crystal_gilly_staff", {
 	description = S("Crystal Gilly Staff"),
-	inventory_image = "crystal_gilly_staff.png",
-	wield_image = "crystal_gilly_staff.png",
+	inventory_image = "ethereal_crystal_gilly_staff.png",
+	wield_image = "ethereal_crystal_gilly_staff.png",
 
 	on_use = function(itemstack, user, pointed_thing)
 		if user:get_breath() < 10 then
 			user:set_breath(10)
 		end
-	end,
+	end
 })
 
 minetest.register_craft({

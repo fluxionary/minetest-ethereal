@@ -530,8 +530,8 @@ minetest.register_craft({
 -- Sashimi (Thanks to Natalia Grosner for letting me use the sashimi image)
 minetest.register_craftitem("ethereal:sashimi", {
 	description = S("Sashimi"),
-	inventory_image = "sashimi.png",
-	wield_image = "sashimi.png",
+	inventory_image = "ethereal_sashimi.png",
+	wield_image = "ethereal_sashimi.png",
 	on_use = minetest.item_eat(4)
 })
 
@@ -545,14 +545,14 @@ minetest.register_craft({
 -- Worm
 minetest.register_craftitem("ethereal:worm", {
 	description = S("Worm"),
-	inventory_image = "worm.png",
-	wield_image = "worm.png",
+	inventory_image = "ethereal_worm.png",
+	wield_image = "ethereal_worm.png"
 })
 
 minetest.register_craft({
 	output = "ethereal:worm",
 	recipe = {
-		{"default:dirt","default:dirt"},
+		{"default:dirt","default:dirt"}
 	}
 })
 

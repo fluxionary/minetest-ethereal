@@ -5,9 +5,9 @@ local S = ethereal.intllib
 minetest.register_node("ethereal:bamboo_sprout", {
 	description = S("Bamboo Sprout"),
 	drawtype = "plantlike",
-	tiles = {"bamboo_sprout.png"},
-	inventory_image = "bamboo_sprout.png",
-	wield_image = "bamboo_sprout.png",
+	tiles = {"ethereal_bamboo_sprout.png"},
+	inventory_image = "ethereal_bamboo_sprout.png",
+	wield_image = "ethereal_bamboo_sprout.png",
 	paramtype = "light",
 	sunlight_propagates = true,
 	walkable = false,
@@ -21,7 +21,7 @@ minetest.register_node("ethereal:bamboo_sprout", {
 		fixed = {-4 / 16, -0.5, -4 / 16, 4 / 16, 0, 4 / 16}
 	},
 	on_use = minetest.item_eat(2),
-	grown_height = 11,
+	grown_height = 11
 })
 
 -- Register Saplings
@@ -46,23 +46,23 @@ local register_sapling = function(name, desc, texture, height)
 			ethereal_sapling = 1, attached_node = 1, sapling = 1
 		},
 		sounds = default.node_sound_leaves_defaults(),
-		grown_height = height,
+		grown_height = height
 	})
 end
 
-register_sapling("ethereal:willow", "Willow", "willow_sapling", 14)
-register_sapling("ethereal:yellow_tree", "Healing", "yellow_tree_sapling", 19)
+register_sapling("ethereal:willow", "Willow", "ethereal_willow_sapling", 14)
+register_sapling("ethereal:yellow_tree", "Healing", "ethereal_yellow_tree_sapling", 19)
 register_sapling("ethereal:big_tree", "Big", "ethereal_big_tree_sapling", 7)
-register_sapling("ethereal:banana_tree", "Banana", "banana_tree_sapling", 8)
+register_sapling("ethereal:banana_tree", "Banana", "ethereal_banana_tree_sapling", 8)
 register_sapling("ethereal:frost_tree", "Frost", "ethereal_frost_tree_sapling", 19)
 register_sapling("ethereal:mushroom", "Mushroom", "ethereal_mushroom_sapling", 11)
 register_sapling("ethereal:palm", "Palm", "moretrees_palm_sapling", 9)
-register_sapling("ethereal:redwood", "Redwood", "redwood_sapling", 31)
-register_sapling("ethereal:orange_tree", "Orange", "orange_tree_sapling", 6)
+register_sapling("ethereal:redwood", "Redwood", "ethereal_redwood_sapling", 31)
+register_sapling("ethereal:orange_tree", "Orange", "ethereal_orange_tree_sapling", 6)
 register_sapling("ethereal:birch", "Birch", "moretrees_birch_sapling", 7)
 register_sapling("ethereal:sakura", "Sakura", "ethereal_sakura_sapling", 10)
-register_sapling("ethereal:lemon_tree", "Lemon", "lemon_tree_sapling", 7)
-register_sapling("ethereal:olive_tree", "Olive", "olive_tree_sapling", 10)
+register_sapling("ethereal:lemon_tree", "Lemon", "ethereal_lemon_tree_sapling", 7)
+register_sapling("ethereal:olive_tree", "Olive", "ethereal_olive_tree_sapling", 10)
 
 
 local add_tree = function (pos, ofx, ofy, ofz, schem, replace)
@@ -260,5 +260,5 @@ minetest.register_abm({
 		end
 
 		grow_sapling(pos, node)
-	end,
+	end
 })

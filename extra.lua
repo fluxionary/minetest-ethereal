@@ -21,9 +21,9 @@ minetest.register_node("ethereal:etherium_ore", {
 minetest.register_node("ethereal:bamboo_floor", {
 	description = S("Bamboo Floor"),
 	drawtype = "nodebox",
-	tiles = { "bamboo_floor.png" },
-	wield_image = "bamboo_floor.png",
-	inventory_image = "bamboo_floor.png",
+	tiles = {"ethereal_bamboo_floor.png"},
+	wield_image = "ethereal_bamboo_floor.png",
+	inventory_image = "ethereal_bamboo_floor.png",
 	paramtype = "light",
 	paramtype2 = "wallmounted",
 	walkable = true,
@@ -31,11 +31,11 @@ minetest.register_node("ethereal:bamboo_floor", {
 		type = "wallmounted",
 		wall_top    = {-0.5, 0.4375, -0.5, 0.5, 0.5, 0.5},
 		wall_bottom = {-0.5, -0.5, -0.5, 0.5, -0.4375, 0.5},
-		wall_side   = {-0.5, -0.5, -0.5, -0.4375, 0.5, 0.5},
+		wall_side   = {-0.5, -0.5, -0.5, -0.4375, 0.5, 0.5}
 	},
 	selection_box = {type = "wallmounted"},
 	groups = {snappy = 3, choppy = 3 , flammable = 2},
-	sounds = default.node_sound_wood_defaults(),
+	sounds = default.node_sound_wood_defaults()
 })
 
 -- Craft Bamboo into Bamboo Flooring
@@ -43,7 +43,7 @@ minetest.register_craft({
 	output = "ethereal:bamboo_floor 2",
 	recipe = {
 		{"ethereal:bamboo", "ethereal:bamboo"},
-		{"ethereal:bamboo", "ethereal:bamboo"},
+		{"ethereal:bamboo", "ethereal:bamboo"}
 	}
 })
 
@@ -58,10 +58,10 @@ minetest.register_craft({
 -- Bamboo Block
 minetest.register_node("ethereal:bamboo_block", {
 	description = S("Bamboo Block"),
-	tiles = { "bamboo_floor.png" },
+	tiles = {"ethereal_bamboo_floor.png"},
 	paramtype = "light",
 	groups = {snappy = 3, choppy = 3 , flammable = 2, wood = 1},
-	sounds = default.node_sound_wood_defaults(),
+	sounds = default.node_sound_wood_defaults()
 })
 
 minetest.register_craft({
@@ -69,7 +69,7 @@ minetest.register_craft({
 	recipe = {
 		{"ethereal:bamboo", "ethereal:bamboo", "ethereal:bamboo"},
 		{"ethereal:bamboo", "ethereal:bamboo", "ethereal:bamboo"},
-		{"ethereal:bamboo", "ethereal:bamboo", "ethereal:bamboo"},
+		{"ethereal:bamboo", "ethereal:bamboo", "ethereal:bamboo"}
 	}
 })
 
@@ -79,7 +79,7 @@ minetest.register_craft({
 	recipe = {
 		{"ethereal:bamboo", "ethereal:bamboo"},
 		{"ethereal:bamboo", "ethereal:bamboo"},
-		{"ethereal:bamboo", "ethereal:bamboo"},
+		{"ethereal:bamboo", "ethereal:bamboo"}
 	}
 })
 
@@ -102,7 +102,7 @@ for n = 1, #cheat do
 		recipe = {
 			{cheat[n][1], "", cheat[n][1]},
 			{"", cheat[n][1], ""},
-			{cheat[n][1], "", cheat[n][1]},
+			{cheat[n][1], "", cheat[n][1]}
 		}
 	})
 end
@@ -120,8 +120,8 @@ minetest.register_craft({
 -- Palm Wax
 minetest.register_craftitem("ethereal:palm_wax", {
 	description = S("Palm Wax"),
-	inventory_image = "palm_wax.png",
-	wield_image = "palm_wax.png",
+	inventory_image = "ethereal_palm_wax.png",
+	wield_image = "ethereal_palm_wax.png"
 })
 
 minetest.register_craft({
@@ -135,18 +135,18 @@ minetest.register_craft({
 minetest.register_node("ethereal:candle", {
 	description = S("Candle"),
 	drawtype = "plantlike",
-	inventory_image = "candle_static.png",
-	wield_image = "candle_static.png",
+	inventory_image = "ethereal_candle_static.png",
+	wield_image = "ethereal_candle_static.png",
 	tiles = {
 		{
-			name = "candle.png",
-			animation={
+			name = "ethereal_candle.png",
+			animation = {
 				type="vertical_frames",
 				aspect_w = 32,
 				aspect_h = 32,
 				length = 1.0
 			}
-		},
+		}
 	},
 	paramtype = "light",
 	light_source = 11,
@@ -157,7 +157,7 @@ minetest.register_node("ethereal:candle", {
 	selection_box = {
 		type = "fixed",
 		fixed = { -0.15, -0.5, -0.15, 0.15, 0, 0.15 }
-	},
+	}
 })
 
 minetest.register_craft({
@@ -165,15 +165,15 @@ minetest.register_craft({
 	recipe = {
 		{"farming:string"},
 		{"ethereal:palm_wax"},
-		{"ethereal:palm_wax"},
+		{"ethereal:palm_wax"}
 	}
 })
 
 -- Wooden Bowl
 minetest.register_craftitem("ethereal:bowl", {
 	description = S("Bowl"),
-	inventory_image = "bowl.png",
-	groups = {food_bowl = 1, flammable = 2},
+	inventory_image = "ethereal_bowl.png",
+	groups = {food_bowl = 1, flammable = 2}
 })
 
 -- use farming redo's recipe if found
@@ -183,7 +183,7 @@ if not minetest.registered_items["farming:bowl"] then
 		output = "ethereal:bowl 4",
 		recipe = {
 			{"group:wood", "", "group:wood"},
-			{"", "group:wood", ""},
+			{"", "group:wood", ""}
 		}
 	})
 end
@@ -192,9 +192,9 @@ end
 minetest.register_node("ethereal:stone_ladder", {
 	description = S("Stone Ladder"),
 	drawtype = "signlike",
-	tiles = {"stone_ladder.png"},
-	inventory_image = "stone_ladder.png",
-	wield_image = "stone_ladder.png",
+	tiles = {"ethereal_stone_ladder.png"},
+	inventory_image = "ethereal_stone_ladder.png",
+	wield_image = "ethereal_stone_ladder.png",
 	paramtype = "light",
 	sunlight_propagates = true,
 	paramtype2 = "wallmounted",
@@ -202,11 +202,11 @@ minetest.register_node("ethereal:stone_ladder", {
 	climbable = true,
 	is_ground_content = false,
 	selection_box = {
-		type = "wallmounted",
+		type = "wallmounted"
 	},
 	groups = {cracky = 3, oddly_breakable_by_hand = 1},
 	legacy_wallmounted = true,
-	sounds = default.node_sound_stone_defaults(),
+	sounds = default.node_sound_stone_defaults()
 })
 
 minetest.register_craft({
@@ -214,7 +214,7 @@ minetest.register_craft({
 	recipe = {
 		{"group:stone", "", "group:stone"},
 		{"group:stone", "group:stone", "group:stone"},
-		{"group:stone", "", "group:stone"},
+		{"group:stone", "", "group:stone"}
 	}
 })
 
@@ -222,9 +222,9 @@ minetest.register_craft({
 minetest.register_node("ethereal:paper_wall", {
 	drawtype = "nodebox",
 	description = S("Paper Wall"),
-	tiles = {"paper_wall.png"},
-	inventory_image_image = "paper_wall.png",
-	wield_image = "paper_wall.png",
+	tiles = {"ethereal_paper_wall.png"},
+	inventory_image_image = "ethereal_paper_wall.png",
+	wield_image = "ethereal_paper_wall.png",
 	paramtype = "light",
 	groups = {snappy = 3},
 	sounds = default.node_sound_wood_defaults(),
@@ -241,7 +241,7 @@ minetest.register_node("ethereal:paper_wall", {
 		fixed = {
 			{ -0.5, -0.5, 5/11, 0.5, 0.5, 8/16 }
 		}
-	},
+	}
 })
 
 minetest.register_craft({
@@ -249,18 +249,18 @@ minetest.register_craft({
 	recipe = {
 		{"group:stick", "default:paper", "group:stick"},
 		{"group:stick", "default:paper", "group:stick"},
-		{"group:stick", "default:paper", "group:stick"},
+		{"group:stick", "default:paper", "group:stick"}
 	}
 })
 
 -- Glostone (A little bit of light decoration)
 minetest.register_node("ethereal:glostone", {
 	description = S("Glo Stone"),
-	tiles = {"glostone.png"},
+	tiles = {"ethereal_glostone.png"},
 	groups = {cracky = 3},
 	light_source = 13,
 	drop = "ethereal:glostone",
-	sounds = default.node_sound_stone_defaults(),
+	sounds = default.node_sound_stone_defaults()
 })
 
 minetest.register_craft({
@@ -272,7 +272,7 @@ minetest.register_craft({
 -- Charcoal Lump
 minetest.register_craftitem("ethereal:charcoal_lump", {
 	description = S("Lump of Charcoal"),
-	inventory_image = "charcoal_lump.png",
+	inventory_image = "ethereal_charcoal_lump.png"
 })
 
 minetest.register_craft({
@@ -292,7 +292,7 @@ minetest.register_craft({
 minetest.register_craft({
 	type = "fuel",
 	recipe = "ethereal:charcoal_lump",
-	burntime = 10,
+	burntime = 10
 })
 
 -- Make Torch from Charcoal Lump
@@ -300,15 +300,15 @@ minetest.register_craft({
 	output = "default:torch 4",
 	recipe = {
 		{"ethereal:charcoal_lump"},
-		{"default:stick"},
+		{"default:stick"}
 	}
 })
 
 -- Staff of Light (by Xanthin)
 minetest.register_tool("ethereal:light_staff", {
 	description = S("Staff of Light"),
-	inventory_image = "light_staff.png",
-	wield_image = "light_staff.png",
+	inventory_image = "ethereal_light_staff.png",
+	wield_image = "ethereal_light_staff.png",
 	sound = {breaks = "default_tool_breaks"},
 	stack_max = 1,
 	on_use = function(itemstack, user, pointed_thing)
@@ -339,8 +339,7 @@ minetest.register_tool("ethereal:light_staff", {
 
 			return itemstack
 		end
-
-	end,
+	end
 })
 
 minetest.register_craft({

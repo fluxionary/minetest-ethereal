@@ -53,7 +53,7 @@ do_stair(
 	"crystal_block",
 	"ethereal:crystal_block",
 	{cracky = 1, level = 2, puts_out_fire = 1, cools_lava = 1},
-	{"crystal_block.png"},
+	{"ethereal_crystal_block.png"},
 	default.node_sound_glass_defaults())
 
 do_stair(
@@ -61,7 +61,7 @@ do_stair(
 	"icebrick",
 	"ethereal:icebrick",
 	{cracky = 3, puts_out_fire = 1, cools_lava = 1},
-	{"brick_ice.png"},
+	{"ethereal_brick_ice.png"},
 	default.node_sound_glass_defaults())
 
 do_stair(
@@ -69,7 +69,7 @@ do_stair(
 	"snowbrick",
 	"ethereal:snowbrick",
 	{crumbly = 3, puts_out_fire = 1, cools_lava = 1},
-	{"brick_snow.png"},
+	{"ethereal_brick_snow.png"},
 	default.node_sound_dirt_defaults({
 		footstep = {name = "default_snow_footstep", gain = 0.25},
 		dug = {name = "default_snow_footstep", gain = 0.75},
@@ -88,7 +88,7 @@ do_stair(
 	"mushroom_trunk",
 	"ethereal:mushroom_trunk",
 	{choppy = 2, oddly_breakable_by_hand = 1, flammable = 2},
-	{"mushroom_trunk.png"},
+	{"ethereal_mushroom_trunk.png"},
 	default.node_sound_wood_defaults())
 
 do_stair(
@@ -96,7 +96,7 @@ do_stair(
 	"mushroom",
 	"ethereal:mushroom",
 	{choppy = 2, oddly_breakable_by_hand = 1, flammable = 2},
-	{"mushroom_block.png"},
+	{"ethereal_mushroom_block.png"},
 	default.node_sound_wood_defaults())
 
 do_stair(
@@ -104,7 +104,7 @@ do_stair(
 	"frost_wood",
 	"ethereal:frost_wood",
 	{choppy = 2, oddly_breakable_by_hand = 1, put_out_fire = 1},
-	{"frost_wood.png"},
+	{"ethereal_frost_wood.png"},
 	default.node_sound_wood_defaults())
 
 do_stair(
@@ -112,7 +112,7 @@ do_stair(
 	"yellow_wood",
 	"ethereal:yellow_wood",
 	{choppy = 2, oddly_breakable_by_hand = 1, put_out_fire = 1},
-	{"yellow_wood.png"},
+	{"ethereal_yellow_wood.png"},
 	default.node_sound_wood_defaults())
 
 do_stair(
@@ -136,7 +136,7 @@ do_stair(
 	"banana_wood",
 	"ethereal:banana_wood",
 	{choppy = 2, oddly_breakable_by_hand = 1, flammable = 3},
-	{"banana_wood.png"},
+	{"ethereal_banana_wood.png"},
 	default.node_sound_wood_defaults())
 
 do_stair(
@@ -144,7 +144,7 @@ do_stair(
 	"willow_wood",
 	"ethereal:willow_wood",
 	{choppy = 2, oddly_breakable_by_hand = 1, flammable = 3},
-	{"willow_wood.png"},
+	{"ethereal_willow_wood.png"},
 	default.node_sound_wood_defaults())
 
 do_stair(
@@ -152,7 +152,7 @@ do_stair(
 	"redwood_wood",
 	"ethereal:redwood_wood",
 	{choppy = 2, oddly_breakable_by_hand = 1, flammable = 3},
-	{"redwood_wood.png"},
+	{"ethereal_redwood_wood.png"},
 	default.node_sound_wood_defaults())
 
 do_stair(
@@ -160,7 +160,7 @@ do_stair(
 	"bamboo_wood",
 	"ethereal:bamboo_block",
 	{snappy = 3, choppy = 2, oddly_breakable_by_hand = 1, flammable = 3},
-	{"bamboo_floor.png"},
+	{"ethereal_bamboo_floor.png"},
 	default.node_sound_wood_defaults())
 
 do_stair(
@@ -176,5 +176,5 @@ do_stair(
 	"olive_wood",
 	"ethereal:olive_wood",
 	{choppy = 2, oddly_breakable_by_hand = 1, flammable = 3},
-	{"olive_wood.png"},
+	{"ethereal_olive_wood.png"},
 	default.node_sound_wood_defaults())

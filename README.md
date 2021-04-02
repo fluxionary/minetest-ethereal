@@ -21,6 +21,7 @@ Ethereal Mapgen mod for Minetest (works on all except v6)
  - Added new Fishing mechanics (inspired by Rootyjr's on mineclone2)
  - Added fishing api to add new items (read API.txt file)
  - Certain fish can only be found in specific biomes
+ - Rename textures so they begin with ethereal_ (sorry texture pack folks)
 
 ### 1.27
 
