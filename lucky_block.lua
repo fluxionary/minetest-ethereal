@@ -82,7 +82,6 @@ lucky_block:add_blocks({
 		{name = "ethereal:fish_flathead", max = 7},
 		{name = "ethereal:fish_plaice", max = 7},
 		{name = "ethereal:fish_pufferfish", max = 5},
-		{name = "ethereal:fish_redsnapper", max = 7},
 		{name = "ethereal:fish_salmon", max = 7},
 		{name = "ethereal:fish_chichlid", max = 7},
 		{name = "ethereal:fish_trout", max  =7},
