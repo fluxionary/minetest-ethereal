@@ -443,3 +443,72 @@ minetest.register_craft({
 		{"group:food_seaweed", "group:food_egg", "group:food_rice"}
 	}
 })
+
+-- Fugu (prepared pufferfish)
+minetest.register_craftitem("ethereal:fugu", {
+	description = S("Fugusashi"),
+	inventory_image = "ethereal_fugu.png",
+	on_use = function(itemstack, user, pointed_thing)
+		if user then
+			if math.random(12) == 1 then
+				return minetest.do_item_eat(-16, nil, itemstack, user, pointed_thing)
+			else
+				return minetest.do_item_eat(4, nil, itemstack, user, pointed_thing)
+			end
+		end
+	end
+})
+
+minetest.register_craft({
+	output = "ethereal:fugu",
+	type = "shapeless",
+	recipe = {
+		"ethereal:fish_pufferfish", "group:food_soy_sauce",
+		"group:food_cutting_board"
+	},
+	replacements = {
+		{"group:food_cutting_board", "farming:cutting_board"},
+		{"group:food_soy_sauce", "vessels:glass_bottle"}
+	}
+})
+
+-- Teriyaki Chicken
+minetest.register_craftitem("ethereal:teriyaki_chicken", {
+	description = S("Teriyaki Chicken"),
+	inventory_image = "ethereal_teriyaki_chicken.png",
+	on_use = minetest.item_eat(4)
+})
+
+minetest.register_craft({
+	type = "shapeless",
+	output = "ethereal:teriyaki_chicken 2",
+	recipe = {
+		"group:food_chicken_raw", "group:food_sugar", "group:food_soy_sauce",
+		"group:food_garlic_clove", "group:food_saucepan", "group:food_gelatin"
+	},
+	replacements = {
+		{"group:food_soy_sauce", "vessels:glass_bottle"},
+		{"group:food_saucepan", "farming:saucepan"}
+	}
+})
+
+-- Teriyaki Beef
+minetest.register_craftitem("ethereal:teriyaki_beef", {
+	description = S("Teriyaki Beef"),
+	inventory_image = "ethereal_teriyaki_beef.png",
+	on_use = minetest.item_eat(12, "ethereal:bowl")
+})
+
+minetest.register_craft({
+	type = "shapeless",
+	output = "ethereal:teriyaki_beef",
+	recipe = {
+		"group:food_meat_raw", "group:food_sugar", "group:food_soy_sauce",
+		"group:food_garlic_clove", "group:food_saucepan", "group:food_gelatin",
+		"group:food_cabbage", "group:food_rice", "group:food_bowl"
+	},
+	replacements = {
+		{"group:food_soy_sauce", "vessels:glass_bottle"},
+		{"group:food_saucepan", "farming:saucepan"}
+	}
+})
