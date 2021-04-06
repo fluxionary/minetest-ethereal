@@ -16,7 +16,7 @@ local fish_items = {
 	{"ethereal:fish_pike", "grassy"},
 	{"ethereal:fish_flathead", "jungle"},
 	{"ethereal:fish_pufferfish", "desert_ocean"},
-	{"ethereal:fish_chichlid", "junglee_ocean"},
+	{"ethereal:fish_cichlid", "junglee_ocean"},
 	{"ethereal:fish_coy", "sakura"},
 	{"ethereal:fish_angler", "ocean"},
 	{"ethereal:fish_jellyfish", "ocean"},
@@ -484,7 +484,7 @@ local fish = {
 	{"Pufferfish", "pufferfish", -2},
 	{"Coy", "coy", 2},
 	{"Salmon", "salmon", 2},
-	{"Chichlid", "chichlid", 2},
+	{"Cichlid", "cichlid", 2},
 	{"Angler", "angler", 2},
 	{"Jellyfish", "jellyfish", 0},
 	{"Seahorse", "seahorse", 0},
@@ -557,5 +557,6 @@ minetest.register_craft({
 })
 
 -- compatibility
-minetest.register_alias("ethereal:fish_raw", "ethereal:fish_chichlid")
+minetest.register_alias("ethereal:fish_raw", "ethereal:fish_cichlid")
 minetest.register_alias("ethereal:fishing_rod_baited", "ethereal:fishing_rod")
+minetest.register_alias("ethereal:fish_chichlid", "ethereal:fish_cichlid")

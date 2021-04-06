@@ -11,7 +11,7 @@
  -- DO NOT change settings below, use the settings.conf file instead
 ethereal = {
 
-	version = "1.28",
+	version = "20210406",
 	leaftype = minetest.settings:get('ethereal.leaftype') or 0,
 	leafwalk = minetest.settings:get_bool('ethereal.leafwalk', false),
 	cavedirt = minetest.settings:get_bool('ethereal.cavedirt', true),
@@ -101,7 +101,6 @@ dofile(path .. "/fishing.lua")
 dofile(path .. "/extra.lua")
 dofile(path .. "/sealife.lua")
 dofile(path .. "/fences.lua")
-dofile(path .. "/gates.lua")
 dofile(path .. "/biomes.lua")
 dofile(path .. "/ores.lua")
 dofile(path .. "/schems.lua")
