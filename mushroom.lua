@@ -12,8 +12,8 @@ minetest.register_craftitem("ethereal:mushroom_soup", {
 minetest.register_craft({
 	output = "ethereal:mushroom_soup",
 	recipe = {
-		{"flowers:mushroom_brown"},
-		{"flowers:mushroom_brown"},
+		{"group:food_mushroom"},
+		{"group:food_mushroom"},
 		{"group:food_bowl"}
 	}
 })

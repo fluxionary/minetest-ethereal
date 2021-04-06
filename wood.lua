@@ -93,7 +93,7 @@ minetest.register_node("ethereal:frost_tree", {
 		"ethereal_frost_tree_top.png",
 		"ethereal_frost_tree.png"
 	},
-	groups = {tree = 1, choppy = 2, oddly_breakable_by_hand = 1, put_out_fire = 1},
+	groups = {tree = 1, choppy = 2, oddly_breakable_by_hand = 1, puts_out_fire = 1},
 	sounds = default.node_sound_wood_defaults(),
 	paramtype2 = "facedir",
 	on_place = minetest.rotate_node
@@ -104,7 +104,7 @@ minetest.register_node("ethereal:frost_wood", {
 	description = S("Frost Wood"),
 	tiles = {"ethereal_frost_wood.png"},
 	is_ground_content = false,
-	groups = {wood = 1, choppy = 2, oddly_breakable_by_hand = 1, put_out_fire = 1},
+	groups = {wood = 1, choppy = 2, oddly_breakable_by_hand = 1},
 	sounds = default.node_sound_wood_defaults()
 })
 
@@ -121,7 +121,7 @@ minetest.register_node("ethereal:yellow_trunk", {
 		"ethereal_yellow_tree_top.png",
 		"ethereal_yellow_tree.png"
 	},
-	groups = {tree = 1, choppy = 2, oddly_breakable_by_hand = 1, put_out_fire = 1},
+	groups = {tree = 1, choppy = 2, oddly_breakable_by_hand = 1, puts_out_fire = 1},
 	sounds = default.node_sound_wood_defaults(),
 	paramtype2 = "facedir",
 	on_place = minetest.rotate_node
@@ -132,7 +132,7 @@ minetest.register_node("ethereal:yellow_wood", {
 	description = S("Healing Tree Wood"),
 	tiles = {"ethereal_yellow_wood.png"},
 	is_ground_content = false,
-	groups = {wood = 1, choppy = 2, oddly_breakable_by_hand = 1, put_out_fire = 1},
+	groups = {wood = 1, choppy = 2, oddly_breakable_by_hand = 1},
 	sounds = default.node_sound_wood_defaults()
 })
 
