@@ -320,6 +320,7 @@ minetest.register_craft({
 minetest.register_tool("ethereal:light_staff", {
 	description = S("Staff of Light"),
 	inventory_image = "ethereal_light_staff.png",
+	light_source = 13, -- used by other mods
 	wield_image = "ethereal_light_staff.png",
 	sound = {breaks = "default_tool_breaks"},
 	stack_max = 1,
