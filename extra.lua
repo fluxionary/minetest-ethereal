@@ -341,14 +341,29 @@ minetest.register_tool("ethereal:light_staff", {
 		local node = minetest.get_node(pos).name
 		local def = minetest.registered_nodes[node]
 		local stone = def and def.groups and def.groups.stone and def.groups.stone == 1
+		local take = false
+		local glo = "ethereal:glostone"
 
-		if stone then
+		if node == "nether:rack" then
 
-			minetest.swap_node(pos, {name = "ethereal:glostone"})
+			glo = "nether:glowstone"
+			take = true
 
-			if not ethereal.check_creative(user:get_player_name()) then
-				itemstack:add_wear(65535 / 149) -- 150 uses
-			end
+		elseif node == "nether:rack_deep" then
+
+			glo = "nether:glowstone_deep"
+			take = true
+
+		elseif stone then
+
+			take = true
+		end
+
+		if take == true then
+
+			minetest.swap_node(pos, {name = glo})
+
+			itemstack:add_wear(65535 / 149) -- 150 uses
 
 			return itemstack
 		end
