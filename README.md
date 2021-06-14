@@ -23,6 +23,7 @@ Ethereal Mapgen mod for Minetest (works on all except v6)
  - Certain fish can only be found in specific biomes
  - Rename textures so they begin with ethereal_ (sorry texture pack folks)
  - Override mushroom spread abm to use "group:mushroom"
+ - Use "stratum" to generate mesa biome for stripey goodness
 
 ### 1.27
 
