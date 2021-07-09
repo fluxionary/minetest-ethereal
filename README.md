@@ -10,6 +10,10 @@ Ethereal Mapgen mod for Minetest (works on all except v6)
 
 ## Changelog
 
+### 1.29
+ - Use "stratum" to generate mesa biome for stripey goodness
+ - Added coloured candles (thanks wRothbard)
+
 ### 1.28
 
  - Added new Mediterranean biome with Lemon and Olive trees (thanks Felfa)
@@ -23,7 +27,6 @@ Ethereal Mapgen mod for Minetest (works on all except v6)
  - Certain fish can only be found in specific biomes
  - Rename textures so they begin with ethereal_ (sorry texture pack folks)
  - Override mushroom spread abm to use "group:mushroom"
- - Use "stratum" to generate mesa biome for stripey goodness
 
 ### 1.27
 
