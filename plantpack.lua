@@ -37,7 +37,7 @@ minetest.register_decoration({
 	place_on = {"ethereal:prairie_dirt", "default:dirt_with_grass"},
 	sidelen = 16,
 	fill_ratio = 0.005,
-	biomes = {"prairie", "grassy", "grassytwo"},
+	biomes = {"prairie", "deciduous_forest", "grassytwo"},
 	decoration = {
 		"xanadu:grass_prairie", "xanadu:grass_cord",
 		"xanadu:grass_wheatgrass", "xanadu:desert_whitesage"
@@ -53,7 +53,7 @@ minetest.register_decoration({
 	},
 	sidelen = 16,
 	fill_ratio = 0.005,
-	biomes = {"prairie", "grassy", "grassytwo", "bamboo"},
+	biomes = {"prairie", "deciduous_forest", "grassytwo", "bamboo"},
 	decoration = {
 		"xanadu:flower_jacobsladder", "xanadu:flower_thistle",
 		"xanadu:flower_wildcarrot"
@@ -68,7 +68,7 @@ minetest.register_decoration({
 	},
 	sidelen = 16,
 	fill_ratio = 0.005,
-	biomes = {"prairie", "grassy", "grassytwo", "grove"},
+	biomes = {"prairie", "deciduous_forest", "grassytwo", "grove"},
 	decoration = {
 		"xanadu:flower_delphinium", "xanadu:flower_celosia",
 		"xanadu:flower_daisy", "xanadu:flower_bluerose"
@@ -86,7 +86,7 @@ minetest.register_decoration({
 	sidelen = 16,
 	fill_ratio = 0.005,
 	biomes = {
-		"prairie", "grassy", "grassytwo", "grove", "junglee",
+		"prairie", "deciduous_forest", "grassytwo", "grove", "junglee",
 		"grayness", "jumble"
 	},
 	decoration = {"xanadu:shrub_kerria", "xanadu:shrub_spicebush"}
@@ -117,7 +117,7 @@ minetest.register_decoration({
 	},
 	sidelen = 16,
 	fill_ratio = 0.005,
-	biomes = {"snowy", "alpine", "grayness"},
+	biomes = {"coniferous_forest", "taiga", "grayness"},
 	decoration = {
 		"xanadu:mountain_edelweiss", "xanadu:mountain_armeria",
 		"xanadu:mountain_bellflower", "xanadu:mountain_willowherb",
@@ -146,7 +146,8 @@ minetest.register_decoration({
 	place_on = {"default:sand", "default:dirt_with_grass"},
 	sidelen = 16,
 	fill_ratio = 0.015,
-	biomes = {"sandclay", "grassy_ocean", "grassy", "grassytwo", "jumble", "swamp"},
+	biomes = {
+		"sandclay", "deciduous_forest_ocean", "grassy", "grassytwo", "jumble", "swamp"},
 	decoration = {
 		"xanadu:wetlands_cattails", "xanadu:wetlands_pickerel",
 		"xanadu:wetlands_mannagrass", "xanadu:wetlands_turtle"
@@ -172,8 +173,8 @@ minetest.register_decoration({
 	fill_ratio = 0.004,
 	biomes = {
 		"mushroom", "prairie", "grayness", "plains", "desert",
-		"junglee", "grassy", "grassytwo", "jumble", "snowy", "alpine",
-		"fiery", "mesa", "bamboo"
+		"junglee", "deciduous_forest", "grassytwo", "jumble", "coniferous_forest",
+		"taiga", "fiery", "mesa", "bamboo"
 	},
 	decoration = {"xanadu:spooky_thornbush", "xanadu:spooky_baneberry"}
 })
@@ -187,6 +188,6 @@ minetest.register_decoration({
 	},
 	sidelen = 16,
 	fill_ratio = 0.004,
-	biomes = {"clearing"},
+	biomes = {"grassland"},
 	decoration = {"xanadu:poppy"}
 })

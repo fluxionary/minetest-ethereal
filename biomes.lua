@@ -69,7 +69,7 @@ end
 add_biome("mountain", 140, 31000, 50, 50, 1,
 	nil, "default:snow", 1, "default:snowblock", 2)
 
-add_biome("clearing", 3, 71, 45, 65, 1,
+add_biome("grassland", 3, 71, 45, 65, 1,
 	nil, "default:dirt_with_grass", 1, "default:dirt", 3)
 
 add_biome("underground", -31000, -192, 50, 50, 1,
@@ -110,10 +110,11 @@ if not minetest.registered_nodes[tmp] then
 	tmp = "ethereal:cold_dirt"
 end
 
-add_biome("snowy", 4, 40, 10, 40, ethereal.snowy,
+-- was 'snowy' biome
+add_biome("coniferous_forest", 4, 40, 10, 40, ethereal.snowy,
 	nil, tmp, 1, "default:dirt", 2)
 
-add_biome("alpine", 40, 140, 10, 40, ethereal.alpine,
+add_biome("taiga", 40, 140, 10, 40, ethereal.alpine,
 	nil, "default:dirt_with_snow", 1, "default:dirt", 2)
 
 
@@ -127,10 +128,10 @@ add_biome("frost_ocean", -192, 1, 10, 40, ethereal.frost,
 	nil, "default:sand", 1, "default:sand", 2)
 
 
-add_biome("grassy", 3, 91, 13, 40, ethereal.grassy,
+add_biome("deciduous_forest", 3, 91, 13, 40, ethereal.grassy,
 	nil, "default:dirt_with_grass", 1, "default:dirt", 3)
 
-add_biome("grassy_ocean", -31000, 3, 13, 40, ethereal.grassy,
+add_biome("deciduous_forest_ocean", -31000, 3, 13, 40, ethereal.grassy,
 	nil, "default:sand", 2, "default:gravel", 1)
 
 

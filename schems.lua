@@ -71,7 +71,7 @@ add_schem({"ethereal:grove_dirt"}, 0.015, {"grove"}, 1, 100,
 	ethereal.bananatree, ethereal.grove)
 
 -- healing tree
-add_schem({"default:dirt_with_snow"}, 0.01, {"alpine"}, 120, 140,
+add_schem({"default:dirt_with_snow"}, 0.01, {"taiga"}, 120, 140,
 	ethereal.yellowtree, ethereal.alpine, nil, "default:dirt_with_snow", 8)
 
 -- crystal frost tree
@@ -103,14 +103,14 @@ add_schem({"ethereal:gray_dirt"}, 0.02, {"grayness"}, 1, 100,
 
 -- default large pine tree for lower elevation
 add_schem({"ethereal:cold_dirt", "default:dirt_with_coniferous_litter"},
-	0.025, {"snowy"}, 10, 40, ethereal.pinetree, ethereal.snowy)
+	0.025, {"coniferous_forest"}, 10, 40, ethereal.pinetree, ethereal.snowy)
 
 -- small pine for higher elevation
-add_schem({"default:dirt_with_snow"}, 0.025, {"alpine"}, 40, 140,
+add_schem({"default:dirt_with_snow"}, 0.025, {"taiga"}, 40, 140,
 	ethereal.pinetree, ethereal.alpine)
 
 -- default apple tree
-add_schem({"default:dirt_with_grass"}, 0.025, {"jumble", "grassy"}, 1, 100,
+add_schem({"default:dirt_with_grass"}, 0.025, {"jumble", "deciduous_forest"}, 1, 100,
 	dpath .. "apple_tree.mts", ethereal.grassy)
 
 -- big old tree
@@ -137,7 +137,7 @@ add_schem({"default:dry_dirt_with_dry_grass",
 
 -- palm tree
 add_schem("default:sand", 0.0025, {"desert_ocean", "plains_ocean", "sandclay",
-	"sandstone_ocean", "mesa_ocean", "grove_ocean", "grassy_ocean"}, 1, 1,
+	"sandstone_ocean", "mesa_ocean", "grove_ocean", "deciduous_forest_ocean"}, 1, 1,
 	ethereal.palmtree, 1)
 
 -- bamboo tree
@@ -198,7 +198,7 @@ minetest.register_decoration({
 		octaves = 3,
 		persist = 0.7,
 	},
-	biomes = {"grassy", "grassytwo", "jumble"},
+	biomes = {"deciduous_forest", "grassytwo", "jumble"},
 	y_min = 1,
 	y_max = 31000,
 	schematic = dpath .. "bush.mts",
@@ -243,7 +243,7 @@ if minetest.registered_nodes["default:pine_bush"] then
 			octaves = 3,
 			persist = 0.7,
 		},
-		biomes = {"alpine"},
+		biomes = {"taiga"},
 		y_max = 31000,
 		y_min = 4,
 		schematic = dpath .. "pine_bush.mts",
@@ -268,7 +268,7 @@ minetest.register_decoration({
 		octaves = 3,
 		persist = 0.7,
 	},
-	biomes = {"snowy", "alpine"},
+	biomes = {"coniferous_forest", "taiga"},
 	y_max = 31000,
 	y_min = 1,
 	place_offset_y = 1,
@@ -292,7 +292,7 @@ minetest.register_decoration({
 		persist = 0.7
 	},
 	biomes = {"desert_ocean", "plains_ocean", "sandclay",
-		"mesa_ocean", "grove_ocean", "grassy_ocean", "swamp_ocean"},
+		"mesa_ocean", "grove_ocean", "deciduous_forest_ocean", "swamp_ocean"},
 	y_min = 0,
 	y_max = 0,
 	schematic = ethereal.waterlily,
