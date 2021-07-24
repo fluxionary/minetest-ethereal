@@ -72,7 +72,7 @@ minetest.register_abm({
 	label = "Ethereal grow onion",
 	nodenames = {"ethereal:onion_1", "ethereal:onion_2", "ethereal:onion_3", "ethereal:onion_4"},
 	neighbors = {"farming:soil_wet"},
-	interval = 9,
+	interval = 11,
 	chance = 20,
 	catch_up = false,
 	action = function(pos, node)
