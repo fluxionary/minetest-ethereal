@@ -10,7 +10,7 @@ lucky_block:add_schematics({
 	{"palmtree", ethereal.palmtree, {x = 4, y = 0, z = 4}},
 	{"bananatree", ethereal.bananatree, {x = 3, y = 0, z = 3}},
 	{"orangetree", ethereal.orangetree, {x = 2, y = 0, z = 2}},
-	{"birchtree", ethereal.birchtree, {x = 2, y = 0, z = 2}},
+	{"birchtree", ethereal.birchtree, {x = 2, y = 0, z = 2}}
 })
 
 lucky_block:add_blocks({
@@ -68,7 +68,7 @@ lucky_block:add_blocks({
 		{name = "ethereal:sakura_sapling", max = 10},
 		{name = "ethereal:willow_sapling", max = 10},
 		{name = "ethereal:lemon_tree_sapling", max = 10},
-		{name = "ethereal:olive_tree_sapling", max = 10},
+		{name = "ethereal:olive_tree_sapling", max = 10}
 	}},
 	{"flo", 5, {"ethereal:blue_marble_tile"}, 2},
 	{"dro", {"ethereal:blue_marble", "ethereal:blue_marble_tile"}, 8},
@@ -88,9 +88,9 @@ lucky_block:add_blocks({
 		{name = "ethereal:fish_angler", max = 7},
 		{name = "ethereal:fish_piranha", max = 7},
 		{name = "ethereal:fishing_rod", max = 1},
-		{name = "ethereal:worm", max = 10},
+		{name = "ethereal:worm", max = 10}
 	}},
-	{"dro", {"ethereal:lemon"}, 9},
+	{"dro", {"ethereal:lemon"}, 9}
 })
 
 if minetest.get_modpath("3d_armor") then
@@ -99,14 +99,14 @@ lucky_block:add_blocks({
 	{"dro", {"3d_armor:chestplate_crystal"}},
 	{"dro", {"3d_armor:leggings_crystal"}},
 	{"dro", {"3d_armor:boots_crystal"}},
-	{"lig"},
+	{"lig"}
 })
 end
 
 if minetest.get_modpath("shields") then
 lucky_block:add_blocks({
 	{"dro", {"shields:shield_crystal"}},
-	{"exp"},
+	{"exp"}
 })
 end
 

@@ -14,6 +14,7 @@ Ethereal Mapgen mod for Minetest (works on all except v6)
  - Use "stratum" to generate mesa biome for stripey goodness
  - Added coloured candles (thanks wRothbard)
  - Rename some biomes to fall inline with default for spawning
+ - Make stairs and doors a soft dependency, fix willow recipes (thanks sangeet)
 
 ### 1.28
 

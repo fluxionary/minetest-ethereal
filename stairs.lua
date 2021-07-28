@@ -3,7 +3,8 @@
 local S = ethereal.intllib
 
 -- stair mods active
-local stairs_redo = stairs and stairs.mod and stairs.mod == "redo"
+local stairs_mod = minetest.get_modpath("stairs")
+local stairs_redo = stairs_mod and stairs.mod and stairs.mod == "redo"
 local stairs_plus = minetest.global_exists("stairsplus")
 
 -- stair selection function

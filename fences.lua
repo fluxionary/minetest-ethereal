@@ -1,6 +1,8 @@
 
 local S = ethereal.intllib
 
+local door_mod = minetest.get_modpath("doors")
+
 
 local add_fence = function(name, node, desc, texture)
 
@@ -27,7 +29,7 @@ local add_fence = function(name, node, desc, texture)
 		})
 	end
 
-	if doors.register_fencegate then
+	if door_mod and doors.register_fencegate then
 
 		doors.register_fencegate("ethereal:fencegate_" .. name, {
 			description = S(desc .. " Fence Gate"),
@@ -51,7 +53,7 @@ end
 add_fence("scorched", "scorched_tree", "Scorched", "ethereal_scorched_tree")
 add_fence("frostwood", "frost_wood", "Frost", "ethereal_frost_wood")
 add_fence("redwood", "redwood_wood", "Redwood", "ethereal_redwood_wood")
-add_fence("willow", "willow", "Willow", "ethereal_willow_wood")
+add_fence("willow", "willow_wood", "Willow", "ethereal_willow_wood")
 add_fence("yellowwood", "yellow_wood", "Healing Wood", "ethereal_yellow_wood")
 add_fence("palm", "palm_wood", "Palm", "moretrees_palm_wood")
 add_fence("banana", "banana_wood", "Banana Wood", "ethereal_banana_wood")
@@ -75,25 +77,28 @@ minetest.register_alias("ethereal:fencegate_pine_closed", "doors:gate_pine_wood_
 
 
 -- sakura door
-doors.register_door("ethereal:door_sakura", {
-	tiles = {
-		{name = "ethereal_sakura_door.png", backface_culling = true}
-	},
-	description = S("Sakura Wood Door"),
-	inventory_image = "ethereal_sakura_door_inv.png",
-	groups = {
-		snappy = 1, choppy = 2, oddly_breakable_by_hand = 2,
-		flammable = 2
-	},
-	sound_open = "doors_glass_door_open",
-	sound_close = "doors_glass_door_close",
-	recipe = {
-		{"group:stick",  "default:paper"},
-		{"default:paper",  "group:stick"},
-		{"ethereal:sakura_wood", "ethereal:sakura_wood"}
-	}
-})
+if door_mod then
 
-minetest.register_alias("ethereal:sakura_door", "ethereal:door_sakura")
-minetest.register_alias("ethereal:sakura_door_a", "ethereal:door_sakura_a")
-minetest.register_alias("ethereal:sakura_door_b", "ethereal:door_sakura_b")
+	doors.register_door("ethereal:door_sakura", {
+		tiles = {
+			{name = "ethereal_sakura_door.png", backface_culling = true}
+		},
+		description = S("Sakura Wood Door"),
+		inventory_image = "ethereal_sakura_door_inv.png",
+		groups = {
+			snappy = 1, choppy = 2, oddly_breakable_by_hand = 2,
+			flammable = 2
+		},
+		sound_open = "doors_glass_door_open",
+		sound_close = "doors_glass_door_close",
+		recipe = {
+			{"group:stick",  "default:paper"},
+			{"default:paper",  "group:stick"},
+			{"ethereal:sakura_wood", "ethereal:sakura_wood"}
+		}
+	})
+
+	minetest.register_alias("ethereal:sakura_door", "ethereal:door_sakura")
+	minetest.register_alias("ethereal:sakura_door_a", "ethereal:door_sakura_a")
+	minetest.register_alias("ethereal:sakura_door_b", "ethereal:door_sakura_b")
+end

@@ -1,8 +1,8 @@
 default
 farming?
-stairs
+stairs?
 flowers
-doors
+doors?
 bakedclay?
 moreblocks?
 intllib?
