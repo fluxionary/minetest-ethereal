@@ -57,7 +57,9 @@ register_sapling("ethereal:banana_tree", "Banana", "ethereal_banana_tree_sapling
 register_sapling("ethereal:frost_tree", "Frost", "ethereal_frost_tree_sapling", 19)
 register_sapling("ethereal:mushroom", "Mushroom", "ethereal_mushroom_sapling", 11)
 register_sapling("ethereal:palm", "Palm", "moretrees_palm_sapling", 9)
-register_sapling("ethereal:redwood", "Redwood", "ethereal_redwood_sapling", 31)
+register_sapling("ethereal:giant_redwood", "Giant Redwood",
+		"ethereal_giant_redwood_sapling", 33)
+register_sapling("ethereal:redwood", "Redwood", "ethereal_redwood_sapling", 21)
 register_sapling("ethereal:orange_tree", "Orange", "ethereal_orange_tree_sapling", 6)
 register_sapling("ethereal:birch", "Birch", "moretrees_birch_sapling", 7)
 register_sapling("ethereal:sakura", "Sakura", "ethereal_sakura_sapling", 10)
@@ -116,11 +118,11 @@ function ethereal.grow_willow_tree(pos)
 end
 
 function ethereal.grow_redwood_tree(pos)
-	if minetest.find_node_near(pos, 1, "ethereal:redwood_sapling") then
-		add_tree(pos, 7, 0, 7, ethereal.redwood_tree)
-	else
-		add_tree(pos, 4, 0, 4, ethereal.redwood_small_tree)
-	end
+	add_tree(pos, 4, 0, 4, ethereal.redwood_small_tree)
+end
+
+function ethereal.grow_giant_redwood_tree(pos)
+	add_tree(pos, 7, 0, 7, ethereal.redwood_tree)
 end
 
 function ethereal.grow_orange_tree(pos)
@@ -218,6 +220,10 @@ local grow_sapling = function(pos, node)
 	and under == "default:dirt_with_dry_grass" then
 		ethereal.grow_redwood_tree(pos)
 
+	elseif node.name == "ethereal:giant_redwood_sapling"
+	and under == "default:dirt_with_dry_grass" then
+		ethereal.grow_giant_redwood_tree(pos)
+
 	elseif node.name == "ethereal:orange_tree_sapling"
 	and under == "ethereal:prairie_dirt" then
 		ethereal.grow_orange_tree(pos)
@@ -261,4 +267,10 @@ minetest.register_abm({
 
 		grow_sapling(pos, node)
 	end
+})
+
+-- 2x redwood saplings make 1x giant redwood sapling
+minetest.register_craft({
+	output = "ethereal:giant_redwood_sapling",
+	recipe = {{"ethereal:redwood_sapling", "ethereal:redwood_sapling"}}
 })
