@@ -381,6 +381,11 @@ minetest.register_craft({
 	}
 })
 
+ethereal.lightstaff_recipes = {
+	["nether:rack"] = "nether:glowstone",
+	["nether:rack_deep"] = "nether:glowstone_deep"
+}
+
 -- Staff of Light (by Xanthin)
 minetest.register_tool("ethereal:light_staff", {
 	description = S("Staff of Light"),
@@ -406,27 +411,12 @@ minetest.register_tool("ethereal:light_staff", {
 		local node = minetest.get_node(pos).name
 		local def = minetest.registered_nodes[node]
 		local stone = def and def.groups and def.groups.stone and def.groups.stone == 1
-		local take = false
-		local glo = "ethereal:glostone"
 
-		if node == "nether:rack" then
+		if ethereal.lightstaff_recipes[node] or stone then
 
-			glo = "nether:glowstone"
-			take = true
+			local glo = ethereal.lightstaff_recipes[node] or "ethereal:glostone"
 
-		elseif node == "nether:rack_deep" then
-
-			glo = "nether:glowstone_deep"
-			take = true
-
-		elseif stone then
-
-			take = true
-		end
-
-		if take == true then
-
-			minetest.swap_node(pos, {name = glo})
+			minetest.set_node(pos, {name = glo})
 
 			itemstack:add_wear(65535 / 149) -- 150 uses
 
