@@ -139,44 +139,6 @@ minetest.register_craft({
 	recipe = "ethereal:palmleaves"
 })
 
--- Candle from Wax and String/Cotton
-minetest.register_node("ethereal:candle", {
-	description = S("Candle"),
-	drawtype = "plantlike",
-	inventory_image = "ethereal_candle_static.png",
-	wield_image = "ethereal_candle_static.png",
-	tiles = {
-		{
-			name = "ethereal_candle.png",
-			animation = {
-				type="vertical_frames",
-				aspect_w = 32,
-				aspect_h = 32,
-				length = 1.0
-			}
-		}
-	},
-	paramtype = "light",
-	light_source = 11,
-	sunlight_propagates = true,
-	walkable = false,
-	groups = {dig_immediate = 3, attached_node = 1},
-	sounds = default.node_sound_defaults(),
-	selection_box = {
-		type = "fixed",
-		fixed = { -0.15, -0.5, -0.15, 0.15, 0, 0.15 }
-	}
-})
-
--- candle recipe
-minetest.register_craft({
-	output = "ethereal:candle 2",
-	recipe = {
-		{"farming:string"},
-		{"ethereal:palm_wax"},
-		{"ethereal:palm_wax"}
-	}
-})
 
 local function add_candle(col, dcol)
 
@@ -207,7 +169,7 @@ minetest.register_node("ethereal:candle" .. col, {
 	light_source = 11,
 	sunlight_propagates = true,
 	walkable = false,
-	groups = {dig_immediate = 3, attached_node = 1},
+	groups = {candle = 1, dig_immediate = 3, attached_node = 1},
 	sounds = default.node_sound_defaults(),
 	selection_box = {
 		type = "fixed",
@@ -219,7 +181,7 @@ minetest.register_node("ethereal:candle" .. col, {
 		minetest.register_craft({
 			output = "ethereal:candle" .. col,
 			recipe = {
-				{"ethereal:candle", "dye:" .. rcol},
+				{"group:candle", "dye:" .. rcol},
 			}
 		})
 	end
@@ -241,6 +203,23 @@ add_candle("red", "Red ")
 add_candle("violet", "Violet ")
 add_candle("yellow", "Yellow ")
 
+-- white candle recipe
+minetest.register_craft({
+	output = "ethereal:candle",
+	recipe = {
+		{"group:candle", "dye:white"}
+	}
+})
+
+-- candle recipe
+minetest.register_craft({
+	output = "ethereal:candle 2",
+	recipe = {
+		{"farming:string"},
+		{"ethereal:palm_wax"},
+		{"ethereal:palm_wax"}
+	}
+})
 
 -- Wooden Bowl
 minetest.register_craftitem("ethereal:bowl", {
