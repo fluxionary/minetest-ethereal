@@ -16,12 +16,27 @@ local do_stair = function(description, name, node, groups, texture, sound)
 
 	elseif stairs_plus then
 
-		stairsplus:register_all("ethereal", name, node, {
+		local mod = "ethereal"
+
+		stairsplus:register_all(mod, name, node, {
 			description = S(description),
 			tiles = texture,
 			groups = groups,
 			sounds = sound,
 		})
+
+		-- aliases need to be set for previous stairs to avoid unknown nodes
+		minetest.register_alias_force("stairs:stair_" .. name,
+				mod .. ":stair_" .. name)
+
+		minetest.register_alias_force("stairs:stair_outer_" .. name,
+				mod .. ":stair_" .. name .. "_outer")
+
+		minetest.register_alias_force("stairs:stair_inner_" .. name,
+				mod .. ":stair_" .. name .. "_inner")
+
+		minetest.register_alias_force("stairs:slab_"  .. name,
+				mod .. ":slab_"  .. name)
 
 	else
 
