@@ -126,4 +126,4 @@ if minetest.get_modpath("xanadu") then
 	dofile(path .. "/plantpack.lua")
 end
 
-print (S("[MOD] Ethereal loaded"))
+print ("[MOD] Ethereal loaded")
