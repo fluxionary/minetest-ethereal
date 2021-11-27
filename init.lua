@@ -9,6 +9,7 @@
 ]]
 
  -- DO NOT change settings below, use the settings.conf file instead
+
 ethereal = {
 
 	version = "20210614",

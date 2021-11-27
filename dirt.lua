@@ -55,7 +55,6 @@ for n = 1, #dirts do
 			footstep = {name = "default_grass_footstep", gain = 0.25},
 		}),
 	})
-
 end
 
 
@@ -76,8 +75,7 @@ local flower_spread = function(pos, node)
 		return
 	end
 
-	if num > 3
-	and node.name == "ethereal:crystalgrass" then
+	if num > 3 and node.name == "ethereal:crystalgrass" then
 
 		local grass = minetest.find_nodes_in_area_under_air(
 			pos0, pos1, {"ethereal:crystalgrass"})
@@ -99,8 +97,7 @@ local flower_spread = function(pos, node)
 
 		return
 
-	elseif num > 3
-	and node.name == "ethereal:dry_shrub" then
+	elseif num > 3 and node.name == "ethereal:dry_shrub" then
 
 		local grass = minetest.find_nodes_in_area_under_air(
 			pos0, pos1, {"ethereal:dry_shrub"})
@@ -261,7 +258,6 @@ if not minetest.get_modpath("bakedclay") then
 		is_ground_content = ethereal.cavedirt,
 		sounds = default.node_sound_stone_defaults()
 	})
-
 end
 
 -- Quicksand (old style, sinking inside shows black instead of yellow effect,

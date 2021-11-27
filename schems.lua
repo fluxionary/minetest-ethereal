@@ -163,25 +163,25 @@ add_schem({"ethereal:grove_dirt"}, 0.002, {"mediterranean"}, 5, 35,
 
 -- default large cactus
 if ethereal.desert == 1 then
-minetest.register_decoration({
-	deco_type = "schematic",
-	place_on = {"default:desert_sand"},
-	sidelen = 80,
-	noise_params = {
-		offset = -0.0005,
-		scale = 0.0015,
-		spread = {x = 200, y = 200, z = 200},
-		seed = 230,
-		octaves = 3,
-		persist = 0.6
-	},
-	biomes = {"desert"},
-	y_min = 5,
-	y_max = 31000,
-	schematic = dpath .. "large_cactus.mts",
-	flags = "place_center_x",
-	rotation = "random",
-})
+	minetest.register_decoration({
+		deco_type = "schematic",
+		place_on = {"default:desert_sand"},
+		sidelen = 80,
+		noise_params = {
+			offset = -0.0005,
+			scale = 0.0015,
+			spread = {x = 200, y = 200, z = 200},
+			seed = 230,
+			octaves = 3,
+			persist = 0.6
+		},
+		biomes = {"desert"},
+		y_min = 5,
+		y_max = 31000,
+		schematic = dpath .. "large_cactus.mts",
+		flags = "place_center_x",
+		rotation = "random",
+	})
 end
 
 
@@ -230,6 +230,7 @@ minetest.register_decoration({
 
 -- default pine bush
 if minetest.registered_nodes["default:pine_bush"] then
+
 	minetest.register_decoration({
 		name = "default:pine_bush",
 		deco_type = "schematic",
@@ -254,27 +255,28 @@ end
 
 -- default blueberry bush
 if minetest.registered_nodes["default:blueberry_bush_leaves"] then
-minetest.register_decoration({
-	name = "default:blueberry_bush",
-	deco_type = "schematic",
-	place_on = {
-		"default:dirt_with_coniferous_litter", "default:dirt_with_snow"},
-	sidelen = 16,
-	noise_params = {
-		offset = -0.004,
-		scale = 0.01,
-		spread = {x = 100, y = 100, z = 100},
-		seed = 697,
-		octaves = 3,
-		persist = 0.7,
-	},
-	biomes = {"coniferous_forest", "taiga"},
-	y_max = 31000,
-	y_min = 1,
-	place_offset_y = 1,
-	schematic = dpath .. "blueberry_bush.mts",
-	flags = "place_center_x, place_center_z"
-})
+
+	minetest.register_decoration({
+		name = "default:blueberry_bush",
+		deco_type = "schematic",
+		place_on = {
+			"default:dirt_with_coniferous_litter", "default:dirt_with_snow"},
+		sidelen = 16,
+		noise_params = {
+			offset = -0.004,
+			scale = 0.01,
+			spread = {x = 100, y = 100, z = 100},
+			seed = 697,
+			octaves = 3,
+			persist = 0.7,
+		},
+		biomes = {"coniferous_forest", "taiga"},
+		y_max = 31000,
+		y_min = 1,
+		place_offset_y = 1,
+		schematic = dpath .. "blueberry_bush.mts",
+		flags = "place_center_x, place_center_z"
+	})
 end
 
 
@@ -303,10 +305,10 @@ minetest.register_decoration({
 -- coral reef
 if ethereal.reefs == 1 then
 
--- override corals so crystal shovel can pick them up intact
-minetest.override_item("default:coral_skeleton", {groups = {crumbly = 3}})
-minetest.override_item("default:coral_orange", {groups = {crumbly = 3}})
-minetest.override_item("default:coral_brown", {groups = {crumbly = 3}})
+	-- override corals so crystal shovel can pick them up intact
+	minetest.override_item("default:coral_skeleton", {groups = {crumbly = 3}})
+	minetest.override_item("default:coral_orange", {groups = {crumbly = 3}})
+	minetest.override_item("default:coral_brown", {groups = {crumbly = 3}})
 
 	minetest.register_decoration({
 		deco_type = "schematic",

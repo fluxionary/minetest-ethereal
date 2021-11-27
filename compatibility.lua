@@ -22,7 +22,7 @@ minetest.register_alias("ethereal:strawberry_bush", "ethereal:strawberry_7")
 minetest.register_alias("ethereal:seed_strawberry", "ethereal:strawberry")
 
 for i = 1, 5 do
-	minetest.register_alias("ethereal:wild_onion_"..i, "ethereal:onion_"..i)
+	minetest.register_alias("ethereal:wild_onion_" .. i, "ethereal:onion_" .. i)
 end
 
 minetest.register_alias("ethereal:onion_7", "ethereal:onion_4")

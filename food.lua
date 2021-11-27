@@ -59,15 +59,13 @@ minetest.register_node("ethereal:banana_bunch", {
 
 -- Bunch to Single
 minetest.register_craft({
-	type = "shapeless",
 	output = "ethereal:banana 3",
-	recipe = {"ethereal:banana_bunch"}
+	recipe = {{"ethereal:banana_bunch"}}
 })
 
 minetest.register_craft({
-	type = "shapeless",
 	output = "ethereal:banana_bunch",
-	recipe = {"ethereal:banana", "ethereal:banana", "ethereal:banana"}
+	recipe = {{"ethereal:banana", "ethereal:banana", "ethereal:banana"}}
 })
 
 -- Banana Dough
@@ -77,9 +75,8 @@ minetest.register_craftitem("ethereal:banana_dough", {
 })
 
 minetest.register_craft({
-	type = "shapeless",
 	output = "ethereal:banana_dough",
-	recipe = {"group:food_flour", "group:food_banana"}
+	recipe = {{"group:food_flour", "group:food_banana"}}
 })
 
 minetest.register_craft({
@@ -193,7 +190,6 @@ minetest.register_node("ethereal:golden_apple", {
 		leafdecay = 3,leafdecay_drop = 1
 	},
 	drop = "ethereal:golden_apple",
---	on_use = minetest.item_eat(20),
 	on_use = function(itemstack, user, pointed_thing)
 		if user then
 			user:set_hp(20)
@@ -249,9 +245,7 @@ minetest.register_craftitem("ethereal:bucket_cactus", {
 
 minetest.register_craft({
 	output = "ethereal:bucket_cactus",
-	recipe = {
-		{"bucket:bucket_empty","default:cactus"},
-	}
+	recipe = {{"bucket:bucket_empty","default:cactus"}}
 })
 
 
@@ -267,7 +261,6 @@ minetest.register_craftitem("ethereal:firethorn_jelly", {
 if minetest.registered_items["farming:bowl"] then
 
 minetest.register_craft({
---	type = "shapeless",
 	output = "ethereal:firethorn_jelly",
 	recipe = {
 		{"farming:mortar_pestle","vessels:glass_bottle", ""},
@@ -320,7 +313,6 @@ minetest.register_craftitem("ethereal:candied_lemon", {
 })
 
 minetest.register_craft({
---	type = "shapeless",
 	output = "ethereal:candied_lemon",
 	recipe = {
 		{"farming:baking_tray", "ethereal:lemon", "group:food_sugar"}
@@ -349,7 +341,6 @@ minetest.register_node("ethereal:lemonade", {
 })
 
 minetest.register_craft({
---	type = "shapeless",
 	output = "ethereal:lemonade",
 	recipe = {
 		{"ethereal:lemon", "group:food_sugar", "group:food_sugar"},
@@ -398,7 +389,6 @@ minetest.register_craftitem("ethereal:olive_oil", {
 })
 
 minetest.register_craft({
---	type = "shapeless",
 	output = "ethereal:olive_oil",
 	recipe = {
 		{"ethereal:olive", "ethereal:olive", "ethereal:olive"},
@@ -469,7 +459,6 @@ minetest.register_craftitem("ethereal:fugu", {
 
 minetest.register_craft({
 	output = "ethereal:fugu",
---	type = "shapeless",
 	recipe = {
 		{"group:food_cutting_board", "ethereal:fish_pufferfish", "group:food_soy_sauce"}
 	},
@@ -487,7 +476,6 @@ minetest.register_craftitem("ethereal:teriyaki_chicken", {
 })
 
 minetest.register_craft({
---	type = "shapeless",
 	output = "ethereal:teriyaki_chicken 2",
 	recipe = {
 		{"group:food_chicken_raw", "group:food_sugar", "group:food_soy_sauce"},
@@ -507,7 +495,6 @@ minetest.register_craftitem("ethereal:teriyaki_beef", {
 })
 
 minetest.register_craft({
---	type = "shapeless",
 	output = "ethereal:teriyaki_beef",
 	recipe = {
 		{"group:food_meat_raw", "group:food_sugar", "group:food_soy_sauce"},

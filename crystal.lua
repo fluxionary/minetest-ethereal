@@ -33,6 +33,7 @@ minetest.register_craftitem("ethereal:crystal_ingot", {
 	wield_image = "ethereal_crystal_ingot.png"
 })
 
+-- Check for builtin_item mod and add custom drop code to crystal spikes
 if minetest.get_modpath("builtin_item") then
 
 	minetest.override_item("ethereal:crystal_spike", {
@@ -93,7 +94,7 @@ minetest.register_craft({
 		"default:mese_crystal", "ethereal:crystal_spike",
 		"ethereal:crystal_spike", "default:mese_crystal", "bucket:bucket_water"
 	},
-	replacements = { {"bucket:bucket_water", "bucket:bucket_empty"} }
+	replacements = {{"bucket:bucket_water", "bucket:bucket_empty"}}
 })
 
 -- Crystal Block
@@ -111,15 +112,13 @@ minetest.register_craft({
 	recipe = {
 		{"ethereal:crystal_ingot", "ethereal:crystal_ingot", "ethereal:crystal_ingot"},
 		{"ethereal:crystal_ingot", "ethereal:crystal_ingot", "ethereal:crystal_ingot"},
-		{"ethereal:crystal_ingot", "ethereal:crystal_ingot", "ethereal:crystal_ingot"},
+		{"ethereal:crystal_ingot", "ethereal:crystal_ingot", "ethereal:crystal_ingot"}
 	}
 })
 
 minetest.register_craft({
 	output = "ethereal:crystal_ingot 9",
-	recipe = {
-		{"ethereal:crystal_block"},
-	}
+	recipe = {{"ethereal:crystal_block"}}
 })
 
 -- Crystal Sword (Powerful wee beastie)
@@ -167,7 +166,7 @@ minetest.register_tool("ethereal:axe_crystal", {
 				maxlevel = 3
 			}
 		},
-		damage_groups = {fleshy = 7},
+		damage_groups = {fleshy = 7}
 	},
 	groups = {axe = 1},
 	sound = {breaks = "default_tool_breaks"}
@@ -206,7 +205,7 @@ minetest.register_tool("ethereal:pick_crystal", {
 				maxlevel = 3
 			}
 		},
-		damage_groups = {fleshy = 6},
+		damage_groups = {fleshy = 6}
 	},
 	groups = {pickaxe = 1},
 	sound = {breaks = "default_tool_breaks"}
@@ -255,7 +254,7 @@ minetest.register_tool("ethereal:shovel_crystal", {
 				maxlevel = 3
 			}
 		},
-		damage_groups = {fleshy = 4},
+		damage_groups = {fleshy = 4}
 	},
 	groups = {shovel = 1},
 	sound = {breaks = "default_tool_breaks"}

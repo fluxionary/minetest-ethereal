@@ -64,9 +64,7 @@ minetest.register_craftitem("ethereal:fire_dust", {
 
 minetest.register_craft({
 	output = "ethereal:fire_dust 2",
-	recipe = {
-		{"ethereal:fire_flower"}
-	}
+	recipe = {{"ethereal:fire_flower"}}
 })
 
 minetest.register_craft({

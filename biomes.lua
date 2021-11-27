@@ -291,7 +291,7 @@ if ethereal.glacier == 1 then
 	})
 end
 
-if ethereal.tundra and minetest.registered_nodes["default:permafrost"] then
+if ethereal.tundra == 1 and minetest.registered_nodes["default:permafrost"] then
 
 	minetest.register_biome({
 		name = "tundra_highland",

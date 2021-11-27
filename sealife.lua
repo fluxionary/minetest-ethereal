@@ -68,9 +68,8 @@ minetest.register_node("ethereal:coral2", {
 })
 
 minetest.register_craft( {
-	type = "shapeless",
 	output = "dye:cyan 3",
-	recipe = {"ethereal:coral2"}
+	recipe = {{"ethereal:coral2"}}
 })
 
 -- Orange Coral
@@ -91,9 +90,8 @@ minetest.register_node("ethereal:coral3", {
 })
 
 minetest.register_craft( {
-	type = "shapeless",
 	output = "dye:orange 3",
-	recipe = {"ethereal:coral3"}
+	recipe = {{"ethereal:coral3"}}
 })
 
 -- Pink Coral
@@ -114,9 +112,8 @@ minetest.register_node("ethereal:coral4", {
 })
 
 minetest.register_craft( {
-	type = "shapeless",
 	output = "dye:pink 3",
-	recipe = {"ethereal:coral4"}
+	recipe = {{"ethereal:coral4"}}
 })
 
 -- Green Coral
@@ -137,9 +134,8 @@ minetest.register_node("ethereal:coral5", {
 })
 
 minetest.register_craft( {
-	type = "shapeless",
 	output = "dye:green 3",
-	recipe = {"ethereal:coral5"}
+	recipe = {{"ethereal:coral5"}}
 })
 
 -- Undersea Sand
@@ -156,6 +152,7 @@ minetest.register_node("ethereal:sandy", {
 
 -- randomly generate coral or seaweed and have seaweed grow up to 14 high
 if ethereal.sealife == 1 then
+
 minetest.register_abm({
 	label = "Grow coral/seaweed",
 	nodenames = {"ethereal:sandy"},

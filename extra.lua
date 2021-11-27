@@ -286,12 +286,12 @@ minetest.register_node("ethereal:paper_wall", {
 	paramtype2 = "facedir",
 	selection_box = {
 		type = "fixed",
-		fixed = { -0.5, -0.5, 5/11, 0.5, 0.5, 8/16 }
+		fixed = {-0.5, -0.5, 5/11, 0.5, 0.5, 8/16}
 	},
 	node_box = {
 		type = "fixed",
 		fixed = {
-			{ -0.5, -0.5, 5/11, 0.5, 0.5, 8/16 }
+			{-0.5, -0.5, 5/11, 0.5, 0.5, 8/16}
 		}
 	}
 })

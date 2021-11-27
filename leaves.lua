@@ -16,7 +16,7 @@ minetest.override_item("default:leaves", {
 	visual_scale = leafscale,
 	inventory_image = "default_leaves.png",
 	wield_image = "default_leaves.png",
-	walkable = ethereal.leafwalk,
+	walkable = ethereal.leafwalk
 })
 
 -- ability to craft big tree sapling
@@ -31,7 +31,7 @@ minetest.override_item("default:jungleleaves", {
 	visual_scale = leafscale,
 	inventory_image = "default_jungleleaves.png",
 	wield_image = "default_jungleleaves.png",
-	walkable = ethereal.leafwalk,
+	walkable = ethereal.leafwalk
 })
 
 -- default pine tree leaves
@@ -48,7 +48,7 @@ minetest.override_item("default:pine_needles", {
 			{items = {"ethereal:pine_nuts"}, rarity = 5},
 			{items = {"default:pine_needles"}}
 		}
-	},
+	}
 })
 
 -- default acacia tree leaves
@@ -57,7 +57,7 @@ minetest.override_item("default:acacia_leaves", {
 	inventory_image = "default_acacia_leaves.png",
 	wield_image = "default_acacia_leaves.png",
 	visual_scale = leafscale,
-	walkable = ethereal.leafwalk,
+	walkable = ethereal.leafwalk
 })
 
 -- default aspen tree leaves
@@ -66,7 +66,7 @@ minetest.override_item("default:aspen_leaves", {
 	inventory_image = "default_aspen_leaves.png",
 	wield_image = "default_aspen_leaves.png",
 	visual_scale = leafscale,
-	walkable = ethereal.leafwalk,
+	walkable = ethereal.leafwalk
 })
 
 -- willow twig

@@ -10,7 +10,7 @@ minetest.register_craftitem("ethereal:wild_onion_plant", {
 	on_place = function(itemstack, placer, pointed_thing)
 		return farming.place_seed(itemstack, placer, pointed_thing, "ethereal:wild_onion_1")
 	end,
-	on_use = minetest.item_eat(2),
+	on_use = minetest.item_eat(2)
 })
 
 -- Define Onion growth stages

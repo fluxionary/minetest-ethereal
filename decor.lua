@@ -1,58 +1,62 @@
 
 if minetest.registered_nodes["farming:cotton_wild"] then
-minetest.register_decoration({
-	name = "farming:cotton_wild",
-	deco_type = "simple",
-	place_on = {"default:dry_dirt_with_dry_grass"},
-	sidelen = 16,
-	noise_params = {
-		offset = -0.1,
-		scale = 0.1,
-		spread = {x = 50, y = 50, z = 50},
-		seed = 4242,
-		octaves = 3,
-		persist = 0.7
-	},
-	biomes = {"savanna"},
-	y_max = 31000,
-	y_min = 1,
-	decoration = "farming:cotton_wild",
-})
+
+	minetest.register_decoration({
+		name = "farming:cotton_wild",
+		deco_type = "simple",
+		place_on = {"default:dry_dirt_with_dry_grass"},
+		sidelen = 16,
+		noise_params = {
+			offset = -0.1,
+			scale = 0.1,
+			spread = {x = 50, y = 50, z = 50},
+			seed = 4242,
+			octaves = 3,
+			persist = 0.7
+		},
+		biomes = {"savanna"},
+		y_max = 31000,
+		y_min = 1,
+		decoration = "farming:cotton_wild"
+	})
 end
 
 -- water pools in swamp areas if 5.0 detected
 if minetest.registered_nodes["default:permafrost"] then
-minetest.register_decoration({
-	deco_type = "simple",
-	place_on = {"default:dirt_with_grass"},
-	place_offset_y = -1,
-	sidelen = 16,
-	fill_ratio = 0.01,
-	biomes = {"swamp"},
-	y_max = 2,
-	y_min = 1,
-	flags = "force_placement",
-	decoration = "default:water_source",
-	spawn_by = "default:dirt_with_grass",
-	num_spawn_by = 8,
-})
-minetest.register_decoration({
-	deco_type = "simple",
-	place_on = {"default:dirt_with_grass"},
-	place_offset_y = -1,
-	sidelen = 16,
-	fill_ratio = 0.1,
-	biomes = {"swamp"},
-	y_max = 2,
-	y_min = 1,
-	flags = "force_placement",
-	decoration = "default:water_source",
-	spawn_by = {"default:dirt_with_grass", "default:water_source"},
-	num_spawn_by = 8,
-})
+
+	minetest.register_decoration({
+		deco_type = "simple",
+		place_on = {"default:dirt_with_grass"},
+		place_offset_y = -1,
+		sidelen = 16,
+		fill_ratio = 0.01,
+		biomes = {"swamp"},
+		y_max = 2,
+		y_min = 1,
+		flags = "force_placement",
+		decoration = "default:water_source",
+		spawn_by = "default:dirt_with_grass",
+		num_spawn_by = 8
+	})
+
+	minetest.register_decoration({
+		deco_type = "simple",
+		place_on = {"default:dirt_with_grass"},
+		place_offset_y = -1,
+		sidelen = 16,
+		fill_ratio = 0.1,
+		biomes = {"swamp"},
+		y_max = 2,
+		y_min = 1,
+		flags = "force_placement",
+		decoration = "default:water_source",
+		spawn_by = {"default:dirt_with_grass", "default:water_source"},
+		num_spawn_by = 8
+	})
 end
 
 if minetest.registered_nodes["default:dry_dirt_with_dry_grass"] then
+
 	minetest.register_decoration({
 		deco_type = "simple",
 		place_on = {"default:dry_dirt_with_dry_grass"},
@@ -70,7 +74,7 @@ if minetest.registered_nodes["default:dry_dirt_with_dry_grass"] then
 		y_min = 1,
 		decoration = "default:dry_dirt",
 		place_offset_y = -1,
-		flags = "force_placement",
+		flags = "force_placement"
 	})
 end
 
@@ -94,7 +98,7 @@ local add_node = function(a, b, c, d, e, f, g, h, i, j)
 		decoration = f,
 		height_max = g,
 		spawn_by = h,
-		num_spawn_by = i,
+		num_spawn_by = i
 	})
 end
 
@@ -197,26 +201,26 @@ local list = {
 -- wild red and brown mushrooms
 for _, row in pairs(list) do
 
-if row[3] == 1 then
-minetest.register_decoration({
-	deco_type = "simple",
-	place_on = row[2],
-	sidelen = 16,
-	noise_params = {
-		offset = 0,
-		scale = 0.009,
-		spread = {x = 200, y = 200, z = 200},
-		seed = 2,
-		octaves = 3,
-		persist = 0.66
-	},
-	biomes = {row[1]},
-	y_min = 1,
-	y_max = 120,
-	decoration = {"flowers:mushroom_brown", "flowers:mushroom_red"}
-})
-end
+	if row[3] == 1 then
 
+		minetest.register_decoration({
+			deco_type = "simple",
+			place_on = row[2],
+			sidelen = 16,
+			noise_params = {
+				offset = 0,
+				scale = 0.009,
+				spread = {x = 200, y = 200, z = 200},
+				seed = 2,
+				octaves = 3,
+				persist = 0.66
+			},
+			biomes = {row[1]},
+			y_min = 1,
+			y_max = 120,
+			decoration = {"flowers:mushroom_brown", "flowers:mushroom_red"}
+		})
+	end
 end
 
 -- jungle grass
@@ -273,14 +277,12 @@ add_node({"ethereal:bamboo_dirt"}, 0.35, {"sakura"}, 1, 100,
 -- grass on sand
 if minetest.registered_nodes["default:marram_grass_1"] then
 
-add_node({"default:sand"}, 0.25, {"sandclay"}, 3, 4, {"default:marram_grass_1",
-	"default:marram_grass_2", "default:marram_grass_3"}, nil, nil, nil,
-	ethereal.sandclay)
-
+	add_node({"default:sand"}, 0.25, {"sandclay"}, 3, 4, {"default:marram_grass_1",
+		"default:marram_grass_2", "default:marram_grass_3"}, nil, nil, nil,
+		ethereal.sandclay)
 else
-
-add_node({"default:sand"}, 0.25, {"sandclay"}, 3, 4, {"default:grass_2",
-	"default:grass_3"}, nil, nil, nil, ethereal.sandclay)
+	add_node({"default:sand"}, 0.25, {"sandclay"}, 3, 4, {"default:grass_2",
+		"default:grass_3"}, nil, nil, nil, ethereal.sandclay)
 end
 
 -- ferns
@@ -537,47 +539,50 @@ minetest.register_decoration({
 end
 
 
-if ethereal.desert and minetest.get_modpath("wine") then
-minetest.register_decoration({
-	deco_type = "simple",
-	place_on = {"default:desert_sand"},
-	sidelen = 16,
-	fill_ratio = 0.001,
-	biomes = {"desert"},
-	decoration = {"wine:blue_agave"}
-})
-end
+if ethereal.desert == 1 and minetest.get_modpath("wine") then
 
-
-if ethereal.snowy and minetest.registered_nodes["default:fern_1"] then
-local function register_fern_decoration(seed, length)
 	minetest.register_decoration({
-		name = "default:fern_" .. length,
 		deco_type = "simple",
-		place_on = {
-			"ethereal:cold_dirt", "default:dirt_with_coniferous_litter"},
+		place_on = {"default:desert_sand"},
 		sidelen = 16,
-		noise_params = {
-			offset = 0,
-			scale = 0.2,
-			spread = {x = 100, y = 100, z = 100},
-			seed = seed,
-			octaves = 3,
-			persist = 0.7
-		},
-		y_max = 31000,
-		y_min = 6,
-		decoration = "default:fern_" .. length
+		fill_ratio = 0.001,
+		biomes = {"desert"},
+		decoration = {"wine:blue_agave"}
 	})
 end
 
-register_fern_decoration(14936, 3)
-register_fern_decoration(801, 2)
-register_fern_decoration(5, 1)
+
+if ethereal.snowy == 1 and minetest.registered_nodes["default:fern_1"] then
+
+	local function register_fern_decoration(seed, length)
+
+		minetest.register_decoration({
+			name = "default:fern_" .. length,
+			deco_type = "simple",
+			place_on = {
+				"ethereal:cold_dirt", "default:dirt_with_coniferous_litter"},
+			sidelen = 16,
+			noise_params = {
+				offset = 0,
+				scale = 0.2,
+				spread = {x = 100, y = 100, z = 100},
+				seed = seed,
+				octaves = 3,
+				persist = 0.7
+			},
+			y_max = 31000,
+			y_min = 6,
+			decoration = "default:fern_" .. length
+		})
+	end
+
+	register_fern_decoration(14936, 3)
+	register_fern_decoration(801, 2)
+	register_fern_decoration(5, 1)
 end
 
 
-if ethereal.tundra and minetest.registered_nodes["default:permafrost"] then
+if ethereal.tundra == 1 and minetest.registered_nodes["default:permafrost"] then
 
 	-- Tundra moss
 
@@ -629,28 +634,30 @@ end
 
 
 if minetest.get_modpath("butterflies") then
-minetest.register_decoration({
-	name = "butterflies:butterfly",
-	deco_type = "simple",
-	place_on = {"default:dirt_with_grass", "ethereal:prairie_dirt"},
-	place_offset_y = 2,
-	sidelen = 80,
-	fill_ratio = 0.005,
-	biomes = {"deciduous_forest", "grassytwo", "prairie", "jumble"},
-	y_max = 31000,
-	y_min = 1,
-	decoration = {
-		"butterflies:butterfly_white",
-		"butterflies:butterfly_red",
-		"butterflies:butterfly_violet"
-	},
-	spawn_by = "group:flower",
-	num_spawn_by = 1
-})
+
+	minetest.register_decoration({
+		name = "butterflies:butterfly",
+		deco_type = "simple",
+		place_on = {"default:dirt_with_grass", "ethereal:prairie_dirt"},
+		place_offset_y = 2,
+		sidelen = 80,
+		fill_ratio = 0.005,
+		biomes = {"deciduous_forest", "grassytwo", "prairie", "jumble"},
+		y_max = 31000,
+		y_min = 1,
+		decoration = {
+			"butterflies:butterfly_white",
+			"butterflies:butterfly_red",
+			"butterflies:butterfly_violet"
+		},
+		spawn_by = "group:flower",
+		num_spawn_by = 1
+	})
 end
 
 
 if minetest.get_modpath("fireflies") then
+
 	minetest.register_decoration({
 		name = "fireflies:firefly_low",
 		deco_type = "simple",
@@ -675,6 +682,7 @@ end
 
 -- Coral Reef (Minetest 5.0)
 if minetest.registered_nodes["default:coral_green"] then
+
 	minetest.register_decoration({
 		name = "default:corals",
 		deco_type = "simple",
@@ -689,11 +697,7 @@ if minetest.registered_nodes["default:coral_green"] then
 			octaves = 3,
 			persist = 0.7,
 		},
-		biomes = {
-			"desert_ocean",
-			"savanna_ocean",
-			"junglee_ocean",
-		},
+		biomes = {"desert_ocean", "savanna_ocean", "junglee_ocean"},
 		y_max = -2,
 		y_min = -8,
 		flags = "force_placement",

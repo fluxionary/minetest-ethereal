@@ -138,6 +138,7 @@ function ethereal.grow_birch_tree(pos)
 end
 
 function ethereal.grow_sakura_tree(pos)
+
 	if math.random(10) == 1 then
 		add_tree(pos, 4, 0, 3, ethereal.sakura_tree,
 			{{"ethereal:sakura_leaves", "ethereal:sakura_leaves2"}})
