@@ -57,7 +57,7 @@ add_schem("default:snowblock", 0.0005, {"glacier"}, 3, 50,
 	ethereal.igloo, ethereal.glacier, nil, "default:snowblock", 8, "random")
 
 -- sakura tree
-add_schem({"ethereal:bamboo_dirt"}, 0.01, {"sakura"}, 7, 100,
+add_schem({"ethereal:bamboo_dirt"}, 0.001, {"sakura"}, 7, 100,
 	ethereal.sakura_tree, ethereal.sakura, nil,
 	"ethereal:bamboo_dirt", 6)
 
