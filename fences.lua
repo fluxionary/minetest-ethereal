@@ -60,6 +60,7 @@ add_fence("banana", "banana_wood", "Banana Wood", "ethereal_banana_wood")
 add_fence("mushroom", "mushroom_trunk", "Mushroom", "ethereal_mushroom_trunk")
 add_fence("birch", "birch_wood", "Birch", "moretrees_birch_wood")
 add_fence("sakura", "sakura_wood", "Sakura", "ethereal_sakura_wood")
+add_fence("olive", "olive_wood", "Olive", "ethereal_olive_wood")
 
 
 -- add compatibility for ethereal's to default wooden gates
