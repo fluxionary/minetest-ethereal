@@ -12,7 +12,7 @@
 
 ethereal = {
 
-	version = "20220105",
+	version = "20220210",
 	leaftype = minetest.settings:get('ethereal.leaftype') or 0,
 	leafwalk = minetest.settings:get_bool('ethereal.leafwalk', false),
 	cavedirt = minetest.settings:get_bool('ethereal.cavedirt', true),

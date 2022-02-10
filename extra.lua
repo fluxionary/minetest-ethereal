@@ -275,7 +275,7 @@ minetest.register_node("ethereal:paper_wall", {
 	drawtype = "nodebox",
 	description = S("Paper Wall"),
 	tiles = {"ethereal_paper_wall.png"},
-	inventory_image_image = "ethereal_paper_wall.png",
+	inventory_image = "ethereal_paper_wall.png",
 	wield_image = "ethereal_paper_wall.png",
 	paramtype = "light",
 	groups = {snappy = 3},

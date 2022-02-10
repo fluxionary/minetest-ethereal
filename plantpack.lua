@@ -48,7 +48,7 @@ minetest.register_decoration({
 minetest.register_decoration({
 	deco_type = "simple",
 	place_on = {
-		"ethereal:prairie_grass", "default:dirt_with_grass",
+		"ethereal:prairie_dirt", "default:dirt_with_grass",
 		"ethereal:grove_dirt", "ethereal:bamboo_dirt"
 	},
 	sidelen = 16,
@@ -63,7 +63,7 @@ minetest.register_decoration({
 minetest.register_decoration({
 	deco_type = "simple",
 	place_on = {
-		"ethereal:prairie_grass", "default:dirt_with_grass",
+		"ethereal:prairie_dirt", "default:dirt_with_grass",
 		"ethereal:grove_dirt"
 	},
 	sidelen = 16,
@@ -79,7 +79,7 @@ minetest.register_decoration({
 minetest.register_decoration({
 	deco_type = "simple",
 	place_on = {
-		"ethereal:prairie_grass", "default:dirt_with_grass",
+		"ethereal:prairie_dirt", "default:dirt_with_grass",
 		"ethereal:grove_dirt", "ethereal:jungle_grass",
 		"ethereal:gray_dirt", "default:dirt_with_rainforest_litter"
 	},

@@ -6,7 +6,6 @@ minetest.register_node("ethereal:icebrick", {
 	description = S("Ice Brick"),
 	tiles = {"ethereal_brick_ice.png"},
 	paramtype = "light",
-	freezemelt = "default:water_source",
 	is_ground_content = false,
 	groups = {cracky = 3, puts_out_fire = 1, cools_lava = 1},
 	sounds = default.node_sound_glass_defaults()
@@ -25,7 +24,6 @@ minetest.register_node("ethereal:snowbrick", {
 	description = S("Snow Brick"),
 	tiles = {"ethereal_brick_snow.png"},
 	paramtype = "light",
-	freezemelt = "default:water_source",
 	is_ground_content = false,
 	groups = {crumbly = 3, puts_out_fire = 1, cools_lava = 1},
 	sounds = default.node_sound_dirt_defaults({
@@ -43,7 +41,7 @@ minetest.register_craft({
 	}
 })
 
--- If Crystal Spike, Crystal Dirt, Snow near Water, change Water to Ice
+-- If Crystal Spike, Snow near Water, change Water to Ice
 minetest.register_abm({
 	label = "Ethereal freeze water",
 	nodenames = {
@@ -73,7 +71,7 @@ minetest.register_abm({
 		"default:dirt_with_snow", "ethereal:snowbrick", "ethereal:icebrick"
 	},
 	neighbors = {
-		"fire:basic_fire", "default:lava_source", "default:lava_flowing",
+		"fire:basic_flame", "default:lava_source", "default:lava_flowing",
 		"default:furnace_active", "default:torch", "default:torch_wall",
 		"default:torch_ceiling"
 	},
@@ -121,10 +119,12 @@ minetest.register_abm({
 		if node.name == "ethereal:dry_dirt"
 		or node.name == "default:dry_dirt" then
 			minetest.swap_node(pos, {name = "default:dirt"})
+		elseif node.name == "default:dirt_with_dry_grass" then
+			minetest.swap_node(pos, {name = "default:dirt_with_grass"})
 		else
 			minetest.swap_node(pos, {name = "default:dirt_with_dry_grass"})
 		end
-	end,
+	end
 })
 
 -- when enabled, drop torches that are touching water

@@ -187,7 +187,7 @@ add_node({"default:desert_sand"}, 0.005, {"desert"}, 1, 100,
 
 -- wild red mushroom
 add_node({"ethereal:mushroom_dirt"}, 0.01, {"mushroom"}, 1, 100,
-	{"flowers:mushroom_fertile_red"}, nil, nil, nil, ethereal.mushroom)
+	{"flowers:mushroom_red"}, nil, nil, nil, ethereal.mushroom)
 
 local list = {
 	{"junglee", {"ethereal:jungle_dirt", "default:dirt_with_rainforest_litter"}, ethereal.junglee},
@@ -377,7 +377,7 @@ add_node({"default:dirt_with_grass"}, 0.015, {"jumble"}, 1, 1,
 	1, ethereal.jumble)
 
 -- mint
-add_node({"default:dirt_with_grass", "default:dirt_with_coniferous_grass",
+add_node({"default:dirt_with_grass", "default:dirt_with_coniferous_litter",
 	"ethereal:bamboo_dirt"}, 0.003, nil, 1, 75, "farming:mint_4", nil,
 	"group:water", 1, 1)
 
@@ -462,7 +462,7 @@ if minetest.get_modpath("bakedclay") then
 minetest.register_decoration({
 	deco_type = "simple",
 	place_on = {
-		"ethereal:prairie_grass", "default:dirt_with_grass",
+		"ethereal:prairie_dirt", "default:dirt_with_grass",
 		"ethereal:grove_dirt"
 	},
 	sidelen = 16,
@@ -482,7 +482,7 @@ minetest.register_decoration({
 minetest.register_decoration({
 	deco_type = "simple",
 	place_on = {
-		"ethereal:prairie_grass", "default:dirt_with_grass",
+		"ethereal:prairie_dirt", "default:dirt_with_grass",
 		"ethereal:grove_dirt", "ethereal:bamboo_dirt"
 	},
 	sidelen = 16,
