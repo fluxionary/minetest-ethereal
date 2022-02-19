@@ -15,6 +15,8 @@ Ethereal Mapgen mod for Minetest (works on all except v6)
  - Added coloured candles (thanks wRothbard)
  - Rename some biomes to fall inline with default for spawning
  - Make stairs and doors a soft dependency, fix willow recipes (thanks sangeet)
+ - Added 'ethereal.flightpotion_duration' setting, potion also works on 0.4.x clients
+ - Added olive wood fences, gates, mese posts
 
 ### 1.28
 
