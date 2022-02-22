@@ -65,40 +65,55 @@ crop_def.drop = {
 }
 minetest.register_node("ethereal:onion_5", table.copy(crop_def))
 
+
 -- growing routine if farming redo isn't present
-if not farming or not farming.mod or farming.mod ~= "redo" then
+if farming and farming.mod and farming.mod == "redo" then
 
-minetest.register_abm({
-	label = "Ethereal grow onion",
-	nodenames = {"ethereal:onion_1", "ethereal:onion_2", "ethereal:onion_3", "ethereal:onion_4"},
-	neighbors = {"farming:soil_wet"},
-	interval = 11,
-	chance = 20,
-	catch_up = false,
-	action = function(pos, node)
+	-- add to registered_plants
+	farming.registered_plants["ethereal:wild_onion_plant"] = {
+		crop = "ethereal:onion",
+		seed = "ethereal:wild_onion_plant",
+		minlight = farming.min_light,
+		maxlight = farming.max_light,
+		steps = 5
+	}
 
-		-- are we on wet soil?
-		pos.y = pos.y - 1
-		if minetest.get_item_group(minetest.get_node(pos).name, "soil") < 3 then
-			return
+else
+
+	minetest.register_abm({
+		label = "Ethereal grow onion",
+		nodenames = {
+			"ethereal:onion_1", "ethereal:onion_2", "ethereal:onion_3",
+			"ethereal:onion_4"
+		},
+		neighbors = {"farming:soil_wet"},
+		interval = 11,
+		chance = 20,
+		catch_up = false,
+		action = function(pos, node)
+
+			-- are we on wet soil?
+			pos.y = pos.y - 1
+
+			if minetest.get_item_group(minetest.get_node(pos).name, "soil") < 3 then
+				return
+			end
+
+			pos.y = pos.y + 1
+
+			-- do we have enough light?
+			local light = minetest.get_node_light(pos)
+
+			if not light or light < 13 then
+				return
+			end
+
+			-- grow to next stage
+			local num = node.name:split("_")[2]
+
+			node.name = "ethereal:onion_" .. tonumber(num + 1)
+
+			minetest.swap_node(pos, node)
 		end
-		pos.y = pos.y + 1
-
-		-- do we have enough light?
-		local light = minetest.get_node_light(pos)
-
-		if not light
-		or light < 13 then
-			return
-		end
-
-		-- grow to next stage
-		local num = node.name:split("_")[2]
-
-		node.name = "ethereal:onion_" .. tonumber(num + 1)
-
-		minetest.swap_node(pos, node)
-	end
-})
-
-end -- END IF
+	})
+end
