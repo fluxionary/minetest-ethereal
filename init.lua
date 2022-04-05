@@ -1,61 +1,79 @@
 --[[
-
 	Minetest Ethereal Mod
 
 	Created by ChinChow
 
 	Updated by TenPlus1
-
 ]]
 
- -- DO NOT change settings below, use the settings.conf file instead
 
-ethereal = {
+ethereal = {version = "20220405"}
 
-	version = "20220219",
-	leaftype = minetest.settings:get('ethereal.leaftype') or 0,
-	leafwalk = minetest.settings:get_bool('ethereal.leafwalk', false) or false,
-	cavedirt = minetest.settings:get_bool('ethereal.cavedirt', true) or true,
-	torchdrop = minetest.settings:get_bool('ethereal.torchdrop', true) or true,
-	papyruswalk = minetest.settings:get_bool('ethereal.papyruswalk', true) or true,
-	lilywalk = minetest.settings:get_bool('ethereal.lilywalk', true) or true,
-	xcraft = minetest.settings:get_bool('ethereal.xcraft', true) or true,
-	flight = minetest.settings:get_bool('ethereal.flight', true) or true,
 
-	glacier = minetest.settings:get('ethereal.glacier') or 1,
-	bamboo = minetest.settings:get('ethereal.bamboo') or 1,
-	mesa = minetest.settings:get('ethereal.mesa') or 1,
-	alpine = minetest.settings:get('ethereal.alpine') or 1,
-	healing = minetest.settings:get('ethereal.healing') or 1,
-	snowy = minetest.settings:get('ethereal.snowy') or 1,
-	frost = minetest.settings:get('ethereal.frost') or 1,
-	grassy = minetest.settings:get('ethereal.grassy') or 1,
-	caves = minetest.settings:get('ethereal.caves') or 1,
-	grayness = minetest.settings:get('ethereal.grayness') or 1,
-	grassytwo = minetest.settings:get('ethereal.grassytwo') or 1,
-	prairie = minetest.settings:get('ethereal.prairie') or 1,
-	jumble = minetest.settings:get('ethereal.jumble') or 1,
-	junglee = minetest.settings:get('ethereal.junglee') or 1,
-	desert = minetest.settings:get('ethereal.desert') or 1,
-	grove = minetest.settings:get('ethereal.grove') or 1,
-	mushroom = minetest.settings:get('ethereal.mushroom') or 1,
-	sandstone = minetest.settings:get('ethereal.sandstone') or 1,
-	quicksand = minetest.settings:get('ethereal.quicksand') or 1,
-	plains = minetest.settings:get('ethereal.plains') or 1,
-	savanna = minetest.settings:get('ethereal.savanna') or 1,
-	fiery = minetest.settings:get('ethereal.fiery') or 1,
-	sandclay = minetest.settings:get('ethereal.sandclay') or 1,
-	swamp = minetest.settings:get('ethereal.swamp') or 1,
-	sealife = minetest.settings:get('ethereal.sealife') or 1,
-	reefs = minetest.settings:get('ethereal.reefs') or 1,
-	sakura = minetest.settings:get('ethereal.sakura') or 1,
-	tundra = minetest.settings:get('ethereal.tundra') or 1,
-	mediterranean = minetest.settings:get('ethereal.mediterranean') or 1
-}
+local function setting(stype, name, default)
+
+	local value
+
+	if stype == "bool" then
+		value = minetest.settings:get_bool("ethereal." .. name)
+	elseif stype == "string" then
+		value = minetest.settings:get("ethereal." .. name)
+	elseif stype == "number" then
+		value = tonumber(minetest.settings:get("ethereal." .. name))
+	end
+
+	if value == nil then
+		value = default
+	end
+
+	ethereal[name] = value
+end
+
+
+-- DO NOT change settings below, use the settings.conf file instead
+
+setting("number", "leaftype", 0)
+setting("bool", "leafwalk", false)
+setting("bool", "cavedirt", true)
+setting("bool", "torchdrop", true)
+setting("bool", "papyruswalk", true)
+setting("bool", "lilywalk", true)
+setting("bool", "xcraft", true)
+setting("bool", "flight", true)
+setting("number", "glacier", 1)
+setting("number", "bamboo", 1)
+setting("number", "mesa", 1)
+setting("number", "alpine", 1)
+setting("number", "healing", 1)
+setting("number", "snowy", 1)
+setting("number", "frost", 1)
+setting("number", "grassy", 1)
+setting("number", "caves", 1)
+setting("number", "grayness", 1)
+setting("number", "grassytwo", 1)
+setting("number", "prairie", 1)
+setting("number", "jumble", 1)
+setting("number", "junglee", 1)
+setting("number", "desert", 1)
+setting("number", "grove", 1)
+setting("number", "mushroom", 1)
+setting("number", "sandstone", 1)
+setting("number", "quicksand", 1)
+setting("number", "plains", 1)
+setting("number", "savanna", 1)
+setting("number", "fiery", 1)
+setting("number", "sandclay", 1)
+setting("number", "swamp", 1)
+setting("number", "sealife", 1)
+setting("number", "reefs", 1)
+setting("number", "sakura", 1)
+setting("number", "tundra", 1)
+setting("number", "mediterranean", 1)
+
 
 local path = minetest.get_modpath("ethereal")
 
--- Load new settings if found
+-- Load settings.conf file if found
 local input = io.open(path.."/settings.conf", "r")
 if input then
 	dofile(path .. "/settings.conf")
