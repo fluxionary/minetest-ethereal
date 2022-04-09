@@ -15,6 +15,13 @@ ethereal.waterlily = {
 if ethereal.lilywalk == true then
 
 	minetest.override_item("flowers:waterlily", {
-		walkable = true,
+		walkable = true
 	})
+
+	if minetest.registered_nodes["flowers:waterlily_waving"] then
+
+		minetest.override_item("flowers:waterlily_waving", {
+			walkable = true
+		})
+	end
 end
