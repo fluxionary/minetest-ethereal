@@ -1,9 +1,4 @@
 
--- clear default mapgen biomes, decorations but keep ores
-minetest.clear_registered_biomes()
-minetest.clear_registered_decorations()
---minetest.clear_registered_ores()
-
 local S = ethereal.intllib
 
 

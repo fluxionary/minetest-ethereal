@@ -7,7 +7,7 @@
 ]]
 
 
-ethereal = {version = "20220405"}
+ethereal = {version = "20220424"}
 
 
 local function setting(stype, name, default)
@@ -120,6 +120,7 @@ dofile(path .. "/fishing.lua")
 dofile(path .. "/extra.lua")
 dofile(path .. "/sealife.lua")
 dofile(path .. "/fences.lua")
+dofile(path .. "/biomes_init.lua")
 dofile(path .. "/biomes.lua")
 dofile(path .. "/ores.lua")
 dofile(path .. "/schems.lua")
