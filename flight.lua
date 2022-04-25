@@ -101,12 +101,20 @@ minetest.register_on_joinplayer(function(player)
 	if is_50 then
 
 		meta = player:get_meta() ; if not meta then return end
-		timer = tonumber(meta:get_string("ethereal:fly_timer") or "") or 0
+		timer = meta:get_string("ethereal:fly_timer") or ""
 	else
-		timer = tonumber(player:get_attribute("ethereal:fly_timer") or "") or 0
+		timer = player:get_attribute("ethereal:fly_timer") or ""
 	end
 
-	if timer and timer == -99 then
+	-- first run to set fly timer if no number found
+	if timer == "" then
+		ethereal_set_flight(player)
+		return
+	end
+
+	timer = tonumber(timer) or 0
+
+	if timer == -99 then
 		return
 	end
 
