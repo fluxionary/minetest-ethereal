@@ -85,7 +85,7 @@ minetest.register_entity("ethereal:prebob_entity", {
 			local def = minetest.registered_nodes[node.name]
 
 			-- remove if we hit something hard
-			if def and def.walkable then
+			if (def and def.walkable) or node.name == "ignore" then
 
 				self.object:remove()
 
@@ -274,6 +274,8 @@ minetest.register_entity("ethereal:bob_entity", {
 						pos = pos, gain = 0.1}, true)
 				end
 			end
+		else -- if not in water remove bob
+			self.object:remove()
 		end
 	end
 })
