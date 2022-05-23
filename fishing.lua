@@ -76,55 +76,54 @@ minetest.register_entity("ethereal:prebob_entity", {
 
 	on_step = function(self, dtime)
 
+		-- get node information
 		local pos = self.object:get_pos()
+		local node = minetest.get_node(pos)
+		local def = minetest.registered_nodes[node.name]
 
-		-- Destroy when hitting a solid node
-		if self.lastpos.x then
+		-- remove if we hit something hard
+		if (def and def.walkable) or node.name == "ignore" then
 
-			local node = minetest.get_node(pos)
-			local def = minetest.registered_nodes[node.name]
+			self.object:remove()
 
-			-- remove if we hit something hard
-			if (def and def.walkable) or node.name == "ignore" then
-
-				self.object:remove()
-
-				return
-			end
-
-			if def and def.liquidtype == "source"
-			and minetest.get_item_group(node.name, "water") > 0 then
-
---print("---water")
-
-				-- do we have worms for bait, if so take one
-				local player = self.fisher and minetest.get_player_by_name(self.fisher)
-				local inv = player and player:get_inventory()
-				local bait = 0
-
-				if inv and inv:contains_item("main", "ethereal:worm") then
-					inv:remove_item("main", "ethereal:worm")
-					bait = 20
-				end
-
-				self.lastpos.y = math.floor(self.lastpos.y)
-
-				local obj = minetest.add_entity(self.lastpos, "ethereal:bob_entity")
-				local ent = obj:get_luaentity()
-
-				ent.fisher = self.fisher
-				ent.bait = bait
-
-				minetest.sound_play("default_water_footstep", {
-					pos = self.lastpos, gain = 0.1}, true)
-
-				self.object:remove()
-
-				return
-			end
+			return
 		end
 
-		self.lastpos = {x = pos.x, y = pos.y, z = pos.z}
+		if def and def.liquidtype == "source"
+		and minetest.get_item_group(node.name, "water") > 0 then
+
+			-- incase of lag find water level
+			local free_fall, blocker = minetest.line_of_sight(
+				{x = pos.x, y = pos.y + 2, z = pos.z},
+				{x = pos.x, y = pos.y    , z = pos.z})
+
+			-- re-position fishing bob
+			pos = blocker
+			pos.y = math.ceil(blocker.y)
+
+			-- do we have worms for bait, if so take one
+			local player = self.fisher and minetest.get_player_by_name(self.fisher)
+			local inv = player and player:get_inventory()
+			local bait = 0
+
+			if inv and inv:contains_item("main", "ethereal:worm") then
+				inv:remove_item("main", "ethereal:worm")
+				bait = 20
+			end
+
+			local obj = minetest.add_entity(pos, "ethereal:bob_entity")
+			local ent = obj:get_luaentity()
+
+			ent.fisher = self.fisher
+			ent.bait = bait
+
+			minetest.sound_play("default_water_footstep", {
+				pos = pos, gain = 0.1}, true)
+
+			self.object:remove()
+
+			return
+		end
 	end
 })
 
@@ -181,19 +180,16 @@ minetest.register_entity("ethereal:bob_entity", {
 		end
 
 		-- remove bob if player is too far away
-		local bob_pos = self.object:get_pos()
 		local pla_pos = player:get_pos()
 
-		if (pla_pos.y - bob_pos.y) > 15
-		or (pla_pos.y - bob_pos.y) < -15
-		or (pla_pos.x - bob_pos.x) > 15
-		or (pla_pos.x - bob_pos.x) < -15
-		or (pla_pos.z - bob_pos.z) > 15
-		or (pla_pos.z - bob_pos.z) < -15 then
+		if (pla_pos.y - pos.y) > 15
+		or (pla_pos.y - pos.y) < -15
+		or (pla_pos.x - pos.x) > 15
+		or (pla_pos.x - pos.x) < -15
+		or (pla_pos.z - pos.z) > 15
+		or (pla_pos.z - pos.z) < -15 then
 
---print("-- out of range")
-
-			self.object:remove()
+			self.object:remove() ; --print("-- out of range")
 
 			return
 		end
@@ -274,8 +270,8 @@ minetest.register_entity("ethereal:bob_entity", {
 						pos = pos, gain = 0.1}, true)
 				end
 			end
-		else -- if not in water remove bob
-			self.object:remove()
+		else
+			self.object:remove() ; --print("-- not in water")
 		end
 	end
 })
