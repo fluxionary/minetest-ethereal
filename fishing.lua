@@ -64,31 +64,54 @@ ethereal.add_item = function(fish, junk, bonus)
 end
 
 
--- fishing bob entity that is thrown into water
-minetest.register_entity("ethereal:prebob_entity", {
+local effect = function(pos)
+
+	minetest.add_particle({
+		pos = {
+			x = pos.x + random() - 0.5,
+			y = pos.y + 0.1,
+			z = pos.z + random() - 0.5
+		},
+		velocity = {x = 0, y = 4, z = 0},
+		acceleration = {x = 0, y = -5, z = 0},
+		expirationtime = random() * 0.5,
+		size = random(),
+		collisiondetection = false,
+		vertical = false,
+		texture = "bubble.png"
+	})
+end
+
+
+-- fishing bob entity
+minetest.register_entity("ethereal:bob_entity", {
 
 	textures = {"ethereal_fishing_bob.png"},
 	visual_size = {x = 0.5, y = 0.5},
-	collisionbox = {-0.1,-0.1,-0.1,0.1,0.1,0.1},
-	pointable = false,
+	collisionbox = {0.1, 0.1, 0.1, 0.1, 0.1, 0.1},
 	physical = false,
-	lastpos = {},
+	pointable = false,
+	static_save = false,
+	timer = 0,
 
 	on_step = function(self, dtime)
 
-		-- get node information
 		local pos = self.object:get_pos()
 		local node = minetest.get_node(pos)
 		local def = minetest.registered_nodes[node.name]
 
+-- casting rod into water
+if not self.cast then
+
 		-- remove if we hit something hard
 		if (def and def.walkable) or node.name == "ignore" then
 
-			self.object:remove()
+			self.object:remove() ; --print("-- hit block")
 
 			return
 		end
 
+		-- while bob is in water
 		if def and def.liquidtype == "source"
 		and minetest.get_item_group(node.name, "water") > 0 then
 
@@ -96,10 +119,6 @@ minetest.register_entity("ethereal:prebob_entity", {
 			local free_fall, blocker = minetest.line_of_sight(
 				{x = pos.x, y = pos.y + 2, z = pos.z},
 				{x = pos.x, y = pos.y    , z = pos.z})
-
-			-- re-position fishing bob
-			pos = blocker
-			pos.y = math.ceil(blocker.y)
 
 			-- do we have worms for bait, if so take one
 			local player = self.fisher and minetest.get_player_by_name(self.fisher)
@@ -111,44 +130,28 @@ minetest.register_entity("ethereal:prebob_entity", {
 				bait = 20
 			end
 
-			local obj = minetest.add_entity(pos, "ethereal:bob_entity")
-			local ent = obj:get_luaentity()
+			-- re-position fishing bob and set to cast
+			pos = {x = pos.x, y = blocker.y + 0.45, z = pos.z}
 
-			ent.fisher = self.fisher
-			ent.bait = bait
+			self.object:set_acceleration({x = 0, y = 0, z = 0})
+			self.object:set_velocity({x = 0, y = 0, z = 0})
+			self.object:set_pos(pos)
+			self.bait = bait
+			self.cast = true
+
+			-- splash
+			effect(pos) ; effect(pos) ; effect(pos) ; effect(pos)
 
 			minetest.sound_play("default_water_footstep", {
 				pos = pos, gain = 0.1}, true)
-
-			self.object:remove()
-
-			return
 		end
-	end
-})
 
-
--- fishing bob entity that moves from time to time
-minetest.register_entity("ethereal:bob_entity", {
-
-	textures = {"ethereal_fishing_bob.png"},
-	visual_size = {x = 0.5, y = 0.5},
-	collisionbox = {0.4,0.4,0.4,0.4,0.4,0.4},
-	physical = false,
-	pointable = false,
-	static_save = false,
-	lastpos = {},
-	timer = 0,
-	patience = nil,
-	old_y = nil,
-	bob = false,
-
-	on_step = function(self, dtime)
+else -- already cast and waiting for fish
 
 		-- we need a name
 		if self.fisher == nil or self.fisher == "" then
 
-			self.object:remove()
+			self.object:remove() ; --print("-- no name")
 
 			return
 		end
@@ -158,23 +161,17 @@ minetest.register_entity("ethereal:bob_entity", {
 		-- we need an actual person
 		if not player then
 
-			self.object:remove()
+			self.object:remove() ; --print("-- no player")
 
 			return
 		end
 
-		local pos = self.object:get_pos()
-
-		pos.y = math.floor(pos.y)
-
-		local node = minetest.get_node(pos)
-		local def = minetest.registered_nodes[node.name]
 		local wield = player:get_wielded_item()
 
 		-- we also need a rod to fish with
 		if not wield or wield:get_name() ~= "ethereal:fishing_rod" then
 
-			self.object:remove()
+			self.object:remove() ; --print("-- no rod")
 
 			return
 		end
@@ -198,27 +195,7 @@ minetest.register_entity("ethereal:bob_entity", {
 		if def and def.liquidtype == "source"
 		and minetest.get_item_group(def.name, "water") ~= 0 then
 
-			if self.old_y == nil then
-
-				self.object:set_pos({
-					x = self.object:get_pos().x,
-					y = math.floor(self.object:get_pos().y) + 0.5,
-					z = self.object:get_pos().z})
-
-				self.old_y = self.object:get_pos().y
-			end
-
-			-- reset to original position after dive.
-			if self.object:get_pos().y > self.old_y then
-
-				self.object:set_pos({
-					x = self.object:get_pos().x,
-					y = self.old_y,
-					z = self.object:get_pos().z})
-
-				self.object:set_velocity({x = 0, y = 0, z = 0})
-				self.object:set_acceleration({x = 0, y = 0, z = 0})
-			end
+			self.old_y = self.old_y or pos.y
 
 			-- choose random time to wait (minus bait time for worm)
 			if not self.patience or self.patience <= 0 then
@@ -230,20 +207,7 @@ minetest.register_entity("ethereal:bob_entity", {
 			-- add particles if bobber bobbing
 			if self.bob then
 
-				minetest.add_particle({
-					pos = {
-						x = pos.x + random() - 0.5,
-						y = pos.y + 0.1,
-						z = pos.z + random() - 0.5
-					},
-					velocity = {x = 0, y = 4, z = 0},
-					acceleration = {x = 0, y = -5, z = 0},
-					expirationtime = random() * 0.5,
-					size = random(),
-					collisiondetection = false,
-					vertical = false,
-					texture = "bubble.png"
-				})
+				effect(pos)
 
 				-- handle timer
 				if self.timer < self.patience then
@@ -263,17 +227,32 @@ minetest.register_entity("ethereal:bob_entity", {
 					self.patience = 1.5 -- timeframe to catch fish after bob
 					self.timer = 0
 
-					self.object:set_velocity({x = 0, y = -2, z = 0})
-					self.object:set_acceleration({x = 0, y = 5, z = 0})
+					self.object:set_velocity({x = 0, y = -1, z = 0})
+					self.object:set_acceleration({x = 0, y = 3, z = 0})
 
 					minetest.sound_play("default_water_footstep", {
 						pos = pos, gain = 0.1}, true)
 				end
 			end
 		else
-			self.object:remove() ; --print("-- not in water")
+			-- reset to original position after dive.
+			if self.old_y and pos.y > self.old_y then
+
+				self.object:set_velocity({x = 0, y = 0, z = 0})
+				self.object:set_acceleration({x = 0, y = 0, z = 0})
+				self.object:set_pos({x = pos.x, y = self.old_y, z = pos.z})
+				--print("-- reset bob y pos")
+			end
+
+			-- remove if not in water and not bobbing
+			if not self.bob then
+				self.object:remove() ; --print("-- not in water")
+			end
 		end
-	end
+
+end -- if not self.cast
+
+	end -- on_step
 })
 
 
@@ -316,7 +295,7 @@ end
 local use_rod = function(itemstack, player, pointed_thing)
 
 	local pos = player:get_pos()
-	local objs = minetest.get_objects_inside_radius(pos, 25)
+	local objs = minetest.get_objects_inside_radius(pos, 15)
 	local found = true
 	local ent
 
@@ -327,7 +306,7 @@ local use_rod = function(itemstack, player, pointed_thing)
 
 		if ent
 		and ent.fisher
-		and (ent.name == "ethereal:prebob_entity" or ent.name == "ethereal:bob_entity")
+		and ent.name == "ethereal:bob_entity"
 		and player:get_player_name() == ent.fisher then
 
 			found = false
@@ -381,7 +360,7 @@ local use_rod = function(itemstack, player, pointed_thing)
 
 		if ent
 		and ent.fisher
-		and (ent.name == "ethereal:prebob_entity" or ent.name == "ethereal:bob_entity")
+		and ent.name == "ethereal:bob_entity"
 		and player:get_player_name() == ent.fisher then
 
 			found = false
@@ -400,7 +379,7 @@ local use_rod = function(itemstack, player, pointed_thing)
 			{pos = pos, gain = 0.4, max_hear_distance = 16}, true)
 
 		-- place actual bob
-		local obj = minetest.add_entity(pos, "ethereal:prebob_entity")
+		local obj = minetest.add_entity(pos, "ethereal:bob_entity")
 
 		obj:set_velocity({x = dir.x * 8, y = dir.y * 8, z = dir.z * 8})
 		obj:set_acceleration({x = dir.x * -3, y = -9.8, z = dir.z * -3})
@@ -412,7 +391,7 @@ end
 -- scan area for bobs that belong to player and remove
 local remove_bob = function(player)
 
-	local objs = minetest.get_objects_inside_radius(player:get_pos(), 25)
+	local objs = minetest.get_objects_inside_radius(player:get_pos(), 15)
 	local name = player:get_player_name()
 	local ent
 
@@ -420,9 +399,7 @@ local remove_bob = function(player)
 
 		ent = objs[n]:get_luaentity()
 
-		if ent
-		and (ent.name == "ethereal:prebob_entity"
-		or ent.name == "ethereal:bob_entity") then
+		if ent and ent.name == "ethereal:bob_entity" then
 
 			-- only remove players own bob
 			if ent.fisher and ent.fisher == name then
