@@ -88,7 +88,7 @@ minetest.register_entity("ethereal:bob_entity", {
 
 	textures = {"ethereal_fishing_bob.png"},
 	visual_size = {x = 0.5, y = 0.5},
-	collisionbox = {0.1, 0.1, 0.1, 0.1, 0.1, 0.1},
+	collisionbox = {-0.1, -0.1, -0.1, 0.1, 0.1, 0.1},
 	physical = false,
 	pointable = false,
 	static_save = false,
