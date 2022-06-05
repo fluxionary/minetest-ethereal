@@ -1,8 +1,12 @@
 # Template for translations of ethereal mod
-# last update: 2016/May/25
+# last update: 2022/June/04
+
+#biomes.lua
+Blue Marble=
+Blue Marble Tile=
 
 #bonemeal.lua
-Bone=
+Bone=Hueso
 Bone Meal=
 
 #crystal.lua
@@ -12,7 +16,7 @@ Crystal Block=
 Crystal Sword=
 Crystal Axe=
 Crystal Pickaxe=
-Crystal (soft touch) Shovel=
+Crystal Shovel=
 Crystal Gilly Staff=
 
 #dirt.lua
@@ -36,12 +40,29 @@ Quicksand=
 Bamboo Floor=
 Palm Wax=
 Candle=
+Black Candle=
+Blue Candle=
+Brown Candle=
+Cyan Candle=
+Dark Green Candle=
+Dark Grey Candle=
+Green Candle=
+Grey Candle=
+Magenta Candle=
+Orange Candle=
+Pink Candle=
+Red Candle=
+Violet Candle=
+Yellow Candle=
 Bowl=
 Stone Ladder=
 Paper Wall=
 Glo Stone=
 Lump of Charcoal=
 Staff of Light=
+Etherium Dust=
+Etherium Ore=
+Bamboo Block=
 
 #fences.lua
 Scorched Fence=
@@ -53,17 +74,53 @@ Palm Fence=
 Banana Wood Fence=
 Mushroom Fence=
 Birch Fence=
+Sakura Wood Door=
 
 #fishing.lua
+Blue Fin=
+Blue Ram=
+Catfish=
+Clownfish=
+Pike=
+Flathead=
+Plaice=
+Pufferfish=
+Coy=
+Salmon=
+Cichlid=
+Angler=
+Jellyfish=
+Seahorse=
+Piranha=
+Trout=
 Raw Fish=
 Cooked Fish=
 Sashimi=
 Worm=
-Fishing Rod=
+Fishing Rod (USE to cast and again when the time is right)=
 Baited Fishing Rod=
 Inventory full, Fish Got Away!=
 
+#flight.lua
+Flight Potion=
+Flight timer about to expire!=
+Flight already granted, @1 seconds left!=
+Flight granted, you have @1 seconds!=
+
 #food.lua
+Banana Bunch=
+Firethorn Jelly=
+Lemon=
+Candied Lemon=
+Lemonade=
+Olive=
+Olive Oil=
+Kappa Maki Sushi=
+Nigiri Sushi=
+Tamago Sushi=
+Fugusashi=
+Teriyaki Chicken=
+Teriyaki Beef=
 Banana=
 Banana Dough=
 Orange=
@@ -90,6 +147,9 @@ Birch Wood Fence Gate=
 [MOD] Ethereal loaded=
 
 #leaves.lua
+Sakura Leaves=
+Lemon Tree Leaves=
+Olive Tree Leaves=
 Willow Twig=
 Redwood Leaves=
 Orange Leaves=
@@ -112,6 +172,7 @@ Mushroom Soup=
 Wild Onion=
 
 #plantlife.lua
+Firethorn Shrub=
 Fire Flower=
 Fire Dust=
 Vine=
@@ -131,6 +192,10 @@ Green Illumishroom=
 Cyan Illumishroom=
 
 #sapling.lua
+Giant Redwood Tree Sapling=
+Sakura Tree Sapling=
+Lemon Tree Sapling=
+Olive Tree Sapling=
 Bamboo Sprout=
 Willow Tree Sapling=
 Healing Tree Sapling=
@@ -144,27 +209,34 @@ Mushroom Tree Sapling=
 Palm Tree Sapling=
 Redwood Tree Sapling=
 Orange Tree Sapling=
-Acacia Tree Sapling=
 Birch Tree Sapling=
 Schematic not found=
 
 #sealife.lua
+Agar Powder=
+Sponge=
+Wet sponge=
 Seaweed=
-Blue Coral=
-Orange Coral=
-Pink Coral=
-Green Coral=
-Sandy=
+Blue Glow Coral=
+Orange Glow Coral=
+Pink Glow Coral=
+Green Glow Coral=
 
 #stairs.lua
+Blue Marble Stair=
+Blue Marble Tile=
+Sakura Wood Stair= 
+Sakura Wood Tile=
+Olive Wood Stair=
+Olive Wood Tile=
 Crystal Block Stair=
 Crystal Block Slab=
 Ice Brick Stair=
 Ice Brick Slab=
 Snow Brick Stair=
 Snow Brick Slab=
-Dry Dirt Stair=
-Dry Dirt Slab=
+Dried Dirt Stair=
+Dried Dirt Slab=
 Mushroom Trunk Stair=
 Mushroom Trunk Slab=
 Mushroom Top Stair=
@@ -199,6 +271,10 @@ Ice Brick=
 Snow Brick=
 
 #wood.lua
+Sakura Trunk=
+Sakura Wood=
+Olive Trunk=
+Olive Wood=
 Willow Trunk=
 Willow Wood=
 Redwood Trunk=

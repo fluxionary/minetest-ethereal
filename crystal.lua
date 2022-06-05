@@ -241,7 +241,7 @@ end
 
 
 minetest.register_tool("ethereal:shovel_crystal", {
-	description = "Crystal Shovel",
+	description = S("Crystal Shovel"),
 	inventory_image = "ethereal_crystal_shovel.png",
 	wield_image = "ethereal_crystal_shovel.png^[transformR90",
 	tool_capabilities = {
