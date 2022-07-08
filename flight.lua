@@ -4,7 +4,41 @@ local S = ethereal.intllib
 local is_50 = minetest.has_feature("object_use_texture_alpha")
 
 
--- disable flight
+local function get_timer(user)
+
+	if not user then return end
+
+	if is_50 then
+
+		local meta = user:get_meta()
+
+		if not meta then return "" end
+
+		return meta:get_string("ethereal:fly_timer") or ""
+	else
+		return user:get_attribute("ethereal:fly_timer") or ""
+	end
+end
+
+
+local function has_fly(name)
+	return minetest.get_player_privs(name).fly
+end
+
+
+local function set_timer(user, timer)
+
+	if is_50 then
+
+		local meta = user:get_meta()
+
+		meta:set_string("ethereal:fly_timer", timer)
+	else
+		user:set_attribute("ethereal:fly_timer", timer)
+	end
+end
+
+
 local function set_flight(user, set)
 
 	if not user then return end
@@ -16,16 +50,9 @@ local function set_flight(user, set)
 
 	minetest.set_player_privs(name, privs)
 
-	-- when 'fly' removed set timer to temp value for checks
-	if not set then
-
-		if is_50 then
-			local meta = user:get_meta() ; if not meta then return end
-
-			meta:set_string("ethereal:fly_timer", "-99")
-		else
-			user:set_attribute("ethereal:fly_timer", "-99")
-		end
+	-- when flight removed set timer to temp position
+	if set ~= true then
+		set_timer(user, "-99")
 	end
 end
 
@@ -35,18 +62,7 @@ local function ethereal_set_flight(user)
 
 	if not user then return end
 
-	local timer, meta
-
-	if is_50 then
-
-		meta = user:get_meta() ; if not meta then return end
-
-		timer = tonumber(meta:get_string("ethereal:fly_timer") or "") or 0
-	else
-		timer = tonumber(user:get_attribute("ethereal:fly_timer") or "") or 0
-	end
-
-	if not timer then return end -- nil check
+	local timer = tonumber(get_timer(user)) or 0
 
 	-- if timer ran out then remove 'fly' privelage
 	if timer <= 0 and timer ~= -99 then
@@ -68,7 +84,7 @@ local function ethereal_set_flight(user)
 	timer = timer - timer_check
 
 	-- show expiration message and play sound
-	if timer < 10 then
+	if timer <= 10 then
 
 		minetest.chat_send_player(name,
 				minetest.get_color_escape_sequence("#ff5500")
@@ -78,13 +94,10 @@ local function ethereal_set_flight(user)
 				{to_player = name, gain = 1.0}, true)
 	end
 
-	-- store new timer setting
-	if is_50 then
-		meta:set_string("ethereal:fly_timer", timer)
-	else
-		user:set_attribute("ethereal:fly_timer", timer)
-	end
+	-- set updated timer
+	set_timer(user, timer)
 
+	-- restart checks
 	minetest.after(timer_check, function()
 		ethereal_set_flight(user)
 	end)
@@ -96,31 +109,27 @@ minetest.register_on_joinplayer(function(player)
 
 	if not player then return end
 
-	local timer, meta
+	-- get player name and timer
+	local name = player:get_player_name()
+	local timer = get_timer(player)
 
-	if is_50 then
+	-- if timer is blank and player can already fly then default and return
+	if timer == "" and has_fly(name) then
 
-		meta = player:get_meta() ; if not meta then return end
-		timer = meta:get_string("ethereal:fly_timer") or ""
-	else
-		timer = player:get_attribute("ethereal:fly_timer") or ""
-	end
+		set_timer(player, "-99")
 
-	-- first run to set fly timer if no number found
-	if timer == "" then
-		ethereal_set_flight(player)
 		return
 	end
 
 	timer = tonumber(timer) or 0
 
+	-- if timer is set to default then return
 	if timer == -99 then
 		return
 	end
 
-	local privs = minetest.get_player_privs(player:get_player_name())
-
-	if privs.fly and timer then
+	-- if we got this far and player is flying then start countdown check
+	if has_fly(name) then
 
 		minetest.after(timer_check, function()
 			ethereal_set_flight(player)
@@ -151,15 +160,7 @@ minetest.register_node("ethereal:flight_potion", {
 		-- get privs
 		local name = user:get_player_name()
 		local privs = minetest.get_player_privs(name)
-		local timer, meta
-
-		if is_50 then
-
-			meta = user:get_meta() ; if not meta then return end
-			timer = meta:get_string("ethereal:fly_timer") or ""
-		else
-			timer = user:get_attribute("ethereal:fly_timer") or ""
-		end
+		local timer = get_timer(user)
 
 		if privs.fly then
 
@@ -176,16 +177,15 @@ minetest.register_node("ethereal:flight_potion", {
 			return
 		end
 
-		if is_50 then
-			meta:set_string("ethereal:fly_timer", flight_secs)
-		else
-			user:set_attribute("ethereal:fly_timer", flight_secs)
-		end
+		-- set flight timer
+		set_timer(user, flight_secs)
 
+		-- show time remaining
 		minetest.chat_send_player(name,
 				minetest.get_color_escape_sequence("#1eff00")
 				.. S("Flight granted, you have @1 seconds!", flight_secs))
 
+		-- start check
 		ethereal_set_flight(user)
 
 		-- take item
