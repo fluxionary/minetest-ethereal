@@ -30,7 +30,7 @@ local function set_timer(user, timer)
 
 	if is_50 then
 
-		local meta = user:get_meta()
+		local meta = user:get_meta() ; if not meta then return end
 
 		meta:set_string("ethereal:fly_timer", timer)
 	else
