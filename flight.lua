@@ -107,34 +107,39 @@ end
 -- on join / leave
 minetest.register_on_joinplayer(function(player)
 
-	if not player then return end
+	-- wait 2 seconds before doing flight checks on player
+	minetest.after(2.0, function(player)
 
-	-- get player name and timer
-	local name = player:get_player_name()
-	local timer = get_timer(player)
+		if not player then return end
 
-	-- if timer is blank and player can already fly then default and return
-	if timer == "" and has_fly(name) then
+		-- get player name and timer
+		local name = player:get_player_name()
+		local timer = get_timer(player)
 
-		set_timer(player, "-99")
+		-- if timer is blank and player can already fly then default and return
+		if timer == "" and has_fly(name) then
 
-		return
-	end
+			set_timer(player, "-99")
 
-	timer = tonumber(timer) or 0
+			return
+		end
 
-	-- if timer is set to default then return
-	if timer == -99 then
-		return
-	end
+		timer = tonumber(timer) or 0
 
-	-- if we got this far and player is flying then start countdown check
-	if has_fly(name) then
+		-- if timer is set to default then return
+		if timer == -99 then
+			return
+		end
 
-		minetest.after(timer_check, function()
-			ethereal_set_flight(player)
-		end)
-	end
+		-- if we got this far and player is flying then start countdown check
+		if has_fly(name) then
+
+			minetest.after(timer_check, function()
+				ethereal_set_flight(player)
+			end)
+		end
+
+	end, player)
 end)
 
 
