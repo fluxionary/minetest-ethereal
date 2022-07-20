@@ -113,7 +113,7 @@ minetest.register_on_joinplayer(function(player)
 		if not player then return end
 
 		-- get player name and timer
-		local name = player:get_player_name()
+		local name = player:get_player_name() ; if not name then return end
 		local timer = get_timer(player)
 
 		-- if timer is blank and player can already fly then default and return
