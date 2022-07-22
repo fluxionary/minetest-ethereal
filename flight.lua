@@ -60,7 +60,7 @@ end
 -- after function
 local function ethereal_set_flight(user)
 
-	if not user then return end
+	local name = user and user:get_player_name() ; if not name then return end
 
 	local timer = tonumber(get_timer(user)) or 0
 
@@ -72,7 +72,6 @@ local function ethereal_set_flight(user)
 		return
 	end
 
-	local name = user:get_player_name()
 	local privs = minetest.get_player_privs(name)
 
 	-- have we already applied 'fly' privelage?
