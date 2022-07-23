@@ -1,15 +1,13 @@
 minetest mod ethereal NG
 ======================
 
-BIOME mod mapgen to add many new biomes to the world
-
 ## Information
 --------------
 
 This mod is named `ethereal`, it produces huge amount of new biomes
 overriding defaults, many new items and features that spice up gameplay.
 
-Knowed as Ethereal NG (next-generation) it give players that
+Known as Ethereal NG (next-generation) it give players that
 little something extra to look for while exploring the world.
 
 ![screenshot.png](screenshot.png)
@@ -21,7 +19,7 @@ TODO:
 
 #### Lucky Blocks
 
-It provides new 47 lucky block if the mod is detected.
+It provides 47 new lucky blocks if the mod is detected.
 
 ## Technical info
 -----------------
@@ -92,7 +90,7 @@ Also those more as optional:
 
 #### Fishing api
 
-The mod provides and older fishing api, basically is `ethereal.add_item(fish, junk, bonus)`,
+The mod provides a fishing api, basically is `ethereal.add_item(fish, junk, bonus)`,
 several examples are at the documentation of [api.txt](api.txt) file.
 
 ## Changelog
