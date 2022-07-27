@@ -653,6 +653,37 @@ if minetest.get_modpath("butterflies") then
 		spawn_by = "group:flower",
 		num_spawn_by = 1
 	})
+
+	-- restart butterfly functions when generated
+
+	-- get decoration ID
+	local butterflies = minetest.get_decoration_id("butterflies:butterfly")
+
+	minetest.set_gen_notify({decoration = true}, {butterflies})
+
+	-- start nodetimers
+	minetest.register_on_generated(function(minp, maxp, blockseed)
+
+		local gennotify = minetest.get_mapgen_object("gennotify")
+		local poslist = {}
+
+		for _, pos in ipairs(gennotify["decoration#" .. butterflies] or {}) do
+
+			local deco_pos = {x = pos.x, y = pos.y + 3, z = pos.z}
+
+			table.insert(poslist, deco_pos)
+		end
+
+		if #poslist ~= 0 then
+
+			for i = 1, #poslist do
+
+				local pos = poslist[i]
+
+				minetest.get_node_timer(pos):start(1)
+			end
+		end
+	end)
 end
 
 
@@ -666,7 +697,7 @@ if minetest.get_modpath("fireflies") then
 			"default:dirt_with_coniferous_litter",
 			"default:dirt_with_rainforest_litter",
 			"default:dirt",
-			"ethereal:cold_dirt",
+			"ethereal:cold_dirt", "prairie"
 		},
 		place_offset_y = 2,
 		sidelen = 80,
@@ -677,6 +708,37 @@ if minetest.get_modpath("fireflies") then
 		y_min = -1,
 		decoration = "fireflies:hidden_firefly"
 	})
+
+	-- restart firefly functions when generated
+
+	-- get decoration IDs
+	local firefly_low = minetest.get_decoration_id("fireflies:firefly_low")
+
+	minetest.set_gen_notify({decoration = true}, {firefly_low, firefly_high})
+
+	-- start nodetimers
+	minetest.register_on_generated(function(minp, maxp, blockseed)
+
+		local gennotify = minetest.get_mapgen_object("gennotify")
+		local poslist = {}
+
+		for _, pos in ipairs(gennotify["decoration#" .. firefly_low] or {}) do
+
+			local firefly_low_pos = {x = pos.x, y = pos.y + 3, z = pos.z}
+
+			table.insert(poslist, firefly_low_pos)
+		end
+
+		if #poslist ~= 0 then
+
+			for i = 1, #poslist do
+
+				local pos = poslist[i]
+
+				minetest.get_node_timer(pos):start(1)
+			end
+		end
+	end)
 end
 
 
