@@ -57,8 +57,8 @@ minetest.register_node("ethereal:strawberry_5", table.copy(crop_def))
 crop_def.tiles = {"ethereal_strawberry_6.png"}
 crop_def.drop = {
 	items = {
-		{items = {"ethereal:strawberry 1"},rarity = 2},
-		{items = {"ethereal:strawberry 2"},rarity = 3}
+		{items = {"ethereal:strawberry 1"}, rarity = 2},
+		{items = {"ethereal:strawberry 2"}, rarity = 3}
 	}
 }
 minetest.register_node("ethereal:strawberry_6", table.copy(crop_def))
@@ -67,8 +67,8 @@ minetest.register_node("ethereal:strawberry_6", table.copy(crop_def))
 crop_def.tiles = {"ethereal_strawberry_7.png"}
 crop_def.drop = {
 	items = {
-		{items = {"ethereal:strawberry 1"},rarity = 1},
-		{items = {"ethereal:strawberry 2"},rarity = 3}
+		{items = {"ethereal:strawberry 1"}, rarity = 1},
+		{items = {"ethereal:strawberry 2"}, rarity = 3}
 	}
 }
 minetest.register_node("ethereal:strawberry_7", table.copy(crop_def))
@@ -76,10 +76,14 @@ minetest.register_node("ethereal:strawberry_7", table.copy(crop_def))
 -- stage 8
 crop_def.tiles = {"ethereal_strawberry_8.png"}
 crop_def.groups.growing = nil
+crop_def.selection_box = {
+	type = "fixed",
+	fixed = {-0.5, -0.5, -0.5, 0.5, -2.5/16, 0.5}
+}
 crop_def.drop = {
 	items = {
-		{items = {"ethereal:strawberry 2"},rarity = 1},
-		{items = {"ethereal:strawberry 3"},rarity = 3}
+		{items = {"ethereal:strawberry 2"}, rarity = 1},
+		{items = {"ethereal:strawberry 3"}, rarity = 3}
 	}
 }
 minetest.register_node("ethereal:strawberry_8", table.copy(crop_def))

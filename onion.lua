@@ -57,6 +57,10 @@ minetest.register_node("ethereal:onion_4", table.copy(crop_def))
 --stage 5
 crop_def.tiles = {"ethereal_wild_onion_5.png"}
 crop_def.groups.growing = nil
+crop_def.selection_box = {
+	type = "fixed",
+	fixed = {-0.5, -0.5, -0.5, 0.5, -2.5/16, 0.5}
+}
 crop_def.drop = {
 	items = {
 		{items = {"ethereal:wild_onion_plant 2"}, rarity = 1},
