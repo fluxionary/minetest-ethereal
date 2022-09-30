@@ -12,7 +12,7 @@ ethereal.vinetree = {
 	size = {x = 7, y = 7, z = 7},
 
 	yslice_prob = {
-		{ypos = 0, prob = 127},
+		{ypos = 0, prob = 127}
 	},
 
 	data = {

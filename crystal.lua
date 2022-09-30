@@ -1,6 +1,7 @@
 
 local S = ethereal.intllib
 
+
 -- Crystal Spike (Hurts if you touch it)
 -- thanks to ZonerDarkRevention for his DokuCraft DeviantArt crystal texture
 minetest.register_node("ethereal:crystal_spike", {
@@ -17,14 +18,13 @@ minetest.register_node("ethereal:crystal_spike", {
 	groups = {cracky = 1, falling_node = 1, puts_out_fire = 1, cools_lava = 1},
 	sounds = default.node_sound_glass_defaults(),
 	selection_box = {
-		type = "fixed",
-		fixed = {-5 / 16, -0.5, -5 / 16, 5 / 16, 0, 5 / 16},
+		type = "fixed", fixed = {-5 / 16, -0.5, -5 / 16, 5 / 16, 0, 5 / 16}
 	},
 	node_box = {
-		type = "fixed",
-		fixed = {-5 / 16, -0.5, -5 / 16, 5 / 16, 0, 5 / 16},
+		type = "fixed", fixed = {-5 / 16, -0.5, -5 / 16, 5 / 16, 0, 5 / 16}
 	}
 })
+
 
 -- Crystal Ingot
 minetest.register_craftitem("ethereal:crystal_ingot", {
@@ -97,6 +97,7 @@ minetest.register_craft({
 	replacements = {{"bucket:bucket_water", "bucket:bucket_empty"}}
 })
 
+
 -- Crystal Block
 minetest.register_node("ethereal:crystal_block", {
 	description = S("Crystal Block"),
@@ -121,6 +122,7 @@ minetest.register_craft({
 	recipe = {{"ethereal:crystal_block"}}
 })
 
+
 -- Crystal Sword (Powerful wee beastie)
 minetest.register_tool("ethereal:sword_crystal", {
 	description = S("Crystal Sword"),
@@ -134,9 +136,9 @@ minetest.register_tool("ethereal:sword_crystal", {
 				times = {[1] = 1.70, [2] = 0.70, [3] = 0.25},
 				uses = 50,
 				maxlevel = 3
-			},
+			}
 		},
-		damage_groups = {fleshy = 10},
+		damage_groups = {fleshy = 10}
 	},
 	groups = {sword = 1},
 	sound = {breaks = "default_tool_breaks"}
@@ -150,6 +152,7 @@ minetest.register_craft({
 		{"default:steel_ingot"}
 	}
 })
+
 
 -- Crystal Axe
 minetest.register_tool("ethereal:axe_crystal", {
@@ -190,6 +193,7 @@ minetest.register_craft({
 	}
 })
 
+
 -- Crystal Pick (This will last a while)
 minetest.register_tool("ethereal:pick_crystal", {
 	description = S("Crystal Pickaxe"),
@@ -220,6 +224,8 @@ minetest.register_craft({
 	}
 })
 
+
+-- dig override for crystal shovel's soft touch ability
 local old_handle_node_drops = minetest.handle_node_drops
 
 function minetest.handle_node_drops(pos, drops, digger)
@@ -269,6 +275,7 @@ minetest.register_craft({
 	}
 })
 
+
 -- Crystal Gilly Staff (replenishes air supply when used)
 minetest.register_tool("ethereal:crystal_gilly_staff", {
 	description = S("Crystal Gilly Staff"),
@@ -276,6 +283,7 @@ minetest.register_tool("ethereal:crystal_gilly_staff", {
 	wield_image = "ethereal_crystal_gilly_staff.png",
 
 	on_use = function(itemstack, user, pointed_thing)
+
 		if user:get_breath() < 10 then
 			user:set_breath(10)
 		end
@@ -291,6 +299,7 @@ minetest.register_craft({
 		"ethereal:crystal_ingot"
 	},
 })
+
 
 -- Add [toolranks] mod support if found
 if minetest.get_modpath("toolranks") then

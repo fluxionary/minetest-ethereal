@@ -15,7 +15,7 @@ ethereal.frosttrees = {
 		{ypos = 4, prob = 127},
 		{ypos = 5, prob = 127},
 		{ypos = 13, prob = 127}, -- leaves
-		{ypos = 15, prob = 127},
+		{ypos = 15, prob = 127}
 	},
 
 	data = {

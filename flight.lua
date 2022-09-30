@@ -41,9 +41,7 @@ end
 
 local function set_flight(user, set)
 
-	if not user then return end
-
-	local name = user:get_player_name()
+	local name = user and user:get_player_name() ; if not name then return end
 	local privs = minetest.get_player_privs(name)
 
 	privs.fly = set
@@ -109,10 +107,8 @@ minetest.register_on_joinplayer(function(player)
 	-- wait 2 seconds before doing flight checks on player
 	minetest.after(2.0, function(player)
 
-		if not player then return end
-
 		-- get player name and timer
-		local name = player:get_player_name() ; if not name then return end
+		local name = player and player:get_player_name() ; if not name then return end
 		local timer = get_timer(player)
 
 		-- if timer is blank and player can already fly then default and return

@@ -1,6 +1,7 @@
 
 local S = ethereal.intllib
 
+
 -- sakura trunk
 minetest.register_node("ethereal:sakura_trunk", {
 	description = S("Sakura Trunk"),
@@ -30,6 +31,7 @@ minetest.register_craft({
 	output = "ethereal:sakura_wood 4",
 	recipe = {{"ethereal:sakura_trunk"}}
 })
+
 
 -- willow trunk
 minetest.register_node("ethereal:willow_trunk", {
@@ -61,6 +63,7 @@ minetest.register_craft({
 	recipe = {{"ethereal:willow_trunk"}}
 })
 
+
 -- redwood trunk
 minetest.register_node("ethereal:redwood_trunk", {
 	description = S("Redwood Trunk"),
@@ -90,6 +93,7 @@ minetest.register_craft({
 	output = "ethereal:redwood_wood 4",
 	recipe = {{"ethereal:redwood_trunk"}}
 })
+
 
 -- frost trunk
 minetest.register_node("ethereal:frost_tree", {
@@ -121,6 +125,7 @@ minetest.register_craft({
 	recipe = {{"ethereal:frost_tree"}}
 })
 
+
 -- healing trunk
 minetest.register_node("ethereal:yellow_trunk", {
 	description = S("Healing Tree Trunk"),
@@ -150,6 +155,7 @@ minetest.register_craft({
 	output = "ethereal:yellow_wood 4",
 	recipe = {{"ethereal:yellow_trunk"}}
 })
+
 
 -- palm trunk (thanks to VanessaE for palm textures)
 minetest.register_node("ethereal:palm_trunk", {
@@ -181,6 +187,7 @@ minetest.register_craft({
 	recipe = {{"ethereal:palm_trunk"}}
 })
 
+
 -- banana trunk
 minetest.register_node("ethereal:banana_trunk", {
 	description = S("Banana Trunk"),
@@ -211,6 +218,7 @@ minetest.register_craft({
 	recipe = {{"ethereal:banana_trunk"}}
 })
 
+
 -- scorched trunk
 minetest.register_node("ethereal:scorched_tree", {
 	description = S("Scorched Tree"),
@@ -234,6 +242,7 @@ minetest.register_craft({
 	}
 })
 
+
 -- mushroom trunk
 minetest.register_node("ethereal:mushroom_trunk", {
 	description = S("Mushroom"),
@@ -247,6 +256,7 @@ minetest.register_node("ethereal:mushroom_trunk", {
 	paramtype2 = "facedir",
 	on_place = minetest.rotate_node
 })
+
 
 -- birch trunk (thanks to VanessaE for birch textures)
 minetest.register_node("ethereal:birch_trunk", {
@@ -278,6 +288,7 @@ minetest.register_craft({
 	recipe = {{"ethereal:birch_trunk"}}
 })
 
+
 -- Bamboo (thanks to Nelo-slay on DeviantArt for the free Bamboo base image)
 minetest.register_node("ethereal:bamboo", {
 	description = S("Bamboo"),
@@ -294,6 +305,7 @@ minetest.register_node("ethereal:bamboo", {
 	},
 	groups = {choppy = 3, oddly_breakable_by_hand = 1, flammable = 2},
 	sounds = default.node_sound_leaves_defaults(),
+
 	after_dig_node = function(pos, node, metadata, digger)
 		default.dig_up(pos, node, digger)
 	end
@@ -304,6 +316,7 @@ minetest.register_craft({
 	recipe = "ethereal:bamboo",
 	burntime = 2
 })
+
 
 -- olive trunk
 minetest.register_node("ethereal:olive_trunk", {

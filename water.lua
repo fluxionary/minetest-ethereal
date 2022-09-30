@@ -1,6 +1,7 @@
 
 local S = ethereal.intllib
 
+
 -- Ice Brick
 minetest.register_node("ethereal:icebrick", {
 	description = S("Ice Brick"),
@@ -18,6 +19,7 @@ minetest.register_craft({
 		{"default:ice", "default:ice"}
 	}
 })
+
 
 -- Snow Brick
 minetest.register_node("ethereal:snowbrick", {
@@ -41,6 +43,7 @@ minetest.register_craft({
 	}
 })
 
+
 -- If Crystal Spike, Snow near Water, change Water to Ice
 minetest.register_abm({
 	label = "Ethereal freeze water",
@@ -52,6 +55,7 @@ minetest.register_abm({
 	interval = 15,
 	chance = 4,
 	catch_up = false,
+
 	action = function(pos, node)
 
 		local near = minetest.find_node_near(pos, 1,
@@ -60,8 +64,9 @@ minetest.register_abm({
 		if near then
 			minetest.swap_node(near, {name = "default:ice"})
 		end
-	end,
+	end
 })
+
 
 -- If Heat Source near Ice or Snow then melt.
 minetest.register_abm({
@@ -78,6 +83,7 @@ minetest.register_abm({
 	interval = 5,
 	chance = 4,
 	catch_up = false,
+
 	action = function(pos, node)
 
 		local water_node = "default:water"
@@ -90,18 +96,19 @@ minetest.register_abm({
 		or node.name == "default:snowblock"
 		or node.name == "ethereal:icebrick"
 		or node.name == "ethereal:snowbrick" then
-			minetest.swap_node(pos, {name = water_node.."_source"})
+			minetest.swap_node(pos, {name = water_node .. "_source"})
 
 		elseif node.name == "default:snow" then
-			minetest.swap_node(pos, {name = water_node.."_flowing"})
+			minetest.swap_node(pos, {name = water_node .. "_flowing"})
 
 		elseif node.name == "default:dirt_with_snow" then
 			minetest.swap_node(pos, {name = "default:dirt_with_grass"})
 		end
 
 		ethereal.check_falling(pos)
-	end,
+	end
 })
+
 
 -- If Water Source near Dry Dirt, change to normal Dirt
 minetest.register_abm({
@@ -114,6 +121,7 @@ minetest.register_abm({
 	interval = 15,
 	chance = 2,
 	catch_up = false,
+
 	action = function(pos, node)
 
 		if node.name == "ethereal:dry_dirt"
@@ -127,46 +135,47 @@ minetest.register_abm({
 	end
 })
 
+
 -- when enabled, drop torches that are touching water
 if ethereal.torchdrop == true and not minetest.get_modpath("real_torch") then
 
-minetest.register_abm({
-	label = "Ethereal drop torch",
-	nodenames = {"default:torch", "default:torch_wall", "default:torch_ceiling"},
-	neighbors = {"group:water"},
-	interval = 5,
-	chance = 1,
-	catch_up = false,
-	action = function(pos, node)
+	minetest.register_abm({
+		label = "Ethereal drop torch",
+		nodenames = {"default:torch", "default:torch_wall", "default:torch_ceiling"},
+		neighbors = {"group:water"},
+		interval = 5,
+		chance = 1,
+		catch_up = false,
 
-		local num = #minetest.find_nodes_in_area(
-			{x = pos.x - 1, y = pos.y, z = pos.z},
-			{x = pos.x + 1, y = pos.y, z = pos.z},
-			{"group:water"})
+		action = function(pos, node)
 
-		if num == 0 then
-			num = num + #minetest.find_nodes_in_area(
-				{x = pos.x, y = pos.y, z = pos.z - 1},
-				{x = pos.x, y = pos.y, z = pos.z + 1},
-				{"group:water"})
+			local num = #minetest.find_nodes_in_area(
+				{x = pos.x - 1, y = pos.y, z = pos.z},
+				{x = pos.x + 1, y = pos.y, z = pos.z}, {"group:water"})
+
+			if num == 0 then
+
+				num = num + #minetest.find_nodes_in_area(
+					{x = pos.x, y = pos.y, z = pos.z - 1},
+					{x = pos.x, y = pos.y, z = pos.z + 1}, {"group:water"})
+			end
+
+			if num == 0 then
+
+				num = num + #minetest.find_nodes_in_area(
+					{x = pos.x, y = pos.y + 1, z = pos.z},
+					{x = pos.x, y = pos.y + 1, z = pos.z}, {"group:water"})
+			end
+
+			if num > 0 then
+
+				minetest.set_node(pos, {name = "air"})
+
+				minetest.sound_play("fire_extinguish_flame",
+						{pos = pos, gain = 0.2, max_hear_distance = 10}, true)
+
+				minetest.add_item(pos, {name = "default:torch"})
+			end
 		end
-
-		if num == 0 then
-			num = num + #minetest.find_nodes_in_area(
-				{x = pos.x, y = pos.y + 1, z = pos.z},
-				{x = pos.x, y = pos.y + 1, z = pos.z},
-				{"group:water"})
-		end
-
-		if num > 0 then
-
-			minetest.set_node(pos, {name = "air"})
-
-			minetest.sound_play("fire_extinguish_flame",
-					{pos = pos, gain = 0.2, max_hear_distance = 10})
-
-			minetest.add_item(pos, {name = "default:torch"})
-		end
-	end
-})
+	})
 end

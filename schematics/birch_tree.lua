@@ -10,7 +10,7 @@ ethereal.birchtree = {
 
 	yslice_prob = {
 		{ypos = 0, prob = 127},
-		{ypos = 3, prob = 127},
+		{ypos = 3, prob = 127}
 	},
 
 	data = {

@@ -22,7 +22,7 @@ local do_stair = function(description, name, node, groups, texture, sound)
 			description = S(description),
 			tiles = texture,
 			groups = groups,
-			sounds = sound,
+			sounds = sound
 		})
 
 		-- aliases need to be set for previous stairs to avoid unknown nodes

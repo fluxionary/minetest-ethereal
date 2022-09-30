@@ -4,12 +4,12 @@
 local add_stratum = function(y_min, y_max, node)
 
 	minetest.register_ore({
-		ore_type         = "stratum",
-		ore              = node,
-		wherein          = {"bakedclay:orange"},
-		clust_scarcity   = 1,
-		y_max            = y_max,
-		y_min            = y_min,
+		ore_type = "stratum",
+		ore = node,
+		wherein = {"bakedclay:orange"},
+		clust_scarcity = 1,
+		y_max = y_max,
+		y_min = y_min,
 		biomes = {"mesa"}
 	})
 end

@@ -9,7 +9,7 @@ ethereal.volcanom = {
 	size = {x = 6, y = 2, z = 6},
 
 	yslice_prob = {
-		{ypos = 0, prob = 127},
+		{ypos = 0, prob = 127}
 	},
 
 	data = {

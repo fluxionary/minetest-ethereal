@@ -10,7 +10,7 @@ ethereal.orangetree = {
 	size = {x = 5, y = 6, z = 5},
 
 	yslice_prob = {
-		{ypos = 0, prob = 127},
+		{ypos = 0, prob = 127}
 	},
 
 	data = {

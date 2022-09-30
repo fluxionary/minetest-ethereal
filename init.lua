@@ -7,7 +7,7 @@
 ]]
 
 
-ethereal = {version = "20220424"}
+ethereal = {version = "20220930"}
 
 
 local function setting(stype, name, default)
@@ -75,11 +75,13 @@ local path = minetest.get_modpath("ethereal")
 
 -- Load settings.conf file if found
 local input = io.open(path.."/settings.conf", "r")
+
 if input then
 	dofile(path .. "/settings.conf")
 	input:close()
 	input = nil
 end
+
 
 -- Intllib
 local S
@@ -96,6 +98,7 @@ else
 end
 ethereal.intllib = S
 
+
 -- Falling node function
 ethereal.check_falling = minetest.check_for_falling or nodeupdate
 
@@ -105,8 +108,8 @@ function ethereal.check_creative(name)
 	return creative_mode_cache or minetest.check_player_privs(name, {creative = true})
 end
 
+
 dofile(path .. "/plantlife.lua")
-dofile(path .. "/mushroom.lua")
 dofile(path .. "/onion.lua")
 dofile(path .. "/crystal.lua")
 dofile(path .. "/water.lua")
@@ -127,10 +130,15 @@ dofile(path .. "/schems.lua")
 dofile(path .. "/decor.lua")
 dofile(path .. "/compatibility.lua")
 dofile(path .. "/stairs.lua")
-dofile(path .. "/lucky_block.lua")
 
+-- add flight if enabled
 if ethereal.flight then
 	dofile(path .. "/flight.lua")
+end
+
+-- add lucky blocks if mod active
+if minetest.get_modpath("lucky_block") then
+	dofile(path .. "/lucky_block.lua")
 end
 
 -- Set bonemeal aliases
@@ -145,5 +153,6 @@ end
 if minetest.get_modpath("xanadu") then
 	dofile(path .. "/plantpack.lua")
 end
+
 
 print ("[MOD] Ethereal loaded")

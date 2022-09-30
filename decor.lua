@@ -657,36 +657,19 @@ if minetest.get_modpath("butterflies") then
 		num_spawn_by = 1
 	})
 
-	-- restart butterfly functions when generated
+	-- restart butterfly timers
+	minetest.register_lbm({
+		name = ":butterflies:butterfly_timer",
+		nodenames = {
+			"butterflies:butterfly_white", "butterflies:butterfly_red",
+			"butterflies:butterfly_violet"
+		},
+		run_at_every_load = false,
 
-	-- get decoration ID
-	local butterflies = minetest.get_decoration_id("butterflies:butterfly")
-
-	minetest.set_gen_notify({decoration = true}, {butterflies})
-
-	-- start nodetimers
-	minetest.register_on_generated(function(minp, maxp, blockseed)
-
-		local gennotify = minetest.get_mapgen_object("gennotify")
-		local poslist = {}
-
-		for _, pos in ipairs(gennotify["decoration#" .. butterflies] or {}) do
-
-			local deco_pos = {x = pos.x, y = pos.y + 3, z = pos.z}
-
-			table.insert(poslist, deco_pos)
+		action = function(pos)
+			minetest.get_node_timer(pos):start(5)
 		end
-
-		if #poslist ~= 0 then
-
-			for i = 1, #poslist do
-
-				local pos = poslist[i]
-
-				minetest.get_node_timer(pos):start(1)
-			end
-		end
-	end)
+	})
 end
 
 
@@ -712,36 +695,16 @@ if minetest.get_modpath("fireflies") then
 		decoration = "fireflies:hidden_firefly"
 	})
 
-	-- restart firefly functions when generated
+	-- restart firefly timers
+	minetest.register_lbm({
+		name = ":fireflies:firefly_timer",
+		nodenames = {"fireflies:firefly", "fireflies:hidden_firefly"},
+		run_at_every_load = false,
 
-	-- get decoration IDs
-	local firefly_low = minetest.get_decoration_id("fireflies:firefly_low")
-
-	minetest.set_gen_notify({decoration = true}, {firefly_low, firefly_high})
-
-	-- start nodetimers
-	minetest.register_on_generated(function(minp, maxp, blockseed)
-
-		local gennotify = minetest.get_mapgen_object("gennotify")
-		local poslist = {}
-
-		for _, pos in ipairs(gennotify["decoration#" .. firefly_low] or {}) do
-
-			local firefly_low_pos = {x = pos.x, y = pos.y + 3, z = pos.z}
-
-			table.insert(poslist, firefly_low_pos)
+		action = function(pos)
+			minetest.get_node_timer(pos):start(5)
 		end
-
-		if #poslist ~= 0 then
-
-			for i = 1, #poslist do
-
-				local pos = poslist[i]
-
-				minetest.get_node_timer(pos):start(1)
-			end
-		end
-	end)
+	})
 end
 
 

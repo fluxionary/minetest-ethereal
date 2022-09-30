@@ -1,6 +1,6 @@
 --[[
 
-This fishing routine is inspired by the great work Rootyjr did for MineClone2
+	This fishing routine is inspired by the great work Rootyjr did for MineClone2
 
 ]]--
 
@@ -44,8 +44,8 @@ local bonus_items = {
 }
 
 local default_item = "default:dirt"
-
 local random = math.random -- yup we use this a lot
+
 
 -- add item function
 ethereal.add_item = function(fish, junk, bonus)
@@ -529,7 +529,7 @@ minetest.register_craftitem("ethereal:worm", {
 minetest.register_craft({
 	output = "ethereal:worm",
 	recipe = {
-		{"default:dirt","default:dirt"}
+		{"default:dirt", "default:dirt"}
 	}
 })
 

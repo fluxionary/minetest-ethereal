@@ -1,10 +1,12 @@
 
 local S = ethereal.intllib
 
+
 -- override default dirt (to stop caves cutting away dirt)
 minetest.override_item("default:dirt", {is_ground_content = ethereal.cavedirt})
 
 minetest.register_alias("ethereal:green_dirt", "default:dirt_with_grass")
+
 
 -- dry dirt
 minetest.register_node("ethereal:dry_dirt", {
@@ -22,6 +24,8 @@ minetest.register_craft({
 	cooktime = 3,
 })
 
+
+-- register ethereal dirt types
 local dirts = {
 	"Bamboo", "Jungle", "Grove", "Prairie", "Cold",
 	"Crystal", "Mushroom", "Fiery", "Gray"
@@ -32,28 +36,27 @@ for n = 1, #dirts do
 	local desc = dirts[n]
 	local name = desc:lower()
 
-	minetest.register_node("ethereal:"..name.."_dirt", {
-		description = S(desc.." Dirt"),
+	minetest.register_node("ethereal:" .. name .. "_dirt", {
+		description = S(desc .. " Dirt"),
 		tiles = {
-			"ethereal_grass_"..name.."_top.png",
+			"ethereal_grass_" .. name .. "_top.png",
 			"default_dirt.png",
 			{
-				name = "default_dirt.png^ethereal_grass_"
-				.. name .."_side.png",
+				name = "default_dirt.png^ethereal_grass_" .. name .. "_side.png",
 				tileable_vertical = false
 			}
 		},
 		is_ground_content = ethereal.cavedirt,
 		groups = {crumbly = 3, soil = 1, spreading_dirt_type = 1},
 		soil = {
-			base = "ethereal:"..name.."_dirt",
+			base = "ethereal:" .. name .. "_dirt",
 			dry = "farming:soil",
 			wet = "farming:soil_wet"
 		},
 		drop = "default:dirt",
 		sounds = default.node_sound_dirt_defaults({
-			footstep = {name = "default_grass_footstep", gain = 0.25},
-		}),
+			footstep = {name = "default_grass_footstep", gain = 0.25}
+		})
 	})
 end
 
@@ -150,6 +153,7 @@ local flower_spread = function(pos, node)
 	end
 end
 
+
 -- grow papyrus up to 4 high and bamboo up to 8 high
 local grow_papyrus = function(pos, node)
 
@@ -197,6 +201,7 @@ local grow_papyrus = function(pos, node)
 
 end
 
+
 -- loop through active abm's
 for _, ab in pairs(minetest.registered_abms) do
 
@@ -232,6 +237,7 @@ for _, ab in pairs(minetest.registered_abms) do
 	end
 end
 
+
 -- If Baked Clay mod not active, make Red, Orange and Grey nodes
 if not minetest.get_modpath("bakedclay") then
 
@@ -259,6 +265,7 @@ if not minetest.get_modpath("bakedclay") then
 		sounds = default.node_sound_stone_defaults()
 	})
 end
+
 
 -- Quicksand (old style, sinking inside shows black instead of yellow effect,
 -- works ok with noclip enabled though)

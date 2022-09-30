@@ -1,6 +1,7 @@
 
 local S = ethereal.intllib
 
+
 -- set leaftype (value inside init.lua)
 local leaftype = "plantlike"
 local leafscale = 1.4
@@ -486,83 +487,84 @@ minetest.register_craft({
 	burntime = 1
 })
 
+
 -- compatibility check for new mt version with leafdecay function
 if minetest.registered_nodes["default:dirt_with_rainforest_litter"] then
 
-default.register_leafdecay({
-	trunks = {"default:tree"},
-	leaves = {
-		"default:apple", "default:leaves",
-		"ethereal:orange", "ethereal:orange_leaves",
-		"ethereal:lemon", "ethereal:lemon_leaves",
-		"ethereal:vine"
-	},
-	radius = 3
-})
+	default.register_leafdecay({
+		trunks = {"default:tree"},
+		leaves = {
+			"default:apple", "default:leaves",
+			"ethereal:orange", "ethereal:orange_leaves",
+			"ethereal:lemon", "ethereal:lemon_leaves",
+			"ethereal:vine"
+		},
+		radius = 3
+	})
 
-default.register_leafdecay({
-	trunks = {"ethereal:willow_trunk"},
-	leaves = {"ethereal:willow_twig"},
-	radius = 3
-})
+	default.register_leafdecay({
+		trunks = {"ethereal:willow_trunk"},
+		leaves = {"ethereal:willow_twig"},
+		radius = 3
+	})
 
-default.register_leafdecay({
-	trunks = {"ethereal:redwood_trunk"},
-	leaves = {"ethereal:redwood_leaves"},
-	radius = 3
-})
+	default.register_leafdecay({
+		trunks = {"ethereal:redwood_trunk"},
+		leaves = {"ethereal:redwood_leaves"},
+		radius = 3
+	})
 
-default.register_leafdecay({
-	trunks = {"ethereal:frost_tree"},
-	leaves = {"ethereal:frost_leaves"},
-	radius = 3
-})
+	default.register_leafdecay({
+		trunks = {"ethereal:frost_tree"},
+		leaves = {"ethereal:frost_leaves"},
+		radius = 3
+	})
 
-default.register_leafdecay({
-	trunks = {"ethereal:yellow_trunk"},
-	leaves = {"ethereal:yellowleaves", "ethereal:golden_apple"},
-	radius = 3
-})
+	default.register_leafdecay({
+		trunks = {"ethereal:yellow_trunk"},
+		leaves = {"ethereal:yellowleaves", "ethereal:golden_apple"},
+		radius = 3
+	})
 
-default.register_leafdecay({
-	trunks = {"ethereal:palm_trunk"},
-	leaves = {"ethereal:palmleaves", "ethereal:coconut"},
-	radius = 3
-})
+	default.register_leafdecay({
+		trunks = {"ethereal:palm_trunk"},
+		leaves = {"ethereal:palmleaves", "ethereal:coconut"},
+		radius = 3
+	})
 
-default.register_leafdecay({
-	trunks = {"ethereal:banana_trunk"},
-	leaves = {"ethereal:bananaleaves", "ethereal:banana", "ethereal:banana_bunch"},
-	radius = 3
-})
+	default.register_leafdecay({
+		trunks = {"ethereal:banana_trunk"},
+		leaves = {"ethereal:bananaleaves", "ethereal:banana", "ethereal:banana_bunch"},
+		radius = 3
+	})
 
-default.register_leafdecay({
-	trunks = {"ethereal:birch_trunk"},
-	leaves = {"ethereal:birch_leaves"},
-	radius = 3
-})
+	default.register_leafdecay({
+		trunks = {"ethereal:birch_trunk"},
+		leaves = {"ethereal:birch_leaves"},
+		radius = 3
+	})
 
-default.register_leafdecay({
-	trunks = {"ethereal:bamboo"},
-	leaves = {"ethereal:bamboo_leaves"},
-	radius = 2
-})
+	default.register_leafdecay({
+		trunks = {"ethereal:bamboo"},
+		leaves = {"ethereal:bamboo_leaves"},
+		radius = 2
+	})
 
-default.register_leafdecay({
-	trunks = {"ethereal:sakura_trunk"},
-	leaves = {"ethereal:sakura_leaves", "ethereal:sakura_leaves2"},
-	radius = 3
-})
+	default.register_leafdecay({
+		trunks = {"ethereal:sakura_trunk"},
+		leaves = {"ethereal:sakura_leaves", "ethereal:sakura_leaves2"},
+		radius = 3
+	})
 
-default.register_leafdecay({
-	trunks = {"ethereal:olive_trunk"},
-	leaves = {"ethereal:olive_leaves", "ethereal:olive"},
-	radius = 3
-})
+	default.register_leafdecay({
+		trunks = {"ethereal:olive_trunk"},
+		leaves = {"ethereal:olive_leaves", "ethereal:olive"},
+		radius = 3
+	})
 
-default.register_leafdecay({
-	trunks = {"ethereal:mushroom_trunk"},
-	leaves = {"ethereal:mushroom", "ethereal:mushroom_pore"},
-	radius = 3
-})
+	default.register_leafdecay({
+		trunks = {"ethereal:mushroom_trunk"},
+		leaves = {"ethereal:mushroom", "ethereal:mushroom_pore"},
+		radius = 3
+	})
 end

@@ -11,7 +11,7 @@ ethereal.palmtree = {
 	size = {x = 9, y = 9, z = 9},
 
 	yslice_prob = {
-		{ypos = 3, prob = 127},
+		{ypos = 3, prob = 127}
 	},
 
 	data = {

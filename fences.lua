@@ -86,15 +86,12 @@ if door_mod then
 		},
 		description = S("Sakura Wood Door"),
 		inventory_image = "ethereal_sakura_door_inv.png",
-		groups = {
-			snappy = 1, choppy = 2, oddly_breakable_by_hand = 2,
-			flammable = 2
-		},
+		groups = {snappy = 1, choppy = 2, oddly_breakable_by_hand = 2, flammable = 2},
 		sound_open = "doors_glass_door_open",
 		sound_close = "doors_glass_door_close",
 		recipe = {
-			{"group:stick",  "default:paper"},
-			{"default:paper",  "group:stick"},
+			{"group:stick", "default:paper"},
+			{"default:paper", "group:stick"},
 			{"ethereal:sakura_wood", "ethereal:sakura_wood"}
 		}
 	})

@@ -1,8 +1,4 @@
 
--- add lucky blocks
-
-if minetest.get_modpath("lucky_block") then
-
 local epath = minetest.get_modpath("ethereal") .. "/schematics/"
 
 lucky_block:add_schematics({
@@ -94,20 +90,20 @@ lucky_block:add_blocks({
 })
 
 if minetest.get_modpath("3d_armor") then
-lucky_block:add_blocks({
-	{"dro", {"3d_armor:helmet_crystal"}},
-	{"dro", {"3d_armor:chestplate_crystal"}},
-	{"dro", {"3d_armor:leggings_crystal"}},
-	{"dro", {"3d_armor:boots_crystal"}},
-	{"lig"}
-})
+
+	lucky_block:add_blocks({
+		{"dro", {"3d_armor:helmet_crystal"}},
+		{"dro", {"3d_armor:chestplate_crystal"}},
+		{"dro", {"3d_armor:leggings_crystal"}},
+		{"dro", {"3d_armor:boots_crystal"}},
+		{"lig"}
+	})
 end
 
 if minetest.get_modpath("shields") then
-lucky_block:add_blocks({
-	{"dro", {"shields:shield_crystal"}},
-	{"exp"}
-})
-end
 
-end -- END IF
+	lucky_block:add_blocks({
+		{"dro", {"shields:shield_crystal"}},
+		{"exp"}
+	})
+end

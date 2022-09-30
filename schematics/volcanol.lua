@@ -13,7 +13,7 @@ ethereal.volcanol = {
 	yslice_prob = {
 		{ypos = 0, prob = 127},
 		{ypos = 1, prob = 127},
-		{ypos = 2, prob = 127},
+		{ypos = 2, prob = 127}
 	},
 
 	data = {

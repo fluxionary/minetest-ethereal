@@ -1,6 +1,7 @@
 
 local S = ethereal.intllib
 
+
 -- Banana (Heals one heart when eaten)
 minetest.register_node("ethereal:banana", {
 	description = S("Banana"),
@@ -22,7 +23,9 @@ minetest.register_node("ethereal:banana", {
 	drop = "ethereal:banana",
 	on_use = minetest.item_eat(2),
 	sounds = default.node_sound_leaves_defaults(),
+
 	after_place_node = function(pos, placer)
+
 		if placer:is_player() then
 			minetest.set_node(pos, {name = "ethereal:banana", param2 = 1})
 		end
@@ -50,6 +53,7 @@ minetest.register_node("ethereal:banana_bunch", {
 	drop = "ethereal:banana_bunch",
 	on_use = minetest.item_eat(6),
 	sounds = default.node_sound_leaves_defaults(),
+
 	after_place_node = function(pos, placer)
 		if placer:is_player() then
 			minetest.set_node(pos, {name = "ethereal:banana_bunch", param2 = 1})
@@ -86,6 +90,7 @@ minetest.register_craft({
 	recipe = "ethereal:banana_dough"
 })
 
+
 -- Orange (Heals 2 hearts when eaten)
 minetest.register_node("ethereal:orange", {
 	description = S("Orange"),
@@ -107,12 +112,15 @@ minetest.register_node("ethereal:orange", {
 	drop = "ethereal:orange",
 	on_use = minetest.item_eat(4),
 	sounds = default.node_sound_leaves_defaults(),
+
 	after_place_node = function(pos, placer)
+
 		if placer:is_player() then
 			minetest.set_node(pos, {name = "ethereal:orange", param2 = 1})
 		end
-	end,
+	end
 })
+
 
 -- Pine Nuts (Heals 1/2 heart when eaten)
 minetest.register_craftitem("ethereal:pine_nuts", {
@@ -132,7 +140,15 @@ minetest.register_craftitem("ethereal:banana_bread", {
 	on_use = minetest.item_eat(6)
 })
 
--- Coconut (Gives 4 coconut slices, each heal 1/2 heart)
+
+-- coconut settings if farming redo found
+local fredo = minetest.get_modpath("farming") and farming and farming.mod
+		and farming.mod == "redo"
+
+local cdrp = fredo and "ethereal:coconut" or "ethereal:coconut_slice 4"
+local cgrp = fredo and {3, 2} or {1, 1}
+
+-- Coconut (drops 4x coconut slice by default, whole coconut if farming redo found)
 minetest.register_node("ethereal:coconut", {
 	description = S("Coconut"),
 	drawtype = "plantlike",
@@ -147,11 +163,19 @@ minetest.register_node("ethereal:coconut", {
 		fixed = {-0.31, -0.43, -0.31, 0.31, 0.44, 0.31}
 	},
 	groups = {
-		food_coconut = 1, snappy = 1, oddly_breakable_by_hand = 1, cracky = 1,
-		choppy = 1, flammable = 1, leafdecay = 3, leafdecay_drop = 1
+		food_coconut = 1, snappy = cgrp[1], oddly_breakable_by_hand = cgrp[2],
+		cracky = cgrp[1], choppy = cgrp[1], flammable = 1,
+		leafdecay = 3, leafdecay_drop = 1
 	},
-	drop = "ethereal:coconut_slice 4",
-	sounds = default.node_sound_wood_defaults()
+	drop = cdrp,
+	sounds = default.node_sound_wood_defaults(),
+
+	after_place_node = function(pos, placer)
+
+		if placer:is_player() then
+			minetest.set_node(pos, {name = "ethereal:coconut", param2 = 1})
+		end
+	end
 })
 
 -- Coconut Slice (Heals half heart when eaten)
@@ -163,6 +187,17 @@ minetest.register_craftitem("ethereal:coconut_slice", {
 	on_use = minetest.item_eat(1)
 })
 
+-- coconut slice recipe (farming redo)
+if fredo then
+
+	minetest.register_craft({
+		output = "ethereal:coconut_slice 4",
+		recipe = {{"farming:cutting_board", "ethereal:coconut"}},
+		replacements = {{"farming:cutting_board", "farming:cutting_board"}}
+	})
+end
+
+-- coconut slice into whole coconut
 minetest.register_craft({
 	output = "ethereal:coconut",
 	recipe = {
@@ -170,6 +205,7 @@ minetest.register_craft({
 		{"ethereal:coconut_slice", "ethereal:coconut_slice"}
 	}
 })
+
 
 -- Golden Apple (Found on Healing Tree, heals all 10 hearts)
 minetest.register_node("ethereal:golden_apple", {
@@ -190,21 +226,28 @@ minetest.register_node("ethereal:golden_apple", {
 		leafdecay = 3,leafdecay_drop = 1
 	},
 	drop = "ethereal:golden_apple",
+	sounds = default.node_sound_leaves_defaults(),
+
 	on_use = function(itemstack, user, pointed_thing)
+
 		if user then
+
 			user:set_hp(20)
+
 			return minetest.do_item_eat(2, nil, itemstack, user, pointed_thing)
 		end
 	end,
-	sounds = default.node_sound_leaves_defaults(),
+
 	after_place_node = function(pos, placer, itemstack)
+
 		if placer:is_player() then
 			minetest.set_node(pos, {name = "ethereal:golden_apple", param2 = 1})
 		end
 	end
 })
 
--- Hearty Stew (Heals 5 hearts - thanks to ZonerDarkRevention for his DokuCraft DeviantArt bowl texture)
+-- Hearty Stew (Heals 5 hearts)
+-- thanks to ZonerDarkRevention for his DokuCraft DeviantArt bowl texture)
 minetest.register_craftitem("ethereal:hearty_stew", {
 	description = S("Hearty Stew"),
 	inventory_image = "ethereal_hearty_stew.png",
@@ -222,16 +265,18 @@ minetest.register_craft({
 })
 
 -- Extra recipe for hearty stew
-if farming and farming.mod and farming.mod == "redo" then
-minetest.register_craft({
-	output = "ethereal:hearty_stew",
-	recipe = {
-		{"group:food_onion","flowers:mushroom_brown", "group:food_beans"},
-		{"","flowers:mushroom_brown", ""},
-		{"","group:food_bowl", ""}
-	}
-})
+if fredo then
+
+	minetest.register_craft({
+		output = "ethereal:hearty_stew",
+		recipe = {
+			{"group:food_onion","flowers:mushroom_brown", "group:food_beans"},
+			{"","flowers:mushroom_brown", ""},
+			{"","group:food_bowl", ""}
+		}
+	})
 end
+
 
 -- Bucket of Cactus Pulp
 minetest.register_craftitem("ethereal:bucket_cactus", {
@@ -260,18 +305,18 @@ minetest.register_craftitem("ethereal:firethorn_jelly", {
 
 if minetest.registered_items["farming:bowl"] then
 
-minetest.register_craft({
-	output = "ethereal:firethorn_jelly",
-	recipe = {
-		{"farming:mortar_pestle","vessels:glass_bottle", ""},
-		{"ethereal:firethorn", "ethereal:firethorn", "ethereal:firethorn"},
-		{"bucket:bucket_water", "bucket:bucket_water", "bucket:bucket_water"}
-	},
-	replacements = {
-		{"bucket:bucket_water", "bucket:bucket_empty 3"},
-		{"farming:mortar_pestle", "farming:mortar_pestle"}
-	}
-})
+	minetest.register_craft({
+		output = "ethereal:firethorn_jelly",
+		recipe = {
+			{"farming:mortar_pestle","vessels:glass_bottle", ""},
+			{"ethereal:firethorn", "ethereal:firethorn", "ethereal:firethorn"},
+			{"bucket:bucket_water", "bucket:bucket_water", "bucket:bucket_water"}
+		},
+		replacements = {
+			{"bucket:bucket_water", "bucket:bucket_empty 3"},
+			{"farming:mortar_pestle", "farming:mortar_pestle"}
+		}
+	})
 end
 
 
@@ -296,7 +341,9 @@ minetest.register_node("ethereal:lemon", {
 	drop = "ethereal:lemon",
 	on_use = minetest.item_eat(3),
 	sounds = default.node_sound_leaves_defaults(),
+
 	after_place_node = function(pos, placer)
+
 		if placer:is_player() then
 			minetest.set_node(pos, {name = "ethereal:lemon", param2 = 1})
 		end
@@ -351,6 +398,7 @@ minetest.register_craft({
 	}
 })
 
+
 -- Olive
 minetest.register_node("ethereal:olive", {
 	description = S("Olive"),
@@ -373,7 +421,9 @@ minetest.register_node("ethereal:olive", {
 	drop = "ethereal:olive",
 	on_use = minetest.item_eat(1),
 	sounds = default.node_sound_leaves_defaults(),
+
 	after_place_node = function(pos, placer)
+
 		if placer:is_player() then
 			minetest.set_node(pos, {name = "ethereal:olive", param2 = 1})
 		end
@@ -400,6 +450,7 @@ minetest.register_craft({
 	}
 })
 
+
 -- Kappa Maki (sushi with cucumber)
 minetest.register_craftitem("ethereal:sushi_kappamaki", {
 	description = S("Kappa Maki Sushi"),
@@ -413,6 +464,7 @@ minetest.register_craft({
 		{"group:food_seaweed", "group:food_cucumber", "group:food_rice"}
 	}
 })
+
 
 -- Nigiri (sushi with raw fish)
 minetest.register_craftitem("ethereal:sushi_nigiri", {
@@ -428,6 +480,7 @@ minetest.register_craft({
 	}
 })
 
+
 -- Tamago (sushi with sweet egg)
 minetest.register_craftitem("ethereal:sushi_tamago", {
 	description = S("Tamago Sushi"),
@@ -442,12 +495,16 @@ minetest.register_craft({
 	}
 })
 
+
 -- Fugu (prepared pufferfish)
 minetest.register_craftitem("ethereal:fugu", {
 	description = S("Fugusashi"),
 	inventory_image = "ethereal_fugu.png",
+
 	on_use = function(itemstack, user, pointed_thing)
+
 		if user then
+
 			if math.random(12) == 1 then
 				return minetest.do_item_eat(-16, nil, itemstack, user, pointed_thing)
 			else
@@ -468,6 +525,7 @@ minetest.register_craft({
 	}
 })
 
+
 -- Teriyaki Chicken
 minetest.register_craftitem("ethereal:teriyaki_chicken", {
 	description = S("Teriyaki Chicken"),
@@ -487,6 +545,7 @@ minetest.register_craft({
 	}
 })
 
+
 -- Teriyaki Beef
 minetest.register_craftitem("ethereal:teriyaki_beef", {
 	description = S("Teriyaki Beef"),
@@ -504,5 +563,23 @@ minetest.register_craft({
 	replacements = {
 		{"group:food_soy_sauce", "vessels:glass_bottle"},
 		{"group:food_saucepan", "farming:saucepan"}
+	}
+})
+
+
+-- mushroom soup (Heals 1 heart)
+minetest.register_craftitem("ethereal:mushroom_soup", {
+	description = S("Mushroom Soup"),
+	inventory_image = "ethereal_mushroom_soup.png",
+	groups = {drink = 1},
+	on_use = minetest.item_eat(5, "ethereal:bowl")
+})
+
+minetest.register_craft({
+	output = "ethereal:mushroom_soup",
+	recipe = {
+		{"group:food_mushroom"},
+		{"group:food_mushroom"},
+		{"group:food_bowl"}
 	}
 })

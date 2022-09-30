@@ -163,6 +163,7 @@ add_schem({"ethereal:grove_dirt"}, 0.002, {"mediterranean"}, 5, 35,
 
 -- default large cactus
 if ethereal.desert == 1 then
+
 	minetest.register_decoration({
 		deco_type = "schematic",
 		place_on = {"default:desert_sand"},

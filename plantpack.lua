@@ -96,7 +96,10 @@ minetest.register_decoration({
 
 minetest.register_decoration({
 	deco_type = "simple",
-	place_on = {"ethereal:jungle_dirt", "default:dirt_with_grass", "default:dirt_with_rainforest_litter"},
+	place_on = {
+		"ethereal:jungle_dirt", "default:dirt_with_grass",
+		"default:dirt_with_rainforest_litter"
+	},
 	sidelen = 16,
 	fill_ratio = 0.007,
 	biomes = {"junglee", "jumble"},

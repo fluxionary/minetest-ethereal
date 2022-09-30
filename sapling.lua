@@ -1,6 +1,7 @@
 
 local S = ethereal.intllib
 
+
 -- Bamboo Sprout
 minetest.register_node("ethereal:bamboo_sprout", {
 	description = S("Bamboo Sprout"),
@@ -23,6 +24,7 @@ minetest.register_node("ethereal:bamboo_sprout", {
 	on_use = minetest.item_eat(2),
 	grown_height = 11
 })
+
 
 -- Register Saplings
 local register_sapling = function(name, desc, texture, height)
@@ -68,21 +70,25 @@ register_sapling("ethereal:olive_tree", "Olive", "ethereal_olive_tree_sapling", 
 
 
 local add_tree = function (pos, ofx, ofy, ofz, schem, replace)
+
 	-- check for schematic
 	if not schem then
 		print (S("Schematic not found"))
 		return
 	end
+
 	-- remove sapling and place schematic
 	minetest.swap_node(pos, {name = "air"})
-	minetest.place_schematic(
-		{x = pos.x - ofx, y = pos.y - ofy, z = pos.z - ofz},
-		schem, 0, replace, false)
+
+	minetest.place_schematic({x = pos.x - ofx, y = pos.y - ofy, z = pos.z - ofz},
+			schem, 0, replace, false)
 end
+
 
 local path = minetest.get_modpath("ethereal") .. "/schematics/"
 
 -- grow tree functions
+
 function ethereal.grow_yellow_tree(pos)
 	add_tree(pos, 4, 0, 4, ethereal.yellowtree)
 end
@@ -92,10 +98,11 @@ function ethereal.grow_big_tree(pos)
 end
 
 function ethereal.grow_banana_tree(pos)
-	if math.random(3) == 1
-	and minetest.find_node_near(pos, 1, {"farming:soil_wet"}) then
+
+	if math.random(3) == 1 and minetest.find_node_near(pos, 1, {"farming:soil_wet"}) then
+
 		add_tree(pos, 3, 0, 3, ethereal.bananatree,
-			{{"ethereal:banana", "ethereal:banana_bunch"}})
+				{{"ethereal:banana", "ethereal:banana_bunch"}})
 	else
 		add_tree(pos, 3, 0, 3, ethereal.bananatree)
 	end
@@ -140,8 +147,9 @@ end
 function ethereal.grow_sakura_tree(pos)
 
 	if math.random(10) == 1 then
+
 		add_tree(pos, 4, 0, 3, ethereal.sakura_tree,
-			{{"ethereal:sakura_leaves", "ethereal:sakura_leaves2"}})
+				{{"ethereal:sakura_leaves", "ethereal:sakura_leaves2"}})
 	else
 		add_tree(pos, 4, 0, 3, ethereal.sakura_tree)
 	end
@@ -154,6 +162,7 @@ end
 function ethereal.grow_olive_tree(pos)
 	add_tree(pos, 3, 0, 3, ethereal.olivetree)
 end
+
 
 -- check if sapling has enough height room to grow
 local enough_height = function(pos, height)
@@ -169,13 +178,10 @@ local enough_height = function(pos, height)
 	end
 end
 
+
 local grow_sapling = function(pos, node)
 
-	local under =  minetest.get_node({
-		x = pos.x,
-		y = pos.y - 1,
-		z = pos.z
-	}).name
+	local under =  minetest.get_node({x = pos.x, y = pos.y - 1, z = pos.z}).name
 
 	if not minetest.registered_nodes[node.name] then
 		return

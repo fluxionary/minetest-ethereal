@@ -9,7 +9,7 @@ ethereal.pinetree = {
 
 	yslice_prob = {
 		{ypos = 0, prob = 127},
-		{ypos = 4, prob = 127},
+		{ypos = 4, prob = 127}
 	},
 
 	data = {

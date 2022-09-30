@@ -1,6 +1,7 @@
 
 local S = ethereal.intllib
 
+
 -- Seaweed
 minetest.register_node("ethereal:seaweed", {
 	description = S("Seaweed"),
@@ -20,6 +21,7 @@ minetest.register_node("ethereal:seaweed", {
 	groups = {food_seaweed = 1, snappy = 3, flammable = 3},
 	on_use = minetest.item_eat(1),
 	sounds = default.node_sound_leaves_defaults(),
+
 	after_dig_node = function(pos, node, metadata, digger)
 		default.dig_up(pos, node, digger)
 	end
@@ -30,6 +32,7 @@ minetest.register_craft( {
 	output = "dye:dark_green 3",
 	recipe = {"ethereal:seaweed"}
 })
+
 
 -- agar powder
 minetest.register_craftitem("ethereal:agar_powder", {
@@ -49,6 +52,7 @@ minetest.register_craft({
 		{"bucket:bucket_water", "bucket:bucket_empty 4"}
 	}
 })
+
 
 -- Blue Coral
 minetest.register_node("ethereal:coral2", {
@@ -72,6 +76,7 @@ minetest.register_craft( {
 	recipe = {{"ethereal:coral2"}}
 })
 
+
 -- Orange Coral
 minetest.register_node("ethereal:coral3", {
 	description = S("Orange Glow Coral"),
@@ -93,6 +98,7 @@ minetest.register_craft( {
 	output = "dye:orange 3",
 	recipe = {{"ethereal:coral3"}}
 })
+
 
 -- Pink Coral
 minetest.register_node("ethereal:coral4", {
@@ -116,6 +122,7 @@ minetest.register_craft( {
 	recipe = {{"ethereal:coral4"}}
 })
 
+
 -- Green Coral
 minetest.register_node("ethereal:coral5", {
 	description = S("Green Glow Coral"),
@@ -138,7 +145,8 @@ minetest.register_craft( {
 	recipe = {{"ethereal:coral5"}}
 })
 
--- Undersea Sand
+
+-- Undersea Sand (used for growing seaweed and corals)
 minetest.register_node("ethereal:sandy", {
 	description = S("Sandy"),
 	tiles = {"default_sand.png"},
@@ -150,64 +158,66 @@ minetest.register_node("ethereal:sandy", {
 	sounds = default.node_sound_sand_defaults()
 })
 
+
 -- randomly generate coral or seaweed and have seaweed grow up to 14 high
 if ethereal.sealife == 1 then
 
-minetest.register_abm({
-	label = "Grow coral/seaweed",
-	nodenames = {"ethereal:sandy"},
-	neighbors = {"group:water"},
-	interval = 15,
-	chance = 10,
-	catch_up = false,
-	action = function(pos, node)
+	minetest.register_abm({
+		label = "Grow coral/seaweed",
+		nodenames = {"ethereal:sandy"},
+		neighbors = {"group:water"},
+		interval = 15,
+		chance = 10,
+		catch_up = false,
+		action = function(pos, node)
 
-		local sel = math.random(6)
+			local sel = math.random(6)
 
-		pos.y = pos.y + 1
+			pos.y = pos.y + 1
 
-		local nod = minetest.get_node(pos).name
+			local nod = minetest.get_node(pos).name
 
-		if nod == "default:water_source"
-		and sel == 6 then
+			if nod == "default:water_source"
+			and sel == 6 then
 
-			minetest.swap_node(pos, {name = "ethereal:sponge_wet"})
+				minetest.swap_node(pos, {name = "ethereal:sponge_wet"})
 
-			return
-		end
-
-		if nod == "default:water_source"
-		and sel > 1 then
-
-			minetest.swap_node(pos, {name = "ethereal:coral" .. sel})
-
-			return
-		end
-
-		if nod == "ethereal:seaweed"
-		or sel == 1 then
-
-			local height = 0
-			local high = 14
-
-			while height < high
-			and minetest.get_node(pos).name == "ethereal:seaweed" do
-				height = height + 1
-				pos.y = pos.y + 1
+				return
 			end
 
-			if pos.y < 1
-			and height < high
-			and minetest.get_node(pos).name == "default:water_source" then
+			if nod == "default:water_source"
+			and sel > 1 then
 
-				minetest.swap_node(pos, {name = "ethereal:seaweed"})
+				minetest.swap_node(pos, {name = "ethereal:coral" .. sel})
+
+				return
+			end
+
+			if nod == "ethereal:seaweed"
+			or sel == 1 then
+
+				local height = 0
+				local high = 14
+
+				while height < high
+				and minetest.get_node(pos).name == "ethereal:seaweed" do
+					height = height + 1
+					pos.y = pos.y + 1
+				end
+
+				if pos.y < 1
+				and height < high
+				and minetest.get_node(pos).name == "default:water_source" then
+
+					minetest.swap_node(pos, {name = "ethereal:seaweed"})
+				end
 			end
 		end
-	end
-})
+	})
 end
 
--- sponges
+
+-- sponge nodes
 
 minetest.register_node("ethereal:sponge_air", {
 	drawtype = "airlike",
@@ -220,6 +230,12 @@ minetest.register_node("ethereal:sponge_air", {
 	groups = {not_in_creative_inventory = 1}
 })
 
+minetest.register_node("ethereal:sponge_wet", {
+	description = S("Wet sponge"),
+	tiles = {"ethereal_sponge_wet.png"},
+	groups = {crumbly = 3},
+	sounds = default.node_sound_sand_defaults()
+})
 
 minetest.register_node("ethereal:sponge", {
 	description = S("Sponge"),
@@ -257,14 +273,6 @@ minetest.register_node("ethereal:sponge", {
 		-- replace dry sponge with wet sponge
 		minetest.swap_node(pos, {name = "ethereal:sponge_wet"})
 	end
-})
-
-
-minetest.register_node("ethereal:sponge_wet", {
-	description = S("Wet sponge"),
-	tiles = {"ethereal_sponge_wet.png"},
-	groups = {crumbly = 3},
-	sounds = default.node_sound_sand_defaults()
 })
 
 -- cook wet sponge into dry sponge

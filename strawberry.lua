@@ -1,20 +1,23 @@
 
 local S = ethereal.intllib
 
+
 -- Strawberry (can also be planted as seed)
 minetest.register_craftitem("ethereal:strawberry", {
 	description = S("Strawberry"),
 	inventory_image = "ethereal_strawberry.png",
 	wield_image = "ethereal_strawberry.png",
 	groups = {food_strawberry = 1, food_berry = 1, flammable = 2},
+	on_use = minetest.item_eat(1),
+
 	on_place = function(itemstack, placer, pointed_thing)
 		return farming.place_seed(itemstack, placer, pointed_thing, "ethereal:strawberry_1")
-	end,
-	on_use = minetest.item_eat(1)
+	end
 })
 
+
 -- Define Strawberry Bush growth stages
-local crop_def = {
+local def = {
 	drawtype = "plantlike",
 	tiles = {"ethereal_strawberry_1.png"},
 	paramtype = "light",
@@ -35,58 +38,58 @@ local crop_def = {
 }
 
 --stage 1
-minetest.register_node("ethereal:strawberry_1", table.copy(crop_def))
+minetest.register_node("ethereal:strawberry_1", table.copy(def))
 
 -- stage 2
-crop_def.tiles = {"ethereal_strawberry_2.png"}
-minetest.register_node("ethereal:strawberry_2", table.copy(crop_def))
+def.tiles = {"ethereal_strawberry_2.png"}
+minetest.register_node("ethereal:strawberry_2", table.copy(def))
 
 -- stage 3
-crop_def.tiles = {"ethereal_strawberry_3.png"}
-minetest.register_node("ethereal:strawberry_3", table.copy(crop_def))
+def.tiles = {"ethereal_strawberry_3.png"}
+minetest.register_node("ethereal:strawberry_3", table.copy(def))
 
 -- stage 4
-crop_def.tiles = {"ethereal_strawberry_4.png"}
-minetest.register_node("ethereal:strawberry_4", table.copy(crop_def))
+def.tiles = {"ethereal_strawberry_4.png"}
+minetest.register_node("ethereal:strawberry_4", table.copy(def))
 
 -- stage 5
-crop_def.tiles = {"ethereal_strawberry_5.png"}
-minetest.register_node("ethereal:strawberry_5", table.copy(crop_def))
+def.tiles = {"ethereal_strawberry_5.png"}
+minetest.register_node("ethereal:strawberry_5", table.copy(def))
 
 -- stage 6
-crop_def.tiles = {"ethereal_strawberry_6.png"}
-crop_def.drop = {
+def.tiles = {"ethereal_strawberry_6.png"}
+def.drop = {
 	items = {
 		{items = {"ethereal:strawberry 1"}, rarity = 2},
 		{items = {"ethereal:strawberry 2"}, rarity = 3}
 	}
 }
-minetest.register_node("ethereal:strawberry_6", table.copy(crop_def))
+minetest.register_node("ethereal:strawberry_6", table.copy(def))
 
 -- stage 7
-crop_def.tiles = {"ethereal_strawberry_7.png"}
-crop_def.drop = {
+def.tiles = {"ethereal_strawberry_7.png"}
+def.drop = {
 	items = {
 		{items = {"ethereal:strawberry 1"}, rarity = 1},
 		{items = {"ethereal:strawberry 2"}, rarity = 3}
 	}
 }
-minetest.register_node("ethereal:strawberry_7", table.copy(crop_def))
+minetest.register_node("ethereal:strawberry_7", table.copy(def))
 
--- stage 8
-crop_def.tiles = {"ethereal_strawberry_8.png"}
-crop_def.groups.growing = nil
-crop_def.selection_box = {
+-- stage 8 (final)
+def.tiles = {"ethereal_strawberry_8.png"}
+def.groups.growing = nil
+def.selection_box = {
 	type = "fixed",
 	fixed = {-0.5, -0.5, -0.5, 0.5, -2.5/16, 0.5}
 }
-crop_def.drop = {
+def.drop = {
 	items = {
 		{items = {"ethereal:strawberry 2"}, rarity = 1},
 		{items = {"ethereal:strawberry 3"}, rarity = 3}
 	}
 }
-minetest.register_node("ethereal:strawberry_8", table.copy(crop_def))
+minetest.register_node("ethereal:strawberry_8", table.copy(def))
 
 
 -- growing routine if farming redo isn't present
@@ -114,6 +117,7 @@ else
 		interval = 9,
 		chance = 20,
 		catch_up = false,
+
 		action = function(pos, node)
 
 			-- are we on wet soil?

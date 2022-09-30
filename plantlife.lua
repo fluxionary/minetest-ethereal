@@ -1,6 +1,7 @@
 
 local S = ethereal.intllib
 
+
 -- Firethorn (poisonous when eaten raw, must be crushed and washed in flowing water 1st)
 minetest.register_node("ethereal:firethorn", {
 	description = S("Firethorn Shrub"),
@@ -20,6 +21,7 @@ minetest.register_node("ethereal:firethorn", {
 		fixed = {-5 / 16, -0.5, -5 / 16, 5 / 16, 4 / 16, 5 / 16}
 	}
 })
+
 
 -- Fire Flower
 minetest.register_node("ethereal:fire_flower", {
@@ -56,6 +58,7 @@ minetest.register_craft({
 	burntime = 20
 })
 
+
 -- Fire Dust
 minetest.register_craftitem("ethereal:fire_dust", {
 	description = S("Fire Dust"),
@@ -72,6 +75,7 @@ minetest.register_craft({
 	recipe = "ethereal:fire_dust",
 	burntime = 10
 })
+
 
 -- vines
 minetest.register_node("ethereal:vine", {
@@ -102,6 +106,7 @@ minetest.register_craft({
 	}
 })
 
+
 -- light strings (glowing vine)
 minetest.register_node("ethereal:lightstring", {
 	description = S("Light String Vine"),
@@ -131,6 +136,7 @@ minetest.register_craft({
 		{"ethereal:vine", "ethereal:vine", "ethereal:vine"}
 	}
 })
+
 
 -- Fern (boston)
 minetest.register_node("ethereal:fern", {
@@ -168,6 +174,7 @@ minetest.register_craftitem("ethereal:fern_tubers", {
 	on_use = minetest.item_eat(1)
 })
 
+
 -- Red Shrub (not flammable)
 minetest.register_node("ethereal:dry_shrub", {
 	description = S("Fiery Dry Shrub"),
@@ -187,6 +194,7 @@ minetest.register_node("ethereal:dry_shrub", {
 		fixed = {-5 / 16, -0.5, -5 / 16, 5 / 16, 4 / 16, 5 / 16}
 	}
 })
+
 
 -- Grey Shrub (not Flammable - too cold to burn)
 minetest.register_node("ethereal:snowygrass", {
@@ -209,6 +217,7 @@ minetest.register_node("ethereal:snowygrass", {
 	}
 })
 
+
 -- Crystal Shrub (not Flammable - too cold to burn)
 minetest.register_node("ethereal:crystalgrass", {
 	description = S("Crystal Grass"),
@@ -230,6 +239,7 @@ minetest.register_node("ethereal:crystalgrass", {
 	}
 })
 
+
 -- Define Moss Types (Has grass textures on all sides)
 local add_moss = function(typ, descr, texture, receipe_item)
 
@@ -242,69 +252,40 @@ local add_moss = function(typ, descr, texture, receipe_item)
 	})
 
 	minetest.register_craft({
-		type = "shapeless",
 		output = "ethereal:" .. typ .. "_moss",
-		recipe = {"default:dirt", receipe_item}
+		recipe = {{"default:dirt", receipe_item}}
 	})
 end
 
-add_moss( "crystal", "Crystal", "ethereal_grass_crystal_top.png", "ethereal:frost_leaves")
-add_moss( "mushroom", "Mushroom", "ethereal_grass_mushroom_top.png", "ethereal:mushroom")
-add_moss( "fiery", "Fiery", "ethereal_grass_fiery_top.png", "ethereal:dry_shrub")
-add_moss( "gray", "Gray", "ethereal_grass_gray_top.png", "ethereal:snowygrass")
-add_moss( "green", "Green", "default_grass.png", "default:jungleleaves")
+add_moss("crystal", "Crystal", "ethereal_grass_crystal_top.png", "ethereal:frost_leaves")
+add_moss("mushroom", "Mushroom", "ethereal_grass_mushroom_top.png", "ethereal:mushroom")
+add_moss("fiery", "Fiery", "ethereal_grass_fiery_top.png", "ethereal:dry_shrub")
+add_moss("gray", "Gray", "ethereal_grass_gray_top.png", "ethereal:snowygrass")
+add_moss("green", "Green", "default_grass.png", "default:jungleleaves")
+
 
 -- Illuminated Cave Shrooms (Red, Green and Blue)
-minetest.register_node("ethereal:illumishroom", {
-	description = S("Red Illumishroom"),
-	drawtype = "plantlike",
-	tiles = {"ethereal_illumishroom_red.png"},
-	inventory_image = "ethereal_illumishroom_red.png",
-	wield_image = "ethereal_illumishroom_red.png",
-	paramtype = "light",
-	light_source = 5,
-	sunlight_propagates = true,
-	walkable = false,
-	groups = {dig_immediate = 3, attached_node = 1, flammable = 3},
-	sounds = default.node_sound_leaves_defaults(),
-	selection_box = {
-		type = "fixed",
-		fixed = {-6 / 16, -0.5, -6 / 16, 6 / 16, 0.47, 6 / 16}
-	}
-})
+local add_shroom = function(name, desc, ad)
 
-minetest.register_node("ethereal:illumishroom2", {
-	description = S("Green Illumishroom"),
-	drawtype = "plantlike",
-	tiles = {"ethereal_illumishroom_green.png"},
-	inventory_image = "ethereal_illumishroom_green.png",
-	wield_image = "ethereal_illumishroom_green.png",
-	paramtype = "light",
-	light_source = 5,
-	sunlight_propagates = true,
-	walkable = false,
-	groups = {dig_immediate = 3, attached_node = 1, flammable = 3},
-	sounds = default.node_sound_leaves_defaults(),
-	selection_box = {
-		type = "fixed",
-		fixed = {-6 / 16, -0.5, -6 / 16, 6 / 16, 0.47, 6 / 16}
-	}
-})
+	minetest.register_node("ethereal:illumishroom" .. ad, {
+		description = S(desc .. " Illumishroom"),
+		drawtype = "plantlike",
+		tiles = {"ethereal_illumishroom_" .. name .. ".png"},
+		inventory_image = "ethereal_illumishroom_" .. name .. ".png",
+		wield_image = "ethereal_illumishroom_" .. name .. ".png",
+		paramtype = "light",
+		light_source = 5,
+		sunlight_propagates = true,
+		walkable = false,
+		groups = {dig_immediate = 3, attached_node = 1, flammable = 3},
+		sounds = default.node_sound_leaves_defaults(),
+		selection_box = {
+			type = "fixed",
+			fixed = {-6 / 16, -0.5, -6 / 16, 6 / 16, 0.47, 6 / 16}
+		}
+	})
+end
 
-minetest.register_node("ethereal:illumishroom3", {
-	description = S("Cyan Illumishroom"),
-	drawtype = "plantlike",
-	tiles = {"ethereal_illumishroom_cyan.png"},
-	inventory_image = "ethereal_illumishroom_cyan.png",
-	wield_image = "ethereal_illumishroom_cyan.png",
-	paramtype = "light",
-	light_source = 5,
-	sunlight_propagates = true,
-	walkable = false,
-	groups = {dig_immediate = 3, attached_node = 1, flammable = 3},
-	sounds = default.node_sound_leaves_defaults(),
-	selection_box = {
-		type = "fixed",
-		fixed = {-6 / 16, -0.5, -6 / 16, 6 / 16, 0.47, 6 / 16}
-	}
-})
+add_shroom("red", "Red", "")
+add_shroom("green", "Green", "2")
+add_shroom("cyan", "Cyan", "3")

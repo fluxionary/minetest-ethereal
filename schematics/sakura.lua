@@ -10,7 +10,7 @@ ethereal.sakura_tree = {
 	yslice_prob = {
 		{ypos = 0, prob = 127},
 		{ypos = 3, prob = 127},
-		{ypos = 8, prob = 127},
+		{ypos = 8, prob = 127}
 	},
 
 	data = {
@@ -92,5 +92,5 @@ _,_,_,P,P,P,_,_,_,_,
 _,_,_,_,P,_,_,_,_,_,
 _,_,_,_,_,_,_,_,_,_,
 
-	},
+	}
 }

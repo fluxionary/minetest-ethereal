@@ -12,7 +12,7 @@ ethereal.yellowtree = {
 	yslice_prob = {
 		{ypos = 0, prob = 254},
 		{ypos = 3, prob = 254},
-		{ypos = 5, prob = 254},
+		{ypos = 5, prob = 254}
 	},
 
 	data = {

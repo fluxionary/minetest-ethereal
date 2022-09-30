@@ -101,6 +101,7 @@ add_biome("mesa_ocean", -192, 1, 25, 28, ethereal.mesa,
 
 
 tmp = "default:dirt_with_coniferous_litter"
+
 if not minetest.registered_nodes[tmp] then
 	tmp = "ethereal:cold_dirt"
 end
@@ -135,6 +136,7 @@ add_biome("caves", 4, 41, 15, 25, ethereal.caves,
 
 
 tmp = "default:silver_sand"
+
 if not minetest.registered_nodes[tmp] then
 	tmp = "default:sand"
 end
@@ -166,8 +168,8 @@ add_biome("jumble", 1, 71, 25, 50, ethereal.jumble,
 add_biome("jumble_ocean", -192, 1, 25, 50, ethereal.jumble,
 	nil, "default:sand", 1, "default:sand", 2)
 
-
 tmp = "default:dirt_with_rainforest_litter"
+
 if not minetest.registered_nodes[tmp] then
 	tmp = "ethereal:jungle_dirt"
 end
@@ -216,9 +218,9 @@ add_biome("plains", 3, 25, 65, 25, ethereal.plains,
 add_biome("plains_ocean", -192, 2, 55, 25, ethereal.plains,
 	nil, "default:sand", 1, "default:sand", 2)
 
-
 tmp = "default:dry_dirt_with_dry_grass"
 tmp2 = "default:dry_dirt"
+
 if not minetest.registered_nodes[tmp] then
 	tmp = "default:dirt_with_dry_grass"
 	tmp2 = "default:dirt"
@@ -229,7 +231,6 @@ add_biome("savanna", 3, 50, 55, 25, ethereal.savanna,
 
 add_biome("savanna_ocean", -192, 1, 55, 25, ethereal.savanna,
 	nil, "default:sand", 1, "default:sand", 2)
-
 
 add_biome("fiery", 5, 20, 75, 10, ethereal.fiery,
 	nil, "ethereal:fiery_dirt", 1, "default:dirt", 3)
@@ -264,12 +265,12 @@ if ethereal.glacier == 1 then
 		node_river_water = "default:ice",
 		node_riverbed = "default:gravel",
 		depth_riverbed = 2,
-		node_dungeon = "ethereal:icebrick",--"default:ice",
+		node_dungeon = "ethereal:icebrick",
 		node_dungeon_stair = "stairs:stair_ice",
 		y_min = -8,
 		y_max = 31000,
 		heat_point = 0,
-		humidity_point = 50,
+		humidity_point = 50
 	})
 
 	minetest.register_biome({
@@ -282,9 +283,10 @@ if ethereal.glacier == 1 then
 		y_min = -112,
 		y_max = -9,
 		heat_point = 0,
-		humidity_point = 50,
+		humidity_point = 50
 	})
 end
+
 
 if ethereal.tundra == 1 and minetest.registered_nodes["default:permafrost"] then
 
@@ -296,7 +298,7 @@ if ethereal.tundra == 1 and minetest.registered_nodes["default:permafrost"] then
 		y_max = 180,
 		y_min = 47,
 		heat_point = 0,
-		humidity_point = 40,
+		humidity_point = 40
 	})
 
 	minetest.register_biome({
@@ -311,7 +313,7 @@ if ethereal.tundra == 1 and minetest.registered_nodes["default:permafrost"] then
 		y_max = 46,
 		y_min = 2,
 		heat_point = 0,
-		humidity_point = 40,
+		humidity_point = 40
 	})
 
 	minetest.register_biome({
@@ -326,7 +328,7 @@ if ethereal.tundra == 1 and minetest.registered_nodes["default:permafrost"] then
 		y_max = 1,
 		y_min = -3,
 		heat_point = 0,
-		humidity_point = 40,
+		humidity_point = 40
 	})
 
 	minetest.register_biome({
@@ -341,6 +343,6 @@ if ethereal.tundra == 1 and minetest.registered_nodes["default:permafrost"] then
 		y_max = -4,
 		y_min = -112,
 		heat_point = 0,
-		humidity_point = 40,
+		humidity_point = 40
 	})
 end
