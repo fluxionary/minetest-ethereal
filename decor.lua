@@ -664,7 +664,7 @@ if minetest.get_modpath("butterflies") then
 			"butterflies:butterfly_white", "butterflies:butterfly_red",
 			"butterflies:butterfly_violet"
 		},
-		run_at_every_load = false,
+		run_at_every_load = true,
 
 		action = function(pos)
 			minetest.get_node_timer(pos):start(5)
@@ -699,7 +699,7 @@ if minetest.get_modpath("fireflies") then
 	minetest.register_lbm({
 		name = ":fireflies:firefly_timer",
 		nodenames = {"fireflies:firefly", "fireflies:hidden_firefly"},
-		run_at_every_load = false,
+		run_at_every_load = true,
 
 		action = function(pos)
 			minetest.get_node_timer(pos):start(5)
