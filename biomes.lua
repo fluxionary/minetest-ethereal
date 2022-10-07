@@ -235,7 +235,10 @@ add_biome("savanna_ocean", -192, 1, 55, 25, ethereal.savanna,
 add_biome("fiery", 5, 20, 75, 10, ethereal.fiery,
 	nil, "ethereal:fiery_dirt", 1, "default:dirt", 3)
 
-add_biome("fiery_ocean", -192, 4, 75, 10, ethereal.fiery,
+add_biome("fiery_beach", 1, 4, 75, 10, ethereal.fiery,
+	nil, "default:desert_sand", 1, "default:sand", 2)
+
+add_biome("fiery_ocean", -192, 0, 75, 10, ethereal.fiery,
 	nil, "default:sand", 1, "default:sand", 2)
 
 
