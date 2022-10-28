@@ -415,7 +415,8 @@ minetest.register_decoration({
 	y_max = 35,
 	decoration = {
 		"farming:chili_8", "farming:garlic_5", "farming:pepper_5", "farming:pepper_6",
-		"farming:onion_5", "farming:hemp_7", "farming:pepper_7", "farming:soy_5"
+		"farming:onion_5", "farming:hemp_7", "farming:pepper_7", "farming:soy_5",
+		"farming:ginger"
 	},
 	spawn_by = "group:tree",
 	num_spawn_by = 1
