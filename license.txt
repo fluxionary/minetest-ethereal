@@ -25,8 +25,9 @@ Textures by Felfa (CC0)
   olive*.png
   lemon*.png
 
-Free textures from JMArtsDesign edited by myself:
-  ethereal_lemonade.png
+Textures by Isaiah658 (CC0)
+   ethereal_lemonade.png
+   ethereal_bamboo.png
 
 Free textures from Altairas on DeviantArt
   ethereal_fish_chichlid.png
@@ -56,5 +57,5 @@ Notice: Most texture authors are written inside code as comments, anything with 
 I have more than likely created myself :)
 
 
-Royalty Free SFX from dreamstime.com:
+Royalty Free to use SFX from dreamstime.com:
   ethereal_casting_rod.ogg
