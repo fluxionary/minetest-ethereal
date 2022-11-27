@@ -29,34 +29,59 @@ end
 
 -- create list of default biomes to remove
 local def_biomes = {
-	"rainforest_swamp", "grassland_dunes", "cold_desert", "taiga", "icesheet_ocean",
-	"snowy_grassland_under", "desert", "deciduous_forest", "taiga_ocean", "desert_ocean",
-	"tundra_ocean", "snowy_grassland_ocean", "sandstone_desert", "tundra_under",
-	"coniferous_forest_ocean", "tundra", "sandstone_desert_under", "grassland",
-	"rainforest", "grassland_ocean", "tundra_beach", "rainforest_under", "savanna_under",
-	"icesheet", "savanna_ocean", "tundra_highland", "savanna", "cold_desert_under",
-	"cold_desert_ocean", "desert_under", "taiga_under", "savanna_shore",
-	"sandstone_desert_ocean", "snowy_grassland", "coniferous_forest_under",
-	"deciduous_forest_ocean", "grassland_under", "icesheet_under", "rainforest_ocean",
-	"deciduous_forest_shore", "deciduous_forest_under", "coniferous_forest_dunes",
-	"coniferous_forest"
+	["rainforest_swamp"] = 1,
+	["grassland_dunes"] = 1,
+	["cold_desert"] = 1,
+	["taiga"] = 1,
+	["icesheet_ocean"] = 1,
+	["snowy_grassland_under"] = 1,
+	["desert"] = 1,
+	["deciduous_forest"] = 1,
+	["taiga_ocean"] = 1,
+	["desert_ocean"] = 1,
+	["tundra_ocean"] = 1,
+	["snowy_grassland_ocean"] = 1,
+	["sandstone_desert"] = 1,
+	["tundra_under"] = 1,
+	["coniferous_forest_ocean"] = 1,
+	["tundra"] = 1,
+	["sandstone_desert_under"] = 1,
+	["grassland"] = 1,
+	["rainforest"] = 1,
+	["grassland_ocean"] = 1,
+	["tundra_beach"] = 1,
+	["rainforest_under"] = 1,
+	["savanna_under"] = 1,
+	["icesheet"] = 1,
+	["savanna_ocean"] = 1,
+	["tundra_highland"] = 1,
+	["savanna"] = 1,
+	["cold_desert_under"] = 1,
+	["cold_desert_ocean"] = 1,
+	["desert_under"] = 1,
+	["taiga_under"] = 1,
+	["savanna_shore"] = 1,
+	["sandstone_desert_ocean"] = 1,
+	["snowy_grassland"] = 1,
+	["coniferous_forest_under"] = 1,
+	["deciduous_forest_ocean"] = 1,
+	["grassland_under"] = 1,
+	["icesheet_under"] = 1,
+	["rainforest_ocean"] = 1,
+	["deciduous_forest_shore"] = 1,
+	["deciduous_forest_under"] = 1,
+	["coniferous_forest_dunes"] = 1,
+	["coniferous_forest"] = 1
 }
 
 
 -- only re-register biomes that aren't on the list
 for key, def in pairs(old_biomes) do
 
-	local can_add = true
-
-	for num, bio in pairs(def_biomes) do
-
-		if key == bio then
-			can_add = false
-		end
-	end
-
-	if can_add == true then
+	if not def_biomes[key] then
 		minetest.register_biome(def)
+	else
+--		print("-- biome", key, "removed!")
 	end
 end
 
@@ -70,22 +95,19 @@ for key, def in pairs(old_decor) do
 
 		for num, bio in pairs(def.biomes) do
 
-			can_add = true
-
-			for n, b in pairs(def_biomes) do
-
-				if bio == b then
-					can_add = false
-				end
+			if def_biomes[bio] then
+				can_add = false ; break
 			end
 		end
 	else
-		if def.biomes == key then
+		if def_biomes[def.biomes] then
 			can_add = false
 		end
 	end
 
 	if can_add == true then
 		minetest.register_decoration(def)
+	else
+--		print("-- decor", key, "removed!")
 	end
 end
