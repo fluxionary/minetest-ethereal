@@ -22,8 +22,8 @@ end
 
 
 -- clear current biome data
-minetest.clear_registered_biomes()
-minetest.clear_registered_decorations()
+-- minetest.clear_registered_biomes()
+-- minetest.clear_registered_decorations()
 -- minetest.clear_registered_ores()
 
 
