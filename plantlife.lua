@@ -242,7 +242,7 @@ minetest.register_node("ethereal:crystalgrass", {
 
 -- lilac
 minetest.register_node("ethereal:lilac", {
-	description = S("Fern"),
+	description = S("Lilac"),
 	drawtype = "plantlike",
 	visual_scale = 1.9,
 	tiles = {"ethereal_lilac.png"},

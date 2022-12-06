@@ -20,6 +20,10 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 THE SOFTWARE.
 
+Textures by VanessaE (CC-BY-SA 4.0)
+  moretrees_*.png
+  ethereal_banana_wood.png (edited)
+  ethereal_olive_wood.png (edited)
 
 Textures by Felfa (CC0)
   olive*.png
