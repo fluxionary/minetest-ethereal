@@ -37,7 +37,7 @@ Free textures from Altairas on DeviantArt
   ethereal_fish_chichlid.png
   ethereal_fish_cooked.png
 
-Free textures from epicwannehz on DeviantArt
+Textures by SaKeL (CC-BY-SA-4.0)
   ethereal_fish_bluefin.png
   ethereal_fish_blueram.png
   ethereal_fish_catfish.png
@@ -52,7 +52,8 @@ Free textures from epicwannehz on DeviantArt
   ethereal_fish_piranha.png
   ethereal_fish_angler.png
   ethereal_fish_jellyfish.png
-  ethereal_fish_seahorse.png
+
+  ethereal_fish_seahorse.png (by TenPlus1 CC0)
 
 Textures by Epoxum (CC0)
   ethereal_sushi_*.png
