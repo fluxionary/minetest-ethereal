@@ -88,12 +88,11 @@ end
 for key, def in pairs(old_decor) do
 
 	local can_add = true
+	local new_biomes = {}
 
 	if type(def.biomes) == "table" then
 
-		local new_biomes = {}
-
-		-- loop through biomes, only re-add one's not on above list
+		-- loop through decoration biomes, only re-add one's not on above list
 		for num, bio in pairs(def.biomes) do
 
 			if not def_biomes[bio] then
@@ -110,10 +109,18 @@ for key, def in pairs(old_decor) do
 
 		if def_biomes[def.biomes] then
 			can_add = false
+		else
+			new_biomes = {def.biomes} -- convert to table
 		end
+
+	elseif not def.biomes then
+		new_biomes = nil -- keep it nil for re-adding
 	end
 
 	if can_add == true then
+
+		def.biomes = new_biomes
+
 		minetest.register_decoration(def)
 	end
 end
