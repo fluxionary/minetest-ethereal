@@ -80,26 +80,34 @@ for key, def in pairs(old_biomes) do
 
 	if not def_biomes[key] then
 		minetest.register_biome(def)
-	else
---		print("-- biome", key, "removed!")
 	end
 end
 
 
--- only re-register decorations that don't appear in any of the above biomes
+-- loop through decorations
 for key, def in pairs(old_decor) do
 
 	local can_add = true
 
 	if type(def.biomes) == "table" then
 
+		local new_biomes = {}
+
+		-- loop through biomes, only re-add one's not on above list
 		for num, bio in pairs(def.biomes) do
 
-			if def_biomes[bio] then
-				can_add = false ; break
+			if not def_biomes[bio] then
+				table.insert(new_biomes, bio)
 			end
 		end
-	else
+
+		-- if no biomes are left on new list, do not re-add decoration
+		if #new_biomes == 0 then
+			can_add = false
+		end
+
+	elseif type(def.biomes) == "string" then
+
 		if def_biomes[def.biomes] then
 			can_add = false
 		end
@@ -107,7 +115,5 @@ for key, def in pairs(old_decor) do
 
 	if can_add == true then
 		minetest.register_decoration(def)
-	else
---		print("-- decor", key, "removed!")
 	end
 end
