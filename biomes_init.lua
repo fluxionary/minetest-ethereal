@@ -1,12 +1,3 @@
-
---[[
-
-	Apologies for any breakages to current biomes or mods, the following code was
-	forced by wsor4035 so that Ethereal would be approved for contentdb inclusion
-
-]]--
-
-
 local old_biomes = {}
 local old_decor = {}
 
