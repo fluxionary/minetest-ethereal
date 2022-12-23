@@ -25,6 +25,12 @@ Textures by VanessaE (CC-BY-SA 4.0)
   ethereal_banana_wood.png (edited)
   ethereal_olive_wood.png (edited)
 
+asl97 (CC BY-SA 3.0):
+  ethereal_brick_ice.png [edited by TenPlus1]
+
+Gambit (CC BY-SA 3.0):
+  ethereal_brick_snow.png [edited by TenPlus1]
+
 Textures by Felfa (CC0)
   olive*.png
   lemon*.png
