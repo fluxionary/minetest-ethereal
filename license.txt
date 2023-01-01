@@ -120,9 +120,5 @@ Textures by Epoxum (CC0)
 Created by XSSheep (CC BY-SA 4.0 - https://minecraft.curseforge.com/projects/pixel-perfection-freshly-updated)
   default_apple_gold.png
 
-Notice: Most texture authors are written inside code as comments, anything with no name
-I have more than likely created myself :)
-
-
 Sound by I_q (Attribution 3.0) https://freesound.org/people/l_q/sounds/440956/
   ethereal_casting_rod.ogg
